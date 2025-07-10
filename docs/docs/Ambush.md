@@ -6,6 +6,7 @@ tags:
 # Global Class "Ambush"
 
 ???+ info
+这是一个测试的上传
     You can get this class by using the `Ambush` global table.
 
     **Note that to call these functions, you must use a `.` (period) instead of a `:` (colon)!**
