@@ -393,7 +393,7 @@ plugins:
 repo_name: TeamREPENTOGON/REPENTOGON
 repo_url: https://github.com/TeamREPENTOGON/REPENTOGON
 site_name: 'BoI: REPENTOGON'
-site_url: https://github.com/3113y/REPGON_Docs-Trans-zh_cn
+site_url: https://3113y.github.io/REPGON_Docs-Trans-zh_cn
 theme:
   custom_dir: overrides
   favicon: img/favicon.ico
