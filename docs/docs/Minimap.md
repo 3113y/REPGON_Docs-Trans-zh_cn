@@ -20,8 +20,6 @@ tags:
 ### GetDisplayedSize () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetDisplayedSize ( ) {: .copyable aria-label='Functions' }
 Returns the current display size of the minimap. When not expanded this is always `Vector(47,47)`.
-
-___
 ### GetHoldTime () {: aria-label='Functions' }
 #### int GetHoldTime ( ) {: .copyable aria-label='Functions' }
 

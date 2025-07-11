@@ -26,19 +26,15 @@ ___
 ___
 ### GetDuration () {: aria-label='Functions' }
 #### int GetDuration ( ) {: .copyable aria-label='Functions' }
-Defines the time in update frames that these parameters should last. Has no effect on how many frames are left, but does affect fadeout speed (calculated as `Lifespan / Duration`) if `Fadeout` is enabled.
+定义这些参数应持续的更新帧数。对剩余帧数没有影响，但如果启用了 `Fadeout`（淡出），则会影响淡出速度（计算方式为 `Lifespan / Duration`，即“寿命/持续时间”）。
 
-___
 ### GetFadeout () {: aria-label='Functions' }
 #### boolean GetFadeout ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetLifespan () {: aria-label='Functions' }
 #### int GetLifespan ( ) {: .copyable aria-label='Functions' }
-Defines how many update frames are _left_ before this expires. This is decremented by `1` each non-interpolation update at a rate of `30` per second. Altering this will directly effect how many frames are left before these parameters expire.
-
-___
-### GetPriority () {: aria-label='Functions' }
+定义在这些参数过期之前还剩下多少更新帧数。在每秒 30 次的非插值更新中，每次更新该值会减 1。更改此值将直接影响这些参数在过期前还剩下多少帧数。### GetPriority () {: aria-label='Functions' }
 #### int GetPriority ( ) {: .copyable aria-label='Functions' }
 
 ___

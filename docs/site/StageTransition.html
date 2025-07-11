@@ -8043,20 +8043,16 @@
 <h3 aria-label="Functions" id="getsamestage">GetSameStage ()<a class="headerlink" href="#getsamestage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-getsamestage">boolean GetSameStage ( )<a class="headerlink" href="#boolean-getsamestage" title="Permanent link">⚓︎</a></h4>
 <p>Indicate if the stage transition screen will display Isaac's head moving from one stage to the other (<code>false</code>) or not (<code>true</code>).</p>
-<hr />
 <h3 aria-label="Functions" id="setsamestage">SetSameStage ()<a class="headerlink" href="#setsamestage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setsamestage-boolean-value">void SetSameStage ( boolean Value )<a class="headerlink" href="#void-setsamestage-boolean-value" title="Permanent link">⚓︎</a></h4>
-<p>Configure whether the stage transition will display Isaac's head moving from one stage to the other (<code>false</code>) or not (<code>true</code>).</p>
-<p>This function is useful if you want to move the player to the first stage, or want to repeat the last stage on the progress bar of the transition screen, and have it be less jarring. </p>
-<ul>
-<li>If transitioning back to the first floor, and <code>SameStage</code> is not set to <code>true</code>, Isaac's head will appear outside of the progress bar. Otherwise, Isaac's head will appear on the first floor.</li>
-<li>If repeating the last floor, and <code>SameStage</code> is not set to <code>true</code>, Isaac's head will move from the previous stage to the last one. Otherwise, Isaac's head will appear on the last floor.</li>
-</ul>
+<p>Calling this method before the current stage transition has called <code>SetNextStage</code> will override the transition itself. This means that instead of merely displaying Isaac's head not moving, it will actually change whether the next stage will be a repeat of the current one, or the actual next stage. Ideally, you should use this function in the context of the <code>ModCallbacks.MC_PRE_LEVEL_SELECT</code> callback.
+* If transitioning back to the first floor, and <code>SameStage</code> is not set to <code>true</code>, Isaac's head will appear outside of the progress bar. Otherwise, Isaac's head will appear on the first floor.
+* If repeating the last floor, and <code>SameStage</code> is not set to <code>true</code>, Isaac's head will move from the previous stage to the last one. Otherwise, Isaac's head will appear on the last floor.</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
-<p>Calling this method before the current stage transition has called <code>SetNextStage</code> will override the transition itself. This means that instead of merely displaying Isaac's head not moving, it will actually change whether the next stage will be a repeat of the current one, or the actual next stage. Ideally, you should use this function in the context of the <code>ModCallbacks.MC_PRE_LEVEL_SELECT</code> callback.</p>
 </details>
-<hr />
+<p>This function is useful if you want to move the player to the first stage, or want to repeat the last stage on the progress bar of the transition screen, and have it be less jarring.
+Configure whether the stage transition will display Isaac's head moving from one stage to the other (<code>false</code>) or not (<code>true</code>).</p>
 
 
 

@@ -15,8 +15,6 @@ An example mod using the Capsule class can be found [here.](./examples/Capsules.
 ## Constructors
 ### Capsule () {: aria-label='Constructors' }
 #### [Capsule](Capsule.md) Capsule ( [Vector](Vector.md) Position, [Vector](Vector.md) SizeMult, float Rotation, float Size ) {: .copyable aria-label='Constructors' }
-#### [Capsule](Capsule.md) Capsule ( [Vector](Vector.md) Position, [Vector](Vector.md) TargetPosition, float Size ) {: .copyable aria-label='Constructors' }
-
 ## Functions
 
 ### Collide () {: aria-label='Functions' }
@@ -29,9 +27,7 @@ ___
 ___
 ### GetF1 () {: aria-label='Functions' }
 #### float GetF1 ( ) {: .copyable aria-label='Functions' }
-Returns the size of the capsule *(consistent with `size` in both constructors)*
-
-___
+返回胶囊体的大小（与两个构造函数中的 `size` 一致）
 ### GetF2 () {: aria-label='Functions' }
 #### float GetF2 ( ) {: .copyable aria-label='Functions' }
 
@@ -42,11 +38,8 @@ ___
 ___
 ### GetVec2 () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetVec2 ( ) {: .copyable aria-label='Functions' }
-Returns the starting position of the capsule *(can be set with `position`)*
+返回胶囊体的起始位置（可以通过 `position` 设置）
 
-___
 ### GetVec3 () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetVec3 ( ) {: .copyable aria-label='Functions' }
-Returns the ending position of the capsule *(can be set with `targetposition`)*
-
-___
+返回胶囊体的结束位置（可以通过 `targetposition` 设置）

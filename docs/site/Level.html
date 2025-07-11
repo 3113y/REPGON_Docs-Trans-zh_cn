@@ -8560,102 +8560,80 @@
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="canplaceroom">CanPlaceRoom ()<a class="headerlink" href="#canplaceroom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-canplaceroom-roomconfigroom-roomconfigtoplace-int-gridindex-dimension-dimension-1-bool-allowmultipledoors-true-bool-allowspecialneighbors-false-bool-allownoneighbors-false">boolean CanPlaceRoom ( <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a> RoomConfigToPlace, int GridIndex, <a href="enums/Dimension.html">Dimension</a> Dimension = -1, bool AllowMultipleDoors = true, bool AllowSpecialNeighbors = false, bool AllowNoNeighbors = false )<a class="headerlink" href="#boolean-canplaceroom-roomconfigroom-roomconfigtoplace-int-gridindex-dimension-dimension-1-bool-allowmultipledoors-true-bool-allowspecialneighbors-false-bool-allownoneighbors-false" title="Permanent link">⚓︎</a></h4>
-<p>Returns true if the provided room could be successfully placed at this location using <a href="Level.html#tryplaceroom">TryPlaceRoom</a>.</p>
-<p>See documentation for <a href="Level.html#tryplaceroom">TryPlaceRoom</a> for more information.</p>
-<hr />
+<p>Returns true if the provided room could be successfully placed at this location using <a href="Level.html#tryplaceroom">TryPlaceRoom</a>.
+See documentation for <a href="Level.html#tryplaceroom">TryPlaceRoom</a> for more information.</p>
 <h3 aria-label="Functions" id="canplaceroomatdoor">CanPlaceRoomAtDoor ()<a class="headerlink" href="#canplaceroomatdoor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-canplaceroomatdoor-roomconfigroom-roomconfigtoplace-roomdescriptor-neighborroomdescriptor-doorslot-doorslot-bool-allowmultipledoors-true-bool-allowspecialneighbors-false">boolean CanPlaceRoomAtDoor ( <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a> RoomConfigToPlace, <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a> NeighborRoomDescriptor, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a> DoorSlot, bool AllowMultipleDoors = true, bool AllowSpecialNeighbors = false )<a class="headerlink" href="#boolean-canplaceroomatdoor-roomconfigroom-roomconfigtoplace-roomdescriptor-neighborroomdescriptor-doorslot-doorslot-bool-allowmultipledoors-true-bool-allowspecialneighbors-false" title="Permanent link">⚓︎</a></h4>
-<p>Returns true if the provided room (the <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a>) could be successfully placed as a neighbor of an existing room (the <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a>) at the specified <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a>, using <a href="Level.html#tryplaceroomatdoor">TryPlaceRoomAtDoor</a>.</p>
-<p>See documentation for <a href="Level.html#tryplaceroomatdoor">TryPlaceRoomAtDoor</a> and <a href="Level.html#tryplaceroom">TryPlaceRoom</a> for more information.</p>
-<hr />
+<p>See documentation for <a href="Level.html#tryplaceroomatdoor">TryPlaceRoomAtDoor</a> and <a href="Level.html#tryplaceroom">TryPlaceRoom</a> for more information.
+Returns true if the provided room (the <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a>) could be successfully placed as a neighbor of an existing room (the <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a>) at the specified <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a>, using <a href="Level.html#tryplaceroomatdoor">TryPlaceRoomAtDoor</a>.</p>
 <h3 aria-label="Functions" id="canspawndooroutline">CanSpawnDoorOutline ()<a class="headerlink" href="#canspawndooroutline" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-canspawndooroutline-int-roomidx-doorslot-doorslot">boolean CanSpawnDoorOutline ( int RoomIdx, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a> DoorSlot )<a class="headerlink" href="#boolean-canspawndooroutline-int-roomidx-doorslot-doorslot" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="findvalidroomplacementlocations">FindValidRoomPlacementLocations ()<a class="headerlink" href="#findvalidroomplacementlocations" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-findvalidroomplacementlocations-roomconfigroom-roomconfig-dimension-dimension-1-bool-allowmultipledoors-true-bool-allowspecialneighbors-false">int[] FindValidRoomPlacementLocations ( <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a> RoomConfig, <a href="enums/Dimension.html">Dimension</a> Dimension = -1, bool AllowMultipleDoors = true, bool AllowSpecialNeighbors = false )<a class="headerlink" href="#int-findvalidroomplacementlocations-roomconfigroom-roomconfig-dimension-dimension-1-bool-allowmultipledoors-true-bool-allowspecialneighbors-false" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table of room grid indices that would be valid locations to place the specified room using <a href="Level.html#tryplaceroom">TryPlaceRoom</a>.</p>
-<p>Note that if you set <code>AllowSpecialNeighbors</code> to <code>true</code>, you can get weird placements next to the ultra secret room. You can use <a href="Level.html#getneighboringrooms">GetNeighboringRooms</a> to confirm that potential neighbors are desired before placing your room.</p>
-<p>See <a href="Level.html#tryplaceroom">TryPlaceRoom</a> for more information on room placement and example code.</p>
-<hr />
+<p>See <a href="Level.html#tryplaceroom">TryPlaceRoom</a> for more information on room placement and example code.
+Returns a table of room grid indices that would be valid locations to place the specified room using <a href="Level.html#tryplaceroom">TryPlaceRoom</a>.
+Note that if you set <code>AllowSpecialNeighbors</code> to <code>true</code>, you can get weird placements next to the ultra secret room. You can use <a href="Level.html#getneighboringrooms">GetNeighboringRooms</a> to confirm that potential neighbors are desired before placing your room.</p>
 <h3 aria-label="Functions" id="getdimension">GetDimension ()<a class="headerlink" href="#getdimension" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="dimension-getdimension"><a href="enums/Dimension.html">Dimension</a> GetDimension ( )<a class="headerlink" href="#dimension-getdimension" title="Permanent link">⚓︎</a></h4>
 <p>Get's the current <a href="enums/Dimension.html">Dimension</a> the player is in.</p>
-<hr />
 <h3 aria-label="Functions" id="getforcespecialquest">GetForceSpecialQuest ()<a class="headerlink" href="#getforcespecialquest" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="specialquest-getforcespecialquest"><a href="enums/SpecialQuest.html">SpecialQuest</a> GetForceSpecialQuest ( )<a class="headerlink" href="#specialquest-getforcespecialquest" title="Permanent link">⚓︎</a></h4>
 <p>If set, the level will automatically attempt to place the Knife Piece puzzle door for this <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a>.</p>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>This is set to <code>SpecialQuest.DEFAULT</code> immediately before calling <code>MC_PRE_LEVEL_INIT</code>.</p>
 </details>
-<hr />
+<p>This is set to <code>SpecialQuest.DEFAULT</code> immediately before calling <code>MC_PRE_LEVEL_INIT</code>.</p>
 <h3 aria-label="Functions" id="getgreedwavesclearedwithoutredheartdamage">GetGreedWavesClearedWithoutRedHeartDamage ()<a class="headerlink" href="#getgreedwavesclearedwithoutredheartdamage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getgreedwavesclearedwithoutredheartdamage">int GetGreedWavesClearedWithoutRedHeartDamage ( )<a class="headerlink" href="#int-getgreedwavesclearedwithoutredheartdamage" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getmyosotispickups">GetMyosotisPickups ()<a class="headerlink" href="#getmyosotispickups" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entitiessavestatevector-getmyosotispickups"><a href="EntitiesSaveStateVector.html">EntitiesSaveStateVector</a> GetMyosotisPickups ( )<a class="headerlink" href="#entitiessavestatevector-getmyosotispickups" title="Permanent link">⚓︎</a></h4>
 <p>Returns the pickups that will be transferred to the next floor by the Myosotis trinket effect.</p>
-<hr />
 <h3 aria-label="Functions" id="getneighboringrooms">GetNeighboringRooms ()<a class="headerlink" href="#getneighboringrooms" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getneighboringrooms-int-gridindex-roomshape-dimension-dimension-1">table GetNeighboringRooms ( int GridIndex, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/RoomShape.html">RoomShape</a>, <a href="enums/Dimension.html">Dimension</a> Dimension = -1 )<a class="headerlink" href="#table-getneighboringrooms-int-gridindex-roomshape-dimension-dimension-1" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table that maps <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a> to <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a> for all of the neighbors that a room of the specified shape would have if placed at this location.</p>
-<p>Don't use <code>ipairs</code> to iterate over this, use <code>pairs</code>!</p>
-<p>Note that this does not give you any information on if a room would actually fit here, or if the neighbors would even allow the connection.</p>
-<p>If you want to get the neighbors of an existing room, you can simply use <a href="RoomDescriptor.html#getneighboringrooms">RoomDescriptor:GetNeighboringRooms()</a> instead.</p>
-<details class="- example">
-<summary>Example Code</summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Returns true if a room placed at this GridIndex with this RoomShape would have a neighboring secret room.</span>
+<p>If you want to get the neighbors of an existing room, you can simply use <a href="RoomDescriptor.html#getneighboringrooms">RoomDescriptor:GetNeighboringRooms()</a> instead.
+if roomType == RoomType.ROOM_SECRET or roomType == RoomType.ROOM_SUPERSECRET or roomType == RoomType.ROOM_ULTRASECRET then
+Returns a table that maps <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a> to <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a> for all of the neighbors that a room of the specified shape would have if placed at this location.
+return false
+Note that this does not give you any information on if a room would actually fit here, or if the neighbors would even allow the connection.
+for doorSlot, neighborDesc in pairs(Game():GetLevel():GetNeighboringRooms(gridIndex, roomShape)) do
+end
+Don't use <code>ipairs</code> to iterate over this, use <code>pairs</code>!
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">roomType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">neighborDesc</span><span class="p">.</span><span class="py">Data</span><span class="p">.</span><span class="py">Type</span>
+<span class="kr">return</span><span class="w"> </span><span class="kc">true</span>
+<span class="c1">-- Returns true if a room placed at this GridIndex with this RoomShape would have a neighboring secret room.</span>
+<span class="err">???</span><span class="o">-</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="s2">&quot;Example Code&quot;</span>
 <span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">WouldHaveSecretRoomNeighbor</span><span class="p">(</span><span class="nv">gridIndex</span><span class="p">,</span><span class="w"> </span><span class="nv">roomShape</span><span class="p">)</span>
-<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">doorSlot</span><span class="p">,</span><span class="w"> </span><span class="nv">neighborDesc</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nf">Game</span><span class="p">():</span><span class="nf">GetLevel</span><span class="p">():</span><span class="nf">GetNeighboringRooms</span><span class="p">(</span><span class="nv">gridIndex</span><span class="p">,</span><span class="w"> </span><span class="nv">roomShape</span><span class="p">))</span><span class="w"> </span><span class="kr">do</span>
-<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">roomType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">neighborDesc</span><span class="p">.</span><span class="py">Data</span><span class="p">.</span><span class="py">Type</span>
-<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">roomType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">RoomType</span><span class="p">.</span><span class="py">ROOM_SECRET</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">roomType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">RoomType</span><span class="p">.</span><span class="py">ROOM_SUPERSECRET</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">roomType</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">RoomType</span><span class="p">.</span><span class="py">ROOM_ULTRASECRET</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">            </span><span class="kr">return</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">        </span><span class="kr">end</span>
-<span class="w">    </span><span class="kr">end</span>
-<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="kc">false</span>
-<span class="kr">end</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<hr />
+</code></pre></div></td></tr></table></div></p>
 <h3 aria-label="Functions" id="hasabandonedmineshaft">HasAbandonedMineshaft ()<a class="headerlink" href="#hasabandonedmineshaft" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-hasabandonedmineshaft">boolean HasAbandonedMineshaft ( )<a class="headerlink" href="#boolean-hasabandonedmineshaft" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the floor has the mineshaft room used for the second Knife Piece puzzle.</p>
-<hr />
 <h3 aria-label="Functions" id="hasmirrordimension">HasMirrorDimension ()<a class="headerlink" href="#hasmirrordimension" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-hasmirrordimension">boolean HasMirrorDimension ( )<a class="headerlink" href="#boolean-hasmirrordimension" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the floor has the mirror dimension used for the first Knife Piece puzzle.</p>
-<hr />
 <h3 aria-label="Functions" id="hasphotodoor">HasPhotoDoor ()<a class="headerlink" href="#hasphotodoor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-hasphotodoor">boolean HasPhotoDoor ( )<a class="headerlink" href="#boolean-hasphotodoor" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the floor has the photo door used to enter Mausoleum/Gehenna leading to the Ascent sequence.</p>
-<hr />
 <h3 aria-label="Functions" id="isstageavailable">IsStageAvailable ()<a class="headerlink" href="#isstageavailable" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-isstageavailable-levelstage-level-stagetype-stage">void IsStageAvailable ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> Level, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/StageType.html">StageType</a> Stage )<a class="headerlink" href="#void-isstageavailable-levelstage-level-stagetype-stage" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the provided <code>Level</code> and <code>Stage</code> combination is available to be generated in any given run. Returns <code>false</code> if locked behind an achievement.</p>
-<hr />
 <h3 aria-label="Functions" id="placeroom">PlaceRoom ()<a class="headerlink" href="#placeroom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-placeroom-levelgeneratorentry-room-roomconfigroom-roomconfig-int-seed">boolean PlaceRoom ( <a href="LevelGeneratorEntry.html">LevelGeneratorEntry</a> Room, <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a> RoomConfig, int Seed )<a class="headerlink" href="#boolean-placeroom-levelgeneratorentry-room-roomconfigroom-roomconfig-int-seed" title="Permanent link">⚓︎</a></h4>
-<p>Places a room into the game. Returns <code>true</code> if successful.</p>
-<p>Note that this function does not really check if a room placement would be considered valid, nor does it create the doors necessary to connect the new room to its neighbors.</p>
-<p>See <a href="Level.html#tryplaceroom">TryPlaceRoom</a> and related functions if you want to properly add new rooms to the floor after level generation, similarly to what Red Key does.</p>
-<hr />
+<p>Places a room into the game. Returns <code>true</code> if successful.
+See <a href="Level.html#tryplaceroom">TryPlaceRoom</a> and related functions if you want to properly add new rooms to the floor after level generation, similarly to what Red Key does.
+Note that this function does not really check if a room placement would be considered valid, nor does it create the doors necessary to connect the new room to its neighbors.</p>
 <h3 aria-label="Functions" id="setforcespecialquest">SetForceSpecialQuest ()<a class="headerlink" href="#setforcespecialquest" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setforcespecialquest-specialquest-quest">void SetForceSpecialQuest ( <a href="enums/SpecialQuest.html">SpecialQuest</a> Quest )<a class="headerlink" href="#void-setforcespecialquest-specialquest-quest" title="Permanent link">⚓︎</a></h4>
 <p>Sets whether the level should attempt to place the Knife Piece puzzle door for this <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a>.</p>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>This is set to <code>SpecialQuest.DEFAULT</code> immediately before calling <code>MC_PRE_LEVEL_INIT</code>.</p>
 </details>
-<hr />
+<p>This is set to <code>SpecialQuest.DEFAULT</code> immediately before calling <code>MC_PRE_LEVEL_INIT</code>.</p>
 <h3 aria-label="Functions" id="setgreedwavesclearedwithoutredheartdamage">SetGreedWavesClearedWithoutRedHeartDamage ()<a class="headerlink" href="#setgreedwavesclearedwithoutredheartdamage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setgreedwavesclearedwithoutredheartdamage-int-wavescleared">void SetGreedWavesClearedWithoutRedHeartDamage ( int WavesCleared )<a class="headerlink" href="#void-setgreedwavesclearedwithoutredheartdamage-int-wavescleared" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8664,18 +8642,8 @@
 <hr />
 <h3 aria-label="Functions" id="tryplaceroom">TryPlaceRoom ()<a class="headerlink" href="#tryplaceroom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="roomdescriptor-tryplaceroom-roomconfigroom-roomconfigtoplace-int-gridindex-dimension-dimension-1-int-seed-0-bool-allowmultipledoors-true-bool-allowspecialneighbors-false-bool-allownoneighbors-false"><a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a> TryPlaceRoom ( <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a> RoomConfigToPlace, int GridIndex, <a href="enums/Dimension.html">Dimension</a> Dimension = -1, int Seed = 0, bool AllowMultipleDoors = true, bool AllowSpecialNeighbors = false, bool AllowNoNeighbors = false )<a class="headerlink" href="#roomdescriptor-tryplaceroom-roomconfigroom-roomconfigtoplace-int-gridindex-dimension-dimension-1-int-seed-0-bool-allowmultipledoors-true-bool-allowspecialneighbors-false-bool-allownoneighbors-false" title="Permanent link">⚓︎</a></h4>
-<p>Attempts to place the provided room at the specified location.</p>
-<p>If successful, returns the newly initialized <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a>. Otherwise, returns nil.</p>
-<p>This function will ONLY place the room if it fits (does not overlap any other existing rooms, and can mutually connect to all neighboring room with doors).</p>
-<p>If a seed of 0 or nil is provided, a deterministic seed with be auto-generated based on the location, room shape, and level seed.</p>
-<p>The boolean parameters enable or disable additional restrictions/safeties for room placement:</p>
-<ul>
-<li>AllowMultipleDoors: Set to <code>false</code> to only allow placement if the room would only have one door (useful for placing special rooms). Secret rooms don't count as a door.</li>
-<li>AllowSpecialNeighbors: Set to <code>true</code> to allow connections to existing special rooms (note that secret rooms are always permitted, but boss rooms never are).</li>
-<li>AllowNoNeighbors: Set to <code>true</code> to permit room placements out in the void with no neighbors at all.</li>
-</ul>
-<details class="- example">
-<summary>Example Code</summary>
+<p>-- Try to place the room.
+Attempts to place the provided room at the specified location.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -8711,65 +8679,51 @@
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Adds another treasure room to the floor at a random valid location.</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nf">GetLevel</span><span class="p">()</span>
+<span class="err">???</span><span class="o">-</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="s2">&quot;Example Code&quot;</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">TryPlaceRoom</span><span class="p">(</span><span class="nv">roomConfig</span><span class="p">,</span><span class="w"> </span><span class="nv">gridIndex</span><span class="p">,</span><span class="w"> </span><span class="nv">dimension</span><span class="p">,</span><span class="w"> </span><span class="nv">seed</span><span class="p">,</span><span class="w"> </span><span class="nv">allowMultipleDoors</span><span class="p">,</span><span class="w"> </span><span class="nv">allowSpecialNeighbors</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">FindValidRoomPlacementLocations</span><span class="p">(</span><span class="nv">roomConfig</span><span class="p">,</span><span class="w"> </span><span class="nv">dimension</span><span class="p">,</span><span class="w"> </span><span class="nv">allowMultipleDoors</span><span class="p">,</span><span class="w"> </span><span class="nv">allowSpecialNeighbors</span><span class="p">)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="kr">then</span>
+<span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">connectsToStartingRoom</span><span class="w"> </span><span class="kr">then</span>
+<span class="c1">-- and otherwise just place the room at the first place we check.</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">neighbors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">GetNeighboringRooms</span><span class="p">(</span><span class="nv">gridIndex</span><span class="p">,</span><span class="w"> </span><span class="nv">roomConfig</span><span class="p">.</span><span class="py">Shape</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="c1">-- current dimension</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">GetDungeonPlacementSeed</span><span class="p">()</span>
+<span class="c1">-- Fetch a random RoomConfig for a new treasure room.</span>
+<span class="c1">-- You may have additional conditions or priorities when it comes to where you would prefer to place your room.</span>
+<span class="c1">-- Disallow placements with multiple doors, or placements that connect to other special rooms.</span>
+<span class="kr">return</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">allowSpecialNeighbors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 <span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">AddAnotherTreasureRoomToTheFloorAtARandomValidLocation</span><span class="p">()</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nf">GetLevel</span><span class="p">()</span>
-
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="c1">-- current dimension</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">GetDungeonPlacementSeed</span><span class="p">()</span>
-
-<span class="w">    </span><span class="c1">-- Fetch a random RoomConfig for a new treasure room.</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">roomConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RoomConfigHolder</span><span class="p">.</span><span class="nf">GetRandomRoom</span><span class="p">(</span><span class="nv">seed</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nv">StbType</span><span class="p">.</span><span class="py">SPECIAL_ROOMS</span><span class="p">,</span><span class="w"> </span><span class="nv">RoomType</span><span class="p">.</span><span class="py">ROOM_TREASURE</span><span class="p">,</span><span class="w"> </span><span class="nv">RoomShape</span><span class="p">.</span><span class="py">ROOMSHAPE_1x1</span><span class="p">)</span>
-
-<span class="w">    </span><span class="c1">-- Disallow placements with multiple doors, or placements that connect to other special rooms.</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">allowMultipleDoors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">allowSpecialNeighbors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-
-<span class="w">    </span><span class="c1">-- Fetch all valid locations.</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">FindValidRoomPlacementLocations</span><span class="p">(</span><span class="nv">roomConfig</span><span class="p">,</span><span class="w"> </span><span class="nv">dimension</span><span class="p">,</span><span class="w"> </span><span class="nv">allowMultipleDoors</span><span class="p">,</span><span class="w"> </span><span class="nv">allowSpecialNeighbors</span><span class="p">)</span>
-
-<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">gridIndex</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">options</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
-<span class="w">        </span><span class="c1">-- You may have additional conditions or priorities when it comes to where you would prefer to place your room.</span>
-<span class="w">        </span><span class="c1">-- For the purposes of this example we arbitarily forbid the new room from being connected to the starting room,</span>
-<span class="w">        </span><span class="c1">-- and otherwise just place the room at the first place we check.</span>
-
-<span class="w">        </span><span class="c1">-- Get the RoomDescriptors of all rooms that would be neighboring the room if placed here.</span>
-<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">neighbors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">GetNeighboringRooms</span><span class="p">(</span><span class="nv">gridIndex</span><span class="p">,</span><span class="w"> </span><span class="nv">roomConfig</span><span class="p">.</span><span class="py">Shape</span><span class="p">)</span>
-
-<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">connectsToStartingRoom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-
-<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="nv">doorSlot</span><span class="p">,</span><span class="w"> </span><span class="nv">neighborDesc</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">neighbors</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
-<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">neighborDesc</span><span class="p">.</span><span class="py">GridIndex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">GetStartingRoomIndex</span><span class="p">()</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">                </span><span class="nv">connectsToStartingRoom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">            </span><span class="kr">end</span>
-<span class="w">        </span><span class="kr">end</span>
-
-<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">connectsToStartingRoom</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">            </span><span class="c1">-- Try to place the room.</span>
-<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">TryPlaceRoom</span><span class="p">(</span><span class="nv">roomConfig</span><span class="p">,</span><span class="w"> </span><span class="nv">gridIndex</span><span class="p">,</span><span class="w"> </span><span class="nv">dimension</span><span class="p">,</span><span class="w"> </span><span class="nv">seed</span><span class="p">,</span><span class="w"> </span><span class="nv">allowMultipleDoors</span><span class="p">,</span><span class="w"> </span><span class="nv">allowSpecialNeighbors</span><span class="p">)</span>
-<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">                </span><span class="c1">-- The room was placed successfully!</span>
-<span class="w">                </span><span class="kr">return</span>
-<span class="w">            </span><span class="kr">end</span>
-<span class="w">        </span><span class="kr">end</span>
-<span class="w">    </span><span class="kr">end</span>
 <span class="kr">end</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<hr />
+<span class="c1">-- The room was placed successfully!</span>
+<span class="c1">-- Fetch all valid locations.</span>
+<span class="c1">-- Adds another treasure room to the floor at a random valid location.</span>
+<span class="nv">This</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">will</span><span class="w"> </span><span class="nv">ONLY</span><span class="w"> </span><span class="nv">place</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nf">fits</span><span class="w"> </span><span class="p">(</span><span class="nv">does</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">overlap</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">existing</span><span class="w"> </span><span class="nv">rooms</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">mutually</span><span class="w"> </span><span class="nv">connect</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">neighboring</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">doors</span><span class="p">).</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">boolean</span><span class="w"> </span><span class="nv">parameters</span><span class="w"> </span><span class="nv">enable</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">disable</span><span class="w"> </span><span class="nv">additional</span><span class="w"> </span><span class="nv">restrictions</span><span class="o">/</span><span class="nv">safeties</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="nv">placement</span><span class="p">:</span>
+<span class="c1">-- For the purposes of this example we arbitarily forbid the new room from being connected to the starting room,</span>
+<span class="py">for</span><span class="w"> </span><span class="nv">doorSlot</span><span class="p">,</span><span class="w"> </span><span class="nv">neighborDesc</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">neighbors</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="nv">If</span><span class="w"> </span><span class="nv">successful</span><span class="p">,</span><span class="w"> </span><span class="nv">returns</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">newly</span><span class="w"> </span><span class="nv">initialized</span><span class="w"> </span><span class="p">[</span><span class="nv">RoomDescriptor</span><span class="p">](</span><span class="nv">https</span><span class="p">:</span><span class="err">//</span><span class="py">wofsauge</span><span class="p">.</span><span class="py">github</span><span class="p">.</span><span class="py">io</span><span class="o">/</span><span class="nv">IsaacDocs</span><span class="o">/</span><span class="nv">rep</span><span class="o">/</span><span class="nv">RoomDescriptor</span><span class="p">.</span><span class="py">html</span><span class="p">).</span><span class="w"> </span><span class="nv">Otherwise</span><span class="p">,</span><span class="w"> </span><span class="nv">returns</span><span class="w"> </span><span class="kc">nil</span><span class="p">.</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">gridIndex</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">pairs</span><span class="p">(</span><span class="nv">options</span><span class="p">)</span><span class="w"> </span><span class="kr">do</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">roomConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RoomConfigHolder</span><span class="p">.</span><span class="nf">GetRandomRoom</span><span class="p">(</span><span class="nv">seed</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nv">StbType</span><span class="p">.</span><span class="py">SPECIAL_ROOMS</span><span class="p">,</span><span class="w"> </span><span class="nv">RoomType</span><span class="p">.</span><span class="py">ROOM_TREASURE</span><span class="p">,</span><span class="w"> </span><span class="nv">RoomShape</span><span class="p">.</span><span class="py">ROOMSHAPE_1x1</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">allowMultipleDoors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">connectsToStartingRoom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">AllowNoNeighbors</span><span class="p">:</span><span class="w"> </span><span class="py">Set</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="err">`</span><span class="kc">true</span><span class="err">`</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">permit</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="nv">placements</span><span class="w"> </span><span class="nv">out</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">void</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">neighbors</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">all</span><span class="p">.</span>
+<span class="py">If</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">provided</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">deterministic</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">auto</span><span class="o">-</span><span class="nv">generated</span><span class="w"> </span><span class="nv">based</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">location</span><span class="p">,</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="nv">shape</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nv">level</span><span class="w"> </span><span class="nv">seed</span><span class="p">.</span>
+<span class="err">-</span><span class="w"> </span><span class="py">AllowMultipleDoors</span><span class="p">:</span><span class="w"> </span><span class="py">Set</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="err">`</span><span class="kc">false</span><span class="err">`</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">only</span><span class="w"> </span><span class="nv">allow</span><span class="w"> </span><span class="nv">placement</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="nv">would</span><span class="w"> </span><span class="nv">only</span><span class="w"> </span><span class="nv">have</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nf">door</span><span class="w"> </span><span class="p">(</span><span class="nv">useful</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="nv">placing</span><span class="w"> </span><span class="nv">special</span><span class="w"> </span><span class="nv">rooms</span><span class="p">).</span><span class="w"> </span><span class="nv">Secret</span><span class="w"> </span><span class="nv">rooms</span><span class="w"> </span><span class="nv">don</span><span class="s1">&#39;t count as a door.</span>
+<span class="s1">if neighborDesc.GridIndex == level:GetStartingRoomIndex() then</span>
+<span class="s1">- AllowSpecialNeighbors: Set to `true` to allow connections to existing special rooms (note that secret rooms are always permitted, but boss rooms never are).</span>
+<span class="s1">connectsToStartingRoom = true</span>
+<span class="s1">-- Get the RoomDescriptors of all rooms that would be neighboring the room if placed here.</span>
+</code></pre></div></td></tr></table></div></p>
 <h3 aria-label="Functions" id="tryplaceroomatdoor">TryPlaceRoomAtDoor ()<a class="headerlink" href="#tryplaceroomatdoor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="roomdescriptor-tryplaceroomatdoor-roomconfigroom-roomconfigtoplace-roomdescriptor-neighborroomdescriptor-doorslot-doorslot-int-seed-0-bool-allowmultipledoors-true-bool-allowspecialneighbors-false"><a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a> TryPlaceRoomAtDoor ( <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a> RoomConfigToPlace, <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a> NeighborRoomDescriptor, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a> DoorSlot, int Seed = 0, bool AllowMultipleDoors = true, bool AllowSpecialNeighbors = false )<a class="headerlink" href="#roomdescriptor-tryplaceroomatdoor-roomconfigroom-roomconfigtoplace-roomdescriptor-neighborroomdescriptor-doorslot-doorslot-int-seed-0-bool-allowmultipledoors-true-bool-allowspecialneighbors-false" title="Permanent link">⚓︎</a></h4>
-<p>Similar to <a href="Level.html#tryplaceroom">TryPlaceRoom</a>, but attempts to place the provided room (the <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html">RoomConfigRoom</a>) as a neighbor of an existing room (the <a href="https://wofsauge.github.io/IsaacDocs/rep/RoomDescriptor.html">RoomDescriptor</a>) at the specified <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html">DoorSlot</a>.</p>
-<p>Otherwise, the details are the same as for <a href="Level.html#tryplaceroom">TryPlaceRoom</a>.</p>
-<details class="- example">
-<summary>Example Code</summary>
+<p>local room = game:GetRoom()
+success = true
+local newRoom = level:TryPlaceRoomAtDoor(roomConfig, roomDesc, doorSlot, seed, true, false)
+-- Bitmask check to identify if the current room would even allow a door to be placed here.
+if newRoom then
+return {ShowAnim=true}
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -8789,49 +8743,27 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Example code for an active item that creates a new 1x1 room at every doorslot available in the current room.</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nf">GetLevel</span><span class="p">()</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">doorSlot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="kr">do</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">rng</span><span class="p">:</span><span class="nf">Next</span><span class="p">()</span>
+<span class="err">???</span><span class="o">-</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="s2">&quot;Example Code&quot;</span>
 <span class="nv">mod</span><span class="p">:</span><span class="nf">AddCallback</span><span class="p">(</span><span class="nv">ModCallbacks</span><span class="p">.</span><span class="py">MC_USE_ITEM</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">_</span><span class="p">,</span><span class="w"> </span><span class="nv">id</span><span class="p">,</span><span class="w"> </span><span class="nv">rng</span><span class="p">,</span><span class="w"> </span><span class="nv">player</span><span class="p">,</span><span class="w"> </span><span class="nv">flags</span><span class="p">,</span><span class="w"> </span><span class="nv">slot</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nf">GetLevel</span><span class="p">()</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">room</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nf">GetRoom</span><span class="p">()</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">roomDesc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">GetCurrentRoomDesc</span><span class="p">()</span>
-
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-
-<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">doorSlot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="kr">do</span>
-<span class="w">        </span><span class="c1">-- Bitmask check to identify if the current room would even allow a door to be placed here.</span>
-<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">doorSlotAllowed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">roomDesc</span><span class="p">.</span><span class="py">Data</span><span class="p">.</span><span class="py">Doors</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nv">doorSlot</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">doorSlotAllowed</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">room</span><span class="p">:</span><span class="nf">GetDoor</span><span class="p">(</span><span class="nv">doorSlot</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">rng</span><span class="p">:</span><span class="nf">Next</span><span class="p">()</span>
-<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">requiredDoors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w">  </span><span class="c1">-- Bitmask value that requires the new 1x1 room to have all 4 doorslots available, just so we&#39;re sure it fits.</span>
-<span class="w">            </span><span class="kd">local</span><span class="w"> </span><span class="nv">roomConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RoomConfigHolder</span><span class="p">.</span><span class="nf">GetRandomRoom</span><span class="p">(</span><span class="nv">seed</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nv">Isaac</span><span class="p">.</span><span class="nf">GetCurrentStageConfigId</span><span class="p">(),</span><span class="w"> </span><span class="nv">RoomType</span><span class="p">.</span><span class="py">ROOM_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="nv">RoomShape</span><span class="p">.</span><span class="py">ROOMSHAPE_1x1</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nv">requiredDoors</span><span class="p">)</span>
-<span class="w">            </span><span class="kr">if</span><span class="w"> </span><span class="nv">roomConfig</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">                </span><span class="kd">local</span><span class="w"> </span><span class="nv">newRoom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">TryPlaceRoomAtDoor</span><span class="p">(</span><span class="nv">roomConfig</span><span class="p">,</span><span class="w"> </span><span class="nv">roomDesc</span><span class="p">,</span><span class="w"> </span><span class="nv">doorSlot</span><span class="p">,</span><span class="w"> </span><span class="nv">seed</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
-<span class="w">                </span><span class="kr">if</span><span class="w"> </span><span class="nv">newRoom</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">                    </span><span class="nv">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">                </span><span class="kr">end</span>
-<span class="w">            </span><span class="kr">end</span>
-<span class="w">        </span><span class="kr">end</span>
-<span class="w">    </span><span class="kr">end</span>
-
-<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="p">{</span><span class="nv">ShowAnim</span><span class="o">=</span><span class="kc">true</span><span class="p">}</span>
-<span class="w">    </span><span class="kr">else</span>
-<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="p">{</span><span class="nv">Discharge</span><span class="o">=</span><span class="kc">false</span><span class="p">}</span>
-<span class="w">    </span><span class="kr">end</span>
 <span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="nv">MY_ACTIVE_ITEM_ID</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<hr />
+<span class="kr">if</span><span class="w"> </span><span class="nv">roomConfig</span><span class="w"> </span><span class="kr">then</span>
+<span class="c1">-- Example code for an active item that creates a new 1x1 room at every doorslot available in the current room.</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">doorSlotAllowed</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nv">room</span><span class="p">:</span><span class="nf">GetDoor</span><span class="p">(</span><span class="nv">doorSlot</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
+<span class="kr">return</span><span class="w"> </span><span class="p">{</span><span class="nv">Discharge</span><span class="o">=</span><span class="kc">false</span><span class="p">}</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="kr">then</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">requiredDoors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w">  </span><span class="c1">-- Bitmask value that requires the new 1x1 room to have all 4 doorslots available, just so we&#39;re sure it fits.</span>
+<span class="kr">else</span>
+<span class="kr">end</span>
+<span class="nv">Otherwise</span><span class="p">,</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">details</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="p">[</span><span class="nv">TryPlaceRoom</span><span class="p">](</span><span class="nv">Level</span><span class="p">.</span><span class="py">md</span><span class="o">#</span><span class="nv">tryplaceroom</span><span class="p">).</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">doorSlotAllowed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">roomDesc</span><span class="p">.</span><span class="py">Data</span><span class="p">.</span><span class="py">Doors</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nv">doorSlot</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mi">0</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">roomDesc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">level</span><span class="p">:</span><span class="nf">GetCurrentRoomDesc</span><span class="p">()</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">roomConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">RoomConfigHolder</span><span class="p">.</span><span class="nf">GetRandomRoom</span><span class="p">(</span><span class="nv">seed</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nv">Isaac</span><span class="p">.</span><span class="nf">GetCurrentStageConfigId</span><span class="p">(),</span><span class="w"> </span><span class="nv">RoomType</span><span class="p">.</span><span class="py">ROOM_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="nv">RoomShape</span><span class="p">.</span><span class="py">ROOMSHAPE_1x1</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nv">requiredDoors</span><span class="p">)</span>
+<span class="nv">Similar</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="p">[</span><span class="nv">TryPlaceRoom</span><span class="p">](</span><span class="nv">Level</span><span class="p">.</span><span class="py">md</span><span class="o">#</span><span class="nv">tryplaceroom</span><span class="p">),</span><span class="w"> </span><span class="nv">but</span><span class="w"> </span><span class="nv">attempts</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">place</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">provided</span><span class="w"> </span><span class="nf">room</span><span class="w"> </span><span class="p">(</span><span class="nv">the</span><span class="w"> </span><span class="p">[</span><span class="nv">RoomConfigRoom</span><span class="p">](</span><span class="nv">https</span><span class="p">:</span><span class="err">//</span><span class="py">wofsauge</span><span class="p">.</span><span class="py">github</span><span class="p">.</span><span class="py">io</span><span class="o">/</span><span class="nv">IsaacDocs</span><span class="o">/</span><span class="nv">rep</span><span class="o">/</span><span class="nv">RoomConfig_Room</span><span class="p">.</span><span class="py">html</span><span class="p">))</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">neighbor</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">existing</span><span class="w"> </span><span class="nf">room</span><span class="w"> </span><span class="p">(</span><span class="nv">the</span><span class="w"> </span><span class="p">[</span><span class="nv">RoomDescriptor</span><span class="p">](</span><span class="nv">https</span><span class="p">:</span><span class="err">//</span><span class="py">wofsauge</span><span class="p">.</span><span class="py">github</span><span class="p">.</span><span class="py">io</span><span class="o">/</span><span class="nv">IsaacDocs</span><span class="o">/</span><span class="nv">rep</span><span class="o">/</span><span class="nv">RoomDescriptor</span><span class="p">.</span><span class="py">html</span><span class="p">))</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">specified</span><span class="w"> </span><span class="p">[</span><span class="nv">DoorSlot</span><span class="p">](</span><span class="nv">https</span><span class="p">:</span><span class="err">//</span><span class="py">wofsauge</span><span class="p">.</span><span class="py">github</span><span class="p">.</span><span class="py">io</span><span class="o">/</span><span class="nv">IsaacDocs</span><span class="o">/</span><span class="nv">rep</span><span class="o">/</span><span class="nv">enums</span><span class="o">/</span><span class="nv">DoorSlot</span><span class="p">.</span><span class="py">html</span><span class="p">).</span>
+</code></pre></div></td></tr></table></div></p>
 
 
 

@@ -1118,21 +1118,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#achievementunlocksdisallowed" class="md-nav__link">
     <span class="md-ellipsis">
@@ -4402,21 +4387,6 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#achievementunlocksdisallowed" class="md-nav__link">
@@ -8723,21 +8693,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#achievementunlocksdisallowed" class="md-nav__link">
     <span class="md-ellipsis">
@@ -9038,120 +8993,93 @@
 <h3 aria-label="Modified Functions" id="getlastdevilroomstage">GetLastDevilRoomStage ()<a class="headerlink" href="#getlastdevilroomstage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="levelstage-getlastdevilroomstage"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> GetLastDevilRoomStage ( )<a class="headerlink" href="#levelstage-getlastdevilroomstage" title="Permanent link">⚓︎</a></h4>
 <p>Now returns integer instead of unusable userdata.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="getlastlevelwithdamage">GetLastLevelWithDamage ()<a class="headerlink" href="#getlastlevelwithdamage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="levelstage-getlastlevelwithdamage"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> GetLastLevelWithDamage ( )<a class="headerlink" href="#levelstage-getlastlevelwithdamage" title="Permanent link">⚓︎</a></h4>
 <p>Now returns integer instead of unusable userdata.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="getlastlevelwithouthalfhp">GetLastLevelWithoutHalfHp ()<a class="headerlink" href="#getlastlevelwithouthalfhp" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="levelstage-getlastlevelwithouthalfhp"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> GetLastLevelWithoutHalfHp ( )<a class="headerlink" href="#levelstage-getlastlevelwithouthalfhp" title="Permanent link">⚓︎</a></h4>
 <p>Now returns integer instead of unusable userdata.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="getplayer">GetPlayer ()<a class="headerlink" href="#getplayer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="entityplayer-getplayer-int-index"><a href="EntityPlayer.html">EntityPlayer</a> GetPlayer ( int Index )<a class="headerlink" href="#entityplayer-getplayer-int-index" title="Permanent link">⚓︎</a></h4>
 <p>If no players exist, this now returns <code>nil</code> to prevent a crash. Invalid indexes will return index <code>0</code>.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="movetorandomroom">Move·To·Random·Room ()<a class="headerlink" href="#movetorandomroom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-movetorandomroom-boolean-iamerrorroom-int-seed-entityplayer-player">void MoveToRandomRoom ( boolean IAmErrorRoom, int Seed, <a href="EntityPlayer.html">EntityPlayer</a> Player )<a class="headerlink" href="#void-movetorandomroom-boolean-iamerrorroom-int-seed-entityplayer-player" title="Permanent link">⚓︎</a></h4>
 <p>Now no longer crashes the game when given a seed equal <code>0</code>.</p>
 <hr />
 <h3 aria-label="Modified Functions" id="startstagetransition">StartStageTransition ()<a class="headerlink" href="#startstagetransition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-startstagetransition-boolean-samestage-int-transitionoverride-entityplayer-player-nil">void StartStageTransition ( boolean SameStage, int TransitionOverride, <a href="EntityPlayer.html">EntityPlayer</a> Player = nil )<a class="headerlink" href="#void-startstagetransition-boolean-samestage-int-transitionoverride-entityplayer-player-nil" title="Permanent link">⚓︎</a></h4>
-<p>Fixed the crash that sometimes occurred due to an incorrect call on the C++ side.
-<code>Player</code> is now optional (will default to <code>GetPlayer(0)</code>).</p>
-<hr />
-<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
+<p><code>Player</code> is now optional (will default to <code>GetPlayer(0)</code>).
+Fixed the crash that sometimes occurred due to an incorrect call on the C++ side.</p>
 <h3 aria-label="Functions" id="achievementunlocksdisallowed">AchievementUnlocksDisallowed ()<a class="headerlink" href="#achievementunlocksdisallowed" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-achievementunlocksdisallowed">boolean AchievementUnlocksDisallowed ( )<a class="headerlink" href="#boolean-achievementunlocksdisallowed" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if achievements can't be unlocked this run (challenges, seeded, etc).</p>
-<hr />
 <h3 aria-label="Functions" id="adddebugflags">AddDebugFlags ()<a class="headerlink" href="#adddebugflags" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-adddebugflags-debugflag-flag">void AddDebugFlags ( <a href="enums/DebugFlag.html">DebugFlag</a> Flag )<a class="headerlink" href="#void-adddebugflags-debugflag-flag" title="Permanent link">⚓︎</a></h4>
 <p>Adds a debug flag to the game. Multiple can be added simultaneously with bitwise concatenation (e.g. <code>DebugFlag.ENTITY_POSITIONS | DebugFlag.HITSPHERES</code>).</p>
-<hr />
 <h3 aria-label="Functions" id="addshopvisits">AddShopVisits ()<a class="headerlink" href="#addshopvisits" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addshopvisits-int-count">void AddShopVisits ( int Count )<a class="headerlink" href="#void-addshopvisits-int-count" title="Permanent link">⚓︎</a></h4>
 <p>Adds the amount of shops the player has entered this run.</p>
-<hr />
 <h3 aria-label="Functions" id="clearerasedenemies">ClearErasedEnemies ()<a class="headerlink" href="#clearerasedenemies" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearerasedenemies">void ClearErasedEnemies ( )<a class="headerlink" href="#void-clearerasedenemies" title="Permanent link">⚓︎</a></h4>
 <p>Clears out all enemies listed as an erased enemy, allowing them to spawn again.</p>
-<hr />
 <h3 aria-label="Functions" id="devolveenemy">DevolveEnemy ()<a class="headerlink" href="#devolveenemy" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-devolveenemy-entity">void DevolveEnemy ( <a href="Entity.html">Entity</a> )<a class="headerlink" href="#void-devolveenemy-entity" title="Permanent link">⚓︎</a></h4>
 <p>Devolves an enemy, as if the item D10 was used on it.</p>
-<hr />
 <h3 aria-label="Functions" id="getchallengeparams">GetChallengeParams ()<a class="headerlink" href="#getchallengeparams" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="challengeparam-getchallengeparams"><a href="ChallengeParam.html">ChallengeParam</a> GetChallengeParams ( )<a class="headerlink" href="#challengeparam-getchallengeparams" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getcurrentcolormodifier">GetCurrentColorModifier ()<a class="headerlink" href="#getcurrentcolormodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="colormodifier-getcurrentcolormodifier"><a href="ColorModifier.html">ColorModifier</a> GetCurrentColorModifier ( )<a class="headerlink" href="#colormodifier-getcurrentcolormodifier" title="Permanent link">⚓︎</a></h4>
 <p>Gets a copy of the color correction introduced in Repentance. This stores the raw values currently being used (which can be affected by items such as Astral Projection) and not what the room is set to use (see <a href="FXParams.html#colormodifier">FXParams.ColorModifier</a> for this).</p>
-<hr />
 <h3 aria-label="Functions" id="getdebugflags">GetDebugFlags ()<a class="headerlink" href="#getdebugflags" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getdebugflags">int GetDebugFlags ( )<a class="headerlink" href="#int-getdebugflags" title="Permanent link">⚓︎</a></h4>
 <p>Returns a <a href="enums/DebugFlag.html">DebugFlag</a> bitmask.</p>
-<hr />
 <h3 aria-label="Functions" id="getdizzyamount">GetDizzyAmount ()<a class="headerlink" href="#getdizzyamount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getdizzyamount">float GetDizzyAmount ( )<a class="headerlink" href="#float-getdizzyamount" title="Permanent link">⚓︎</a></h4>
 <p>Returns the current dizzy amount akin to Wavy Cap.</p>
-<hr />
 <h3 aria-label="Functions" id="getgenericprompt">GetGenericPrompt ()<a class="headerlink" href="#getgenericprompt" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="genericprompt-getgenericprompt"><a href="GenericPrompt.html">GenericPrompt</a> GetGenericPrompt ( )<a class="headerlink" href="#genericprompt-getgenericprompt" title="Permanent link">⚓︎</a></h4>
 <p>Returns the currently active <code>GenericPrompt</code> object.</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-<p>Crashes the game if used during a run while no prompts are active.</p>
 </details>
-<hr />
+<p>Crashes the game if used during a run while no prompts are active.</p>
 <h3 aria-label="Functions" id="getlerpcolormodifier">GetLerpColorModifier ()<a class="headerlink" href="#getlerpcolormodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="colormodifier-getlerpcolormodifier"><a href="ColorModifier.html">ColorModifier</a> GetLerpColorModifier ( )<a class="headerlink" href="#colormodifier-getlerpcolormodifier" title="Permanent link">⚓︎</a></h4>
 <p>Returns the lerped color modifier. This is formatted as the absolute rate of change (ie, all values are positive).</p>
-<hr />
 <h3 aria-label="Functions" id="getpausemenustate">GetPauseMenuState ()<a class="headerlink" href="#getpausemenustate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="pausemenustates-getpausemenustate"><a href="enums/PauseMenuStates.html">PauseMenuStates</a> GetPauseMenuState ( )<a class="headerlink" href="#pausemenustates-getpausemenustate" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getplanetariumsvisited">GetPlanetariumsVisited ()<a class="headerlink" href="#getplanetariumsvisited" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getplanetariumsvisited">int GetPlanetariumsVisited ( )<a class="headerlink" href="#int-getplanetariumsvisited" title="Permanent link">⚓︎</a></h4>
 <p>Returns the amount of planetariums the player has entered this run.</p>
-<hr />
 <h3 aria-label="Functions" id="getshopvisits">GetShopVisits ()<a class="headerlink" href="#getshopvisits" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getshopvisits">int GetShopVisits ( )<a class="headerlink" href="#int-getshopvisits" title="Permanent link">⚓︎</a></h4>
 <p>Returns the amount of shops the player has entered this run.</p>
-<hr />
 <h3 aria-label="Functions" id="gettargetcolormodifier">GetTargetColorModifier ()<a class="headerlink" href="#gettargetcolormodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="colormodifier-gettargetcolormodifier"><a href="ColorModifier.html">ColorModifier</a> GetTargetColorModifier ( )<a class="headerlink" href="#colormodifier-gettargetcolormodifier" title="Permanent link">⚓︎</a></h4>
 <p>Returns the target ColorModifier. If currently lerping between two <a href="ColorModifier.html">ColorModifier</a> states, returns the target state. It is otherwise the same as <a href="Game.html#getcurrentcolormodifier">GetCurrentColorModifier</a>.</p>
-<hr />
 <h3 aria-label="Functions" id="iserased">IsErased ()<a class="headerlink" href="#iserased" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-iserased-entity-entity">boolean IsErased ( <a href="Entity.html">Entity</a> Entity )<a class="headerlink" href="#boolean-iserased-entity-entity" title="Permanent link">⚓︎</a></h4>
-<h4 aria-label="Functions" class="copyable" id="boolean-iserased-int-type-int-variant-1-int-subtype-1">boolean IsErased ( int Type, int Variant = -1, int SubType = -1 )<a class="headerlink" href="#boolean-iserased-int-type-int-variant-1-int-subtype-1" title="Permanent link">⚓︎</a></h4>
 <p>Checks if an entity was erased.</p>
-<hr />
 <h3 aria-label="Functions" id="isgreedboss">IsGreedBoss ()<a class="headerlink" href="#isgreedboss" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isgreedboss">boolean IsGreedBoss ( )<a class="headerlink" href="#boolean-isgreedboss" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the next or current wave is a boss wave. Returns <code>false</code> otherwise or if not in Greed Mode.</p>
-<hr />
 <h3 aria-label="Functions" id="isgreedfinalboss">IsGreedFinalBoss ()<a class="headerlink" href="#isgreedfinalboss" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isgreedfinalboss">boolean IsGreedFinalBoss ( )<a class="headerlink" href="#boolean-isgreedfinalboss" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the next or current wave is the optional "nightmare" wave. Returns <code>false</code> otherwise or if not in Greed Mode.</p>
-<hr />
 <h3 aria-label="Functions" id="ishardmode">IsHardMode ()<a class="headerlink" href="#ishardmode" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ishardmode">boolean IsHardMode ( )<a class="headerlink" href="#boolean-ishardmode" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if current mode is Hard Mode or Greedier.</p>
-<hr />
 <h3 aria-label="Functions" id="ispausemenuopen">IsPauseMenuOpen ()<a class="headerlink" href="#ispausemenuopen" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ispausemenuopen">boolean IsPauseMenuOpen ( )<a class="headerlink" href="#boolean-ispausemenuopen" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the pause menu is open.</p>
-<hr />
 <h3 aria-label="Functions" id="isrerun">IsRerun ()<a class="headerlink" href="#isrerun" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isrerun">boolean IsRerun ( )<a class="headerlink" href="#boolean-isrerun" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the current run is a rerun.</p>
-<hr />
 <h3 aria-label="Functions" id="recordplayercompletion">RecordPlayerCompletion ()<a class="headerlink" href="#recordplayercompletion" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-recordplayercompletion-completiontype-type">void RecordPlayerCompletion ( <a href="enums/CompletionType.html">CompletionType</a> Type )<a class="headerlink" href="#void-recordplayercompletion-completiontype-type" title="Permanent link">⚓︎</a></h4>
 <p>Sets marks and unlocks achievements associated with this type for all players. Used by the game to award marks as well as tainted completion paper groups.</p>
-<hr />
 <h3 aria-label="Functions" id="setbloom">SetBloom ()<a class="headerlink" href="#setbloom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setbloom-float-duration-float-amount">void SetBloom ( float Duration, float Amount )<a class="headerlink" href="#void-setbloom-float-duration-float-amount" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9160,14 +9088,13 @@
 <hr />
 <h3 aria-label="Functions" id="setdizzyamount">SetDizzyAmount ()<a class="headerlink" href="#setdizzyamount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdizzyamount-float-targetintensity-float-currentintensity">void SetDizzyAmount ( float TargetIntensity , float CurrentIntensity )<a class="headerlink" href="#void-setdizzyamount-float-targetintensity-float-currentintensity" title="Permanent link">⚓︎</a></h4>
-<p>Sets the dizzy amount akin to Wavy Cap.</p>
-<p>The current intensity of the effect will gradually move towards the "TargetIntensity".</p>
-<p>Providing "CurrentIntensity" to this function is optional. If provided, the current intensity is instantly changed to that amount. If unspecified, the current intensity will remain unchanged.</p>
+<p>Best to stay within <code>0</code>-<code>1</code> and increment by 0.1 while using this function. <code>1</code> has the most extreme effect on the screen while <code>0</code> removes the effect.
+The current intensity of the effect will gradually move towards the "TargetIntensity".</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
-<p>Best to stay within <code>0</code>-<code>1</code> and increment by 0.1 while using this function. <code>1</code> has the most extreme effect on the screen while <code>0</code> removes the effect.</p>
 </details>
-<hr />
+<p>Providing "CurrentIntensity" to this function is optional. If provided, the current intensity is instantly changed to that amount. If unspecified, the current intensity will remain unchanged.
+Sets the dizzy amount akin to Wavy Cap.</p>
 <h3 aria-label="Functions" id="setdonationmodangel">SetDonationModAngel ()<a class="headerlink" href="#setdonationmodangel" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdonationmodangel-int-amount">void SetDonationModAngel ( int Amount )<a class="headerlink" href="#void-setdonationmodangel-int-amount" title="Permanent link">⚓︎</a></h4>
 <hr />

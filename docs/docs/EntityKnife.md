@@ -22,14 +22,12 @@ ___
 ___
 ### IsMultidimensionalTouched () {: aria-label='Functions' }
 #### boolean IsMultidimensionalTouched ( ) {: .copyable aria-label='Functions' }
-Returns if the knife was created through the Multi Dimensional Baby effect.
+返回该匕首是否通过“多维宝贝”效果创建。
 
-___
 ### IsPrismTouched () {: aria-label='Functions' }
 #### boolean IsPrismTouched ( ) {: .copyable aria-label='Functions' }
-Returns if the knife was created through the Angelic Prism effect.
+返回该匕首是否通过“天使棱镜”效果创建。
 
-___
 ### SetIsSpinAttack () {: aria-label='Functions' }
 #### void SetIsSpinAttack ( boolean isSpinAttack ) {: .copyable aria-label='Functions' }
 
@@ -40,11 +38,8 @@ ___
 ___
 ### SetMultidimensionalTouched () {: aria-label='Functions' }
 #### void SetMultidimensionalTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
-Sets if the knife was created through the Angelic Prism effect.
+设置该匕首是否通过“多维宝宝”效果创建。
 
-___
 ### SetPrismTouched () {: aria-label='Functions' }
 #### void SetPrismTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
-Sets if the knife was created through the Angelic Prism effect.
-
-___
+设置该匕首是否通过“天使棱镜”效果创建。

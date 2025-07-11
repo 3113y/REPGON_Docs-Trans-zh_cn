@@ -4058,21 +4058,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#getrenderposition" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8102,21 +8087,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#getrenderposition" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8273,8 +8243,6 @@
 <h3 aria-label="Modified Functions" id="totnt">ToTNT ()<a class="headerlink" href="#totnt" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="gridentitytnt-totnt"><a href="https://wofsauge.github.io/IsaacDocs/rep/GridEntityTNT.html">GridEntityTNT</a> ToTNT ( )<a class="headerlink" href="#gridentitytnt-totnt" title="Permanent link">⚓︎</a></h4>
 <p>Altered function to improve GridEntity Update callback behavior.</p>
-<hr />
-<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="getrenderposition">GetRenderPosition ()<a class="headerlink" href="#getrenderposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-getrenderposition"><a href="Vector.html">Vector</a> GetRenderPosition ( )<a class="headerlink" href="#vector-getrenderposition" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8282,9 +8250,8 @@
 <h4 aria-label="Functions" class="copyable" id="void-hurtdamage-entity-entity-int-playerdamage-int-damageflags-float-damage-boolean-ignoregridcollision">void HurtDamage ( <a href="Entity.html">Entity</a> Entity, int PlayerDamage, int DamageFlags, float Damage, boolean ignoreGridCollision )<a class="headerlink" href="#void-hurtdamage-entity-entity-int-playerdamage-int-damageflags-float-damage-boolean-ignoregridcollision" title="Permanent link">⚓︎</a></h4>
 <details class="bug" open="open">
 <summary>Bug</summary>
-<p>The value passed to the float Damage parameter (the intended damage amount to non-player entities) is currently ignored - will be fixed in a future update.</p>
 </details>
-<hr />
+<p>The value passed to the float Damage parameter (the intended damage amount to non-player entities) is currently ignored - will be fixed in a future update.</p>
 <h3 aria-label="Functions" id="isbreakablerock">IsBreakableRock ()<a class="headerlink" href="#isbreakablerock" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-isbreakablerock">void IsBreakableRock ( )<a class="headerlink" href="#void-isbreakablerock" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8293,81 +8260,71 @@
 <p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityDecoration.html">GridEntityDecoration</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 <h3 aria-label="Functions" id="tofire">ToFire ()<a class="headerlink" href="#tofire" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentityfire-tofire"><a href="GridEntityFire.html">GridEntityFire</a> ToFire ( )<a class="headerlink" href="#gridentityfire-tofire" title="Permanent link">⚓︎</a></h4>
-<p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityFire.html">GridEntityFire</a> object.</p>
+<p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityFire.html">GridEntityFire</a> object.
+If the conversion is not successful, this function returns <code>nil</code>.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
 <h3 aria-label="Functions" id="togravity">ToGravity ()<a class="headerlink" href="#togravity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentitygravity-togravity"><a href="GridEntityGravity.html">GridEntityGravity</a> ToGravity ( )<a class="headerlink" href="#gridentitygravity-togravity" title="Permanent link">⚓︎</a></h4>
-<p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityGravity.html">GridEntityGravity</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.
+Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityGravity.html">GridEntityGravity</a> object.</p>
 <h3 aria-label="Functions" id="tolock">ToLock ()<a class="headerlink" href="#tolock" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentitylock-tolock"><a href="GridEntityLock.html">GridEntityLock</a> ToLock ( )<a class="headerlink" href="#gridentitylock-tolock" title="Permanent link">⚓︎</a></h4>
 <p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityLock.html">GridEntityLock</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 <h3 aria-label="Functions" id="tostairs">ToStairs ()<a class="headerlink" href="#tostairs" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentitystairs-tostairs"><a href="GridEntityStairs.html">GridEntityStairs</a> ToStairs ( )<a class="headerlink" href="#gridentitystairs-tostairs" title="Permanent link">⚓︎</a></h4>
-<p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityStairs.html">GridEntityStairs</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.
+Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityStairs.html">GridEntityStairs</a> object.</p>
 <h3 aria-label="Functions" id="tostatue">ToStatue ()<a class="headerlink" href="#tostatue" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentitystatue-tostatue"><a href="GridEntityStatue.html">GridEntityStatue</a> ToStatue ( )<a class="headerlink" href="#gridentitystatue-tostatue" title="Permanent link">⚓︎</a></h4>
-<p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityStatue.html">GridEntityStatue</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.
+Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityStatue.html">GridEntityStatue</a> object.</p>
 <h3 aria-label="Functions" id="toteleporter">ToTeleporter ()<a class="headerlink" href="#toteleporter" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentityteleporter-toteleporter"><a href="GridEntityTeleporter.html">GridEntityTeleporter</a> ToTeleporter ( )<a class="headerlink" href="#gridentityteleporter-toteleporter" title="Permanent link">⚓︎</a></h4>
 <p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityTeleporter.html">GridEntityTeleporter</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 <h3 aria-label="Functions" id="totrapdoor">ToTrapDoor ()<a class="headerlink" href="#totrapdoor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentitytrapdoor-totrapdoor"><a href="GridEntityTrapDoor.html">GridEntityTrapDoor</a> ToTrapDoor ( )<a class="headerlink" href="#gridentitytrapdoor-totrapdoor" title="Permanent link">⚓︎</a></h4>
-<p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityTrapDoor.html">GridEntityTrapDoor</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityTrapDoor.html">GridEntityTrapDoor</a> object.
+If the conversion is not successful, this function returns <code>nil</code>.</p>
 <h3 aria-label="Functions" id="towall">ToWall ()<a class="headerlink" href="#towall" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentitywall-towall"><a href="GridEntityWall.html">GridEntityWall</a> ToWall ( )<a class="headerlink" href="#gridentitywall-towall" title="Permanent link">⚓︎</a></h4>
 <p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityWall.html">GridEntityWall</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 <h3 aria-label="Functions" id="toweb">ToWeb ()<a class="headerlink" href="#toweb" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="gridentityweb-toweb"><a href="GridEntityWeb.html">GridEntityWeb</a> ToWeb ( )<a class="headerlink" href="#gridentityweb-toweb" title="Permanent link">⚓︎</a></h4>
 <p>Used to cast a <a href="GridEntity.html">GridEntity</a> object to a <a href="GridEntityWeb.html">GridEntityWeb</a> object.</p>
 <details class="note" open="open">
 <summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 </details>
-<hr />
+<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
 
 
 

@@ -27,12 +27,9 @@ ___
 ___
 ### GetOverlayID () {: aria-label='Functions' }
 #### [Giantbook](enums/Giantbook.md) GetOverlayID ( ) {: .copyable aria-label='Functions' }
-
 ???+ info "Info"
-    Returns the last Giantbook animation that played. This is the current Giantbook if one is currently playing.
-    If none have played yet, returns 0.
-
-___
+If none have played yet, returns 0.
+Returns the last Giantbook animation that played. This is the current Giantbook if one is currently playing.
 ### GetPlayer () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md) GetPlayer ( ) {: .copyable aria-label='Functions' }
 

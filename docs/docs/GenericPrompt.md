@@ -40,9 +40,12 @@ tags:
 ## Constructors
 ### GenericPrompt () {: aria-label='Constructors' }
 #### [GenericPrompt](GenericPrompt.md) GenericPrompt ( ) {: .copyable aria-label='Constructors' }
-Returns a GenericPrompt object. Allows for rendering a popup paper with the option to include text and tracking input for a yes/no decision.
-
 ## Functions
+- `0` - No
+Returns what selection the player is currently hovering over.
+- `1` - Yes
+???+ info "Return info"
+Returns a GenericPrompt object. Allows for rendering a popup paper with the option to include text and tracking input for a yes/no decision.
 
 ### GetCurrentSelection () {: aria-label='Functions' }
 #### int GetCurrentSelection ( ) {: .copyable aria-label='Functions' }
@@ -57,17 +60,14 @@ ___
 #### [Sprite](Sprite.md) GetSprite ( ) {: .copyable aria-label='Functions' }
 Returns the paper sprite of the prompt.
 
-___
 ### GetSubmittedSelection () {: aria-label='Functions' }
 #### int GetSubmittedSelection ( ) {: .copyable aria-label='Functions' }
-Returns the chosen selection. 
-
+Returns the chosen selection.
+- `0` - None (Returns if the player dismisses the prompt).
+- `2` - No
+- `1` - Yes
 ???+ info "Return info"
-	- `0` - None (Returns if the player dismisses the prompt).
-	- `1` - Yes
-	- `2` - No
 
-___
 ### Initialize () {: aria-label='Functions' }
 #### void Initialize ( boolean SmallPrompt = false ) {: .copyable aria-label='Functions' }
 
@@ -76,26 +76,19 @@ ___
 #### boolean IsActive ( ) {: .copyable aria-label='Functions' }
 Returns whether the prompt is active or not.
 
-___
 ### Render () {: aria-label='Functions' }
 #### void Render ( ) {: .copyable aria-label='Functions' }
 Renders the prompt on-screen. Place this in any of the non-entity-specific RENDER callbacks.
 
-___
 ### SetText () {: aria-label='Functions' }
 #### void SetText ( string Text1 = "", string Text2 = "", string Text3 = "", string Text4 = "", string Text5 = "", ) {: .copyable aria-label='Functions' }
+Text strings are associated with their position on the prompt from top to bottom. The first two strings should used as header text, being bolded and at a higher font size, while the rest as description text.
 Set text that will appear on the paper.
 
-Text strings are associated with their position on the prompt from top to bottom. The first two strings should used as header text, being bolded and at a higher font size, while the rest as description text.
-
-___
 ### Show () {: aria-label='Functions' }
 #### void Show ( ) {: .copyable aria-label='Functions' }
 Starts showing the prompt on-screen.
 
-___
 ### Update () {: aria-label='Functions' }
 #### void Update ( boolean ProcessInput ) {: .copyable aria-label='Functions' }
 Updates the animation of the prompt paper. Set `ProcessInput` to `true` to track the player's input for selecting yes/no, `false` otherwise.
-
-___

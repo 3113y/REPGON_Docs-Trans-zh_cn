@@ -24,11 +24,9 @@ ___
 ___
 ### AddKnockback () {: aria-label='Functions' }
 #### void AddKnockback ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, [Vector](Vector.md) PushDirection, int Duration, boolean TakeImpactDamage ) {: .copyable aria-label='Functions' }
+???+ info "持续时间信息"
+持续时间最长为 0.5 秒/15 帧。
 
-???+ info "Duration info"
-    The Duration has a maximum of 0.5 seconds / 15 frames.
-
-___
 ### AddMagnetized () {: aria-label='Functions' }
 #### void AddMagnetized ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, int Duration ) {: .copyable aria-label='Functions' }
 
@@ -43,23 +41,17 @@ ___
 ___
 ### CopyStatusEffects () {: aria-label='Functions' }
 #### void CopyStatusEffects ( [Entity](Entity.md) Target, boolean Overwrite = false ) {: .copyable aria-label='Functions' }
-If `Target` is left unspecified, this will recursively copy status effects to all [Child](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#child) Entities. `Overwrite` will additionally remove all other status effects from the target and set the properties of existing effects to match the entity.
+如果未指定 `Target`，则会将状态效果递归复制到所有 [子实体](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#child)。`Overwrite` 还会移除目标的所有其他状态效果，并将现有效果的属性设置为与该实体匹配。
 
-___
 ### ForceCollide () {: aria-label='Functions' }
 #### boolean ForceCollide ( [Entity](Entity.md) Entity, boolean Force ) {: .copyable aria-label='Functions' }
+???- warning "碰撞逻辑更改"
+某些实体类型在强制碰撞时，其碰撞逻辑会发生变化。<br>
+如果应该 **跳过** 其余的碰撞逻辑，则返回 true；这可能是因为实体最初并未发生碰撞（如果 `Force` 为 false），
+例如：插槽在激活时不会让玩家支付常规费用。
+如果将 `Force` 设置为 false，那么游戏将在触发碰撞之前检查实体的 [实体碰撞类](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#entitycollisionclass) 是否兼容，以及两个实体是否都未 [死亡](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#isdead)。
+或者是因为其中一个实体的内部碰撞逻辑决定如此（这可能会受到 `PRE_COLLISION` 回调之一的影响）。
 
-Returns true if the rest of the collision logic should be **Skipped**; either because the entities did not collide in the first place (if `Force` is false),
-or because one of the entities' internal collision logic decided so (which can be influenced by one of the `PRE_COLLISION` callbacks).
-
-if `Force` is set to false, then the game will check if the entities' [EntityCollisionClass](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#entitycollisionclass) are
-compatible and if both entities are not [Dead](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#isdead) before triggering the collision.
-
-???- warning "Collision Logic Changes"
-    The collision logic for some entity types changes when forced.<br>
-    For example: Slots do not make the player pay the regular prize for activation.
-
-___
 ### GetBaitedCountdown () {: aria-label='Functions' }
 #### int GetBaitedCountdown ( ) {: .copyable aria-label='Functions' }
 
@@ -94,29 +86,25 @@ ___
 ___
 ### GetColorParams () {: aria-label='Functions' }
 #### [ColorParams](ColorParams.md)[] GetColorParams ( ) {: .copyable aria-label='Functions' }
-Returns a table of all colors currently queued by `SetColor` alongside their parameters.
+返回由 `SetColor` 当前排队的所有颜色及其参数的表。
 
-___
 ### GetConfusionCountdown () {: aria-label='Functions' }
 #### int GetConfusionCountdown ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetDamageCountdown () {: aria-label='Functions' }
 #### int GetDamageCountdown ( ) {: .copyable aria-label='Functions' }
-If the entity recently took damage with the DAMAGE_COUNTDOWN [DamageFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html), this returns how many more frames must pass before they can take damage with the DAMAGE_COUNTDOWN [DamageFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) again.
+请注意，这与玩家的无敌帧数（`EntityPlayer:GetDamageCooldown()`）不同。`DAMAGE_COUNTDOWN` [伤害标志](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) 以及此关联的倒计时通常用于控制敌人从少数使用该标志的来源（如“我的小独角兽”、“钉子”和“游戏小子”的碰撞伤害效果）受到伤害的速度。
+如果实体最近受到了带有 `DAMAGE_COUNTDOWN` [伤害标志](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) 的伤害，则返回在它再次受到带有 `DAMAGE_COUNTDOWN` [伤害标志](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) 的伤害之前还需要经过多少帧。
 
-Note that this is NOT the same as the player's invincibility frames (`EntityPlayer:GetDamageCooldown()`). The DAMAGE_COUNTDOWN [DamageFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) and this associated countdown are typically used to control how rapidly an enemy will take damage from the few sources that uses that flag, such as the the collision damage effects from the "My Little Unicorn", "The Nail", and "The Gamekid".
-
-___
 ### GetDebugShape () {: aria-label='Functions' }
 #### [Shape](renderer/Shape.md) GetDebugShape ( boolean Unknown ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetEntityConfigEntity () {: aria-label='Functions' }
 #### [EntityConfigEntity](EntityConfigEntity.md) GetEntityConfigEntity ( ) {: .copyable aria-label='Functions' }
-Returns the corresponding [EntityConfig](EntityConfig.md) entry for this entity.
+返回此实体对应的 [实体配置](EntityConfig.md) 条目。
 
-___
 ### GetFearCountdown () {: aria-label='Functions' }
 #### int GetFearCountdown ( ) {: .copyable aria-label='Functions' }
 
@@ -155,21 +143,18 @@ ___
 ___
 ### GetMinecart () {: aria-label='Functions' }
 #### [EntityNPC](EntityNPC.md) GetMinecart ( ) {: .copyable aria-label='Functions' }
-Returns the minecart the entity is riding.
+???+ note "返回行为"
+返回实体所乘坐的矿车。
+如果实体没有乘坐矿车，则此函数返回 `nil`。
 
-???+ note "Return behavior"
-    If the entity is not riding a minecart, this function returns `nil`.
-
-___
 ### GetNullCapsule () {: aria-label='Functions' }
 #### [Capsule](Capsule.md) GetNullCapsule ( string NullLayerName ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetNullOffset () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetNullOffset ( string NullLayerName ) {: .copyable aria-label='Functions' }
-Returns position of null layer mark. Alternatively returns Vector.Zero if the layer is not visible, has no frame available for the current animation, or for other unknown reasons.
+返回空图层标记的位置。或者，如果图层不可见、当前动画没有可用帧或由于其他未知原因，则返回 `Vector.Zero`。
 
-___
 ### GetPauseTime () {: aria-label='Functions' }
 #### int GetPauseTime ( ) {: .copyable aria-label='Functions' }
 
@@ -184,15 +169,13 @@ ___
 ___
 ### GetPosVel () {: aria-label='Functions' }
 #### [PosVel](https://wofsauge.github.io/IsaacDocs/rep/PlayerTypes_PosVel.html) GetPosVel ( ) {: .copyable aria-label='Functions' }
-Returns 2 values, both Vectors. 1st the Position of the entity, 2nd the Velocity of the entity.
+返回 2 个值，均为向量。第一个是实体的位置，第二个是实体的速度。
 
-___
 ### GetPredictedTargetPosition () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetPredictedTargetPosition ( [Entity](Entity.md) Target, float Delay ) {: .copyable aria-label='Functions' }
-The prediction is the target's current position plus their velocity multiplied by the distance between this and the target.
-`Delay` acts as a multiplier for how far ahead the prediction should be. For example, `1.0` would predict where the target's velocity would place them on the next update.
+预测值是目标的当前位置加上其速度乘以该实体与目标之间的距离。
+`Delay` 用作预测提前量的乘数。例如，`1.0` 会预测目标的速度在下一次更新时会将其置于何处。
 
-___
 ### GetShadowSize () {: aria-label='Functions' }
 #### float GetShadowSize ( ) {: .copyable aria-label='Functions' }
 
@@ -207,10 +190,9 @@ ___
 ___
 ### GetSpeedMultiplier () {: aria-label='Functions' }
 #### float GetSpeedMultiplier ( ) {: .copyable aria-label='Functions' }
-???+ warning "Depreciation notice"
-    This variable is actually the Entity's time scale. A properly named replacement function will be added in a future version.
+此变量实际上是实体的时间缩放比例。未来版本中将添加一个命名更合适的替代函数。
+???+ warning "弃用通知"
 
-___
 ### GetType () {: aria-label='Functions' }
 #### [EntityType](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html) GetType ( ) {: .copyable aria-label='Functions' }
 
@@ -225,19 +207,16 @@ ___
 ___
 ### IgnoreEffectFromFriendly () {: aria-label='Functions' }
 #### boolean IgnoreEffectFromFriendly ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source ) {: .copyable aria-label='Functions' }
-Used to determine if this entity should ignore any status effect coming from `Source`.
+用于确定此实体是否应忽略来自 `Source` 的任何状态效果。
 
-___
 ### MakeBloodPoof () {: aria-label='Functions' }
 #### [EntityEffect](EntityEffect.md) MakeBloodPoof ( [Vector](Vector.md) Position = self.Position, [Color](Color.md) Color = default, float Scale = 1.0 ) {: .copyable aria-label='Functions' }
-This function spawns two blood poof effects of subtypes 3 and 4; the second of which will be the the Child of the one returned.
+此函数会生成两个子类型为 3 和 4 的血溅效果；返回的第二个效果将是第一个效果的子效果。
 
-___
 ### MakeGroundPoof () {: aria-label='Functions' }
 #### [EntityEffect](EntityEffect.md) MakeGroundPoof ( [Vector](Vector.md) Position = self.Position, [Color](Color.md) Color = default, float Scale = 1.0 ) {: .copyable aria-label='Functions' }
-This function spawns two dust poof effects of subtypes 1 and 2; the second of which will be the the Child of the one returned.
+此函数会生成两个子类型为 1 和 2 的灰尘飞溅效果；返回的第二个效果将是第一个效果的子效果。
 
-___
 ### SetBaitedCountdown () {: aria-label='Functions' }
 #### void SetBaitedCountdown ( int Countdown ) {: .copyable aria-label='Functions' }
 
@@ -268,20 +247,17 @@ ___
 ___
 ### SetColorParams () {: aria-label='Functions' }
 #### void SetColorParams ( [ColorParams](ColorParams.md)[] Params ) {: .copyable aria-label='Functions' }
-Sets colors to be used alongside their parameters.
+设置要使用的颜色及其参数。
 
-___
 ### SetConfusionCountdown () {: aria-label='Functions' }
 #### void SetConfusionCountdown ( int Countdown ) {: .copyable aria-label='Functions' }
 
 ___
 ### SetDamageCountdown () {: aria-label='Functions' }
 #### void SetDamageCountdown ( int countdown ) {: .copyable aria-label='Functions' }
-Sets how many frames must pass before the entity can take damage that has the DAMAGE_COUNTDOWN [DamageFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html).
+请注意，这与玩家的无敌帧数（`EntityPlayer:GetDamageCooldown()`）不同。`DAMAGE_COUNTDOWN` [伤害标志](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) 以及此关联的倒计时通常用于控制敌人从少数使用该标志的来源（如“我的小独角兽”、“钉子”和“游戏小子”的碰撞伤害效果）受到伤害的速度。
+设置实体在受到带有 `DAMAGE_COUNTDOWN` [伤害标志](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) 的伤害之前必须经过的帧数。
 
-Note that this is NOT the same as the player's invincibility frames (`EntityPlayer:GetDamageCooldown()`). The DAMAGE_COUNTDOWN [DamageFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html) and this associated countdown are typically used to control how rapidly an enemy will take damage from the few sources that uses that flag, such as the the collision damage effects from the "My Little Unicorn", "The Nail", and "The Gamekid".
-
-___
 ### SetDead () {: aria-label='Functions' }
 #### void SetDead ( boolean IsDead ) {: .copyable aria-label='Functions' }
 
@@ -348,10 +324,9 @@ ___
 ___
 ### SetSpeedMultiplier () {: aria-label='Functions' }
 #### void SetSpeedMultiplier ( float Amount ) {: .copyable aria-label='Functions' }
-???+ warning "Depreciation notice"
-    This variable is actually the Entity's time scale. A properly named replacement function will be added in a future version.
+此变量实际上是实体的时间缩放比例。未来版本中将添加一个命名更合适的替代函数。
+???+ warning "弃用通知"
 
-___
 ### SetWeaknessCountdown () {: aria-label='Functions' }
 #### void SetWeaknessCountdown ( int Countdown ) {: .copyable aria-label='Functions' }
 
@@ -362,34 +337,25 @@ ___
 ___
 ### SpawnWaterImpactEffects () {: aria-label='Functions' }
 #### void SpawnWaterImpactEffects ( [Vector](Vector.md) Position, [Vector](Vector.md) Velocity = Vector.Zero, float Strength ) {: .copyable aria-label='Functions' }
+???+ warning "警告"
+仅当房间的 [水量](Room.md#getwateramount) 大于或等于 `0.2` 时，此函数才会生成效果。
 
-???+ warning "Warning"
-    This function will only spawn effects if the Room's [water amount](Room.md#getwateramount) is above or equal to `0.2`.
-
-___
 ### TeleportToRandomPosition () {: aria-label='Functions' }
 #### void TeleportToRandomPosition ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### ToDelirium () {: aria-label='Functions' }
 #### [EntityDelirium](EntityDelirium.md) ToDelirium ( ) {: .copyable aria-label='Functions' }
-Convert an [Entity](Entity.md) userdata to an [EntityDelirium](EntityDelirium.md) userdata.
-The conversion will only succeed if the source entity is an instance of Delirium (in its normal form or in a transformed form).
+将 [实体](Entity.md) 用户数据转换为 [幻痛实体](EntityDelirium.md) 用户数据。
+仅当源实体是幻痛（以其正常形态或变形形态）的实例时，转换才会成功。
+???+ note "返回行为"
+如果转换失败，此函数返回 `nil`。
 
-???+ note "Return behavior"
-    If the conversion fails, this function returns `nil`.
-
-___
 ### ToSlot () {: aria-label='Functions' }
 #### [EntitySlot](EntitySlot.md) ToSlot ( ) {: .copyable aria-label='Functions' }
-Used to cast an [Entity](Entity.md) object to an [EntitySlot](EntitySlot.md) object.
-
-???+ note "Return behavior"
-    If the conversion is not successful, this function returns `nil`.
-
-___
-
-### TryThrow () {: aria-label='Functions' }
+如果转换不成功，此函数返回 `nil`。
+???+ note "返回行为"
+用于将 [实体](Entity.md) 对象转换为 [插槽实体](EntitySlot.md) 对象。### TryThrow () {: aria-label='Functions' }
 #### boolean TryThrow ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, [Vector](Vector.md) ThrowDirection, float Force ) {: .copyable aria-label='Functions' }
 
 ___

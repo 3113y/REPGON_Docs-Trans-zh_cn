@@ -21,12 +21,10 @@ tags:
 #### boolean AnyoneHasCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
 Returns true when any player has the item and false when no one does.
 
-___
 ### AnyoneHasTrinket () {: aria-label='Functions' }
 #### boolean AnyoneHasTrinket ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) Trinket ) {: .copyable aria-label='Functions' }
 Returns true when any player has the trinket and false when no one does.
 
-___
 ### AnyoneIsPlayerType () {: aria-label='Functions' }
 #### boolean AnyoneIsPlayerType ( [PlayerType](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html) PlayerType ) {: .copyable aria-label='Functions' }
 
@@ -51,7 +49,6 @@ ___
 #### [EntityPlayer](EntityPlayer.md) FirstCollectibleOwner ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, boolean LazSharedGlobalTag = true ) {: .copyable aria-label='Functions' }
 Returns `nil` if the specified collectible has never been picked up.
 
-___
 ### FirstPlayerByType () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md) FirstPlayerByType ( [PlayerType](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html) PlayerType ) {: .copyable aria-label='Functions' }
 
@@ -60,7 +57,6 @@ ___
 #### [EntityPlayer](EntityPlayer.md) FirstTrinketOwner ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) Trinket, [RNG](RNG.md) RNG = nil, boolean LazSharedGlobalTag = true ) {: .copyable aria-label='Functions' }
 Returns `nil` if the specified trinket has never been picked up.
 
-___
 ### GetEsauJrState () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md) GetEsauJrState ( int Index = 0 ) {: .copyable aria-label='Functions' }
 
@@ -69,12 +65,10 @@ ___
 #### int GetNumCollectibles ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
 Returns the number of collectibles held by all players.
 
-___
 ### GetPlayers () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md)[] GetPlayers ( ) {: .copyable aria-label='Functions' }
 Returns a table containing all players.
 
-___
 ### GetTotalTrinketMultiplier () {: aria-label='Functions' }
 #### int GetTotalTrinketMultiplier ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) Trinket ) {: .copyable aria-label='Functions' }
 
@@ -83,15 +77,11 @@ ___
 #### boolean IsCoopPlay ( ) {: .copyable aria-label='Functions' }
 Returns `true` if the game is in co-op mode.
 
-___
 ### RemoveCoPlayer () {: aria-label='Functions' }
 #### void RemoveCoPlayer ( [EntityPlayer](EntityPlayer.md) Player ) {: .copyable aria-label='Functions' }
-Can be used to safely remove extra player entities, such as Strawman.
-
 ???- info "Tip"
-    Don't pass the main player to this!
-
-___
+Can be used to safely remove extra player entities, such as Strawman.
+Don't pass the main player to this!
 ### SpawnCoPlayer2 () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md) SpawnCoPlayer2 ( [PlayerType](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html) PlayerType ) {: .copyable aria-label='Functions' }
 

@@ -22,48 +22,42 @@ ___
 ___
 ### GetCollectibleCycle () {: aria-label='Functions' }
 #### [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html)[] GetCollectibleCycle ( ) {: .copyable aria-label='Functions' }
-Returns a table of all [CollectibleTypes](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) being used inside its collectible cycle (i.e. Glitched Crown).
+返回一个表格，其中包含在其收藏品循环（例如错误王冠）中使用的所有 [CollectibleTypes](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html)。
 
-___
 ### GetDropDelay () {: aria-label='Functions' }
 #### int GetDropDelay ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetLootList () {: aria-label='Functions' }
 #### [LootList](LootList.md) GetLootList ( ) {: .copyable aria-label='Functions' }
-Returns a **read-only** version of the pickup's [LootList](LootList.md). Loot inside pickups can be seen through use of the Guppy's Eye collectible.
+返回拾取物的 [LootList](LootList.md) 的**只读**版本。可以通过使用嗝屁猫之眼收藏品来查看拾取物中的战利品。
 
-___
 ### GetPickupGhost () {: aria-label='Functions' }
 #### [EntityEffect](EntityEffect.md) GetPickupGhost ( ) {: .copyable aria-label='Functions' }
-Returns the `EffectVariant.PICKUP_GHOST` EntityEffect visible through Guppy's Eye. If not visible, returns `nil`.
+返回通过嗝屁猫之眼可见的 `EffectVariant.PICKUP_GHOST` 实体效果。如果不可见，则返回 `nil`。
 
-___
 ### GetPriceSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetPriceSprite ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetRandomPickupVelocity () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetRandomPickupVelocity ( [Vector](Vector.md) Position, [RNG](RNG.md) RNG = nil, int VelocityType = 0 ) {: .copyable aria-label='Functions' }
-`VelocityType` 0 will shoot pickups in a random direction around the wanted position.
-`VelocityType` 1 will shoot pickups in a cone pointing down, mostly used for Beggar payouts.
-`VelocityType` also seems to affect pickups in Challenge Rooms, causing them to have a weaker velocity.
+???+ warning "警告"
+`VelocityType` 1 会将拾取物朝下方的锥形区域射出，主要用于乞丐的奖励。
+`VelocityType` 0 会将拾取物朝所需位置周围的随机方向射出。
+这是一个静态函数，必须通过 `EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)` 调用。
+`VelocityType` 似乎也会影响挑战房间中的拾取物，使其速度更慢。
 
-???+ warning "Warning"
-    This is a static function and must be called via `EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)`.
-
-___
 ### GetVarData () {: aria-label='Functions' }
 #### int GetVarData ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### IsBlind () {: aria-label='Functions' }
 #### boolean IsBlind ( ) {: .copyable aria-label='Functions' }
-Returns `true` if the pickup is a collectible pedestal and is hidden. Always returns `false` for non-collectible EntityPickups.
+此值不考虑盲目诅咒，它仅反映通常在不涉及诅咒的情况下处于盲目状态的拾取物的盲目状态。例如：隐藏路线的额外物品。
+如果拾取物是收藏品基座且处于隐藏状态，则返回 `true`。对于非收藏品实体拾取物，始终返回 `false`。
+???+ warning "警告"
 
-???+ warning "Warning"
-    This value does not account for curse of the blind, it only reflects the blind state of pickups that are normally blind without curses involved. Ex: alt path's extra item.
-___
 ### MakeShopItem () {: aria-label='Functions' }
 #### void MakeShopItem ( int ShopItemID ) {: .copyable aria-label='Functions' }
 
@@ -74,50 +68,41 @@ ___
 ___
 ### SetAlternatePedestal () {: aria-label='Functions' }
 #### void SetAlternatePedestal ( int PedestalType ) {: .copyable aria-label='Functions' }
-Sets the graphics of the item pedestal. Does nothing for non-collectible EntityPickups.
+设置物品基座的图形。对非收藏品实体拾取物无效。
 
-___
 ### SetDropDelay () {: aria-label='Functions' }
 #### void SetDropDelay ( int Delay ) {: .copyable aria-label='Functions' }
 
 ___
 ### SetForceBlind () {: aria-label='Functions' }
 #### void SetForceBlind ( boolean SetBlind ) {: .copyable aria-label='Functions' }
-Hides pedestal items similar to Curse of the Blind. Does nothing for non-collectible EntityPickups.
+像盲目诅咒一样隐藏基座物品。对非收藏品实体拾取物无效。
 
-___
 ### SetNewOptionsPickupIndex () {: aria-label='Functions' }
 #### int SetNewOptionsPickupIndex ( ) {: .copyable aria-label='Functions' }
-Returns the new pickup index.
-___
+返回新的拾取物索引。
+
 ### SetVarData () {: aria-label='Functions' }
 #### void SetVarData ( int VarData ) {: .copyable aria-label='Functions' }
 
 ___
 ### TriggerTheresOptionsPickup () {: aria-label='Functions' }
 #### void TriggerTheresOptionsPickup ( ) {: .copyable aria-label='Functions' }
-Removes pickups with the same option group (OptionsPickupIndex) as the target pickup.
+移除与目标拾取物具有相同选项组（OptionsPickupIndex）的拾取物。
 
-___
 ### TryFlip () {: aria-label='Functions' }
 #### boolean TryFlip ( ) {: .copyable aria-label='Functions' }
-Will try to flip the collectible, such as when using the Flip item on a collectible pedestal with a second, holographic collectible present behind the first one. Returns `true` if successful, `false` otherwise or if used on non-collectible EntityPickups.
+尝试翻转收藏品，例如在使用翻转物品对带有第二个全息收藏品（位于第一个后面）的收藏品基座进行操作时。如果成功则返回 `true`，否则返回 `false`；如果用于非收藏品实体拾取物，也返回 `false`。
 
-___
 ### TryInitOptionCycle () {: aria-label='Functions' }
 #### boolean TryInitOptionCycle ( int NumCycle ) {: .copyable aria-label='Functions' }
-Causes the collectible pedestal to start cycling through the specified amount of collectibles, including its own collectible type.
+使收藏品基座开始循环显示指定数量的收藏品，包括其自身的收藏品类型。
 
-___
 ### TryRemoveCollectible () {: aria-label='Functions' }
 #### boolean TryRemoveCollectible ( ) {: .copyable aria-label='Functions' }
-Attempts to remove the collectible from an item pedestal.
+如果成功从基座上移除了一个收藏品，则返回 `true`。如果基座已经为空，或者对非收藏品实体拾取物调用此函数，则返回 `false`。
+尝试从物品基座上移除收藏品。
 
-Returns `true` if a collectible was successfully removed from the pedestal. Returns `false` if the pedestal was already empty, or if called on a non-collectible EntityPickup.
-
-___
 ### UpdatePickupGhosts () {: aria-label='Functions' }
 #### void UpdatePickupGhosts ( ) {: .copyable aria-label='Functions' }
-Updates the `EffectVariant.PICKUP_GHOST` EntityEffect in accordance to the pickup's current [LootList](LootList.md)
-
-___
+根据拾取物当前的 [LootList](LootList.md) 更新 `EffectVariant.PICKUP_GHOST` 实体效果。

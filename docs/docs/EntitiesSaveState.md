@@ -36,17 +36,16 @@ ___
 ___
 ### GetI2 () {: aria-label='Functions' }
 #### int GetI2 ( ) {: .copyable aria-label='Functions' }
-Used to store the charge of an active item pickup
-___
+用于存储主动道具拾取物的充能数。
+
 ### GetI3 () {: aria-label='Functions' }
 #### int GetI3 ( ) {: .copyable aria-label='Functions' }
-Used to store the shop price of pickups.
+用于存储拾取物的商店价格。
 
-___
 ### GetI4 () {: aria-label='Functions' }
 #### int GetI4 ( ) {: .copyable aria-label='Functions' }
-Used to store the ShopItemId of pickups.
-___
+用于存储拾取物的商店物品ID。
+
 ### GetI5 () {: aria-label='Functions' }
 #### int GetI5 ( ) {: .copyable aria-label='Functions' }
 
@@ -117,17 +116,15 @@ ___
 ___
 ### SetI2 () {: aria-label='Functions' }
 #### void SetI2 ( int Num ) {: .copyable aria-label='Functions' }
-Used to store the charge of an active item pickup
-___
+用于存储主动道具拾取物的充能数。
+
 ### SetI3 () {: aria-label='Functions' }
 #### void SetI3 ( int Num ) {: .copyable aria-label='Functions' }
-Used to store the shop price of pickups.
-___
+用于存储拾取物的商店价格。
+
 ### SetI4 () {: aria-label='Functions' }
 #### void SetI4 ( int Num ) {: .copyable aria-label='Functions' }
-Used to store the ShopItemId of pickups.
-___
-### SetI5 () {: aria-label='Functions' }
+用于存储拾取物的商店物品ID。### SetI5 () {: aria-label='Functions' }
 #### void SetI5 ( int Num ) {: .copyable aria-label='Functions' }
 
 ___

@@ -8176,74 +8176,51 @@
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="addoutcomefloat">AddOutcomeFloat ()<a class="headerlink" href="#addoutcomefloat" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addoutcomefloat-int-value-float-weight-int-scalefactor-100">void AddOutcomeFloat ( int Value, float Weight, int ScaleFactor = 100 )<a class="headerlink" href="#void-addoutcomefloat-int-value-float-weight-int-scalefactor-100" title="Permanent link">⚓︎</a></h4>
-<p>Adds an outcome to the outcome selector with the specified <code>Weight</code>. The internal weight is still an integer calculated like this: <code>fWeight * scaleFactor</code>, where <code>ScaleFactor</code> is the maximum weight (equivalent to 1.0).</p>
-<details class="example" open="open">
-<summary>Example Code</summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">WeightedOutcomePicker</span><span class="p">()</span>
-
-<span class="nv">picker</span><span class="p">:</span><span class="nf">AddOutcomeFloat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="c1">-- ~45%</span>
-<span class="nv">picker</span><span class="p">:</span><span class="nf">AddOutcomeFloat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="c1">-- ~45%</span>
-<span class="nv">picker</span><span class="p">:</span><span class="nf">AddOutcomeFloat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- ~9%</span>
+<p>picker:AddOutcomeFloat(3, 0.2) -- ~9%
+Adds an outcome to the outcome selector with the specified <code>Weight</code>. The internal weight is still an integer calculated like this: <code>fWeight * scaleFactor</code>, where <code>ScaleFactor</code> is the maximum weight (equivalent to 1.0).
+picker:AddOutcomeFloat(2, 1.0) -- ~45%
+local picker = WeightedOutcomePicker()
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">???</span><span class="o">+</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="s2">&quot;Example Code&quot;</span>
 </code></pre></div></td></tr></table></div>
-</details>
-<hr />
+picker:AddOutcomeFloat(1, 1.0) -- ~45%</p>
 <h3 aria-label="Functions" id="addoutcomeweight">AddOutcomeWeight ()<a class="headerlink" href="#addoutcomeweight" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addoutcomeweight-int-value-int-weight">void AddOutcomeWeight ( int Value, int Weight )<a class="headerlink" href="#void-addoutcomeweight-int-value-int-weight" title="Permanent link">⚓︎</a></h4>
-<p>Adds an outcome to the outcome selector with the specified <code>Weight</code>.</p>
-<details class="example" open="open">
-<summary>Example Code</summary>
+<p>picker:AddOutcomeWeight(3, 5) -- 5%
+picker:AddOutcomeWeight(1, 65) -- 65%
+local picker = WeightedOutcomePicker()
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">picker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">WeightedOutcomePicker</span><span class="p">()</span>
-
-<span class="nv">picker</span><span class="p">:</span><span class="nf">AddOutcomeWeight</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 65%</span>
-<span class="nv">picker</span><span class="p">:</span><span class="nf">AddOutcomeWeight</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 30%</span>
-<span class="nv">picker</span><span class="p">:</span><span class="nf">AddOutcomeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 5%</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<hr />
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">picker</span><span class="p">:</span><span class="nf">AddOutcomeWeight</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 30%</span>
+<span class="nv">Adds</span><span class="w"> </span><span class="nv">an</span><span class="w"> </span><span class="nv">outcome</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">outcome</span><span class="w"> </span><span class="nv">selector</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">specified</span><span class="w"> </span><span class="err">`</span><span class="nv">Weight</span><span class="err">`</span><span class="p">.</span>
+<span class="err">???</span><span class="o">+</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="s2">&quot;Example Code&quot;</span>
+</code></pre></div></td></tr></table></div></p>
 <h3 aria-label="Functions" id="clearoutcomes">ClearOutcomes ()<a class="headerlink" href="#clearoutcomes" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearoutcomes">void ClearOutcomes ( )<a class="headerlink" href="#void-clearoutcomes" title="Permanent link">⚓︎</a></h4>
 <p>Clears all outcomes from the outcome picker.</p>
-<hr />
 <h3 aria-label="Functions" id="getnumoutcomes">GetNumOutcomes ()<a class="headerlink" href="#getnumoutcomes" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getnumoutcomes">int GetNumOutcomes ( )<a class="headerlink" href="#int-getnumoutcomes" title="Permanent link">⚓︎</a></h4>
 <p>Returns the number of outcomes in the outcome picker.</p>
-<hr />
 <h3 aria-label="Functions" id="getoutcomes">GetOutcomes ()<a class="headerlink" href="#getoutcomes" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getoutcomes">table[] GetOutcomes ( )<a class="headerlink" href="#table-getoutcomes" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table containing a list of all outcomes in the outcome picker.</p>
-<details class="- info">
-<summary>Table structure &amp; usage</summary>
-<ul>
-<li>The returned table contains a list of outcomes, where each outcome is a table containing the following fields: <ul>
-<li>Value: value of the outcome</li>
-<li>Weight: weight of the outcome
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>Returns a table containing a list of all outcomes in the outcome picker.
+print(outcome.Value, outcome.Weight)
+end
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">outcome</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">p</span><span class="p">:</span><span class="nf">GetOutcomes</span><span class="p">())</span><span class="w"> </span><span class="kr">do</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">outcome</span><span class="p">.</span><span class="py">Value</span><span class="p">,</span><span class="w"> </span><span class="nv">outcome</span><span class="p">.</span><span class="py">Weight</span><span class="p">)</span>
-<span class="kr">end</span>
-</code></pre></div></td></tr></table></div></li>
-</ul>
-</li>
-</ul>
-</details>
-<hr />
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">*</span><span class="w"> </span><span class="nv">Weight</span><span class="p">:</span><span class="w"> </span><span class="py">weight</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">outcome</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">The</span><span class="w"> </span><span class="nv">returned</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="nv">contains</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">list</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">outcomes</span><span class="p">,</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">outcome</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="nv">containing</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">following</span><span class="w"> </span><span class="nv">fields</span><span class="p">:</span>
+<span class="err">*</span><span class="w"> </span><span class="py">Value</span><span class="p">:</span><span class="w"> </span><span class="py">value</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">outcome</span>
+<span class="err">???</span><span class="o">-</span><span class="w"> </span><span class="nv">info</span><span class="w"> </span><span class="s2">&quot;Table structure &amp; usage&quot;</span>
+<span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="nv">outcome</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nb">ipairs</span><span class="p">(</span><span class="nv">p</span><span class="p">:</span><span class="nf">GetOutcomes</span><span class="p">())</span><span class="w"> </span><span class="kr">do</span>
+</code></pre></div></td></tr></table></div></p>
 <h3 aria-label="Functions" id="pickoutcome">PickOutcome ()<a class="headerlink" href="#pickoutcome" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-pickoutcome-rng-rng">int PickOutcome ( <a href="RNG.html">RNG</a> RNG )<a class="headerlink" href="#int-pickoutcome-rng-rng" title="Permanent link">⚓︎</a></h4>
 <p>Returns a random outcome from the list in WeightedOutcomePicker. Accepts <a href="RNG.html">RNG</a>.</p>
-<hr />
 <h3 aria-label="Functions" id="removeoutcome">RemoveOutcome ()<a class="headerlink" href="#removeoutcome" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-removeoutcome-int-value">void RemoveOutcome ( int Value )<a class="headerlink" href="#void-removeoutcome-int-value" title="Permanent link">⚓︎</a></h4>
 <p>Removes an outcome from the outcome picker with the given <code>Value</code>.</p>
-<hr />
 
 
 

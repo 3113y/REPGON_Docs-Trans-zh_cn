@@ -1717,15 +1717,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#trythrow" class="md-nav__link">
-    <span class="md-ellipsis">
-      TryThrow ()
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5023,15 +5014,6 @@
   <a href="#toslot" class="md-nav__link">
     <span class="md-ellipsis">
       ToSlot ()
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trythrow" class="md-nav__link">
-    <span class="md-ellipsis">
-      TryThrow ()
     </span>
   </a>
   
@@ -10268,15 +10250,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#trythrow" class="md-nav__link">
-    <span class="md-ellipsis">
-      TryThrow ()
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -10328,10 +10301,9 @@
 <h3 aria-label="Functions" id="addknockback">AddKnockback ()<a class="headerlink" href="#addknockback" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addknockback-entityref-source-vector-pushdirection-int-duration-boolean-takeimpactdamage">void AddKnockback ( <a href="https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html">EntityRef</a> Source, <a href="Vector.html">Vector</a> PushDirection, int Duration, boolean TakeImpactDamage )<a class="headerlink" href="#void-addknockback-entityref-source-vector-pushdirection-int-duration-boolean-takeimpactdamage" title="Permanent link">⚓︎</a></h4>
 <details class="info" open="open">
-<summary>Duration info</summary>
-<p>The Duration has a maximum of 0.5 seconds / 15 frames.</p>
+<summary>持续时间信息</summary>
 </details>
-<hr />
+<p>持续时间最长为 0.5 秒/15 帧。</p>
 <h3 aria-label="Functions" id="addmagnetized">AddMagnetized ()<a class="headerlink" href="#addmagnetized" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addmagnetized-entityref-source-int-duration">void AddMagnetized ( <a href="https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html">EntityRef</a> Source, int Duration )<a class="headerlink" href="#void-addmagnetized-entityref-source-int-duration" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10343,20 +10315,17 @@
 <hr />
 <h3 aria-label="Functions" id="copystatuseffects">CopyStatusEffects ()<a class="headerlink" href="#copystatuseffects" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-copystatuseffects-entity-target-boolean-overwrite-false">void CopyStatusEffects ( <a href="Entity.html">Entity</a> Target, boolean Overwrite = false )<a class="headerlink" href="#void-copystatuseffects-entity-target-boolean-overwrite-false" title="Permanent link">⚓︎</a></h4>
-<p>If <code>Target</code> is left unspecified, this will recursively copy status effects to all <a href="https://wofsauge.github.io/IsaacDocs/rep/Entity.html#child">Child</a> Entities. <code>Overwrite</code> will additionally remove all other status effects from the target and set the properties of existing effects to match the entity.</p>
-<hr />
+<p>如果未指定 <code>Target</code>，则会将状态效果递归复制到所有 <a href="https://wofsauge.github.io/IsaacDocs/rep/Entity.html#child">子实体</a>。<code>Overwrite</code> 还会移除目标的所有其他状态效果，并将现有效果的属性设置为与该实体匹配。</p>
 <h3 aria-label="Functions" id="forcecollide">ForceCollide ()<a class="headerlink" href="#forcecollide" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-forcecollide-entity-entity-boolean-force">boolean ForceCollide ( <a href="Entity.html">Entity</a> Entity, boolean Force )<a class="headerlink" href="#boolean-forcecollide-entity-entity-boolean-force" title="Permanent link">⚓︎</a></h4>
-<p>Returns true if the rest of the collision logic should be <strong>Skipped</strong>; either because the entities did not collide in the first place (if <code>Force</code> is false),
-or because one of the entities' internal collision logic decided so (which can be influenced by one of the <code>PRE_COLLISION</code> callbacks).</p>
-<p>if <code>Force</code> is set to false, then the game will check if the entities' <a href="https://wofsauge.github.io/IsaacDocs/rep/Entity.html#entitycollisionclass">EntityCollisionClass</a> are
-compatible and if both entities are not <a href="https://wofsauge.github.io/IsaacDocs/rep/Entity.html#isdead">Dead</a> before triggering the collision.</p>
 <details class="- warning">
-<summary>Collision Logic Changes</summary>
-<p>The collision logic for some entity types changes when forced.<br>
-For example: Slots do not make the player pay the regular prize for activation.</p>
+<summary>碰撞逻辑更改</summary>
 </details>
-<hr />
+<p>某些实体类型在强制碰撞时，其碰撞逻辑会发生变化。<br>
+如果应该 <strong>跳过</strong> 其余的碰撞逻辑，则返回 true；这可能是因为实体最初并未发生碰撞（如果 <code>Force</code> 为 false），
+例如：插槽在激活时不会让玩家支付常规费用。
+如果将 <code>Force</code> 设置为 false，那么游戏将在触发碰撞之前检查实体的 <a href="https://wofsauge.github.io/IsaacDocs/rep/Entity.html#entitycollisionclass">实体碰撞类</a> 是否兼容，以及两个实体是否都未 <a href="https://wofsauge.github.io/IsaacDocs/rep/Entity.html#isdead">死亡</a>。
+或者是因为其中一个实体的内部碰撞逻辑决定如此（这可能会受到 <code>PRE_COLLISION</code> 回调之一的影响）。</p>
 <h3 aria-label="Functions" id="getbaitedcountdown">GetBaitedCountdown ()<a class="headerlink" href="#getbaitedcountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getbaitedcountdown">int GetBaitedCountdown ( )<a class="headerlink" href="#int-getbaitedcountdown" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10383,23 +10352,20 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <hr />
 <h3 aria-label="Functions" id="getcolorparams">GetColorParams ()<a class="headerlink" href="#getcolorparams" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="colorparams-getcolorparams"><a href="ColorParams.html">ColorParams</a>[] GetColorParams ( )<a class="headerlink" href="#colorparams-getcolorparams" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table of all colors currently queued by <code>SetColor</code> alongside their parameters.</p>
-<hr />
+<p>返回由 <code>SetColor</code> 当前排队的所有颜色及其参数的表。</p>
 <h3 aria-label="Functions" id="getconfusioncountdown">GetConfusionCountdown ()<a class="headerlink" href="#getconfusioncountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getconfusioncountdown">int GetConfusionCountdown ( )<a class="headerlink" href="#int-getconfusioncountdown" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getdamagecountdown">GetDamageCountdown ()<a class="headerlink" href="#getdamagecountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getdamagecountdown">int GetDamageCountdown ( )<a class="headerlink" href="#int-getdamagecountdown" title="Permanent link">⚓︎</a></h4>
-<p>If the entity recently took damage with the DAMAGE_COUNTDOWN <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">DamageFlag</a>, this returns how many more frames must pass before they can take damage with the DAMAGE_COUNTDOWN <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">DamageFlag</a> again.</p>
-<p>Note that this is NOT the same as the player's invincibility frames (<code>EntityPlayer:GetDamageCooldown()</code>). The DAMAGE_COUNTDOWN <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">DamageFlag</a> and this associated countdown are typically used to control how rapidly an enemy will take damage from the few sources that uses that flag, such as the the collision damage effects from the "My Little Unicorn", "The Nail", and "The Gamekid".</p>
-<hr />
+<p>请注意，这与玩家的无敌帧数（<code>EntityPlayer:GetDamageCooldown()</code>）不同。<code>DAMAGE_COUNTDOWN</code> <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">伤害标志</a> 以及此关联的倒计时通常用于控制敌人从少数使用该标志的来源（如“我的小独角兽”、“钉子”和“游戏小子”的碰撞伤害效果）受到伤害的速度。
+如果实体最近受到了带有 <code>DAMAGE_COUNTDOWN</code> <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">伤害标志</a> 的伤害，则返回在它再次受到带有 <code>DAMAGE_COUNTDOWN</code> <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">伤害标志</a> 的伤害之前还需要经过多少帧。</p>
 <h3 aria-label="Functions" id="getdebugshape">GetDebugShape ()<a class="headerlink" href="#getdebugshape" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="shape-getdebugshape-boolean-unknown"><a href="renderer/Shape.html">Shape</a> GetDebugShape ( boolean Unknown )<a class="headerlink" href="#shape-getdebugshape-boolean-unknown" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getentityconfigentity">GetEntityConfigEntity ()<a class="headerlink" href="#getentityconfigentity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityconfigentity-getentityconfigentity"><a href="EntityConfigEntity.html">EntityConfigEntity</a> GetEntityConfigEntity ( )<a class="headerlink" href="#entityconfigentity-getentityconfigentity" title="Permanent link">⚓︎</a></h4>
-<p>Returns the corresponding <a href="EntityConfig.html">EntityConfig</a> entry for this entity.</p>
-<hr />
+<p>返回此实体对应的 <a href="EntityConfig.html">实体配置</a> 条目。</p>
 <h3 aria-label="Functions" id="getfearcountdown">GetFearCountdown ()<a class="headerlink" href="#getfearcountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getfearcountdown">int GetFearCountdown ( )<a class="headerlink" href="#int-getfearcountdown" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10429,19 +10395,17 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <hr />
 <h3 aria-label="Functions" id="getminecart">GetMinecart ()<a class="headerlink" href="#getminecart" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entitynpc-getminecart"><a href="EntityNPC.html">EntityNPC</a> GetMinecart ( )<a class="headerlink" href="#entitynpc-getminecart" title="Permanent link">⚓︎</a></h4>
-<p>Returns the minecart the entity is riding.</p>
 <details class="note" open="open">
-<summary>Return behavior</summary>
-<p>If the entity is not riding a minecart, this function returns <code>nil</code>.</p>
+<summary>返回行为</summary>
 </details>
-<hr />
+<p>返回实体所乘坐的矿车。
+如果实体没有乘坐矿车，则此函数返回 <code>nil</code>。</p>
 <h3 aria-label="Functions" id="getnullcapsule">GetNullCapsule ()<a class="headerlink" href="#getnullcapsule" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="capsule-getnullcapsule-string-nulllayername"><a href="Capsule.html">Capsule</a> GetNullCapsule ( string NullLayerName )<a class="headerlink" href="#capsule-getnullcapsule-string-nulllayername" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getnulloffset">GetNullOffset ()<a class="headerlink" href="#getnulloffset" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-getnulloffset-string-nulllayername"><a href="Vector.html">Vector</a> GetNullOffset ( string NullLayerName )<a class="headerlink" href="#vector-getnulloffset-string-nulllayername" title="Permanent link">⚓︎</a></h4>
-<p>Returns position of null layer mark. Alternatively returns Vector.Zero if the layer is not visible, has no frame available for the current animation, or for other unknown reasons.</p>
-<hr />
+<p>返回空图层标记的位置。或者，如果图层不可见、当前动画没有可用帧或由于其他未知原因，则返回 <code>Vector.Zero</code>。</p>
 <h3 aria-label="Functions" id="getpausetime">GetPauseTime ()<a class="headerlink" href="#getpausetime" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getpausetime">int GetPauseTime ( )<a class="headerlink" href="#int-getpausetime" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10453,13 +10417,11 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <hr />
 <h3 aria-label="Functions" id="getposvel">GetPosVel ()<a class="headerlink" href="#getposvel" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="posvel-getposvel"><a href="https://wofsauge.github.io/IsaacDocs/rep/PlayerTypes_PosVel.html">PosVel</a> GetPosVel ( )<a class="headerlink" href="#posvel-getposvel" title="Permanent link">⚓︎</a></h4>
-<p>Returns 2 values, both Vectors. 1st the Position of the entity, 2nd the Velocity of the entity.</p>
-<hr />
+<p>返回 2 个值，均为向量。第一个是实体的位置，第二个是实体的速度。</p>
 <h3 aria-label="Functions" id="getpredictedtargetposition">GetPredictedTargetPosition ()<a class="headerlink" href="#getpredictedtargetposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-getpredictedtargetposition-entity-target-float-delay"><a href="Vector.html">Vector</a> GetPredictedTargetPosition ( <a href="Entity.html">Entity</a> Target, float Delay )<a class="headerlink" href="#vector-getpredictedtargetposition-entity-target-float-delay" title="Permanent link">⚓︎</a></h4>
-<p>The prediction is the target's current position plus their velocity multiplied by the distance between this and the target.
-<code>Delay</code> acts as a multiplier for how far ahead the prediction should be. For example, <code>1.0</code> would predict where the target's velocity would place them on the next update.</p>
-<hr />
+<p>预测值是目标的当前位置加上其速度乘以该实体与目标之间的距离。
+<code>Delay</code> 用作预测提前量的乘数。例如，<code>1.0</code> 会预测目标的速度在下一次更新时会将其置于何处。</p>
 <h3 aria-label="Functions" id="getshadowsize">GetShadowSize ()<a class="headerlink" href="#getshadowsize" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getshadowsize">float GetShadowSize ( )<a class="headerlink" href="#float-getshadowsize" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10471,11 +10433,10 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <hr />
 <h3 aria-label="Functions" id="getspeedmultiplier">GetSpeedMultiplier ()<a class="headerlink" href="#getspeedmultiplier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getspeedmultiplier">float GetSpeedMultiplier ( )<a class="headerlink" href="#float-getspeedmultiplier" title="Permanent link">⚓︎</a></h4>
+<p>此变量实际上是实体的时间缩放比例。未来版本中将添加一个命名更合适的替代函数。</p>
 <details class="warning" open="open">
-<summary>Depreciation notice</summary>
-<p>This variable is actually the Entity's time scale. A properly named replacement function will be added in a future version.</p>
+<summary>弃用通知</summary>
 </details>
-<hr />
 <h3 aria-label="Functions" id="gettype">GetType ()<a class="headerlink" href="#gettype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entitytype-gettype"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html">EntityType</a> GetType ( )<a class="headerlink" href="#entitytype-gettype" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10487,16 +10448,13 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <hr />
 <h3 aria-label="Functions" id="ignoreeffectfromfriendly">IgnoreEffectFromFriendly ()<a class="headerlink" href="#ignoreeffectfromfriendly" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ignoreeffectfromfriendly-entityref-source">boolean IgnoreEffectFromFriendly ( <a href="https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html">EntityRef</a> Source )<a class="headerlink" href="#boolean-ignoreeffectfromfriendly-entityref-source" title="Permanent link">⚓︎</a></h4>
-<p>Used to determine if this entity should ignore any status effect coming from <code>Source</code>.</p>
-<hr />
+<p>用于确定此实体是否应忽略来自 <code>Source</code> 的任何状态效果。</p>
 <h3 aria-label="Functions" id="makebloodpoof">MakeBloodPoof ()<a class="headerlink" href="#makebloodpoof" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityeffect-makebloodpoof-vector-position-selfposition-color-color-default-float-scale-10"><a href="EntityEffect.html">EntityEffect</a> MakeBloodPoof ( <a href="Vector.html">Vector</a> Position = self.Position, <a href="Color.html">Color</a> Color = default, float Scale = 1.0 )<a class="headerlink" href="#entityeffect-makebloodpoof-vector-position-selfposition-color-color-default-float-scale-10" title="Permanent link">⚓︎</a></h4>
-<p>This function spawns two blood poof effects of subtypes 3 and 4; the second of which will be the the Child of the one returned.</p>
-<hr />
+<p>此函数会生成两个子类型为 3 和 4 的血溅效果；返回的第二个效果将是第一个效果的子效果。</p>
 <h3 aria-label="Functions" id="makegroundpoof">MakeGroundPoof ()<a class="headerlink" href="#makegroundpoof" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityeffect-makegroundpoof-vector-position-selfposition-color-color-default-float-scale-10"><a href="EntityEffect.html">EntityEffect</a> MakeGroundPoof ( <a href="Vector.html">Vector</a> Position = self.Position, <a href="Color.html">Color</a> Color = default, float Scale = 1.0 )<a class="headerlink" href="#entityeffect-makegroundpoof-vector-position-selfposition-color-color-default-float-scale-10" title="Permanent link">⚓︎</a></h4>
-<p>This function spawns two dust poof effects of subtypes 1 and 2; the second of which will be the the Child of the one returned.</p>
-<hr />
+<p>此函数会生成两个子类型为 1 和 2 的灰尘飞溅效果；返回的第二个效果将是第一个效果的子效果。</p>
 <h3 aria-label="Functions" id="setbaitedcountdown">SetBaitedCountdown ()<a class="headerlink" href="#setbaitedcountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setbaitedcountdown-int-countdown">void SetBaitedCountdown ( int Countdown )<a class="headerlink" href="#void-setbaitedcountdown-int-countdown" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10520,16 +10478,14 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <hr />
 <h3 aria-label="Functions" id="setcolorparams">SetColorParams ()<a class="headerlink" href="#setcolorparams" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcolorparams-colorparams-params">void SetColorParams ( <a href="ColorParams.html">ColorParams</a>[] Params )<a class="headerlink" href="#void-setcolorparams-colorparams-params" title="Permanent link">⚓︎</a></h4>
-<p>Sets colors to be used alongside their parameters.</p>
-<hr />
+<p>设置要使用的颜色及其参数。</p>
 <h3 aria-label="Functions" id="setconfusioncountdown">SetConfusionCountdown ()<a class="headerlink" href="#setconfusioncountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setconfusioncountdown-int-countdown">void SetConfusionCountdown ( int Countdown )<a class="headerlink" href="#void-setconfusioncountdown-int-countdown" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="setdamagecountdown">SetDamageCountdown ()<a class="headerlink" href="#setdamagecountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdamagecountdown-int-countdown">void SetDamageCountdown ( int countdown )<a class="headerlink" href="#void-setdamagecountdown-int-countdown" title="Permanent link">⚓︎</a></h4>
-<p>Sets how many frames must pass before the entity can take damage that has the DAMAGE_COUNTDOWN <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">DamageFlag</a>.</p>
-<p>Note that this is NOT the same as the player's invincibility frames (<code>EntityPlayer:GetDamageCooldown()</code>). The DAMAGE_COUNTDOWN <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">DamageFlag</a> and this associated countdown are typically used to control how rapidly an enemy will take damage from the few sources that uses that flag, such as the the collision damage effects from the "My Little Unicorn", "The Nail", and "The Gamekid".</p>
-<hr />
+<p>请注意，这与玩家的无敌帧数（<code>EntityPlayer:GetDamageCooldown()</code>）不同。<code>DAMAGE_COUNTDOWN</code> <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">伤害标志</a> 以及此关联的倒计时通常用于控制敌人从少数使用该标志的来源（如“我的小独角兽”、“钉子”和“游戏小子”的碰撞伤害效果）受到伤害的速度。
+设置实体在受到带有 <code>DAMAGE_COUNTDOWN</code> <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/DamageFlag.html">伤害标志</a> 的伤害之前必须经过的帧数。</p>
 <h3 aria-label="Functions" id="setdead">SetDead ()<a class="headerlink" href="#setdead" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdead-boolean-isdead">void SetDead ( boolean IsDead )<a class="headerlink" href="#void-setdead-boolean-isdead" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10580,11 +10536,10 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <hr />
 <h3 aria-label="Functions" id="setspeedmultiplier">SetSpeedMultiplier ()<a class="headerlink" href="#setspeedmultiplier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setspeedmultiplier-float-amount">void SetSpeedMultiplier ( float Amount )<a class="headerlink" href="#void-setspeedmultiplier-float-amount" title="Permanent link">⚓︎</a></h4>
+<p>此变量实际上是实体的时间缩放比例。未来版本中将添加一个命名更合适的替代函数。</p>
 <details class="warning" open="open">
-<summary>Depreciation notice</summary>
-<p>This variable is actually the Entity's time scale. A properly named replacement function will be added in a future version.</p>
+<summary>弃用通知</summary>
 </details>
-<hr />
 <h3 aria-label="Functions" id="setweaknesscountdown">SetWeaknessCountdown ()<a class="headerlink" href="#setweaknesscountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setweaknesscountdown-int-countdown">void SetWeaknessCountdown ( int Countdown )<a class="headerlink" href="#void-setweaknesscountdown-int-countdown" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -10594,31 +10549,27 @@ For example: Slots do not make the player pay the regular prize for activation.<
 <h3 aria-label="Functions" id="spawnwaterimpacteffects">SpawnWaterImpactEffects ()<a class="headerlink" href="#spawnwaterimpacteffects" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-spawnwaterimpacteffects-vector-position-vector-velocity-vectorzero-float-strength">void SpawnWaterImpactEffects ( <a href="Vector.html">Vector</a> Position, <a href="Vector.html">Vector</a> Velocity = Vector.Zero, float Strength )<a class="headerlink" href="#void-spawnwaterimpacteffects-vector-position-vector-velocity-vectorzero-float-strength" title="Permanent link">⚓︎</a></h4>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p>This function will only spawn effects if the Room's <a href="Room.html#getwateramount">water amount</a> is above or equal to <code>0.2</code>.</p>
+<summary>警告</summary>
 </details>
-<hr />
+<p>仅当房间的 <a href="Room.html#getwateramount">水量</a> 大于或等于 <code>0.2</code> 时，此函数才会生成效果。</p>
 <h3 aria-label="Functions" id="teleporttorandomposition">TeleportToRandomPosition ()<a class="headerlink" href="#teleporttorandomposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-teleporttorandomposition">void TeleportToRandomPosition ( )<a class="headerlink" href="#void-teleporttorandomposition" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="todelirium">ToDelirium ()<a class="headerlink" href="#todelirium" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entitydelirium-todelirium"><a href="EntityDelirium.html">EntityDelirium</a> ToDelirium ( )<a class="headerlink" href="#entitydelirium-todelirium" title="Permanent link">⚓︎</a></h4>
-<p>Convert an <a href="Entity.html">Entity</a> userdata to an <a href="EntityDelirium.html">EntityDelirium</a> userdata.
-The conversion will only succeed if the source entity is an instance of Delirium (in its normal form or in a transformed form).</p>
+<p>将 <a href="Entity.html">实体</a> 用户数据转换为 <a href="EntityDelirium.html">幻痛实体</a> 用户数据。
+仅当源实体是幻痛（以其正常形态或变形形态）的实例时，转换才会成功。</p>
 <details class="note" open="open">
-<summary>Return behavior</summary>
-<p>If the conversion fails, this function returns <code>nil</code>.</p>
+<summary>返回行为</summary>
 </details>
-<hr />
+<p>如果转换失败，此函数返回 <code>nil</code>。</p>
 <h3 aria-label="Functions" id="toslot">ToSlot ()<a class="headerlink" href="#toslot" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityslot-toslot"><a href="EntitySlot.html">EntitySlot</a> ToSlot ( )<a class="headerlink" href="#entityslot-toslot" title="Permanent link">⚓︎</a></h4>
-<p>Used to cast an <a href="Entity.html">Entity</a> object to an <a href="EntitySlot.html">EntitySlot</a> object.</p>
+<p>如果转换不成功，此函数返回 <code>nil</code>。</p>
 <details class="note" open="open">
-<summary>Return behavior</summary>
-<p>If the conversion is not successful, this function returns <code>nil</code>.</p>
+<summary>返回行为</summary>
 </details>
-<hr />
-<h3 aria-label="Functions" id="trythrow">TryThrow ()<a class="headerlink" href="#trythrow" title="Permanent link">⚓︎</a></h3>
+<p>用于将 <a href="Entity.html">实体</a> 对象转换为 <a href="EntitySlot.html">插槽实体</a> 对象。### TryThrow () {: aria-label='Functions' }</p>
 <h4 aria-label="Functions" class="copyable" id="boolean-trythrow-entityref-source-vector-throwdirection-float-force">boolean TryThrow ( <a href="https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html">EntityRef</a> Source, <a href="Vector.html">Vector</a> ThrowDirection, float Force )<a class="headerlink" href="#boolean-trythrow-entityref-source-vector-throwdirection-float-force" title="Permanent link">⚓︎</a></h4>
 <hr />
 

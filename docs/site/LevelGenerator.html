@@ -8071,31 +8071,28 @@
 <h3 aria-label="Functions" id="getallrooms">GetAllRooms ()<a class="headerlink" href="#getallrooms" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="levelgeneratorroom-getallrooms"><a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a>[] GetAllRooms ( )<a class="headerlink" href="#levelgeneratorroom-getallrooms" title="Permanent link">⚓︎</a></h4>
 <p>Returns a table of <a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a> representing all the rooms that have been generated so far.</p>
-<hr />
 <h3 aria-label="Functions" id="getdeadends">GetDeadEnds ()<a class="headerlink" href="#getdeadends" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="levelgeneratorroom-getdeadends"><a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a>[] GetDeadEnds ( )<a class="headerlink" href="#levelgeneratorroom-getdeadends" title="Permanent link">⚓︎</a></h4>
 <p>Returns a table of <a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a> representing all the dead end rooms that have been generated so far.</p>
-<hr />
 <h3 aria-label="Functions" id="getnondeadends">GetNonDeadEnds ()<a class="headerlink" href="#getnondeadends" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="levelgeneratorroom-getnondeadends"><a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a>[] GetNonDeadEnds ( )<a class="headerlink" href="#levelgeneratorroom-getnondeadends" title="Permanent link">⚓︎</a></h4>
 <p>Returns a table of <a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a> representing all the non dead end rooms that have been generator so far.</p>
-<hr />
 <h3 aria-label="Functions" id="placeroom">PlaceRoom ()<a class="headerlink" href="#placeroom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-placeroom-int-column-int-row-roomshape-shape-levelgeneratorroom-origin">int PlaceRoom ( int Column, int Row, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/RoomShape.html">RoomShape</a> Shape, <a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a> Origin )<a class="headerlink" href="#int-placeroom-int-column-int-row-roomshape-shape-levelgeneratorroom-origin" title="Permanent link">⚓︎</a></h4>
-<p>Place a <a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a> object onto the level-grid. 
-The <code>Origin</code> parameter is used as the index of the connecting room. For instance, if you want to place a room on top of the starting room, then <code>Origin</code> can be the starting room of the floor.</p>
-<p>The column and row values need to be between <code>0</code> and <code>12</code> (inclusive).</p>
-<p>Returns the GenerationIndex of the placed room. If placement was not possible, returns nil.</p>
 <details class="note" open="open">
 <summary>Multiple origins</summary>
-<p>The <code>Origin</code> parameter is used to ensure consistency with the existing rooms. During the generation phase, the game always picks a room 
-and starts placing rooms around it. This parameter reflects this behavior.</p>
-<p>When placing a room, you may be wondering which of its neighbors must act as the origin. This has consequences on the placement of special 
-rooms, as the game places special rooms in a specific order based on the distance between each dead end room and the start of the floor. 
-The distance from the start of the floor of the new room is equal to the distance from the start of the floor of <code>Origin</code> plus one. 
-In practice you are free to chose any neighboring room as a point of origin. </p>
 </details>
-<hr />
+<p>When placing a room, you may be wondering which of its neighbors must act as the origin. This has consequences on the placement of special
+The column and row values need to be between <code>0</code> and <code>12</code> (inclusive).
+rooms, as the game places special rooms in a specific order based on the distance between each dead end room and the start of the floor.
+The <code>Origin</code> parameter is used to ensure consistency with the existing rooms. During the generation phase, the game always picks a room 
+Place a <a href="LevelGeneratorRoom.html">LevelGeneratorRoom</a> object onto the level-grid.
+In practice you are free to chose any neighboring room as a point of origin.
+The <code>Origin</code> parameter is used to ensure consistency with the existing rooms. During the generation phase, the game always picks a room
+The <code>Origin</code> parameter is used as the index of the connecting room. For instance, if you want to place a room on top of the starting room, then <code>Origin</code> can be the starting room of the floor.
+and starts placing rooms around it. This parameter reflects this behavior.
+The distance from the start of the floor of the new room is equal to the distance from the start of the floor of <code>Origin</code> plus one.
+Returns the GenerationIndex of the placed room. If placement was not possible, returns nil.</p>
 
 
 

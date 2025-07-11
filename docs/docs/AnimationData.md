@@ -12,20 +12,15 @@ Can be obtained via [Sprite:GetAnimationData()](Sprite.md#getanimationdata), [Sp
 
 ### GetAllLayers () {: aria-label='Functions' }
 #### [AnimationLayer](AnimationLayer.md)[] GetAllLayers ( ) {: .copyable aria-label='Functions' }
-Returns a table of AnimationLayers, in order from bottom to top (NOT ordered by layer ID).
+返回一个动画层（AnimationLayers）表，按从下到上的顺序排列（**不**按层ID排序）。
 
-___
 ### GetLayer () {: aria-label='Functions' }
 #### [AnimationLayer](AnimationLayer.md) GetLayer ( int LayerId ) {: .copyable aria-label='Functions' }
-Gets an AnimationLayer by that layer's ID number.
+通过动画层的ID号获取一个动画层。
 
-___
 ### GetLength () {: aria-label='Functions' }
 #### int GetLength ( ) {: .copyable aria-label='Functions' }
-Length of this animation in frames.
-
-___
-### GetName () {: aria-label='Functions' }
+此动画的帧数长度。### GetName () {: aria-label='Functions' }
 #### string GetName ( ) {: .copyable aria-label='Functions' }
 
 ___

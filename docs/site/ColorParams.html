@@ -3371,15 +3371,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#getpriority" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetPriority ()
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#getshared" class="md-nav__link">
     <span class="md-ellipsis">
       GetShared ()
@@ -8143,15 +8134,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#getpriority" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetPriority ()
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#getshared" class="md-nav__link">
     <span class="md-ellipsis">
       GetShared ()
@@ -8268,16 +8250,13 @@
 <hr />
 <h3 aria-label="Functions" id="getduration">GetDuration ()<a class="headerlink" href="#getduration" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getduration">int GetDuration ( )<a class="headerlink" href="#int-getduration" title="Permanent link">⚓︎</a></h4>
-<p>Defines the time in update frames that these parameters should last. Has no effect on how many frames are left, but does affect fadeout speed (calculated as <code>Lifespan / Duration</code>) if <code>Fadeout</code> is enabled.</p>
-<hr />
+<p>定义这些参数应持续的更新帧数。对剩余帧数没有影响，但如果启用了 <code>Fadeout</code>（淡出），则会影响淡出速度（计算方式为 <code>Lifespan / Duration</code>，即“寿命/持续时间”）。</p>
 <h3 aria-label="Functions" id="getfadeout">GetFadeout ()<a class="headerlink" href="#getfadeout" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-getfadeout">boolean GetFadeout ( )<a class="headerlink" href="#boolean-getfadeout" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getlifespan">GetLifespan ()<a class="headerlink" href="#getlifespan" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getlifespan">int GetLifespan ( )<a class="headerlink" href="#int-getlifespan" title="Permanent link">⚓︎</a></h4>
-<p>Defines how many update frames are <em>left</em> before this expires. This is decremented by <code>1</code> each non-interpolation update at a rate of <code>30</code> per second. Altering this will directly effect how many frames are left before these parameters expire.</p>
-<hr />
-<h3 aria-label="Functions" id="getpriority">GetPriority ()<a class="headerlink" href="#getpriority" title="Permanent link">⚓︎</a></h3>
+<p>定义在这些参数过期之前还剩下多少更新帧数。在每秒 30 次的非插值更新中，每次更新该值会减 1。更改此值将直接影响这些参数在过期前还剩下多少帧数。### GetPriority () {: aria-label='Functions' }</p>
 <h4 aria-label="Functions" class="copyable" id="int-getpriority">int GetPriority ( )<a class="headerlink" href="#int-getpriority" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getshared">GetShared ()<a class="headerlink" href="#getshared" title="Permanent link">⚓︎</a></h3>

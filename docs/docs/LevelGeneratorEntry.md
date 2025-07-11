@@ -17,7 +17,6 @@ tags:
 ### SetAllowedDoors () {: aria-label='Functions' }
 #### void SetAllowedDoors ( [LevelGeneratorEntry](LevelGeneratorEntry.md) Room, int Doors ) {: .copyable aria-label='Functions' }
 I *believe* Doors here is a bitmask (1 << DoorSlot)
-___
 ### SetColIdx () {: aria-label='Functions' }
 #### void SetColIdx ( [LevelGeneratorEntry](LevelGeneratorEntry.md) Room, int ColIdx ) {: .copyable aria-label='Functions' }
 

@@ -74,33 +74,28 @@ ___
 ___
 ### GetCollisionRadius () {: aria-label='Functions' }
 #### float GetCollisionRadius ( ) {: .copyable aria-label='Functions' }
-Also known as "Size".
+也称为 “大小”。
 
-___
 ### GetCollisionRadiusMultiplier () {: aria-label='Functions' }
 #### [const Vector](Vector.md) GetCollisionRadiusMultiplier ( ) {: .copyable aria-label='Functions' }
-Also known as "SizeMulti".
+也称为 “大小乘数”。
 
-___
 ### GetCustomTags () {: aria-label='Functions' }
 #### table GetCustomTags ( ) {: .copyable aria-label='Functions' }
-Returns a table containing all the strings specified in the entity's `customtags` attribute in [entities2.xml](xml/entities.md). Tags are always provided in all lowercase. See [entities2.xml](xml/entities.md) for more information on `customtags`.
+返回一个表格，其中包含实体在 [entities2.xml](xml/entities.md) 的 `customtags` 属性中指定的所有字符串。标签始终以全小写形式提供。有关 `customtags` 的更多信息，请参阅 [entities2.xml](xml/entities.md)。
 
-___
 ### GetEntityTags () {: aria-label='Functions' }
 #### int GetEntityTags ( ) {: .copyable aria-label='Functions' }
-Returns the bitmask of [EntityTag](enums/EntityTag.md)s for this entity.
+返回此实体的 [EntityTag](enums/EntityTag.md) 位掩码。
 
-___
 ### GetFriction () {: aria-label='Functions' }
 #### float GetFriction ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetGibFlags () {: aria-label='Functions' }
 #### int GetGibFlags ( ) {: .copyable aria-label='Functions' }
-Returns the bitmask of [GibFlag](enums/GibFlag.md)s for this entity.
+返回此实体的 [GibFlag](enums/GibFlag.md) 位掩码。
 
-___
 ### GetGibsAmount () {: aria-label='Functions' }
 #### int GetGibsAmount ( ) {: .copyable aria-label='Functions' }
 
@@ -115,11 +110,9 @@ ___
 ___
 ### GetModName () {: aria-label='Functions' }
 #### string GetModName ( ) {: .copyable aria-label='Functions' }
-Name string of the mod that entity is from.
+对于原版实体，返回 nil。
+实体所属模组的名称字符串。
 
-Returns nil for vanilla entities.
-
-___
 ### GetName () {: aria-label='Functions' }
 #### string GetName ( ) {: .copyable aria-label='Functions' }
 
@@ -130,14 +123,12 @@ ___
 ___
 ### GetShadowSize () {: aria-label='Functions' }
 #### float GetShadowSize ( ) {: .copyable aria-label='Functions' }
-Note that this value is the "shadowSize" specified in the XML divided by 100.
+请注意，此值是 XML 中指定的 “shadowSize” 除以 100 的结果。
 
-___
 ### GetShieldStrength () {: aria-label='Functions' }
 #### float GetShieldStrength ( ) {: .copyable aria-label='Functions' }
-The amount of armor the entity has.
+实体拥有的护甲值。
 
-___
 ### GetStageHP () {: aria-label='Functions' }
 #### float GetStageHP ( ) {: .copyable aria-label='Functions' }
 
@@ -156,24 +147,19 @@ ___
 ___
 ### HasCustomTag () {: aria-label='Functions' }
 #### boolean HasCustomTag ( string tag ) {: .copyable aria-label='Functions' }
-Returns true if the entity has the provided string specified in its `customtags` attribute in [entities2.xml](xml/entities.md). Capitalization does not matter. See [entities2.xml](xml/entities.md) for more information on `customtags`.
+如果实体在 [entities2.xml](xml/entities.md) 的 `customtags` 属性中指定了提供的字符串，则返回 true。大小写无关紧要。有关 `customtags` 的更多信息，请参阅 [entities2.xml](xml/entities.md)。
 
-___
 ### HasEntityTags () {: aria-label='Functions' }
 #### boolean HasEntityTags ( int Tags ) {: .copyable aria-label='Functions' }
-Returns true if the entity has all [EntityTag](enums/EntityTag.md)s specified in the provided bitset.
+如果实体具有提供的位集中指定的所有 [EntityTag](enums/EntityTag.md)，则返回 true。
 
-___
 ### HasFloorAlts () {: aria-label='Functions' }
 #### boolean HasFloorAlts ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### HasGibFlags () {: aria-label='Functions' }
 #### boolean HasGibFlags ( int Flags ) {: .copyable aria-label='Functions' }
-Returns true if the entity has all [GibFlag](enums/GibFlag.md)s specified in the provided bitset.
-
-___
-### IsBoss () {: aria-label='Functions' }
+如果实体具有提供的位集中指定的所有 [GibFlag](enums/GibFlag.md)，则返回 true。### IsBoss () {: aria-label='Functions' }
 #### boolean IsBoss ( ) {: .copyable aria-label='Functions' }
 
 ___

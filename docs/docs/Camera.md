@@ -18,27 +18,18 @@ tags:
 
 ### IsPosVisible () {: aria-label='Functions' }
 #### boolean IsPosVisible ( [Vector](Vector.md) Pos ) {: .copyable aria-label='Functions' }
-Returns if the in-world position is visible to the camera.
+返回世界中的某个位置是否在相机的可见范围内。
 
-___
 ### SetFocusPosition () {: aria-label='Functions' }
 #### void SetFocusPosition ( [Vector](Vector.md) Pos ) {: .copyable aria-label='Functions' }
-Sets the camera's current focus position, causing it to shift towards the specified position
+仅当当前房间大小大于 1x1 时，相机才会移动。如果房间大小为 1x1 或更小，相机将保持静止，此函数将不起作用。
+此函数必须在诸如 `ModCallbacks.MC_POST_UPDATE` 之类的更新回调中调用，否则游戏将覆盖相机的位置。
+设置相机当前的聚焦位置，使其向指定位置移动。
 
-The camera will only move if the current room size is larger than 1x1. If the room size is 1x1 or smaller, the camera will remain stationary and this function will do nothing. 
-
-This function must be called inside an update callback such as `ModCallbacks.MC_POST_UPDATE`, otherwise the game will override the camera's position.
-
-___
 ### SnapToPosition () {: aria-label='Functions' }
 #### void SnapToPosition ( [Vector](Vector.md) Pos ) {: .copyable aria-label='Functions' }
-Sets the camera's position instantly to the specified position.
-
-The camera will only move if the current room size is larger than 1x1. If the room size is 1x1 or smaller, the camera will remain stationary and this function will do nothing.
-
-This function must be called inside a render callback such as `ModCallbacks.MC_POST_RENDER`, otherwise the game will override the camera's position.
-
 ???+ bug "Bug"
-	This function seems to only work when Active Camera is off.
-
-___
+立即将相机的位置设置为指定位置。
+此函数似乎仅在“主动相机”关闭时有效。
+仅当当前房间大小大于 1x1 时，相机才会移动。如果房间大小为 1x1 或更小，相机将保持静止，此函数将不起作用。
+此函数必须在诸如 `ModCallbacks.MC_POST_RENDER` 之类的渲染回调中调用，否则游戏将覆盖相机的位置。

@@ -8036,30 +8036,23 @@
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="getslot">GetSlot ()<a class="headerlink" href="#getslot" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getslot">int GetSlot ( )<a class="headerlink" href="#int-getslot" title="Permanent link">⚓︎</a></h4>
-<p>Returns an identifying value for this pocket item. Varies depending on the PocketItemType.</p>
-<p>Returns <code>0</code> if the pocket slot is empty.</p>
-<p>For cards, returns <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Card.html">Card</a>.</p>
-<p>For pills, returns <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillColor.html">PillColor</a>.</p>
-<p>For pocket active items, returns the corresponding <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html">ActiveSlot</a><strong>+1</strong> (so <code>ActiveSlot.SLOT_POCKET + 1</code> or <code>ActiveSlot.SLOT_POCKET2 + 1</code>).</p>
-<details class="example" open="open">
-<summary>Example code to obtain the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> of the pocket active item in a given pocket slot:</summary>
+<p>local pocketItem = player:GetPocketItem(PillCardSlot.PRIMARY)
+For pills, returns <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillColor.html">PillColor</a>.
+if pocketItem:GetType() == PocketItemType.ACTIVE_ITEM then
+For pocket active items, returns the corresponding <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html">ActiveSlot</a><strong>+1</strong> (so <code>ActiveSlot.SLOT_POCKET + 1</code> or <code>ActiveSlot.SLOT_POCKET2 + 1</code>).
+Returns an identifying value for this pocket item. Varies depending on the PocketItemType.
+local activeItemID = player:GetActiveItem(activeSlot)
+end
+Returns <code>0</code> if the pocket slot is empty.
+For cards, returns <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Card.html">Card</a>.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">pocketItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">player</span><span class="p">:</span><span class="nf">GetPocketItem</span><span class="p">(</span><span class="nv">PillCardSlot</span><span class="p">.</span><span class="py">PRIMARY</span><span class="p">)</span>
-<span class="kr">if</span><span class="w"> </span><span class="nv">pocketItem</span><span class="p">:</span><span class="nf">GetType</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">PocketItemType</span><span class="p">.</span><span class="py">ACTIVE_ITEM</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">  </span><span class="kd">local</span><span class="w"> </span><span class="nv">activeSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pocketItem</span><span class="p">:</span><span class="nf">GetSlot</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="kd">local</span><span class="w"> </span><span class="nv">activeItemID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">player</span><span class="p">:</span><span class="nf">GetActiveItem</span><span class="p">(</span><span class="nv">activeSlot</span><span class="p">)</span>
-<span class="kr">end</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<hr />
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">???</span><span class="o">+</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="s2">&quot;Example code to obtain the [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) of the pocket active item in a given pocket slot:&quot;</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">activeSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pocketItem</span><span class="p">:</span><span class="nf">GetSlot</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div></td></tr></table></div></p>
 <h3 aria-label="Functions" id="gettype">GetType ()<a class="headerlink" href="#gettype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="pocketitemtype-gettype"><a href="enums/PocketItemType.html">PocketItemType</a> GetType ( )<a class="headerlink" href="#pocketitemtype-gettype" title="Permanent link">⚓︎</a></h4>
-<p>Returns the <a href="enums/PocketItemType.html">PocketItemType</a>.</p>
-<p>This value is unreliable if the slot is currently empty, as the game sometimes does not clear it.</p>
-<hr />
+<p>This value is unreliable if the slot is currently empty, as the game sometimes does not clear it.
+Returns the <a href="enums/PocketItemType.html">PocketItemType</a>.</p>
 
 
 

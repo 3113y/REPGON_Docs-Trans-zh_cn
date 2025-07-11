@@ -11,16 +11,14 @@ tags:
 ___
 ### GetEntries () {: aria-label='Functions' }
 #### int[] GetEntries ( ) {: .copyable aria-label='Functions' }
-The table contains the following fields
-
-|Field|Type|Comment|
+返回的表包括以下内容
 |:--|:--|:--|
 | bossID | [BossType](enums/BossType.md) | |
 | weight | float | |
-| weightAlt | float | |
+|Field|Type|Comment|
 | achievementID | [Achievement](enums/Achievement.md) | |
-
-___
+| weightAlt | float | |
+该表格包含以下字段
 ### GetName () {: aria-label='Functions' }
 #### string GetName ( ) {: .copyable aria-label='Functions' }
 

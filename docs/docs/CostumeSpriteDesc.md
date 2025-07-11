@@ -42,8 +42,7 @@ ___
 ___
 ### GetSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetSprite ( ) {: .copyable aria-label='Functions' }
-Returns sprite of associated to the costume.
-___
+返回与该服装相关联的精灵。
 ### HasOverlay () {: aria-label='Functions' }
 #### boolean HasOverlay ( ) {: .copyable aria-label='Functions' }
 

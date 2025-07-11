@@ -24,12 +24,8 @@ ___
 ___
 ### GetEndFrame () {: aria-label='Functions' }
 #### int GetEndFrame ( ) {: .copyable aria-label='Functions' }
-Note that the "end frame" is the start frame of the NEXT AnimationFrame.
-
-That is, THIS AnimationFrame is no longer shown on this frame.
-
-___
-### GetHeight () {: aria-label='Functions' }
+也就是说，本动画帧（AnimationFrame）在此帧之后将不再显示。
+请注意，“结束帧”是下一动画帧（AnimationFrame）的起始帧。### GetHeight () {: aria-label='Functions' }
 #### float GetHeight ( ) {: .copyable aria-label='Functions' }
 
 ___

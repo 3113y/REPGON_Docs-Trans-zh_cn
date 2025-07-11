@@ -8054,24 +8054,21 @@
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="isposvisible">IsPosVisible ()<a class="headerlink" href="#isposvisible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isposvisible-vector-pos">boolean IsPosVisible ( <a href="Vector.html">Vector</a> Pos )<a class="headerlink" href="#boolean-isposvisible-vector-pos" title="Permanent link">⚓︎</a></h4>
-<p>Returns if the in-world position is visible to the camera.</p>
-<hr />
+<p>返回世界中的某个位置是否在相机的可见范围内。</p>
 <h3 aria-label="Functions" id="setfocusposition">SetFocusPosition ()<a class="headerlink" href="#setfocusposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setfocusposition-vector-pos">void SetFocusPosition ( <a href="Vector.html">Vector</a> Pos )<a class="headerlink" href="#void-setfocusposition-vector-pos" title="Permanent link">⚓︎</a></h4>
-<p>Sets the camera's current focus position, causing it to shift towards the specified position</p>
-<p>The camera will only move if the current room size is larger than 1x1. If the room size is 1x1 or smaller, the camera will remain stationary and this function will do nothing. </p>
-<p>This function must be called inside an update callback such as <code>ModCallbacks.MC_POST_UPDATE</code>, otherwise the game will override the camera's position.</p>
-<hr />
+<p>仅当当前房间大小大于 1x1 时，相机才会移动。如果房间大小为 1x1 或更小，相机将保持静止，此函数将不起作用。
+此函数必须在诸如 <code>ModCallbacks.MC_POST_UPDATE</code> 之类的更新回调中调用，否则游戏将覆盖相机的位置。
+设置相机当前的聚焦位置，使其向指定位置移动。</p>
 <h3 aria-label="Functions" id="snaptoposition">SnapToPosition ()<a class="headerlink" href="#snaptoposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-snaptoposition-vector-pos">void SnapToPosition ( <a href="Vector.html">Vector</a> Pos )<a class="headerlink" href="#void-snaptoposition-vector-pos" title="Permanent link">⚓︎</a></h4>
-<p>Sets the camera's position instantly to the specified position.</p>
-<p>The camera will only move if the current room size is larger than 1x1. If the room size is 1x1 or smaller, the camera will remain stationary and this function will do nothing.</p>
-<p>This function must be called inside a render callback such as <code>ModCallbacks.MC_POST_RENDER</code>, otherwise the game will override the camera's position.</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-<p>This function seems to only work when Active Camera is off.</p>
 </details>
-<hr />
+<p>立即将相机的位置设置为指定位置。
+此函数似乎仅在“主动相机”关闭时有效。
+仅当当前房间大小大于 1x1 时，相机才会移动。如果房间大小为 1x1 或更小，相机将保持静止，此函数将不起作用。
+此函数必须在诸如 <code>ModCallbacks.MC_POST_RENDER</code> 之类的渲染回调中调用，否则游戏将覆盖相机的位置。</p>
 
 
 

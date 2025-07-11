@@ -6,7 +6,6 @@ tags:
 # Global Class "Ambush"
 
 ???+ info
-这是一个测试的上传
     You can get this class by using the `Ambush` global table.
 
     **Note that to call these functions, you must use a `.` (period) instead of a `:` (colon)!**
@@ -20,84 +19,62 @@ tags:
 
 ### GetCurrentWave () {: aria-label='Functions' }
 #### int GetCurrentWave ( ) {: .copyable aria-label='Functions' }
-Returns the current wave number of the current challenge room or boss rush room.
+返回当前挑战房或Boss冲刺房的当前波数。
 
-___
 ### GetMaxBossChallengeWaves () {: aria-label='Functions' }
 #### int GetMaxBossChallengeWaves ( ) {: .copyable aria-label='Functions' }
-Returns the maximum amount of boss challenge room waves. 
+默认情况下，Boss挑战房的最大波数为 `2`。需要注意的是，模组可以修改Boss挑战房的最大波数。
+返回Boss挑战房的最大波数。
 
-By default, the maximum amount of challenge room waves are `2`. It's important to note that mods can modify the maximum amount of challenge room waves.
-
-___
 ### GetMaxBossrushWaves () {: aria-label='Functions' }
 #### int GetMaxBossrushWaves ( ) {: .copyable aria-label='Functions' }
-Returns the maximum amount of boss rush waves. 
+返回Boss冲刺的最大波数。
+默认情况下，Boss冲刺的最大波数为 `15`。需要注意的是，模组可以修改Boss冲刺的最大波数。
 
-By default, the maximum amount of boss rush waves are `15`. It's important to note that mods can modify the maximum amount of boss rush waves.
-
-___
 ### GetMaxChallengeWaves () {: aria-label='Functions' }
 #### int GetMaxChallengeWaves ( ) {: .copyable aria-label='Functions' }
-Returns the maximum amount of challenge room waves. 
+默认情况下，挑战房的最大波数为 `3`。需要注意的是，模组可以修改挑战房的最大波数。
+返回挑战房的最大波数。
 
-By default, the maximum amount of challenge room waves are `3`. It's important to note that mods can modify the maximum amount of challenge room waves.
-
-___
 ### GetNextWave () {: aria-label='Functions' }
 #### [RoomConfigRoom](RoomConfigRoom.md) GetNextWave ( ) {: .copyable aria-label='Functions' }
-Returns the [RoomConfigRoom](RoomConfigRoom.md) of the next challenge room wave. Calling this function outside of a challenge room will result in an error.
+返回下一波挑战房的 [RoomConfigRoom](RoomConfigRoom.md)。在挑战房外调用此函数将导致错误。
 
-___
 ### GetNextWaves () {: aria-label='Functions' }
 #### [RoomConfigRoom](RoomConfigRoom.md)[] GetNextWaves ( ) {: .copyable aria-label='Functions' }
-Returns a table containing the [RoomConfigRoom](RoomConfigRoom.md) of the next challenge room waves.
+返回一个包含下几波挑战房的 [RoomConfigRoom](RoomConfigRoom.md) 的表。
 
-___
 ### SetMaxBossChallengeWaves () {: aria-label='Functions' }
 #### void SetMaxBossChallengeWaves ( int Waves ) {: .copyable aria-label='Functions' }
-Sets the maximum amount of boss challenge room waves.
-
+目前，此值在游戏重启时不会重置。一旦我们弄清楚如何在C++端的初始化时干净利落地运行代码，这个问题就会得到修复！
 ???+ bug "Bug"
-	Currently this value is not reset on game restart. This will be fixed as soon as we figure out how to cleanly run code on init on the C++ side!
-	
-___
+设置Boss挑战房的最大波数。
+
 ### SetMaxBossrushWaves () {: aria-label='Functions' }
 #### void SetMaxBossrushWaves ( int Waves ) {: .copyable aria-label='Functions' }
-Sets the maximum amount of boss rush waves. As of now, there is a maximum cap of `25` waves.
+设置Boss冲刺的最大波数。截至目前，最大波数上限为 `25` 波。
 
-___
 ### SetMaxChallengeWaves () {: aria-label='Functions' }
 #### void SetMaxChallengeWaves ( int Waves ) {: .copyable aria-label='Functions' }
-Sets the maximum amount of challenge room waves.
-
+目前，此值在游戏重启时不会重置。一旦我们弄清楚如何在C++端的初始化时干净利落地运行代码，这个问题就会得到修复！
 ???+ bug "Bug"
-	Currently this value is not reset on game restart. This will be fixed as soon as we figure out how to cleanly run code on init on the C++ side!
-	
-___
+设置挑战房的最大波数。
+
 ### SpawnBossrushWave () {: aria-label='Functions' }
 #### void SpawnBossrushWave ( ) {: .copyable aria-label='Functions' }
-Spawns a boss rush wave in the current room.
-
+在当前房间生成一波Boss冲刺。
 ???+ bug "Bug"
-	Calling this function will do nothing unless a boss rush has been triggered at least once during the current game session.
+除非在当前游戏会话中至少触发过一次Boss冲刺，否则调用此函数将不会有任何效果。
 
-___
 ### SpawnWave () {: aria-label='Functions' }
 #### void SpawnWave ( ) {: .copyable aria-label='Functions' }
-Spawns a challenge room wave associated with the current floor.
-
+如果当前楼层是蓝子宫，游戏也会崩溃。
+如果当前游戏模式是贪婪模式或更贪婪模式，调用此函数会导致游戏崩溃。
 ???+ bug "Bug"
-	Calling this function crashes the game if the current game mode is Greed or Greedier.
+生成与当前楼层相关的挑战房波次。
 
-    The game also crashes if the current floor is Blue Womb.
-
-___
 ### StartChallenge () {: aria-label='Functions' }
 #### void StartChallenge ( ) {: .copyable aria-label='Functions' }
-Triggers the challenge room or boss rush.
-
+在Boss冲刺房或挑战房外调用此函数除了会永久关闭门之外不会有任何效果，从而导致软锁定。
 ???+ bug "Bug"
-	Calling this function outside of the boss rush room or a challenge room will do nothing except permanently close the doors, resulting in a softlock.
-
-___
+触发挑战房或Boss冲刺。

@@ -29,10 +29,8 @@ tags:
 
 ### GetRNG () {: aria-label='Functions' }
 #### [RNG](RNG.md) GetRNG ( ) {: .copyable aria-label='Functions' }
-
 ???+ warning "Warning"
-	May return `nil`.
-___
+May return `nil`.
 ### GetSeed () {: aria-label='Functions' }
 #### int GetSeed ( ) {: .copyable aria-label='Functions' }
 

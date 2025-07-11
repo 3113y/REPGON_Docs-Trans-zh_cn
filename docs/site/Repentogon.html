@@ -8011,20 +8011,12 @@ the current version, the changelog etc. It is a <strong>table</strong>.</p>
 operator, rather than the colon (<code>:</code>) operator.</p>
 <h3 aria-label="Functions" id="meetsversion">MeetsVersion ()<a class="headerlink" href="#meetsversion" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-meetsversion-string-version">boolean MeetsVersion ( string version )<a class="headerlink" href="#boolean-meetsversion-string-version" title="Permanent link">⚓︎</a></h4>
-<p>Checks whether the specified <code>version</code> is greater or equal to the currently 
-installed Repentogon version.</p>
-<p>The function splits the <code>version</code> parameter alongside numbers boudaries. Each 
-token produced by the split is compared against the corresponding token in 
-the Repentogon version string. The function returns as soon as:
-* The token in <code>version</code> is strictly lower than the corresponding token in 
-<code>REPENTOGON.Version</code>. The function returns <code>false</code>.
-* The token in <code>version</code> is strictly greater than the corresponding token in 
-<code>REPENTOGON.Version</code>. The function returns <code>true</code>.
+<p>exactly matches the current Repentogon version.
+REPENTOGON.MeetsVersion("1.0.9") -- True
+Checks whether the specified <code>version</code> is greater or equal to the currently
 * All tokens are consumed. The function returns <code>true</code> as the requested <code>version</code>
-exactly matches the current Repentogon version.</p>
-<p>If <code>REPENTOGON.Version</code> equals "dev build", the function always returns <code>true</code>.</p>
-<details class="example" open="open">
-<summary>Example</summary>
+8 is compared against 9: it's lower so return false. --]]
+<code>REPENTOGON.Version</code>. The function returns <code>true</code>.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -8045,35 +8037,36 @@ exactly matches the current Repentogon version.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Assume REPENTOGON.Version = &quot;1.0.9a&quot;</span>
-<span class="nv">REPENTOGON</span><span class="p">.</span><span class="nf">MeetsVersion</span><span class="p">(</span><span class="s2">&quot;1.0.8b&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- False</span>
-<span class="cm">--[[ 1 is compared against 1: they are equal so continue.</span>
-<span class="cm">0 is compared against 0: they are equal so continue.</span>
-<span class="cm">8 is compared against 9: it&#39;s lower so return false. --]]</span>
-
-<span class="nv">REPENTOGON</span><span class="p">.</span><span class="nf">MeetsVersion</span><span class="p">(</span><span class="s2">&quot;1.0.9&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- True</span>
-<span class="cm">--[[ 1 is compared against 1, 0 is compared against 0, 9 is compared against </span>
-<span class="cm">9: all are equals, all tokens are consumed: return true.</span>
-<span class="cm">Note that the letter is silently discarded. --]]</span>
-
-<span class="nv">REPENTOGON</span><span class="p">.</span><span class="nf">MeetsVersion</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- True</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mi">1</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">compared</span><span class="w"> </span><span class="nv">against</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="nv">it</span><span class="s1">&#39;s greater so return true. --]]</span>
+<span class="s1">return `true`.</span>
+<span class="s1">Note that the letter is silently discarded. --]]</span>
+<span class="s1">`REPENTOGON.Version`. The function returns `false`.</span>
+<span class="s1">Up until Repentogon version 1.0.10b, this function is bugged and will always</span>
+<span class="s1">9: all are equals, all tokens are consumed: return true.</span>
+<span class="s1">???+ bug</span>
+<span class="s1">0 is compared against 0: they are equal so continue.</span>
+<span class="s1">--[[ 1 is compared against 1: they are equal so continue.</span>
+<span class="s1">If `REPENTOGON.Version` equals &quot;dev build&quot;, the function always returns `true`.</span>
+<span class="s1">* The token in `version` is strictly lower than the corresponding token in</span>
+<span class="s1">REPENTOGON.MeetsVersion(&quot;1c1&quot;) -- True</span>
+<span class="s1">* The token in `version` is strictly greater than the corresponding token in</span>
+<span class="s1">The function splits the `version` parameter alongside numbers boudaries. Each</span>
+<span class="s1">???+ example</span>
+<span class="s1">-- Assume REPENTOGON.Version = &quot;1.0.9a&quot;</span>
+<span class="s1">the Repentogon version string. The function returns as soon as:</span>
+<span class="s1">REPENTOGON.MeetsVersion(&quot;1.0.8b&quot;) -- False</span>
+<span class="s1">installed Repentogon version.</span>
+<span class="s1">12 is compared against 0: it&#39;</span><span class="nv">s</span><span class="w"> </span><span class="nv">greater</span><span class="w"> </span><span class="nv">so</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kc">true</span><span class="p">.</span><span class="w"> </span><span class="c1">--]]</span>
+<span class="cm">--[[ 1 is compared against 1, 0 is compared against 0, 9 is compared against</span>
+<span class="cm">REPENTOGON.MeetsVersion(&quot;1.12&quot;) -- True</span>
+<span class="cm">REPENTOGON.MeetsVersion(&quot;2&quot;) -- True</span>
 <span class="cm">--[[ 2 is compared against 1: it&#39;s higher, so return true. --]]</span>
-
-<span class="nv">REPENTOGON</span><span class="p">.</span><span class="nf">MeetsVersion</span><span class="p">(</span><span class="s2">&quot;1.12&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- True</span>
-<span class="cm">--[[ 1 is compared against 1: they are equal so continue.</span>
-<span class="cm">12 is compared against 0: it&#39;s greater so return true. --]]</span>
-
-<span class="nv">REPENTOGON</span><span class="p">.</span><span class="nf">MeetsVersion</span><span class="p">(</span><span class="s2">&quot;1c1&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- True</span>
-<span class="cm">--[[ 1 is compared against 1: they are equal so continue.</span>
-<span class="cm">1 is compared against 0: it&#39;s greater so return true. --]]</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<details class="bug" open="open">
-<summary>Bug</summary>
-<p>Up until Repentogon version 1.0.10b, this function is bugged and will always
-return <code>true</code>.</p>
-</details>
-<hr />
+<span class="nv">token</span><span class="w"> </span><span class="nv">produced</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">split</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">compared</span><span class="w"> </span><span class="nv">against</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">corresponding</span><span class="w"> </span><span class="nv">token</span><span class="w"> </span><span class="kr">in</span>
+</code></pre></div></td></tr></table></div></p>
 
 
 

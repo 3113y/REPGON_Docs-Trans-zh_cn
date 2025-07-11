@@ -1132,21 +1132,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#canpickupgridentity" class="md-nav__link">
     <span class="md-ellipsis">
@@ -6999,21 +6984,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#canpickupgridentity" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8948,21 +8918,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#canpickupgridentity" class="md-nav__link">
     <span class="md-ellipsis">
@@ -9392,47 +9347,36 @@
 <h3 aria-label="Modified Functions" id="getlroomareadesc">GetLRoomAreaDesc ()<a class="headerlink" href="#getlroomareadesc" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="lroomareadesc-getlroomareadesc"><a href="LRoomAreaDesc.html">LRoomAreaDesc</a> GetLRoomAreaDesc ( )<a class="headerlink" href="#lroomareadesc-getlroomareadesc" title="Permanent link">⚓︎</a></h4>
 <p>Now returns a usable class. Describes the corners of an L-room shape (as divided horizontally into two rectangles), in worldspace.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="getlroomtiledesc">GetLRoomTileDesc ()<a class="headerlink" href="#getlroomtiledesc" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="lroomtiledesc-getlroomtiledesc"><a href="LRoomTileDesc.html">LRoomTileDesc</a> GetLRoomTileDesc ( )<a class="headerlink" href="#lroomtiledesc-getlroomtiledesc" title="Permanent link">⚓︎</a></h4>
 <p>Now returns a usable class. Describes the corners of an L-room shape (as divided horizontally into two rectangles), in grid coordinates.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="spawngridentity">SpawnGridEntity ()<a class="headerlink" href="#spawngridentity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="boolean-spawngridentity-int-gridindex-gridentitytype-type-int-variant-0-int-seed-nil-int-vardata-0">boolean SpawnGridEntity ( int GridIndex, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/GridEntityType.html">GridEntityType</a> Type, int Variant = 0, int Seed = nil, int VarData = 0 )<a class="headerlink" href="#boolean-spawngridentity-int-gridindex-gridentitytype-type-int-variant-0-int-seed-nil-int-vardata-0" title="Permanent link">⚓︎</a></h4>
-<h4 aria-label="Modified Functions" class="copyable" id="boolean-spawngridentity-int-gridindex-gridentitydesc-descriptor">boolean SpawnGridEntity ( int GridIndex, <a href="https://wofsauge.github.io/IsaacDocs/rep/GridEntityDesc.html">GridEntityDesc</a> Descriptor)<a class="headerlink" href="#boolean-spawngridentity-int-gridindex-gridentitydesc-descriptor" title="Permanent link">⚓︎</a></h4>
 <p>No longer crashes if an invalid <code>GridIndex</code> is used. All arguments beyond <code>Type</code> are optional. An overload has been added to allow spawning a new grid entity using an existing <code>GridEntityDesc</code>.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="tryspawnspecialquestdoor">TrySpawnSpecialQuestDoor ()<a class="headerlink" href="#tryspawnspecialquestdoor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="boolean-tryspawnspecialquestdoor-boolean-ignorestagetype-false">boolean TrySpawnSpecialQuestDoor ( boolean IgnoreStageType = false )<a class="headerlink" href="#boolean-tryspawnspecialquestdoor-boolean-ignorestagetype-false" title="Permanent link">⚓︎</a></h4>
 <p>An <code>IgnoreStageType</code> parameter has been added to allow spawning the Mirror &amp; Mineshaft door outside of <code>STAGETYPE_REPENTANCE</code> and <code>STAGETYPE_REPENTANCE_B</code> stages. Note that the <code>KNIFE_PUZZLE</code> <a href="Level.html#dimension-getdimension">dimension</a> must be set up properly for these doors not to crash on entry!</p>
-<hr />
-<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="canpickupgridentity">CanPickupGridEntity ()<a class="headerlink" href="#canpickupgridentity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-canpickupgridentity-int-gridindex">boolean CanPickupGridEntity ( int GridIndex )<a class="headerlink" href="#boolean-canpickupgridentity-int-gridindex" title="Permanent link">⚓︎</a></h4>
 <p>Returns true if the gridentity at the given position can be picked up.</p>
-<hr />
 <h3 aria-label="Functions" id="canspawnobstacleatposition">CanSpawnObstacleAtPosition ()<a class="headerlink" href="#canspawnobstacleatposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-canspawnobstacleatposition-int-gridindex-boolean-force">boolean CanSpawnObstacleAtPosition ( int GridIndex, boolean Force )<a class="headerlink" href="#boolean-canspawnobstacleatposition-int-gridindex-boolean-force" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="dolightningstrike">DoLightningStrike ()<a class="headerlink" href="#dolightningstrike" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-dolightningstrike-int-seed-randomseed">void DoLightningStrike ( int Seed = RandomSeed )<a class="headerlink" href="#void-dolightningstrike-int-seed-randomseed" title="Permanent link">⚓︎</a></h4>
 <p>Creates a lightning effect as seen in Downpour. <code>Seed</code> determines <a href="Room.html#getlightningintensity">intensity</a> (<code>1.3 + RandomFloat()*.6</code>) and sound pitch (<code>0.9 + RandomFloat()*0.2</code>).</p>
-<hr />
 <h3 aria-label="Functions" id="getbackdrop">GetBackdrop ()<a class="headerlink" href="#getbackdrop" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="backdrop-getbackdrop"><a href="Backdrop.html">Backdrop</a> GetBackdrop ( )<a class="headerlink" href="#backdrop-getbackdrop" title="Permanent link">⚓︎</a></h4>
 <p>Returns a <a href="Backdrop.html">Backdrop</a> object.</p>
-<hr />
 <h3 aria-label="Functions" id="getbossvictoryjingle">GetBossVictoryJingle ()<a class="headerlink" href="#getbossvictoryjingle" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="music-getbossvictoryjingle"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Music.html">Music</a> GetBossVictoryJingle ( )<a class="headerlink" href="#music-getbossvictoryjingle" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getcamera">GetCamera ()<a class="headerlink" href="#getcamera" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="camera-getcamera"><a href="Camera.html">Camera</a> GetCamera ( )<a class="headerlink" href="#camera-getcamera" title="Permanent link">⚓︎</a></h4>
 <p>Returns a <a href="Camera.html">Camera</a> object.</p>
-<hr />
 <h3 aria-label="Functions" id="getchampionbosschance">GetChampionBossChance ()<a class="headerlink" href="#getchampionbosschance" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getchampionbosschance">float GetChampionBossChance ( )<a class="headerlink" href="#float-getchampionbosschance" title="Permanent link">⚓︎</a></h4>
 <p>Return the probability that boss spawns in this room will be champions.</p>
-<hr />
 <h3 aria-label="Functions" id="geteffects">GetEffects ()<a class="headerlink" href="#geteffects" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="temporaryeffects-geteffects"><a href="https://wofsauge.github.io/IsaacDocs/rep/TemporaryEffects.html">TemporaryEffects</a> GetEffects ( )<a class="headerlink" href="#temporaryeffects-geteffects" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9451,22 +9395,19 @@
 <hr />
 <h3 aria-label="Functions" id="getitempool">GetItemPool ()<a class="headerlink" href="#getitempool" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="itempooltype-pooltype-getitempool-int-seed-boolean-raw"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html">ItemPoolType</a> PoolType GetItemPool ( int Seed, boolean Raw )<a class="headerlink" href="#itempooltype-pooltype-getitempool-int-seed-boolean-raw" title="Permanent link">⚓︎</a></h4>
-<p>Retrieves the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html">ItemPoolType</a> the game would use to generate random collectibles in the current room. Unlike <a href="https://wofsauge.github.io/IsaacDocs/rep/ItemPool.html#getpoolforroom">ItemPool.GetPoolForRoom()</a>, this takes into account the pool set using <a href="Room.html#setitempool">SetItemPool()</a>, and runs the game's pool selection code, which handles unique cases (ex. Boss Room + Used Satanic Bible = Devil Pool).</p>
-<p>If <code>Raw</code> is set to <code>true</code> and the pool is set to <code>POOL_NULL</code> then <code>POOL_NULL</code> will be returned, instead of running the game's pool selection code.</p>
-<hr />
+<p>If <code>Raw</code> is set to <code>true</code> and the pool is set to <code>POOL_NULL</code> then <code>POOL_NULL</code> will be returned, instead of running the game's pool selection code.
+Retrieves the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html">ItemPoolType</a> the game would use to generate random collectibles in the current room. Unlike <a href="https://wofsauge.github.io/IsaacDocs/rep/ItemPool.html#getpoolforroom">ItemPool.GetPoolForRoom()</a>, this takes into account the pool set using <a href="Room.html#setitempool">SetItemPool()</a>, and runs the game's pool selection code, which handles unique cases (ex. Boss Room + Used Satanic Bible = Devil Pool).</p>
 <h3 aria-label="Functions" id="getlightningintensity">GetLightningIntensity ()<a class="headerlink" href="#getlightningintensity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getlightningintensity">float GetLightningIntensity ( )<a class="headerlink" href="#float-getlightningintensity" title="Permanent link">⚓︎</a></h4>
-<p>Gets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.</p>
-<p>This is set by the game in a random range between <code>1.3</code> and <code>2.1</code>, and decays by <code>value * .75</code> per render.</p>
-<hr />
+<p>This is set by the game in a random range between <code>1.3</code> and <code>2.1</code>, and decays by <code>value * .75</code> per render.
+Gets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.</p>
 <h3 aria-label="Functions" id="getnumrainspawners">GetNumRainSpawners ()<a class="headerlink" href="#getnumrainspawners" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getnumrainspawners">int GetNumRainSpawners ( )<a class="headerlink" href="#int-getnumrainspawners" title="Permanent link">⚓︎</a></h4>
-<p>The number of areas in a room that spawn rain effects in a tight radius.</p>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>There's more to this than just the number of them, but I'm having trouble identifying how this works.</p>
 </details>
-<hr />
+<p>There's more to this than just the number of them, but I'm having trouble identifying how this works.
+The number of areas in a room that spawn rain effects in a tight radius.</p>
 <h3 aria-label="Functions" id="getrail">GetRail ()<a class="headerlink" href="#getrail" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="stbrailvariant-getrail-int-gridindex"><a href="enums/StbRailVariant.html">StbRailVariant</a> GetRail ( int GridIndex )<a class="headerlink" href="#stbrailvariant-getrail-int-gridindex" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9476,18 +9417,15 @@
 <h3 aria-label="Functions" id="getrainintensity">GetRainIntensity ()<a class="headerlink" href="#getrainintensity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getrainintensity">float GetRainIntensity ( )<a class="headerlink" href="#float-getrainintensity" title="Permanent link">⚓︎</a></h4>
 <p>Used by the positional rain effect spawners in Downpour. No noticable effect beyond <code>1.0</code>.</p>
-<hr />
 <h3 aria-label="Functions" id="getroomcleardelay">GetRoomClearDelay ()<a class="headerlink" href="#getroomcleardelay" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getroomcleardelay">int GetRoomClearDelay ( )<a class="headerlink" href="#int-getroomcleardelay" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getshopitemprice">GetShopItemPrice ()<a class="headerlink" href="#getshopitemprice" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getshopitemprice-int-entityvariant-int-entitysubtype-int-shopitemid">int GetShopItemPrice ( int EntityVariant, int EntitySubType, int ShopItemID )<a class="headerlink" href="#int-getshopitemprice-int-entityvariant-int-entitysubtype-int-shopitemid" title="Permanent link">⚓︎</a></h4>
 <p>Returns the price of the item.</p>
-<hr />
 <h3 aria-label="Functions" id="getwateramount">GetWaterAmount ()<a class="headerlink" href="#getwateramount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getwateramount">float GetWaterAmount ( )<a class="headerlink" href="#float-getwateramount" title="Permanent link">⚓︎</a></h4>
 <p>Returns the "amount" of water currently in the room. Generally this will be <code>0</code> for no water and <code>1</code> for water, but values in between <code>0</code> and <code>1</code> (and technically above <code>1</code> in modded scenarios) are possible.</p>
-<hr />
 <h3 aria-label="Functions" id="getwatercolor">GetWaterColor ()<a class="headerlink" href="#getwatercolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="kcolor-getwatercolor"><a href="https://wofsauge.github.io/IsaacDocs/rep/KColor.html">KColor</a> GetWaterColor ( )<a class="headerlink" href="#kcolor-getwatercolor" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9497,43 +9435,35 @@
 <h3 aria-label="Functions" id="ischampionbossseed">IsChampionBossSeed ()<a class="headerlink" href="#ischampionbossseed" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ischampionbossseed">boolean IsChampionBossSeed ( )<a class="headerlink" href="#boolean-ischampionbossseed" title="Permanent link">⚓︎</a></h4>
 <p>Return whether boss spawns in this room will be champions.</p>
-<hr />
 <h3 aria-label="Functions" id="ispersistentroomentity">IsPersistentRoomEntity ()<a class="headerlink" href="#ispersistentroomentity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ispersistentroomentity-entitytype-type-int-variant-0">boolean IsPersistentRoomEntity ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html">EntityType</a> Type, int Variant = 0 )<a class="headerlink" href="#boolean-ispersistentroomentity-entitytype-type-int-variant-0" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="pickupgridentity">PickupGridEntity ()<a class="headerlink" href="#pickupgridentity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityeffect-pickupgridentity-int-gridindex"><a href="https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html">EntityEffect</a> PickupGridEntity ( int GridIndex )<a class="headerlink" href="#entityeffect-pickupgridentity-int-gridindex" title="Permanent link">⚓︎</a></h4>
 <p>Tries to pick up the grid entity at the provided index and returns an <a href="https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html">EntityEffect</a> of the picked up grid entity.</p>
-<hr />
 <h3 aria-label="Functions" id="removegridentityimmediate">RemoveGridEntityImmediate ()<a class="headerlink" href="#removegridentityimmediate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-removegridentityimmediate-int-gridindex-int-pathtrail-boolean-keepdecoration">void RemoveGridEntityImmediate ( int GridIndex, int PathTrail, boolean KeepDecoration )<a class="headerlink" href="#void-removegridentityimmediate-int-gridindex-int-pathtrail-boolean-keepdecoration" title="Permanent link">⚓︎</a></h4>
 <p><em>Immediately</em> removes the GridEntity at the given index. This means grids can be properly removed and immediately replaced, <em>without</em> the need to call Room:Update.</p>
-<hr />
 <h3 aria-label="Functions" id="savestate">SaveState ()<a class="headerlink" href="#savestate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-savestate">void SaveState ( )<a class="headerlink" href="#void-savestate" title="Permanent link">⚓︎</a></h4>
 <p>Saves the current state of the room</p>
-<hr />
 <h3 aria-label="Functions" id="setbackdroptype">SetBackdropType ()<a class="headerlink" href="#setbackdroptype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setbackdroptype-backdroptype-int-unknown">void SetBackdropType ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/BackdropType.html">BackdropType</a>, int Unknown )<a class="headerlink" href="#void-setbackdroptype-backdroptype-int-unknown" title="Permanent link">⚓︎</a></h4>
-<p>This function will not work if the Unknown integer is passed as <code>0</code>.</p>
-<p>The backdrop variant chosen is seeded based on the room, and does not persist when leaving and re-entering. Calling this function again on re-entry will result in the same backdrop variant as before.</p>
-<hr />
+<p>The backdrop variant chosen is seeded based on the room, and does not persist when leaving and re-entering. Calling this function again on re-entry will result in the same backdrop variant as before.
+This function will not work if the Unknown integer is passed as <code>0</code>.</p>
 <h3 aria-label="Functions" id="setgreedwavetimer">SetGreedWaveTimer ()<a class="headerlink" href="#setgreedwavetimer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setgreedwavetimer-int-time">void SetGreedWaveTimer ( int Time )<a class="headerlink" href="#void-setgreedwavetimer-int-time" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="setitempool">SetItemPool ()<a class="headerlink" href="#setitempool" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setitempool-itempooltype-pooltype">void SetItemPool ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html">ItemPoolType</a> PoolType )<a class="headerlink" href="#void-setitempool-itempooltype-pooltype" title="Permanent link">⚓︎</a></h4>
 <p>Sets the pool to use when the game needs to generate random collectibles in the current room. This takes priority over the game's regular pool selection code. Can be set to <code>ItemPoolType.POOL_NULL</code> to let the game handle pool selection. This is reset every room transition.</p>
-<hr />
 <h3 aria-label="Functions" id="setlavaintensity">SetLavaIntensity ()<a class="headerlink" href="#setlavaintensity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setlavaintensity-float-intensity">void SetLavaIntensity ( float Intensity )<a class="headerlink" href="#void-setlavaintensity-float-intensity" title="Permanent link">⚓︎</a></h4>
 <p>This primarily affects <a href="Room.html#updatecolormodifier">UpdateColorModifier</a> (if <code>Process</code> is true, an orange glow is added based on the number of pits and lava intensity).</p>
-<hr />
 <h3 aria-label="Functions" id="setlightningintensity">SetLightningIntensity ()<a class="headerlink" href="#setlightningintensity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setlightningintensity-float-intensity">void SetLightningIntensity ( float Intensity )<a class="headerlink" href="#void-setlightningintensity-float-intensity" title="Permanent link">⚓︎</a></h4>
-<p>Sets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.</p>
-<p>This is set by the game in a random range between <code>1.3</code> and <code>2.1</code>, and decays by <code>value * .75</code> per render.</p>
-<hr />
+<p>Sets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.
+This is set by the game in a random range between <code>1.3</code> and <code>2.1</code>, and decays by <code>value * .75</code> per render.</p>
 <h3 aria-label="Functions" id="setpausetimer">SetPauseTimer ()<a class="headerlink" href="#setpausetimer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setpausetimer-int-duration">void SetPauseTimer ( int Duration )<a class="headerlink" href="#void-setpausetimer-int-duration" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9543,14 +9473,12 @@
 <h3 aria-label="Functions" id="setrainintensity">SetRainIntensity ()<a class="headerlink" href="#setrainintensity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setrainintensity-float-intensity">void SetRainIntensity ( float Intensity )<a class="headerlink" href="#void-setrainintensity-float-intensity" title="Permanent link">⚓︎</a></h4>
 <p>Used by the positional rain effect spawners in Downpour. No noticable effect beyond <code>1.0</code>.</p>
-<hr />
 <h3 aria-label="Functions" id="setroomcleardelay">SetRoomClearDelay ()<a class="headerlink" href="#setroomcleardelay" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setroomcleardelay-int-delay">void SetRoomClearDelay ( int Delay )<a class="headerlink" href="#void-setroomcleardelay-int-delay" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="setwateramount">SetWaterAmount ()<a class="headerlink" href="#setwateramount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setwateramount-float-amount">void SetWaterAmount ( float Amount )<a class="headerlink" href="#void-setwateramount-float-amount" title="Permanent link">⚓︎</a></h4>
 <p>Sets the amount of water that should be in the current room. Vanilla typically uses <code>0</code> for no water and <code>1</code> for water. You can technically go higher than this for some interesting results.</p>
-<hr />
 <h3 aria-label="Functions" id="setwatercolor">SetWaterColor ()<a class="headerlink" href="#setwatercolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setwatercolor-kcolor-watercolor">void SetWaterColor ( <a href="Color.html">KColor</a> WaterColor )<a class="headerlink" href="#void-setwatercolor-kcolor-watercolor" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9559,18 +9487,16 @@
 <hr />
 <h3 aria-label="Functions" id="setwatercurrent">SetWaterCurrent ()<a class="headerlink" href="#setwatercurrent" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setwatercurrent-vector-watercurrent">void SetWaterCurrent ( <a href="Vector.html">Vector</a> WaterCurrent )<a class="headerlink" href="#void-setwatercurrent-vector-watercurrent" title="Permanent link">⚓︎</a></h4>
-<p>Sets the strength of the water current in the room. Current sounds and particles are automatically handled.</p>
-<p>The game typically uses <code>1</code> or <code>-1</code> for its values depending on current strength and direction. You can technically go higher than this for some interesting results. Arbitrary directions are fully supported as well.</p>
-<p><code>Vector(0, 0)</code> will remove the current.</p>
-<hr />
+<p><code>Vector(0, 0)</code> will remove the current.
+The game typically uses <code>1</code> or <code>-1</code> for its values depending on current strength and direction. You can technically go higher than this for some interesting results. Arbitrary directions are fully supported as well.
+Sets the strength of the water current in the room. Current sounds and particles are automatically handled.</p>
 <h3 aria-label="Functions" id="trygetshopdiscount">TryGetShopDiscount ()<a class="headerlink" href="#trygetshopdiscount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-trygetshopdiscount-int-shopitemidx-int-price">int TryGetShopDiscount ( int ShopItemIdx, int Price )<a class="headerlink" href="#int-trygetshopdiscount-int-shopitemidx-int-price" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="updatecolormodifier">UpdateColorModifier ()<a class="headerlink" href="#updatecolormodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-updatecolormodifier-boolean-process-true-boolean-lerp-true-float-rate-0015">void UpdateColorModifier ( boolean Process = true, boolean Lerp = true, float Rate = 0.015 )<a class="headerlink" href="#void-updatecolormodifier-boolean-process-true-boolean-lerp-true-float-rate-0015" title="Permanent link">⚓︎</a></h4>
-<p>Updates the room's color correction with the copy of <a href="ColorModifier.html">ColorModifier</a> stored in <a href="FXParams.html">FXParams</a>.
-<code>Process</code> runs the color correction through some additional modifications for lava and the abandoned mineshaft sequence.</p>
-<hr />
+<p><code>Process</code> runs the color correction through some additional modifications for lava and the abandoned mineshaft sequence.
+Updates the room's color correction with the copy of <a href="ColorModifier.html">ColorModifier</a> stored in <a href="FXParams.html">FXParams</a>.</p>
 
 
 

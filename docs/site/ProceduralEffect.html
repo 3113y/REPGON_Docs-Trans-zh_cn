@@ -8092,175 +8092,42 @@
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="getactionproperty">GetActionProperty ()<a class="headerlink" href="#getactionproperty" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getactionproperty">table GetActionProperty ( )<a class="headerlink" href="#table-getactionproperty" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table that describes the action argument.</p>
-<p>When <code>GetActionType</code> returns <code>USE_ACTIVE_ITEM</code>, the returned table has the following fields.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">id</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
-<p>When <code>GetActionType</code> returns <code>ADD_TEMPRORY_EFFECT</code>, the returned table has the following fields.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">id</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
-<p>When <code>GetActionType</code> returns <code>SPAWN_ENTITY</code>, the returned table has the following fields.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">type</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">variant</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
-<p>When <code>GetActionType</code> returns <code>CONVERT_ENTITY</code>, the returned table has the following fields.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">fromType</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">fromVariant</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">toType</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">target type</td>
-</tr>
-<tr>
-<td style="text-align: left;">toVariant</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">target variant</td>
-</tr>
-</tbody>
-</table>
-<p>When <code>GetActionType</code> returns <code>AREA_DAMAGE</code>, the returned table has the following fields.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">radius</td>
-<td style="text-align: left;">float</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">damage</td>
-<td style="text-align: left;">float</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
-<p>When <code>GetActionType</code> returns <code>FART</code>, the returned table has the following fields.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">scale</td>
-<td style="text-align: left;">float</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">radius</td>
-<td style="text-align: left;">float</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
-<hr />
+<p>| toType | int | target type |
+When <code>GetActionType</code> returns <code>SPAWN_ENTITY</code>, the returned table has the following fields.
+| scale | float | |
+When <code>GetActionType</code> returns <code>CONVERT_ENTITY</code>, the returned table has the following fields.
+| fromVariant | int | |
+When <code>GetActionType</code> returns <code>FART</code>, the returned table has the following fields.
+| damage | float | |
+When <code>GetActionType</code> returns <code>AREA_DAMAGE</code>, the returned table has the following fields.
+| id | int | |
+| fromType | int | |
+|:--|:--|:--|
+| variant | int | |
+When <code>GetActionType</code> returns <code>ADD_TEMPRORY_EFFECT</code>, the returned table has the following fields.
+Returns a table that describes the action argument.
+When <code>GetActionType</code> returns <code>USE_ACTIVE_ITEM</code>, the returned table has the following fields.
+|Field|Type|Comment|
+| type | int | |
+| radius | float | |
+| toVariant | int | target variant |</p>
 <h3 aria-label="Functions" id="getactiontype">GetActionType ()<a class="headerlink" href="#getactiontype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="proceduraleffectactiontype-getactiontype"><a href="enums/ProceduralEffectActionType.html">ProceduralEffectActionType</a> GetActionType ( )<a class="headerlink" href="#proceduraleffectactiontype-getactiontype" title="Permanent link">⚓︎</a></h4>
 <p>Returns what to do after the effect is triggered.</p>
-<hr />
 <h3 aria-label="Functions" id="getconditionproperty">GetConditionProperty ()<a class="headerlink" href="#getconditionproperty" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getconditionproperty">table GetConditionProperty ( )<a class="headerlink" href="#table-getconditionproperty" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table that describes the condition argument.</p>
-<p>When <code>GetConditionType</code> returns <code>ENTITY_SPAWN</code>, the returned table has the following fields.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">type</td>
-<td style="text-align: left;">int</td>
-</tr>
-<tr>
-<td style="text-align: left;">variant</td>
-<td style="text-align: left;">int</td>
-</tr>
-</tbody>
-</table>
-<hr />
+<p>| type |  int |
+| variant |  int |
+Returns a table that describes the condition argument.
+When <code>GetConditionType</code> returns <code>ENTITY_SPAWN</code>, the returned table has the following fields.
+|:--|:--|
+|Field|Type|</p>
 <h3 aria-label="Functions" id="getconditiontype">GetConditionType ()<a class="headerlink" href="#getconditiontype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="proceduraleffectconditiontype-getconditiontype"><a href="enums/ProceduralEffectConditionType.html">ProceduralEffectConditionType</a> GetConditionType ( )<a class="headerlink" href="#proceduraleffectconditiontype-getconditiontype" title="Permanent link">⚓︎</a></h4>
 <p>Returns the timing when the effect was triggered.</p>
-<hr />
 <h3 aria-label="Functions" id="gettriggerchance">GetTriggerChance ()<a class="headerlink" href="#gettriggerchance" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-gettriggerchance">float GetTriggerChance ( )<a class="headerlink" href="#float-gettriggerchance" title="Permanent link">⚓︎</a></h4>
 <p>Values range from <code>0</code> to <code>1</code>.</p>
-<hr />
 
 
 

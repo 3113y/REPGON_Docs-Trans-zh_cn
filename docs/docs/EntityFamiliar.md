@@ -38,40 +38,34 @@ ___
 ___
 ### GetItemConfig () {: aria-label='Functions' }
 #### [ItemConfigItem](ItemConfig_Item.md) GetItemConfig ( ) {: .copyable aria-label='Functions' }
-Returns the ItemConfigItem corresponding to the item that granted this familiar.
+如果跟班不是由道具生成的，则返回 nil。
+返回与赋予此跟班的道具相对应的 ItemConfigItem 对象。
 
-Returns nil if the familiar was not spawned by an item.
-
-___
 ### GetMoveDelayNum () {: aria-label='Functions' }
 #### int GetMoveDelayNum ( ) {: .copyable aria-label='Functions' }
-Returns the amount in frames that the familiar's movements are delayed from the player's. 30 frames = 1 second.
+返回跟班的移动相对于玩家的移动延迟的帧数。30 帧 = 1 秒。
 
-___
 ### GetMultiplier () {: aria-label='Functions' }
 #### float GetMultiplier ( ) {: .copyable aria-label='Functions' }
-Returns the "multiplier" for the familiar, from effects such as **BFFS!** or **Hive Mind**. Typically used to multiply things such as familiar damage.
+返回跟班的“乘数”，该乘数受诸如 **BFFS!** 或 **Hive Mind** 等效果的影响。通常用于乘以跟班的伤害等属性。
 
-???- info "Multipliers"
-    - **BFFS!** and **Hive Mind**: x2.0
-    - **Tainted Bethany**: x0.75
-    - **Tainted Lazarus Birthright**: x0.25
+???- info "乘数"
+- **堕化拉撒路长子权**：x0.25
+- **BFFS!** 和 **Hive Mind**：x2.0
+- **堕化伯大尼**：x0.75
 
-___
 ### GetPathFinder () {: aria-label='Functions' }
 #### [PathFinder](https://wofsauge.github.io/IsaacDocs/rep/PathFinder.html) GetPathFinder ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetWeapon () {: aria-label='Functions' }
 #### [Weapon](Weapon.md) GetWeapon ( ) {: .copyable aria-label='Functions' }
-Returns `nil` for familiars that don't mimic the player's attacks (Incubus, etc).
+对于不模仿玩家攻击的跟班（如魅魔等），返回 `nil`。
 
-___
 ### InvalidateCachedMultiplier () {: aria-label='Functions' }
 #### void InvalidateCachedMultiplier ( ) {: .copyable aria-label='Functions' }
-Makes it so that the next time [GetMultiplier](EntityFamiliar.md#getmultiplier) is called, [MC_EVALUATE_FAMILIAR_MULTIPLIER](enums/ModCallbacks.md#mc_evaluate_familiar_multiplier) is triggered to recalculate/allow modifying the multiplier.
+当下一次调用 [GetMultiplier](EntityFamiliar.md#getmultiplier) 时，触发 [MC_EVALUATE_FAMILIAR_MULTIPLIER](enums/ModCallbacks.md#mc_evaluate_familiar_multiplier) 来重新计算/允许修改乘数。
 
-___
 ### IsCharmed () {: aria-label='Functions' }
 #### boolean IsCharmed ( ) {: .copyable aria-label='Functions' }
 
@@ -82,18 +76,15 @@ ___
 ___
 ### SetMoveDelayNum () {: aria-label='Functions' }
 #### void SetMoveDelayNum ( int Delay ) {: .copyable aria-label='Functions' }
-Sets the amount in frames that the familiar's movements are delayed from the player's. 30 frames = 1 second.
+设置跟班的移动相对于玩家的移动延迟的帧数。30 帧 = 1 秒。
 
-___
 ### TriggerRoomClear () {: aria-label='Functions' }
 #### void TriggerRoomClear ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### TryAimAtMarkedTarget () {: aria-label='Functions' }
 #### [Vector](Vector.md) TryAimAtMarkedTarget ( [Vector](Vector.md) AimDirection, [Direction](https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html) Direction) {: .copyable aria-label='Functions' }
-Returns `nil` if unsuccessful.
-___
-### UpdateDirtColor () {: aria-label='Functions' }
+如果失败则返回 `nil`。### UpdateDirtColor () {: aria-label='Functions' }
 #### void UpdateDirtColor ( ) {: .copyable aria-label='Functions' }
 
 ___

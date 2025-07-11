@@ -4164,15 +4164,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#istainted" class="md-nav__link">
-    <span class="md-ellipsis">
-      IsTainted ()
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -8519,15 +8510,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#istainted" class="md-nav__link">
-    <span class="md-ellipsis">
-      IsTainted ()
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -8581,8 +8563,7 @@
 <hr />
 <h3 aria-label="Functions" id="getachievementid">GetAchievementID ()<a class="headerlink" href="#getachievementid" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="achievement-getachievementid"><a href="enums/Achievement.html">Achievement</a> GetAchievementID ( )<a class="headerlink" href="#achievement-getachievementid" title="Permanent link">⚓︎</a></h4>
-<p>Returns -1 if the character is not locked behind a vanilla achievement (or -2 for "hidden" vanilla characters).</p>
-<hr />
+<p>如果角色未被原版成就锁定，则返回 -1（若为“隐藏”的原版角色，则返回 -2）。</p>
 <h3 aria-label="Functions" id="getbirthrightdescription">GetBirthrightDescription ()<a class="headerlink" href="#getbirthrightdescription" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getbirthrightdescription">string GetBirthrightDescription ( )<a class="headerlink" href="#string-getbirthrightdescription" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8597,84 +8578,70 @@
 <hr />
 <h3 aria-label="Functions" id="getcard">GetCard ()<a class="headerlink" href="#getcard" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="card-getcard"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Card.html">Card</a> GetCard ( )<a class="headerlink" href="#card-getcard" title="Permanent link">⚓︎</a></h4>
-<p>Returns 0 if the character does not start with any vanilla card.</p>
-<p>Does not include starting cards obtained via unlocks.</p>
-<p>Does not include cards added by mods.</p>
-<hr />
+<p>不包括通过解锁获得的起始卡牌。
+不包括模组添加的卡牌。
+如果角色没有任何原版起始卡牌，则返回 0。</p>
 <h3 aria-label="Functions" id="getcoins">GetCoins ()<a class="headerlink" href="#getcoins" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getcoins">int GetCoins ( )<a class="headerlink" href="#int-getcoins" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getcollectibles">GetCollectibles ()<a class="headerlink" href="#getcollectibles" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="collectibletype-getcollectibles"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a>[] GetCollectibles ( )<a class="headerlink" href="#collectibletype-getcollectibles" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a>s for the character's starting items.</p>
-<hr />
+<p>返回一个包含角色起始物品的 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> 类型的表。</p>
 <h3 aria-label="Functions" id="getcostumeid">GetCostumeID ()<a class="headerlink" href="#getcostumeid" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getcostumeid">int GetCostumeID ( )<a class="headerlink" href="#int-getcostumeid" title="Permanent link">⚓︎</a></h4>
-<p>Returns -1 if the character does not have any XML-defined starting costume (like Maggy's hair).</p>
-<hr />
+<p>如果角色没有任何通过 XML 定义的起始服装（如玛吉的头发），则返回 -1。</p>
 <h3 aria-label="Functions" id="getcostumesuffix">GetCostumeSuffix ()<a class="headerlink" href="#getcostumesuffix" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getcostumesuffix">string GetCostumeSuffix ( )<a class="headerlink" href="#string-getcostumesuffix" title="Permanent link">⚓︎</a></h4>
-<p>Directory suffix used for character-specific costume sprites.</p>
-<hr />
+<p>用于角色特定服装精灵图的目录后缀。</p>
 <h3 aria-label="Functions" id="getextraportraitpath">GetExtraPortraitPath ()<a class="headerlink" href="#getextraportraitpath" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getextraportraitpath">string GetExtraPortraitPath ( )<a class="headerlink" href="#string-getextraportraitpath" title="Permanent link">⚓︎</a></h4>
-<p>Path to a <code>.anm2</code> file displayed on top of the character's level transition and boss VS screen portrait.</p>
-<hr />
+<p>指向一个 <code>.anm2</code> 文件的路径，该文件显示在角色的关卡过渡和 Boss 对战屏幕肖像之上。</p>
 <h3 aria-label="Functions" id="getkeys">GetKeys ()<a class="headerlink" href="#getkeys" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getkeys">int GetKeys ( )<a class="headerlink" href="#int-getkeys" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getmoddedcontrolssprite">GetModdedControlsSprite ()<a class="headerlink" href="#getmoddedcontrolssprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="sprite-getmoddedcontrolssprite"><a href="Sprite.html">Sprite</a> GetModdedControlsSprite ( )<a class="headerlink" href="#sprite-getmoddedcontrolssprite" title="Permanent link">⚓︎</a></h4>
-<p>Returns the Sprite used for a modded character's starting room controls.</p>
-<p>Note that this Sprite is shared by other characters from the same mod - there is an animation with the same name as this character.</p>
-<p>Returns nil for vanilla characters, or characters with no corresponding animation.</p>
-<hr />
+<p>对于原版角色或没有相应动画的角色，返回 nil。
+请注意，此精灵图由同一模组中的其他角色共享 - 存在一个与该角色同名的动画。
+返回用于模组角色起始房间控制界面的精灵图。</p>
 <h3 aria-label="Functions" id="getmoddedcoopmenusprite">GetModdedCoopMenuSprite ()<a class="headerlink" href="#getmoddedcoopmenusprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="sprite-getmoddedcoopmenusprite"><a href="Sprite.html">Sprite</a> GetModdedCoopMenuSprite ( )<a class="headerlink" href="#sprite-getmoddedcoopmenusprite" title="Permanent link">⚓︎</a></h4>
-<p>Returns the Sprite used for a modded character's icon in the co-op character select wheel.</p>
-<p>Note that this Sprite is shared by other characters from the same mod - there is an animation with the same name as this character.</p>
-<p>Returns nil for vanilla characters, or characters with no corresponding animation.</p>
-<hr />
+<p>对于原版角色或没有相应动画的角色，返回 nil。
+请注意，此精灵图由同一模组中的其他角色共享 - 存在一个与该角色同名的动画。
+返回用于模组角色在合作角色选择轮中的图标的精灵图。</p>
 <h3 aria-label="Functions" id="getmoddedgameoversprite">GetModdedGameOverSprite ()<a class="headerlink" href="#getmoddedgameoversprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="sprite-getmoddedgameoversprite"><a href="Sprite.html">Sprite</a> GetModdedGameOverSprite ( )<a class="headerlink" href="#sprite-getmoddedgameoversprite" title="Permanent link">⚓︎</a></h4>
-<p>Returns the Sprite used for a modded character's game over screen (ie, their name).</p>
-<p>Note that this Sprite is shared by other characters from the same mod - there is an animation with the same name as this character.</p>
-<p>Returns nil for vanilla characters, or characters with no corresponding animation.</p>
-<hr />
+<p>对于原版角色或没有相应动画的角色，返回 nil。
+请注意，此精灵图由同一模组中的其他角色共享 - 存在一个与该角色同名的动画。
+返回用于模组角色游戏结束屏幕（即他们的名字）的精灵图。</p>
 <h3 aria-label="Functions" id="getmoddedmenubackgroundsprite">GetModdedMenuBackgroundSprite ()<a class="headerlink" href="#getmoddedmenubackgroundsprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="sprite-getmoddedmenubackgroundsprite"><a href="Sprite.html">Sprite</a> GetModdedMenuBackgroundSprite ( )<a class="headerlink" href="#sprite-getmoddedmenubackgroundsprite" title="Permanent link">⚓︎</a></h4>
-<p>Returns the Sprite used for a modded character's character select screen.</p>
-<p>Note that this Sprite is shared by other characters from the same mod - there is an animation with the same name as this character.</p>
-<p>Returns nil for vanilla characters, or characters with no corresponding animation.</p>
-<hr />
+<p>对于原版角色或没有相应动画的角色，返回 nil。
+请注意，此精灵图由同一模组中的其他角色共享 - 存在一个与该角色同名的动画。
+返回用于模组角色角色选择屏幕的精灵图。</p>
 <h3 aria-label="Functions" id="getmoddedmenuportraitsprite">GetModdedMenuPortraitSprite ()<a class="headerlink" href="#getmoddedmenuportraitsprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="sprite-getmoddedmenuportraitsprite"><a href="Sprite.html">Sprite</a> GetModdedMenuPortraitSprite ( )<a class="headerlink" href="#sprite-getmoddedmenuportraitsprite" title="Permanent link">⚓︎</a></h4>
-<p>Returns the Sprite used for a modded character's character select portrait.</p>
-<p>Note that this Sprite is shared by other characters from the same mod - there is an animation with the same name as this character.</p>
-<p>Returns nil for vanilla characters, or characters with no corresponding animation.</p>
-<hr />
+<p>对于原版角色或没有相应动画的角色，返回 nil。
+请注意，此精灵图由同一模组中的其他角色共享 - 存在一个与该角色同名的动画。
+返回用于模组角色角色选择肖像的精灵图。</p>
 <h3 aria-label="Functions" id="getname">GetName ()<a class="headerlink" href="#getname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getname">string GetName ( )<a class="headerlink" href="#string-getname" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getnameimagepath">GetNameImagePath ()<a class="headerlink" href="#getnameimagepath" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getnameimagepath">string GetNameImagePath ( )<a class="headerlink" href="#string-getnameimagepath" title="Permanent link">⚓︎</a></h4>
-<p>Path to the PNG file used for the character's name on the boss VS screen.</p>
-<hr />
+<p>指向用于 Boss 对战屏幕上角色名字的 PNG 文件的路径。</p>
 <h3 aria-label="Functions" id="getpill">GetPill ()<a class="headerlink" href="#getpill" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="pillcolor-getpill"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillColor.html">PillColor</a> GetPill ( )<a class="headerlink" href="#pillcolor-getpill" title="Permanent link">⚓︎</a></h4>
-<p>Does not include starting pills obtained via unlocks.</p>
-<hr />
+<p>不包括通过解锁获得的起始药丸。</p>
 <h3 aria-label="Functions" id="getplayertype">GetPlayerType ()<a class="headerlink" href="#getplayertype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getplayertype">int GetPlayerType ( )<a class="headerlink" href="#int-getplayertype" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getpocketactive">GetPocketActive ()<a class="headerlink" href="#getpocketactive" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="collectibletype-getpocketactive"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> GetPocketActive ( )<a class="headerlink" href="#collectibletype-getpocketactive" title="Permanent link">⚓︎</a></h4>
-<p>Does not include items added by mods.</p>
-<hr />
+<p>不包括模组添加的物品。</p>
 <h3 aria-label="Functions" id="getportraitpath">GetPortraitPath ()<a class="headerlink" href="#getportraitpath" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getportraitpath">string GetPortraitPath ( )<a class="headerlink" href="#string-getportraitpath" title="Permanent link">⚓︎</a></h4>
-<p>Path to the PNG file used for the character's main level transition and boss VS screen portrait.</p>
-<hr />
+<p>指向用于角色主要关卡过渡和 Boss 对战屏幕肖像的 PNG 文件的路径。</p>
 <h3 aria-label="Functions" id="getredhearts">GetRedHearts ()<a class="headerlink" href="#getredhearts" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getredhearts">int GetRedHearts ( )<a class="headerlink" href="#int-getredhearts" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8683,27 +8650,22 @@
 <hr />
 <h3 aria-label="Functions" id="getskinpath">GetSkinPath ()<a class="headerlink" href="#getskinpath" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getskinpath">string GetSkinPath ( )<a class="headerlink" href="#string-getskinpath" title="Permanent link">⚓︎</a></h4>
-<p>Path to the PNG file used for the character's primary sprite sheet.</p>
-<hr />
+<p>指向用于角色主要精灵图的 PNG 文件的路径。</p>
 <h3 aria-label="Functions" id="getsoulhearts">GetSoulHearts ()<a class="headerlink" href="#getsoulhearts" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getsoulhearts">int GetSoulHearts ( )<a class="headerlink" href="#int-getsoulhearts" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="gettaintedcounterpart">GetTaintedCounterpart ()<a class="headerlink" href="#gettaintedcounterpart" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityconfigplayer-gettaintedcounterpart"><a href="EntityConfigPlayer.html">EntityConfigPlayer</a> GetTaintedCounterpart ( )<a class="headerlink" href="#entityconfigplayer-gettaintedcounterpart" title="Permanent link">⚓︎</a></h4>
-<p>For non-tainted characters, returns their tainted counterpart, or returns nil if there is none.</p>
-<p>For tainted characters, returns their non-tainted counterpart.</p>
-<hr />
+<p>对于非堕落角色，返回其堕落对应角色；如果没有，则返回 nil。
+对于堕落角色，返回其非堕落对应角色。</p>
 <h3 aria-label="Functions" id="gettrinket">GetTrinket ()<a class="headerlink" href="#gettrinket" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="trinkettype-gettrinket"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html">TrinketType</a> GetTrinket ( )<a class="headerlink" href="#trinkettype-gettrinket" title="Permanent link">⚓︎</a></h4>
-<p>Does not include starting trinkets obtained via unlocks.</p>
-<p>Does not include trinkets added by mods.</p>
-<hr />
+<p>不包括通过解锁获得的起始饰品。
+不包括模组添加的饰品。</p>
 <h3 aria-label="Functions" id="ishidden">IsHidden ()<a class="headerlink" href="#ishidden" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ishidden">boolean IsHidden ( )<a class="headerlink" href="#boolean-ishidden" title="Permanent link">⚓︎</a></h4>
-<p>Returns true if the character is not visible/selectable from the character select screen.</p>
-<p>Doesn't include characters who are only hidden until unlocked.</p>
-<hr />
-<h3 aria-label="Functions" id="istainted">IsTainted ()<a class="headerlink" href="#istainted" title="Permanent link">⚓︎</a></h3>
+<p>如果角色在角色选择屏幕上不可见/不可选，则返回 true。
+不包括那些只有在解锁前才隐藏的角色。### IsTainted () {: aria-label='Functions' }</p>
 <h4 aria-label="Functions" class="copyable" id="boolean-istainted">boolean IsTainted ( )<a class="headerlink" href="#boolean-istainted" title="Permanent link">⚓︎</a></h4>
 <hr />
 

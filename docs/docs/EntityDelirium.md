@@ -9,45 +9,34 @@ tags:
 ### GetTeleportationTimer () {: aria-label='Functions' }
 #### int GetTeleportationTimer ( ) {: .copyable aria-label='Functions' }
 Return the number of frames before Delirium teleports.
-    
-___
+
 ### IsRedMode () {: aria-label='Functions' }
 #### boolean IsRedMode ( ) {: .copyable aria-label='Functions' }
 Returns a boolean indicating if the red mode is activated or not.
-
+While this mode is active, Delirium's movement speed is increased in a way that cannot be observed through the modding API as it occurs outside of the update callbacks.
+Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red.
+Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red. 
 ???+ info "About red mode"
-    Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red. 
-    While this mode is active, Delirium's movement speed is increased in a way that cannot be observed through the modding API as it occurs outside of the update callbacks.
-    
-___
+
 ### SetRedMode () {: aria-label='Functions' }
 #### void SetRedMode ( boolean On ) {: .copyable aria-label='Functions' }
-Enable or disable red mode according to the parameter `on`. 
-
+Enable or disable red mode according to the parameter `on`.
+Please refer to the note in the documentation of [IsRedMode](EntityDelirium.md#isredmode) for an explanation of red mode.
 ???+ info "About red mode"
-    Please refer to the note in the documentation of [IsRedMode](EntityDelirium.md#isredmode) for an explanation of red mode.
-    
-___
+
 ### SetTeleportationTimer () {: aria-label='Functions' }
 #### void SetTeleportationTimer ( int Timer ) {: .copyable aria-label='Functions' }
 Set the number of frames before Delirium teleports. Negative values are not allowed.
 
-___
 ### Transform () {: aria-label='Functions' }
 #### void Transform ( int Type, int Variant = 0 ) {: .copyable aria-label='Functions' }
-Transform Delirium into the entity with the specified type and variant. 
-
+As such, the transformation will not be effective immediately, but instead on the next frame.
+Internally, this function forces the transformation timer to 1 frame and lets Delirium's AI update as needed.
 ???+ warn "Warning"
-    The validation of the type and variant is only as strong as the validation performed by the game when it attempts to transform Delirium.
-    In other words, this behaves exactly as if the game itself attempted to transform Delirium, with everything it implies if the specified entity is invalid.
-    
-???+ warn "Warning"
-    In order to properly handle transformations, we use the native transformation mechanic of Delirium. 
-    As such, the transformation will not be effective immediately, but instead on the next frame.
-    Internally, this function forces the transformation timer to 1 frame and lets Delirium's AI update as needed.
-    
-___    
-## Attributes
+Transform Delirium into the entity with the specified type and variant.
+The validation of the type and variant is only as strong as the validation performed by the game when it attempts to transform Delirium.
+In other words, this behaves exactly as if the game itself attempted to transform Delirium, with everything it implies if the specified entity is invalid.
+In order to properly handle transformations, we use the native transformation mechanic of Delirium.
 
 ### Angle {: aria-label='Variables' }
 #### int8 Angle {: .copyable aria-label='Variables' }

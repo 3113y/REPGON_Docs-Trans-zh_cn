@@ -15,45 +15,29 @@ tags:
 
 ### Color () {: aria-label='Modified Constructors' }
 #### [Color](Color.md) Color ( float R = 1, float G = 1, float B = 1, float A = 1, float RO = 0, float GO = 0, float BO = 0, float RC = 0, float GC = 0, float BC = 0, float AC = 0 ) {: .copyable aria-label='Modified Constructors' }
-
-All arguments are now optional. `Colorize` can now be set through the constructor.
-
-___
-## Functions
+所有参数现在都是可选的。现在可以通过构造函数设置 `Colorize`。
 
 ### GetColorize () {: aria-label='Functions' }
 #### table GetColorize ( ) {: .copyable aria-label='Functions' }
-Returns a table corresponding to the color's current Colorize values: `{R, G, B, A}`
+返回一个表格，对应颜色当前的 Colorize 值：`{R, G, B, A}`
 
-___
 ### GetOffset () {: aria-label='Functions' }
 #### table GetOffset ( ) {: .copyable aria-label='Functions' }
-Returns a table corresponding to the color's current Offset values: `{R, G, B}`
+返回一个表格，对应颜色当前的 Offset 值：`{R, G, B}`
+虽然 [Color](https://wofsauge.github.io/IsaacDocs/rep/Color.html) 类已经包含了用于此目的的 [.RO](https://wofsauge.github.io/IsaacDocs/rep/Color.html#ro)、[.GO](https://wofsauge.github.io/IsaacDocs/rep/Color.html#go) 和 [.BO](https://wofsauge.github.io/IsaacDocs/rep/Color.html#bo) 变量，但在需要访问所有三个值的情况下，GetOffset() 的速度被测量为快约 30%，因此在这种情况下建议使用它。当访问两个变量时，性能几乎相同；当访问一个变量时，性能更差。在只需要一个或两个偏移值的情况下，请继续使用变量。
 
-While the [Color](https://wofsauge.github.io/IsaacDocs/rep/Color.html) class does already contain [.RO](https://wofsauge.github.io/IsaacDocs/rep/Color.html#ro), [.GO](https://wofsauge.github.io/IsaacDocs/rep/Color.html#go) and [.BO](https://wofsauge.github.io/IsaacDocs/rep/Color.html#bo) variables for this, GetOffset() has been measured to be ~30% faster in cases where access to all three values is necessary and is recommended in that scenario as a result. Performance is near identical when accessing two variables, and worse when accessing one. In cases where only one or two offset values are needed, stick with the variables.
-
-___
 ### GetTint () {: aria-label='Functions' }
 #### table GetTint ( ) {: .copyable aria-label='Functions' }
-Returns a table corresponding to the color's current Tint values: `{R, G, B, A}`
+返回一个表格，对应颜色当前的 Tint 值：`{R, G, B, A}`
 
-___
 ### Print () {: aria-label='Functions' }
 #### string Print ( ) {: .copyable aria-label='Functions' }
-Returns a string representation of the color object.
+返回颜色对象的字符串表示形式。
 
-___
 ### __tostring () {: aria-label='Functions' }
 #### string __tostring ( ) {: .copyable aria-label='Operators' }
-Creates a string representation of the color object.
-
-This enables direct printing of the object by doing `print(myColorObj)`
-
-___
-
-## Constants
-
-### Color.EmberFade {: aria-label='Constants' }
+这允许通过 `print(myColorObj)` 直接打印对象。
+创建颜色对象的字符串表示形式。### Color.EmberFade {: aria-label='Constants' }
 #### [Color](Color.md) EmberFade {: .copyable aria-label='Constants' }
 Used for enemies like Crackles and Coal Spiders. This color has a hardcoded special property; gibs start orange and fade into grey.
 

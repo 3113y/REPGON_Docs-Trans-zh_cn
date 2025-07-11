@@ -6434,21 +6434,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modified-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modified Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Modified Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#randomint" class="md-nav__link">
     <span class="md-ellipsis">
@@ -6466,21 +6451,6 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#getshiftidx" class="md-nav__link">
@@ -8088,21 +8058,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modified-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modified Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Modified Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#randomint" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8120,21 +8075,6 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#getshiftidx" class="md-nav__link">
@@ -8247,33 +8187,26 @@
 <h3 aria-label="Modified Constructors" id="rng">RNG ()<a class="headerlink" href="#rng" title="Permanent link">⚓︎</a></h3>
 <h4 :.copyable=":.copyable" aria-label="Modified Constructors" id="rng-rng-int-seed-2853650767-int-shiftidx-35"><a href="RNG.html">RNG</a> RNG ( int seed = 2853650767, int shiftIdx = 35 )<a class="headerlink" href="#rng-rng-int-seed-2853650767-int-shiftidx-35" title="Permanent link">⚓︎</a></h4>
 <p>Now takes an optional seed and an optional shiftIdx.
-This can be used to avoid separating construction of the RNG object and a call to SetSeed.</p>
-<p>The function validates both the seed and the shift index.</p>
-<hr />
-<h2 id="modified-functions">Modified Functions<a class="headerlink" href="#modified-functions" title="Permanent link">⚓︎</a></h2>
+This can be used to avoid separating construction of the RNG object and a call to SetSeed.
+The function validates both the seed and the shift index.</p>
 <h3 aria-label="Modified Functions" id="randomint">RandomInt ()<a class="headerlink" href="#randomint" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="int-randomint-int-min-int-max">int RandomInt ( int Min, int Max )<a class="headerlink" href="#int-randomint-int-min-int-max" title="Permanent link">⚓︎</a></h4>
 <p>Can now emulate <code>math.random</code> by accepting a second argument to generate a number between the first argument and it, inclusive. Negative values are usable in this mode and will properly generate a number between <code>min</code> and <code>max</code> regardless of sign.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="setseed">SetSeed ()<a class="headerlink" href="#setseed" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-setseed-int-seed-int-shiftidx-35">void SetSeed ( int Seed, int ShiftIdx = 35 )<a class="headerlink" href="#void-setseed-int-seed-int-shiftidx-35" title="Permanent link">⚓︎</a></h4>
-<p>An error is now thrown if Seed is below 0.</p>
-<p>An error is now thrown if ShiftIdx is not between 0 and 80, inclusive.</p>
-<p>ShiftIdx is now optional, with the default value set to 35.</p>
-<hr />
-<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
+<p>An error is now thrown if ShiftIdx is not between 0 and 80, inclusive.
+ShiftIdx is now optional, with the default value set to 35.
+An error is now thrown if Seed is below 0.</p>
 <h3 aria-label="Functions" id="getshiftidx">GetShiftIdx ()<a class="headerlink" href="#getshiftidx" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getshiftidx">int GetShiftIdx ( )<a class="headerlink" href="#int-getshiftidx" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="phantomfloat">PhantomFloat ()<a class="headerlink" href="#phantomfloat" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-phantomfloat">float PhantomFloat ( )<a class="headerlink" href="#float-phantomfloat" title="Permanent link">⚓︎</a></h4>
-<p>Generates a random float between <code>0</code> (inclusive) and <code>1</code> (exclusive).</p>
-<p>This does not advance the internal state of the RNG object.</p>
-<hr />
+<p>This does not advance the internal state of the RNG object.
+Generates a random float between <code>0</code> (inclusive) and <code>1</code> (exclusive).</p>
 <h3 aria-label="Functions" id="phantomint">PhantomInt ()<a class="headerlink" href="#phantomint" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-phantomint-int-max">int PhantomInt ( int Max )<a class="headerlink" href="#int-phantomint-int-max" title="Permanent link">⚓︎</a></h4>
 <p>Behaves identically to RandomInt without advancing the internal state of the RNG object.</p>
-<hr />
 <h3 aria-label="Functions" id="phantomnext">PhantomNext ()<a class="headerlink" href="#phantomnext" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-phantomnext">int PhantomNext ( )<a class="headerlink" href="#int-phantomnext" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8282,16 +8215,14 @@ This can be used to avoid separating construction of the RNG object and a call t
 <hr />
 <h3 aria-label="Functions" id="phantomvector">PhantomVector ()<a class="headerlink" href="#phantomvector" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-phantomvector"><a href="Vector.html">Vector</a> PhantomVector ( )<a class="headerlink" href="#vector-phantomvector" title="Permanent link">⚓︎</a></h4>
-<p>Returns a random vector with length <code>1</code>. Multiply this vector by a number for larger random vectors.</p>
-<p>This does not advance the internal state of the RNG object.</p>
-<hr />
+<p>This does not advance the internal state of the RNG object.
+Returns a random vector with length <code>1</code>. Multiply this vector by a number for larger random vectors.</p>
 <h3 aria-label="Functions" id="previous">Previous ()<a class="headerlink" href="#previous" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-previous">int Previous ( )<a class="headerlink" href="#int-previous" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="randomvector">RandomVector ()<a class="headerlink" href="#randomvector" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-randomvector"><a href="Vector.html">Vector</a> RandomVector ( )<a class="headerlink" href="#vector-randomvector" title="Permanent link">⚓︎</a></h4>
 <p>Returns a random vector with length <code>1</code>. Multiply this vector by a number for larger random vectors.</p>
-<hr />
 
 
 

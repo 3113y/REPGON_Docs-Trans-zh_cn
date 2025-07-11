@@ -8126,41 +8126,32 @@
 <h3 aria-label="Functions" id="column">Column ()<a class="headerlink" href="#column" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-column">int Column ( )<a class="headerlink" href="#int-column" title="Permanent link">⚓︎</a></h4>
 <p>Return the column of the room slot on the level grid (index is <code>0</code> based).</p>
-<hr />
 <h3 aria-label="Functions" id="doormask">DoorMask ()<a class="headerlink" href="#doormask" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-doormask">int DoorMask ( )<a class="headerlink" href="#int-doormask" title="Permanent link">⚓︎</a></h4>
-<p>Return a mask of the available doors of the room slot.
-In order to check if a door at a given slot is available, use the DoorSlot enumeration.</p>
-<details class="example" open="open">
-<summary>Example</summary>
-<p>This tests if the DoorSlot <code>LEFT0</code> is available.
+<p>print("Room has a door in slot LEFT0")
+This tests if the DoorSlot <code>LEFT0</code> is available.
+Return a mask of the available doors of the room slot.
+if room:DoorMask() &amp; (1 &lt;&lt; DoorSlot.LEFT0) ~= 0 then
+In order to check if a door at a given slot is available, use the DoorSlot enumeration.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">if</span><span class="w"> </span><span class="nv">room</span><span class="p">:</span><span class="nf">DoorMask</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nv">DoorSlot</span><span class="p">.</span><span class="py">LEFT0</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Room has a door in slot LEFT0&quot;</span><span class="p">)</span>
-<span class="kr">end</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">end</span>
+<span class="err">???</span><span class="o">+</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="s2">&quot;Example&quot;</span>
 </code></pre></div></td></tr></table></div></p>
-</details>
-<hr />
 <h3 aria-label="Functions" id="generationindex">GenerationIndex ()<a class="headerlink" href="#generationindex" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-generationindex">int GenerationIndex ( )<a class="headerlink" href="#int-generationindex" title="Permanent link">⚓︎</a></h4>
 <p>Index of the room during generation: <code>0</code> if the room was the first to be generated, <code>1</code> if it was the second etc.</p>
-<hr />
 <h3 aria-label="Functions" id="isdeadend">IsDeadEnd ()<a class="headerlink" href="#isdeadend" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isdeadend">boolean IsDeadEnd ( )<a class="headerlink" href="#boolean-isdeadend" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="neighbors">Neighbors ()<a class="headerlink" href="#neighbors" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-neighbors">int[] Neighbors ( )<a class="headerlink" href="#int-neighbors" title="Permanent link">⚓︎</a></h4>
 <p>Returns a table of the generation indices of the neighboring rooms.</p>
-<hr />
 <h3 aria-label="Functions" id="row">Row ()<a class="headerlink" href="#row" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-row">int Row ( )<a class="headerlink" href="#int-row" title="Permanent link">⚓︎</a></h4>
 <p>Return the row of the room slot on the level grid (index is <code>0</code> based).</p>
-<hr />
 <h3 aria-label="Functions" id="shape">Shape ()<a class="headerlink" href="#shape" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-shape">int Shape ( )<a class="headerlink" href="#int-shape" title="Permanent link">⚓︎</a></h4>
 <p>Return the shape of the room, as per the RoomShape enumeration.</p>
-<hr />
 
 
 

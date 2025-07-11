@@ -19,29 +19,21 @@ tags:
 
 ### GetBaby () {: aria-label='Functions' }
 #### [EntityConfigBaby](EntityConfigBaby.md) GetBaby ( [BabySubType](https://wofsauge.github.io/IsaacDocs/rep/enums/BabySubType.html) Type ) {: .copyable aria-label='Functions' }
-Returns nil if there is no co-op baby with the given ID.
+如果不存在具有指定 ID 的合作宝宝，则返回 nil。
 
-___
 ### GetEntity () {: aria-label='Functions' }
 #### [EntityConfigEntity](EntityConfigEntity.md) GetEntity ( [EntityType](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html) Type, int Variant = -1, int SubType = -1 ) {: .copyable aria-label='Functions' }
-Returns nil if no entity exists with the specified Type.
+如果不存在具有指定类型的实体，则返回 nil。
+提供变体（Variant）和/或子类型（SubType）是可选的。如果请求了不存在的变体/子类型，则返回该实体的基础版本。
 
-Providing Variant and/or SubType is optional. If a non-existent Variant/SubType is requested, returns the base version of that entity.
-
-___
 ### GetMaxBabyID () {: aria-label='Functions' }
 #### int GetMaxBabyID ( ) {: .copyable aria-label='Functions' }
-Returns the highest ID (corresponds to SubType) currently assigned to a valid co-op baby.
+返回当前分配给有效合作宝宝的最高 ID（对应子类型）。
 
-___
 ### GetMaxPlayerType () {: aria-label='Functions' }
 #### int GetMaxPlayerType ( ) {: .copyable aria-label='Functions' }
-Returns the highest PlayerType currently assigned to a valid character.
+返回当前分配给有效角色的最高玩家类型（PlayerType）。
 
-___
 ### GetPlayer () {: aria-label='Functions' }
 #### [EntityConfigPlayer](EntityConfigPlayer.md) GetPlayer ( [PlayerType](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html) PlayerType ) {: .copyable aria-label='Functions' }
-Returns nil if no character exists with the specified PlayerType.
-
-___
-
+如果不存在具有指定玩家类型的角色，则返回 nil。

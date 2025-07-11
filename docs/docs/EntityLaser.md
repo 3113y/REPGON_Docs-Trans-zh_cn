@@ -46,19 +46,16 @@ ___
 ___
 ### IsMultidimensionalTouched () {: aria-label='Functions' }
 #### boolean IsMultidimensionalTouched ( ) {: .copyable aria-label='Functions' }
-Returns if the laser was created through the Multi Dimensional Baby effect.
+返回该激光是否是通过“多维宝宝”效果创建的。
 
-___
 ### IsPrismTouched () {: aria-label='Functions' }
 #### boolean IsPrismTouched ( ) {: .copyable aria-label='Functions' }
-Returns if the laser was created through the Angelic Prism effect.
+返回该激光是否是通过“天使棱镜”效果创建的。
 
-___
 ### RecalculateSamplesNextUpdate () {: aria-label='Functions' }
 #### void RecalculateSamplesNextUpdate ( ) {: .copyable aria-label='Functions' }
-Requests the laser's shape to be fully recalculated next time it updates. Can be used to force the laser to instantly change its MaxDistance/Radius instead of transitioning to it. No effect for OneHit or non-sample lasers.
+请求在下一次更新时完全重新计算激光的形状。可用于强制激光立即改变其最大距离/半径，而不是逐渐过渡到新值。对单次命中或非采样激光无效。
 
-___
 ### ResetSpriteScale () {: aria-label='Functions' }
 #### void ResetSpriteScale ( ) {: .copyable aria-label='Functions' }
 
@@ -77,10 +74,7 @@ ___
 ___
 ### SetPrismTouched () {: aria-label='Functions' }
 #### void SetPrismTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
-Sets if the laser was created through the Angelic Prism effect.
-
-___
-### SetScale () {: aria-label='Functions' }
+设置该激光是否是通过“天使棱镜”效果创建的。### SetScale () {: aria-label='Functions' }
 #### void SetScale ( float Value ) {: .copyable aria-label='Functions' }
 
 ___

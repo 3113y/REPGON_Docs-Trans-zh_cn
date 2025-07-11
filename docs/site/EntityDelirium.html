@@ -3559,21 +3559,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Attributes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Attributes">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#angle" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8129,21 +8114,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Attributes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Attributes">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#angle" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8255,44 +8225,36 @@
 <h3 aria-label="Functions" id="getteleportationtimer">GetTeleportationTimer ()<a class="headerlink" href="#getteleportationtimer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getteleportationtimer">int GetTeleportationTimer ( )<a class="headerlink" href="#int-getteleportationtimer" title="Permanent link">⚓︎</a></h4>
 <p>Return the number of frames before Delirium teleports.</p>
-<hr />
 <h3 aria-label="Functions" id="isredmode">IsRedMode ()<a class="headerlink" href="#isredmode" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isredmode">boolean IsRedMode ( )<a class="headerlink" href="#boolean-isredmode" title="Permanent link">⚓︎</a></h4>
-<p>Returns a boolean indicating if the red mode is activated or not.</p>
+<p>Returns a boolean indicating if the red mode is activated or not.
+While this mode is active, Delirium's movement speed is increased in a way that cannot be observed through the modding API as it occurs outside of the update callbacks.
+Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red.
+Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red. </p>
 <details class="info" open="open">
 <summary>About red mode</summary>
-<p>Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red. 
-While this mode is active, Delirium's movement speed is increased in a way that cannot be observed through the modding API as it occurs outside of the update callbacks.</p>
 </details>
-<hr />
 <h3 aria-label="Functions" id="setredmode">SetRedMode ()<a class="headerlink" href="#setredmode" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setredmode-boolean-on">void SetRedMode ( boolean On )<a class="headerlink" href="#void-setredmode-boolean-on" title="Permanent link">⚓︎</a></h4>
-<p>Enable or disable red mode according to the parameter <code>on</code>. </p>
+<p>Enable or disable red mode according to the parameter <code>on</code>.
+Please refer to the note in the documentation of <a href="EntityDelirium.html#isredmode">IsRedMode</a> for an explanation of red mode.</p>
 <details class="info" open="open">
 <summary>About red mode</summary>
-<p>Please refer to the note in the documentation of <a href="EntityDelirium.html#isredmode">IsRedMode</a> for an explanation of red mode.</p>
 </details>
-<hr />
 <h3 aria-label="Functions" id="setteleportationtimer">SetTeleportationTimer ()<a class="headerlink" href="#setteleportationtimer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setteleportationtimer-int-timer">void SetTeleportationTimer ( int Timer )<a class="headerlink" href="#void-setteleportationtimer-int-timer" title="Permanent link">⚓︎</a></h4>
 <p>Set the number of frames before Delirium teleports. Negative values are not allowed.</p>
-<hr />
 <h3 aria-label="Functions" id="transform">Transform ()<a class="headerlink" href="#transform" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-transform-int-type-int-variant-0">void Transform ( int Type, int Variant = 0 )<a class="headerlink" href="#void-transform-int-type-int-variant-0" title="Permanent link">⚓︎</a></h4>
-<p>Transform Delirium into the entity with the specified type and variant. </p>
-<details class="warn" open="open">
-<summary>Warning</summary>
-<p>The validation of the type and variant is only as strong as the validation performed by the game when it attempts to transform Delirium.
-In other words, this behaves exactly as if the game itself attempted to transform Delirium, with everything it implies if the specified entity is invalid.</p>
-</details>
-<details class="warn" open="open">
-<summary>Warning</summary>
-<p>In order to properly handle transformations, we use the native transformation mechanic of Delirium. 
-As such, the transformation will not be effective immediately, but instead on the next frame.
+<p>As such, the transformation will not be effective immediately, but instead on the next frame.
 Internally, this function forces the transformation timer to 1 frame and lets Delirium's AI update as needed.</p>
+<details class="warn" open="open">
+<summary>Warning</summary>
 </details>
-<hr />
-<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">⚓︎</a></h2>
+<p>Transform Delirium into the entity with the specified type and variant.
+The validation of the type and variant is only as strong as the validation performed by the game when it attempts to transform Delirium.
+In other words, this behaves exactly as if the game itself attempted to transform Delirium, with everything it implies if the specified entity is invalid.
+In order to properly handle transformations, we use the native transformation mechanic of Delirium.</p>
 <h3 aria-label="Variables" id="angle">Angle<a class="headerlink" href="#angle" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Variables" class="copyable" id="int8-angle">int8 Angle<a class="headerlink" href="#int8-angle" title="Permanent link">⚓︎</a></h4>
 <p>Angle of Delirium's projectiles. </p>

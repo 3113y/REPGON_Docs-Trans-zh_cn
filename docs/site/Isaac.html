@@ -976,21 +976,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#allmarksfilled" class="md-nav__link">
     <span class="md-ellipsis">
@@ -5314,21 +5299,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#allmarksfilled" class="md-nav__link">
     <span class="md-ellipsis">
@@ -9128,21 +9098,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#allmarksfilled" class="md-nav__link">
     <span class="md-ellipsis">
@@ -9692,105 +9647,87 @@
 <h3 aria-label="Modified Functions" id="findbytype">FindByType ()<a class="headerlink" href="#findbytype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="entity-findbytype-entitytype-type-int-variant-1-int-subtype-1-boolean-cache-false-boolean-ignorefriendly-false"><a href="Entity.html">Entity</a>[] FindByType ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html">EntityType</a> Type, int Variant = -1, int SubType = -1, boolean Cache = false, boolean IgnoreFriendly = false )<a class="headerlink" href="#entity-findbytype-entitytype-type-int-variant-1-int-subtype-1-boolean-cache-false-boolean-ignorefriendly-false" title="Permanent link">⚓︎</a></h4>
 <p>Same as vanilla, but much faster.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="findinradius">FindInRadius ()<a class="headerlink" href="#findinradius" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="entity-findinradius-vector-position-float-radius-entitypartition-partitions-0xffffffff"><a href="Entity.html">Entity</a>[] FindInRadius ( <a href="Vector.html">Vector</a> Position, float Radius, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/EntityPartition.html">EntityPartition</a> Partitions = 0xFFFFFFFF  )<a class="headerlink" href="#entity-findinradius-vector-position-float-radius-entitypartition-partitions-0xffffffff" title="Permanent link">⚓︎</a></h4>
 <p>Same as in vanilla, but much faster and with fixed search for effects.</p>
-<hr />
 <h3 aria-label="Modified Functions" id="getroomentities">GetRoomEntities ()<a class="headerlink" href="#getroomentities" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="entity-getroomentities"><a href="Entity.html">Entity</a>[] GetRoomEntities ( )<a class="headerlink" href="#entity-getroomentities" title="Permanent link">⚓︎</a></h4>
 <p>Same as vanilla, but much faster.</p>
-<hr />
-<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="allmarksfilled">AllMarksFilled ()<a class="headerlink" href="#allmarksfilled" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-allmarksfilled-playertype-character">int AllMarksFilled ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character)<a class="headerlink" href="#int-allmarksfilled-playertype-character" title="Permanent link">⚓︎</a></h4>
-<p>Checks if a given character has completed all marks and returns an integer representing the highest difficulty it was accomplished in.</p>
+<p>Checks if a given character has completed all marks and returns an integer representing the highest difficulty it was accomplished in.
+- <code>0</code> - None
+- <code>2</code> - Hard
+The difficulties are as follows:</p>
 <details class="- info">
 <summary>Note</summary>
-<p>The difficulties are as follows:</p>
-<ul>
-<li><code>0</code> - None</li>
-<li><code>1</code> - Normal</li>
-<li><code>2</code> - Hard</li>
-</ul>
 </details>
-<hr />
+<ul>
+<li><code>1</code> - Normal</li>
+</ul>
 <h3 aria-label="Functions" id="alltaintedcompletion">AllTaintedCompletion ()<a class="headerlink" href="#alltaintedcompletion" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-alltaintedcompletion-playertype-character-taintedmarksgroup-group">int AllTaintedCompletion ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character, <a href="enums/TaintedMarksGroup.html">TaintedMarksGroup</a> Group)<a class="headerlink" href="#int-alltaintedcompletion-playertype-character-taintedmarksgroup-group" title="Permanent link">⚓︎</a></h4>
-<p>Checks if a given character has completed all the tainted unlock-related marks and returns an integer representing the highest difficulty it was accomplished in.</p>
-<details class="- info">
-<summary>Note</summary>
-<p>The difficulties are as follows:</p>
 <ul>
 <li><code>0</code> - None</li>
-<li><code>1</code> - Normal</li>
-<li><code>2</code> - Hard</li>
+<li><code>2</code> - Hard
+The difficulties are as follows:</li>
 </ul>
+<details class="- info">
+<summary>Note</summary>
 </details>
-<hr />
+<p>Checks if a given character has completed all the tainted unlock-related marks and returns an integer representing the highest difficulty it was accomplished in.
+- <code>1</code> - Normal</p>
 <h3 aria-label="Functions" id="canstarttruecoop">CanStartTrueCoop ()<a class="headerlink" href="#canstarttruecoop" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-canstarttruecoop">boolean CanStartTrueCoop ( )<a class="headerlink" href="#boolean-canstarttruecoop" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="centercursor">CenterCursor ()<a class="headerlink" href="#centercursor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-centercursor">void CenterCursor ( )<a class="headerlink" href="#void-centercursor" title="Permanent link">⚓︎</a></h4>
-<p>Moves the windows mouse cursor to the center of the game's window. This is incredibly niche but useful if you want to use cursor controls for anything fancy and have full control over it. It wont move the cursor if Isaac.exe becomes out of focus.</p>
+<p>Take in mind the screen center is NOT the center of the room necessarily, it's just the center of the game's window(center of the actual screen if you are on fullscreen).
+Moves the windows mouse cursor to the center of the game's window. This is incredibly niche but useful if you want to use cursor controls for anything fancy and have full control over it. It wont move the cursor if Isaac.exe becomes out of focus.</p>
 <details class="- info">
 <summary>Note</summary>
-<p>Take in mind the screen center is NOT the center of the room necessarily, it's just the center of the game's window(center of the actual screen if you are on fullscreen).</p>
 </details>
-<hr />
 <h3 aria-label="Functions" id="clearbosshazards">ClearBossHazards ()<a class="headerlink" href="#clearbosshazards" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearbosshazards-boolean-ignorenpcs-false">void ClearBossHazards ( boolean IgnoreNPCs = false )<a class="headerlink" href="#void-clearbosshazards-boolean-ignorenpcs-false" title="Permanent link">⚓︎</a></h4>
 <p>Kills all projectiles. Kills all non-friendly NPCs capable of keeping doors closed as well if <code>IgnoreNPCs</code> is false.</p>
-<hr />
 <h3 aria-label="Functions" id="clearchallenge">ClearChallenge ()<a class="headerlink" href="#clearchallenge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearchallenge-int-challengeid">void ClearChallenge ( int challengeid)<a class="headerlink" href="#void-clearchallenge-int-challengeid" title="Permanent link">⚓︎</a></h4>
 <p>Sets the challenge of the corresponding <code>challengeid</code> to completed.</p>
-<hr />
 <h3 aria-label="Functions" id="clearcompletionmarks">ClearCompletionMarks ()<a class="headerlink" href="#clearcompletionmarks" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearcompletionmarks-playertype-character">void ClearCompletionMarks ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character)<a class="headerlink" href="#void-clearcompletionmarks-playertype-character" title="Permanent link">⚓︎</a></h4>
 <p>Deletes all completion marks for a given character.</p>
-<hr />
 <h3 aria-label="Functions" id="createtimer">CreateTimer ()<a class="headerlink" href="#createtimer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityeffect-createtimer-function-function-int-interval-int-times-boolean-persistent"><a href="https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html">EntityEffect</a> CreateTimer ( function Function, int Interval, int Times, boolean Persistent )<a class="headerlink" href="#entityeffect-createtimer-function-function-int-interval-int-times-boolean-persistent" title="Permanent link">⚓︎</a></h4>
-<p>Spawns a timer EntityEffect. This entity will starting running <code>Function</code> function after <code>Interval</code> frames, and will repeat it <code>Times</code> amount of times. <code>Persistent</code> controls whether or not this timer "dies" in the current room, or persists across rooms.</p>
+<p>This timer is called every game update. This means the timer only takes into consideration frames in which the game is actively running, not paused, and uses update frames for its Delay parameter (30 frames per second).
+Spawns a timer EntityEffect. This entity will starting running <code>Function</code> function after <code>Interval</code> frames, and will repeat it <code>Times</code> amount of times. <code>Persistent</code> controls whether or not this timer "dies" in the current room, or persists across rooms.</p>
 <details class="- info">
 <summary>Timer behavior</summary>
-<p>This timer is called every game update. This means the timer only takes into consideration frames in which the game is actively running, not paused, and uses update frames for its Delay parameter (30 frames per second). </p>
-<p>If your use case requires that a timer takes paused time into account, stick with a custom timer running on a RENDER callback.</p>
 </details>
-<hr />
+<p>If your use case requires that a timer takes paused time into account, stick with a custom timer running on a RENDER callback.</p>
 <h3 aria-label="Functions" id="createweapon">CreateWeapon ()<a class="headerlink" href="#createweapon" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="weapon-createweapon-weapontype-type-entity-owner"><a href="Weapon.html">Weapon</a> CreateWeapon ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/WeaponType.html">WeaponType</a> Type, <a href="Entity.html">Entity</a> Owner )<a class="headerlink" href="#weapon-createweapon-weapontype-type-entity-owner" title="Permanent link">⚓︎</a></h4>
 <p>Creates and returns a <a href="Weapon.html">Weapon</a> object. It is not automatically useable by <code>owner</code> and <code>Isaac.SetWeaponType</code> must be used in tandem.</p>
-<hr />
 <h3 aria-label="Functions" id="destroyweapon">DestroyWeapon ()<a class="headerlink" href="#destroyweapon" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-destroyweapon-weapon-weapon">void DestroyWeapon ( <a href="Weapon.html">Weapon</a> Weapon )<a class="headerlink" href="#void-destroyweapon-weapon-weapon" title="Permanent link">⚓︎</a></h4>
 <p>Destroys the provided <a href="Weapon.html">Weapon</a> object.</p>
-<hr />
 <h3 aria-label="Functions" id="drawline">DrawLine ()<a class="headerlink" href="#drawline" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-drawline-vector-startpos-vector-endpos-kcolor-startcolor-kcolor-endcolor-int-thickness">void DrawLine ( <a href="Vector.html">Vector</a> StartPos, <a href="Vector.html">Vector</a> EndPos, <a href="https://wofsauge.github.io/IsaacDocs/rep/KColor">KColor</a> StartColor, <a href="https://wofsauge.github.io/IsaacDocs/rep/KColor">KColor</a> EndColor, int Thickness )<a class="headerlink" href="#void-drawline-vector-startpos-vector-endpos-kcolor-startcolor-kcolor-endcolor-int-thickness" title="Permanent link">⚓︎</a></h4>
 <p>Draws a line between the two given positions this render frame.</p>
-<hr />
 <h3 aria-label="Functions" id="drawquad">DrawQuad ()<a class="headerlink" href="#drawquad" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-drawquad-vector-topleftpos-vector-toprightpos-vector-bottomleftpos-vector-bottomrightpos-kcolor-color-int-thickness">void DrawQuad ( <a href="Vector.html">Vector</a> TopLeftPos, <a href="Vector.html">Vector</a> TopRightPos, <a href="Vector.html">Vector</a> BottomLeftPos, <a href="Vector.html">Vector</a> BottomRightPos, <a href="https://wofsauge.github.io/IsaacDocs/rep/KColor">KColor</a> Color, int Thickness )<a class="headerlink" href="#void-drawquad-vector-topleftpos-vector-toprightpos-vector-bottomleftpos-vector-bottomrightpos-kcolor-color-int-thickness" title="Permanent link">⚓︎</a></h4>
 <p>Draws a line between the two given positions this render frame. Internally the game uses its own struct for this, DestinationQuad, but I haven't gotten to adding that to Lua yet <img alt="🐊" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f40a.svg" title=":crocodile:" /></p>
-<hr />
 <h3 aria-label="Functions" id="fillcompletionmarks">FillCompletionMarks ()<a class="headerlink" href="#fillcompletionmarks" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-fillcompletionmarks-playertype-character">void FillCompletionMarks ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character)<a class="headerlink" href="#void-fillcompletionmarks-playertype-character" title="Permanent link">⚓︎</a></h4>
 <p>Completes all completion marks for a given character.</p>
-<hr />
 <h3 aria-label="Functions" id="findincapsule">FindInCapsule ()<a class="headerlink" href="#findincapsule" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entity-findincapsule-capsule-capsule-entitypartitions-partitions-1"><a href="Entity.html">Entity</a>[] FindInCapsule ( <a href="Capsule.html">Capsule</a> Capsule, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/EntityPartition.html">EntityPartitions</a> Partitions = -1 )<a class="headerlink" href="#entity-findincapsule-capsule-capsule-entitypartitions-partitions-1" title="Permanent link">⚓︎</a></h4>
 <p>Return entities inside of given capsule, filtered by partitions mask.</p>
-<hr />
 <h3 aria-label="Functions" id="findtargetpit">FindTargetPit ()<a class="headerlink" href="#findtargetpit" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-findtargetpit-vector-position-vector-targetposition-int-pitindex-1">int FindTargetPit ( <a href="Vector.html">Vector</a> Position, <a href="Vector.html">Vector</a> TargetPosition, int PitIndex = -1 )<a class="headerlink" href="#int-findtargetpit-vector-position-vector-targetposition-int-pitindex-1" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getachievementidbyname">GetAchievementIdByName ()<a class="headerlink" href="#getachievementidbyname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getachievementidbyname-string-name">int GetAchievementIdByName ( string Name )<a class="headerlink" href="#int-getachievementidbyname-string-name" title="Permanent link">⚓︎</a></h4>
 <p>Gets the Achievement ID By Name.</p>
-<hr />
 <h3 aria-label="Functions" id="getaxisalignedunitvectorfromdir">GetAxisAlignedUnitVectorFromDir ()<a class="headerlink" href="#getaxisalignedunitvectorfromdir" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-getaxisalignedunitvectorfromdir-direction-direction-1"><a href="Vector.html">Vector</a> GetAxisAlignedUnitVectorFromDir ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html">Direction</a> Direction = -1 )<a class="headerlink" href="#vector-getaxisalignedunitvectorfromdir-direction-direction-1" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9800,100 +9737,74 @@
 <h3 aria-label="Functions" id="getbosscoloridxbyname">GetBossColorIdxByName ()<a class="headerlink" href="#getbosscoloridxbyname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getbosscoloridxbyname-string-name">int GetBossColorIdxByName ( string Name )<a class="headerlink" href="#int-getbosscoloridxbyname-string-name" title="Permanent link">⚓︎</a></h4>
 <p>Gets the boss color idx By Name, the idx is usually the subtype the boss needs to become the desired color. Granted, you actually need to give your color entry a name on the xml for this to work (suffix wont work usually, since its not mandatory).</p>
-<hr />
 <h3 aria-label="Functions" id="getclipboard">GetClipboard ()<a class="headerlink" href="#getclipboard" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getclipboard">string GetClipboard ( )<a class="headerlink" href="#string-getclipboard" title="Permanent link">⚓︎</a></h4>
 <p>Gets the contents of the clipboard as long as they are in text form, otherwise it will just return nil.</p>
-<hr />
 <h3 aria-label="Functions" id="getcollectiblespawnposition">GetCollectibleSpawnPosition ()<a class="headerlink" href="#getcollectiblespawnposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-getcollectiblespawnposition-vector-position"><a href="Vector.html">Vector</a> GetCollectibleSpawnPosition ( <a href="Vector.html">Vector</a> Position )<a class="headerlink" href="#vector-getcollectiblespawnposition-vector-position" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getcompletionmark">GetCompletionMark ()<a class="headerlink" href="#getcompletionmark" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getcompletionmark-playertype-character-completiontype-mark">int GetCompletionMark ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character, <a href="enums/CompletionType.html">CompletionType</a> Mark)<a class="headerlink" href="#int-getcompletionmark-playertype-character-completiontype-mark" title="Permanent link">⚓︎</a></h4>
 <p>Gets a completion mark value for a specific character, value from <code>0</code> to <code>2</code> (0 = not accomplished, 1 = normal, 2 = hard).</p>
-<hr />
 <h3 aria-label="Functions" id="getcompletionmarks">GetCompletionMarks ()<a class="headerlink" href="#getcompletionmarks" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getcompletionmarks-playertype-character">table GetCompletionMarks ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character)<a class="headerlink" href="#table-getcompletionmarks-playertype-character" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table containing all the marks for the character.</p>
+<p>if (Isaac.GetCompletionMarks(0).Delirium &gt; 0) then --doing it the lazy way, fitting deliriums theme
+* Satan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
+if (marks.MomsHeart &gt; 0) then
+print("got mom")
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">Returns</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">table</span><span class="w"> </span><span class="nv">containing</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">marks</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">character</span><span class="p">.</span>
+</code></pre></div></td></tr></table></div></p>
 <details class="- info">
 <summary>Table structure &amp; usage</summary>
-<ul>
-<li>The table has the following fields: <ul>
-<li>PlayerType: containing the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> associated to the marks</li>
-<li>MomsHeart: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Isaac: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Satan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>BossRush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>BlueBaby: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Lamb: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>MegaSatan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>UltraGreed: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Hush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>UltraGreedier: Mostly redundant with UltraGreed when it has a value of 2, no need to set it</li>
-<li>Delirium: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Mother: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Beast: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">marks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Isaac</span><span class="p">.</span><span class="nf">GetCompletionMarks</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nv">marks</span><span class="p">.</span><span class="py">MomsHeart</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;got mom&quot;</span><span class="p">)</span>
-<span class="kr">end</span>
-<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nv">marks</span><span class="p">.</span><span class="py">Lamb</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GOATED ON H4RD&quot;</span><span class="p">)</span>
-<span class="kr">end</span>
-<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nv">Isaac</span><span class="p">.</span><span class="nf">GetCompletionMarks</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nv">Delirium</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="c1">--doing it the lazy way, fitting deliriums theme</span>
-<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got Deli&quot;</span><span class="p">)</span>
-<span class="kr">end</span>
-</code></pre></div></td></tr></table></div></li>
-</ul>
-</li>
-</ul>
 </details>
-<hr />
+<ul>
+<li>Delirium: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>MegaSatan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>Mother: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>UltraGreed: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>BlueBaby: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
+end
+if (marks.Lamb &gt;= 2) then
+local marks = Isaac.GetCompletionMarks(0)</li>
+<li>UltraGreedier: Mostly redundant with UltraGreed when it has a value of 2, no need to set it
+print("GOATED ON H4RD")</li>
+<li>BossRush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
+print("Got Deli")</li>
+<li>Beast: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>Isaac: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>PlayerType: containing the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> associated to the marks</li>
+<li>Lamb: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>MomsHeart: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>Hush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>The table has the following fields:</li>
+</ul>
 <h3 aria-label="Functions" id="getcurrentstageconfigid">GetCurrentStageConfigId ()<a class="headerlink" href="#getcurrentstageconfigid" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="stbtype-getcurrentstageconfigid"><a href="enums/StbType.html">StbType</a> GetCurrentStageConfigId ( )<a class="headerlink" href="#stbtype-getcurrentstageconfigid" title="Permanent link">⚓︎</a></h4>
 <p>Gets the current stageconfigId/stbType, or whatever you wanna call the id of the stages.xml, for the current stage.</p>
-<hr />
 <h3 aria-label="Functions" id="getcursorsprite">GetCursorSprite ()<a class="headerlink" href="#getcursorsprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="sprite-getcursorsprite"><a href="Sprite.html">Sprite</a> GetCursorSprite ( )<a class="headerlink" href="#sprite-getcursorsprite" title="Permanent link">⚓︎</a></h4>
-<p>Returns the cursor sprite that is rendered when <code>Options.MouseControl</code> is set to true. </p>
-<hr />
+<p>Returns the cursor sprite that is rendered when <code>Options.MouseControl</code> is set to true.</p>
 <h3 aria-label="Functions" id="getcutsceneidbyname">GetCutsceneIdByName ()<a class="headerlink" href="#getcutsceneidbyname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getcutsceneidbyname-string-name">table GetCutsceneIdByName ( string Name )<a class="headerlink" href="#table-getcutsceneidbyname-string-name" title="Permanent link">⚓︎</a></h4>
 <p>Gets the Cutscene ID By Name.</p>
-<hr />
 <h3 aria-label="Functions" id="getdwmwindowattribute">GetDwmWindowAttribute ()<a class="headerlink" href="#getdwmwindowattribute" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="dwmwindowattribute-getdwmwindowattribute"><a href="enums/DwmWindowAttribute.html">DwmWindowAttribute</a> GetDwmWindowAttribute ( )<a class="headerlink" href="#dwmwindowattribute-getdwmwindowattribute" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getentitysubtypebyname">GetEntitySubTypeByName ()<a class="headerlink" href="#getentitysubtypebyname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getentitysubtypebyname-string-name">int GetEntitySubTypeByName ( string Name )<a class="headerlink" href="#int-getentitysubtypebyname-string-name" title="Permanent link">⚓︎</a></h4>
 <p>Gets the entity SubType by entity name.</p>
-<hr />
 <h3 aria-label="Functions" id="getgiantbookidbyname">GetGiantBookIdByName ()<a class="headerlink" href="#getgiantbookidbyname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getgiantbookidbyname-string-name">int GetGiantBookIdByName ( string Name )<a class="headerlink" href="#int-getgiantbookidbyname-string-name" title="Permanent link">⚓︎</a></h4>
 <p>Gets a GiantBook Id by name. For vanilla giantbooks, the png filename, from the gfx xml attribute, is used as the giantbook name.</p>
-<hr />
 <h3 aria-label="Functions" id="getloadedmodules">GetLoadedModules ()<a class="headerlink" href="#getloadedmodules" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getloadedmodules">table GetLoadedModules ( )<a class="headerlink" href="#table-getloadedmodules" title="Permanent link">⚓︎</a></h4>
 <p>Returns a key - value table containing all loaded script files, where the key is the name or path of a given script file, and the value the return value of that file after loading. (In most cases its true or a table)</p>
-<hr />
 <h3 aria-label="Functions" id="getlocalizedstring">GetLocalizedString ()<a class="headerlink" href="#getlocalizedstring" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getlocalizedstring-string-category-string-key-int-language">string GetLocalizedString ( string Category, string Key, int Language )<a class="headerlink" href="#string-getlocalizedstring-string-category-string-key-int-language" title="Permanent link">⚓︎</a></h4>
-<h4 aria-label="Functions" class="copyable" id="string-getlocalizedstring-string-category-string-key-string-languagecode">string GetLocalizedString ( string Category, string Key, string LanguageCode )<a class="headerlink" href="#string-getlocalizedstring-string-category-string-key-string-languagecode" title="Permanent link">⚓︎</a></h4>
 <p>Returns the translation string associated with the given key in the given category. The translation is given in the language ID/language code given as parameter.</p>
-<hr />
 <h3 aria-label="Functions" id="getmodchallengeclearcount">GetModChallengeClearCount ()<a class="headerlink" href="#getmodchallengeclearcount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getmodchallengeclearcount-int-challengeid">int GetModChallengeClearCount ( int challengeid )<a class="headerlink" href="#int-getmodchallengeclearcount-int-challengeid" title="Permanent link">⚓︎</a></h4>
 <p>Returns the number of times a custom challenge was cleared. It resets if its ever set as not Done.</p>
-<hr />
 <h3 aria-label="Functions" id="getnullitemidbyname">GetNullItemIdByName ()<a class="headerlink" href="#getnullitemidbyname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getnullitemidbyname-string-nullitemname">int GetNullItemIdByName ( string NullItemName )<a class="headerlink" href="#int-getnullitemidbyname-string-nullitemname" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9903,128 +9814,104 @@
 <h3 aria-label="Functions" id="getpoolidbyname">GetPoolIdByName ()<a class="headerlink" href="#getpoolidbyname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="itempooltype-getpoolidbyname-string-poolname"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html">ItemPoolType</a> GetPoolIdByName ( string PoolName )<a class="headerlink" href="#itempooltype-getpoolidbyname-string-poolname" title="Permanent link">⚓︎</a></h4>
 <p>Returns the ID of a given custom pool. Returns <code>-1</code> if the pool is not found.</p>
-<hr />
 <h3 aria-label="Functions" id="getrenderposition">GetRenderPosition ()<a class="headerlink" href="#getrenderposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-getrenderposition-vector-position-boolean-scale-true"><a href="Vector.html">Vector</a> GetRenderPosition ( <a href="Vector.html">Vector</a> Position, boolean Scale = true )<a class="headerlink" href="#vector-getrenderposition-vector-position-boolean-scale-true" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getstring">GetString ()<a class="headerlink" href="#getstring" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getstring-string-category-string-key">string GetString ( string Category, string Key )<a class="headerlink" href="#string-getstring-string-category-string-key" title="Permanent link">⚓︎</a></h4>
 <p>Returns the translation string associated with the given key in the given category. The translation is given in the currently selected language.</p>
-<hr />
 <h3 aria-label="Functions" id="getwindowtitle">GetWindowTitle ()<a class="headerlink" href="#getwindowtitle" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getwindowtitle">string GetWindowTitle ( )<a class="headerlink" href="#string-getwindowtitle" title="Permanent link">⚓︎</a></h4>
 <p>Returns the appended text on the game's window title.</p>
-<hr />
 <h3 aria-label="Functions" id="ischallengedone">IsChallengeDone ()<a class="headerlink" href="#ischallengedone" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ischallengedone-int-challengeid">boolean IsChallengeDone ( int challengeid )<a class="headerlink" href="#boolean-ischallengedone-int-challengeid" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if the challenge of the corresponding challengeid is completed.</p>
-<hr />
 <h3 aria-label="Functions" id="isingame">IsInGame ()<a class="headerlink" href="#isingame" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isingame">boolean IsInGame ( )<a class="headerlink" href="#boolean-isingame" title="Permanent link">⚓︎</a></h4>
 <p>Returns <code>true</code> if <code>Game</code> is non-nil and the current state is correct.</p>
-<hr />
 <h3 aria-label="Functions" id="levelgeneratorentry">LevelGeneratorEntry ()<a class="headerlink" href="#levelgeneratorentry" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="levelgeneratorentry-levelgeneratorentry"><a href="LevelGeneratorEntry.html">LevelGeneratorEntry</a> LevelGeneratorEntry ( )<a class="headerlink" href="#levelgeneratorentry-levelgeneratorentry" title="Permanent link">⚓︎</a></h4>
 <p>Creates a new blank <a href="LevelGeneratorEntry.html">LevelGeneratorEntry</a> object.</p>
-<hr />
 <h3 aria-label="Functions" id="markchallengeasnotdone">MarkChallengeAsNotDone ()<a class="headerlink" href="#markchallengeasnotdone" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-markchallengeasnotdone-int-challengeid">void MarkChallengeAsNotDone ( int challengeid )<a class="headerlink" href="#void-markchallengeasnotdone-int-challengeid" title="Permanent link">⚓︎</a></h4>
 <p>Sets the challenge as not done.</p>
-<hr />
 <h3 aria-label="Functions" id="playcutscene">PlayCutscene ()<a class="headerlink" href="#playcutscene" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-playcutscene-int-id-boolean-cleargamestate-false">int PlayCutscene ( int ID, boolean ClearGameState = false )<a class="headerlink" href="#int-playcutscene-int-id-boolean-cleargamestate-false" title="Permanent link">⚓︎</a></h4>
 <p>Plays the Cutscene of the provided ID. Use Isaac.GetCutsceneIdByName to get the IDs, or the enum for the vanilla ones if you prefer.</p>
-<hr />
 <h3 aria-label="Functions" id="setclipboard">SetClipboard ()<a class="headerlink" href="#setclipboard" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-setclipboard-string-clipboarddata">boolean SetClipboard ( string ClipboardData )<a class="headerlink" href="#boolean-setclipboard-string-clipboarddata" title="Permanent link">⚓︎</a></h4>
 <p>Sets the contents of the clipboard to the provided string.</p>
-<hr />
 <h3 aria-label="Functions" id="setcompletionmark">SetCompletionMark ()<a class="headerlink" href="#setcompletionmark" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcompletionmark-playertype-character-completiontype-mark-int-value">void SetCompletionMark ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character, <a href="enums/CompletionType.html">CompletionType</a> Mark, int Value)<a class="headerlink" href="#void-setcompletionmark-playertype-character-completiontype-mark-int-value" title="Permanent link">⚓︎</a></h4>
 <p>Sets a completion mark of a character to match a specific value from <code>0</code> to <code>2</code> (0 = not accomplished, 1 = normal, 2 = hard).</p>
-<hr />
 <h3 aria-label="Functions" id="setcompletionmarks">SetCompletionMarks ()<a class="headerlink" href="#setcompletionmarks" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcompletionmarks-table-marks">void SetCompletionMarks ( table Marks )<a class="headerlink" href="#void-setcompletionmarks-table-marks" title="Permanent link">⚓︎</a></h4>
-<p>Sets the completion marks of a character to match an input table. Requires a table containing all the marks for the character, getting it from <a href="Isaac.html#getcompletionmarks">GetCompletionMarks</a> is advised for convenience.</p>
-<details class="- info">
-<summary>Table structure &amp; usage</summary>
 <ul>
-<li>The table needs the following fields: <ul>
-<li>PlayerType: containing the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> asociated to the marks</li>
-<li>MomsHeart: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Isaac: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Satan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>BossRush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>BlueBaby: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Lamb: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>MegaSatan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>UltraGreed: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Hush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>UltraGreedier: Mostly redundant with UltraGreed when it has a value of 2, no need to set it</li>
-<li>Delirium: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Mother: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
-<li>Beast: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">marks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Isaac</span><span class="p">.</span><span class="nf">GetCompletionMarks</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">--getting the current table</span>
-<span class="nv">marks</span><span class="p">.</span><span class="py">MomsHeart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">--Isaac now will have the hard mark on MHeart</span>
-<span class="nv">marks</span><span class="p">.</span><span class="py">Satan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">--Isaac will now have the normal mark on Satan</span>
-<span class="nv">marks</span><span class="p">.</span><span class="py">BlueBaby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">--Removes the BlueBaby Mark if its present</span>
-<span class="nv">Isaac</span><span class="p">.</span><span class="nf">SetCompletionMarks</span><span class="p">(</span><span class="nv">marks</span><span class="p">)</span><span class="w"> </span><span class="c1">--Impacts the changes on the player</span>
+<li>Satan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">Isaac</span><span class="p">.</span><span class="nf">SetCompletionMarks</span><span class="p">(</span><span class="nv">marks</span><span class="p">)</span><span class="w"> </span><span class="c1">--Impacts the changes on the player</span>
 </code></pre></div></td></tr></table></div></li>
 </ul>
-</li>
-</ul>
+<details class="- info">
+<summary>Table structure &amp; usage</summary>
 </details>
-<hr />
+<ul>
+<li>Delirium: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>MegaSatan: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>PlayerType: containing the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> asociated to the marks
+Sets the completion marks of a character to match an input table. Requires a table containing all the marks for the character, getting it from <a href="Isaac.html#getcompletionmarks">GetCompletionMarks</a> is advised for convenience.</li>
+<li>Mother: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>UltraGreed: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>BlueBaby: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>UltraGreedier: Mostly redundant with UltraGreed when it has a value of 2, no need to set it</li>
+<li>BossRush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
+marks.BlueBaby = 0 --Removes the BlueBaby Mark if its present</li>
+<li>Beast: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>Isaac: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>Lamb: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion</li>
+<li>MomsHeart: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
+local marks = Isaac.GetCompletionMarks(0) --getting the current table</li>
+<li>The table needs the following fields:
+marks.Satan = 1 --Isaac will now have the normal mark on Satan</li>
+<li>Hush: value of <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> 0-2 indicating the completion
+marks.MomsHeart = 2 --Isaac now will have the hard mark on MHeart</li>
+</ul>
 <h3 aria-label="Functions" id="setcurrentfloorbackdrop">SetCurrentFloorBackdrop ()<a class="headerlink" href="#setcurrentfloorbackdrop" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcurrentfloorbackdrop-int-backdropid">void SetCurrentFloorBackdrop ( int BackdropId )<a class="headerlink" href="#void-setcurrentfloorbackdrop-int-backdropid" title="Permanent link">⚓︎</a></h4>
 <p>Changes the default room backdrop for the current floor to match the input id. This change wont persists on save/continue so make sure to account for that.</p>
-<hr />
 <h3 aria-label="Functions" id="setcurrentfloormusic">SetCurrentFloorMusic ()<a class="headerlink" href="#setcurrentfloormusic" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcurrentfloormusic-int-musicid">void SetCurrentFloorMusic ( int MusicId )<a class="headerlink" href="#void-setcurrentfloormusic-int-musicid" title="Permanent link">⚓︎</a></h4>
 <p>Changes the music track for the current floor to match the input id. This change wont persists on save/continue so make sure to account for that.</p>
-<hr />
 <h3 aria-label="Functions" id="setcurrentfloorname">SetCurrentFloorName ()<a class="headerlink" href="#setcurrentfloorname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcurrentfloorname-string-name">void SetCurrentFloorName ( string Name )<a class="headerlink" href="#void-setcurrentfloorname-string-name" title="Permanent link">⚓︎</a></h4>
 <p>Changes the display name for the current floor to match the input id. This change wont persists on save/continue so make sure to account for that.</p>
-<hr />
 <h3 aria-label="Functions" id="setdwmwindowattribute">SetDwmWindowAttribute ()<a class="headerlink" href="#setdwmwindowattribute" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdwmwindowattribute-dwmwindowattribute-attribute">void SetDwmWindowAttribute ( <a href="enums/DwmWindowAttribute.html">DwmWindowAttribute</a> Attribute )<a class="headerlink" href="#void-setdwmwindowattribute-dwmwindowattribute-attribute" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="seticon">SetIcon ()<a class="headerlink" href="#seticon" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-seticon-int-isaacicon-or-string-iconpath-boolean-bypasssize">void SetIcon ( int IsaacIcon OR string IconPath, boolean BypassSize)<a class="headerlink" href="#void-seticon-int-isaacicon-or-string-iconpath-boolean-bypasssize" title="Permanent link">⚓︎</a></h4>
-<p>Sets the 16x16 icon located on the game window. Does not update the icon elsewhere, such as the task bar.</p>
-<p><code>IsaacIcon</code> is <code>0</code> for the normal icon, <code>1</code> for the Tainted icon.</p>
-<p><code>IconPath</code> accepts a path to a .ico file.</p>
-<p><code>BypassSize</code> bypasses the 16x16 resolution cap.</p>
-<hr />
+<p><code>IconPath</code> accepts a path to a .ico file.
+Sets the 16x16 icon located on the game window. Does not update the icon elsewhere, such as the task bar.
+<code>IsaacIcon</code> is <code>0</code> for the normal icon, <code>1</code> for the Tainted icon.
+<code>BypassSize</code> bypasses the 16x16 resolution cap.</p>
 <h3 aria-label="Functions" id="setwindowtitle">SetWindowTitle ()<a class="headerlink" href="#setwindowtitle" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setwindowtitle-string-title">void SetWindowTitle ( string Title )<a class="headerlink" href="#void-setwindowtitle-string-title" title="Permanent link">⚓︎</a></h4>
 <p>Sets the appended text on the game's window title.</p>
-<hr />
 <h3 aria-label="Functions" id="showerrordialog">ShowErrorDialog ()<a class="headerlink" href="#showerrordialog" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="dialogreturn-showerrordialog-string-title-string-text-dialogicons-icon-dialogiconserror-dialogbuttons-buttons-dialogbuttonsok"><a href="enums/DialogReturn.html">DialogReturn</a> ShowErrorDialog ( string Title, string Text, <a href="enums/DialogIcons.html">DialogIcons</a> Icon = DialogIcons.ERROR, <a href="enums/DialogButtons.html">DialogButtons</a> Buttons = DialogButtons.OK )<a class="headerlink" href="#dialogreturn-showerrordialog-string-title-string-text-dialogicons-icon-dialogiconserror-dialogbuttons-buttons-dialogbuttonsok" title="Permanent link">⚓︎</a></h4>
-<p>Displays a Win32 message box. Can be controlled with the <code>icon</code> and <code>buttons</code> parameters. Returns a <a href="enums/DialogReturn.html"><code>DialogReturn</code></a> value that indicates the button pressed.</p>
+<p>Take in mind that gamepad wont work for this popup, you'll need to use mouse/keyboard or touchscreen, and the window title wont show up on some enviroments like the steam deck, so dont rely on it too much.
+Displays a Win32 message box. Can be controlled with the <code>icon</code> and <code>buttons</code> parameters. Returns a <a href="enums/DialogReturn.html"><code>DialogReturn</code></a> value that indicates the button pressed.</p>
 <details class="- info">
 <summary>Note</summary>
-<p>Take in mind that gamepad wont work for this popup, you'll need to use mouse/keyboard or touchscreen, and the window title wont show up on some enviroments like the steam deck, so dont rely on it too much.</p>
 </details>
-<hr />
 <h3 aria-label="Functions" id="startnewgame">StartNewGame ()<a class="headerlink" href="#startnewgame" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-startnewgame-playertype-character-challenge-challenge-challengetypechallenge_null-difficulty-mode-difficultydifficulty_normal-int-seed-random">void StartNewGame ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> Character, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Challenge.html">Challenge</a> Challenge = ChallengeType.CHALLENGE_NULL, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html">Difficulty</a> Mode = Difficulty.DIFFICULTY_NORMAL, int Seed = Random )<a class="headerlink" href="#void-startnewgame-playertype-character-challenge-challenge-challengetypechallenge_null-difficulty-mode-difficultydifficulty_normal-int-seed-random" title="Permanent link">⚓︎</a></h4>
 <p>Starts a new game using the specified arguments. Can be used from the main menu.</p>
-<hr />
 <h3 aria-label="Functions" id="triggerwindowresize">TriggerWindowResize ()<a class="headerlink" href="#triggerwindowresize" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-triggerwindowresize">void TriggerWindowResize ( )<a class="headerlink" href="#void-triggerwindowresize" title="Permanent link">⚓︎</a></h4>
 <p>Simulates a window resize, useful to refresh some option changes like <code>MaxRenderScale</code>.</p>
-<hr />
 <h3 aria-label="Functions" id="worldtomenuposition">WorldToMenuPosition ()<a class="headerlink" href="#worldtomenuposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-worldtomenuposition-mainmenu-menuid-vector-position"><a href="Vector.html">Vector</a> WorldToMenuPosition ( <a href="enums/MainMenuType.html">MainMenu</a> MenuId, <a href="Vector.html">Vector</a> Position )<a class="headerlink" href="#vector-worldtomenuposition-mainmenu-menuid-vector-position" title="Permanent link">⚓︎</a></h4>
 <p>Converts the World position from input to a pinned main menu position that varies depending on the enum selected. It's important to reconvert this every frame, in a similar fashion to WorldToRender, in order to properly render when menus are changed or the window is resized.</p>
-<hr />
 
 
 

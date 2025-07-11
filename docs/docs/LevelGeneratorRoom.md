@@ -19,26 +19,22 @@ tags:
 #### int Column ( ) {: .copyable aria-label='Functions' }
 Return the column of the room slot on the level grid (index is `0` based).
 
-___
 ### DoorMask () {: aria-label='Functions' }
 #### int DoorMask ( ) {: .copyable aria-label='Functions' }
+print("Room has a door in slot LEFT0")
+This tests if the DoorSlot `LEFT0` is available.
 Return a mask of the available doors of the room slot.
+if room:DoorMask() & (1 << DoorSlot.LEFT0) ~= 0 then
 In order to check if a door at a given slot is available, use the DoorSlot enumeration.
-
+```lua
+end
 ???+ example "Example"
-    This tests if the DoorSlot `LEFT0` is available.
-    ```lua
-    if room:DoorMask() & (1 << DoorSlot.LEFT0) ~= 0 then
-        print("Room has a door in slot LEFT0")
-    end
-    ```
+```
 
-___
 ### GenerationIndex () {: aria-label='Functions' }
 #### int GenerationIndex ( ) {: .copyable aria-label='Functions' }
 Index of the room during generation: `0` if the room was the first to be generated, `1` if it was the second etc.
 
-___
 ### IsDeadEnd () {: aria-label='Functions' }
 #### boolean IsDeadEnd ( ) {: .copyable aria-label='Functions' }
 
@@ -47,14 +43,10 @@ ___
 #### int[] Neighbors ( ) {: .copyable aria-label='Functions' }
 Returns a table of the generation indices of the neighboring rooms.
 
-___
 ### Row () {: aria-label='Functions' }
 #### int Row ( ) {: .copyable aria-label='Functions' }
 Return the row of the room slot on the level grid (index is `0` based).
 
-___
 ### Shape () {: aria-label='Functions' }
 #### int Shape ( ) {: .copyable aria-label='Functions' }
 Return the shape of the room, as per the RoomShape enumeration.
-
-___

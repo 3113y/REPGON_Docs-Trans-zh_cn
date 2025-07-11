@@ -23,8 +23,6 @@ ___
 ### GetHearts () {: aria-label='Functions' }
 #### [PlayerHUDHeart](PlayerHUDHeart.md)[] GetHearts ( ) {: .copyable aria-label='Functions' }
 Returns table of [PlayerHUDHeart](PlayerHUDHeart.md) objects.
-
-___
 ### GetHUD () {: aria-label='Functions' }
 #### [HUD](HUD.md) GetHUD ( ) {: .copyable aria-label='Functions' }
 

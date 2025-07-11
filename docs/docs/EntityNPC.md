@@ -11,55 +11,44 @@ tags:
 
 ### PlaySound () {: aria-label='Modified Functions' }
 #### void PlaySound ( int ID, float Volume = 1.0, int FrameDelay = 2, boolean Loop = true, float Pitch = 1.0 ) {: .copyable aria-label='Modified Functions' }
-All arguments besides `ID` are now optional.
-
-___
-
-## Functions
+除 `ID` 之外的所有参数现在都是可选的。
 
 ### ClearFlyingOverride () {: aria-label='Functions' }
 #### void ClearFlyingOverride ( ) {: .copyable aria-label='Functions' }
-Removes any value set by [SetFlyingOverride](EntityNPC.md#setflyingoverride)
+移除由 [SetFlyingOverride](EntityNPC.md#setflyingoverride) 设置的任何值。
 
-___
 ### FireBossProjectilesEx () {: aria-label='Functions' }
 #### [EntityProjectile](EntityProjectile.md)[] FireBossProjectilesEx ( int NumProjectiles, [Vector](Vector.md) TargetPos, float TrajectoryModifier, [ProjectileParams](https://wofsauge.github.io/IsaacDocs/rep/ProjectileParams.html) Params ) {: .copyable aria-label='Functions' }
-Same as [FireBossProjectiles](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#firebossprojectiles), but returns a table containing the list of spawned projectiles.
+与 [FireBossProjectiles](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#firebossprojectiles) 相同，但返回一个包含已生成弹幕列表的表。
 
-___
 ### FireGridEntity () {: aria-label='Functions' }
 #### [EntityProjectile](EntityProjectile.md) FireGridEntity ( [Sprite](Sprite.md) GridEntitySprite, [GridEntityDesc](https://wofsauge.github.io/IsaacDocs/rep/GridEntityDesc.html) GridEntityDesc, [Vector](Vector.md) Velocity, [BackdropType](https://wofsauge.github.io/IsaacDocs/rep/enums/BackdropType.html) Backdrop = BackdropType.BASEMENT ) {: .copyable aria-label='Functions' }
 
 ___
 ### FireProjectilesEx () {: aria-label='Functions' }
 #### [EntityProjectile](EntityProjectile.md)[] FireProjectilesEx ([Vector](Vector.md) Position, [Vector](Vector.md) Velocity, ProjectilesMode Mode, [ProjectileParams](https://wofsauge.github.io/IsaacDocs/rep/ProjectileParams.html) Params) {: .copyable aria-label='Functions' }
-Same as [FireProjectiles](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#fireprojectiles), but returns a table containing the list of spawned projectiles.
+与 [FireProjectiles](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#fireprojectiles) 相同，但返回一个包含已生成弹幕列表的表。
 
-___
 ### GetBossColorIdx () {: aria-label='Functions' }
 #### int GetBossColorIdx ( ) {: .copyable aria-label='Functions' }
-Returns the returns the bosscoloridx(which is usually just the subtype) or -1 if its not a bosscolor (or bosscolor doesnt apply).
+返回 bosscoloridx（通常就是子类型），如果不是 bosscolor（或者不适用 bosscolor）则返回 -1。
 
-___
 ### GetControllerId () {: aria-label='Functions' }
 #### int GetControllerId ( ) {: .copyable aria-label='Functions' }
-Returns the ControllerId for the NPC, which indicates which player is controlling it. Will return `-1` when not being controlled by any player.
+返回 NPC 的控制器 ID，该 ID 指示哪个玩家正在控制它。当没有被任何玩家控制时将返回 `-1`。
 
-___
 ### GetDarkRedChampionRegenTimer () {: aria-label='Functions' }
 #### int GetDarkRedChampionRegenTimer ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetDirtColor () {: aria-label='Functions' }
 #### [Color](Color.md) GetDirtColor ( ) {: .copyable aria-label='Functions' }
-Returns the dynamic dirt color of the entity. This lets entities like Nightcrawler blend in to the environment.
+返回实体的动态泥土颜色。这可以让像夜行者这样的实体融入环境。
 
-___
 ### GetFireplaceLoot () {: aria-label='Functions' }
 #### [LootList](LootList.md) GetFireplaceLoot ( ) {: .copyable aria-label='Functions' }
-Returns the unique [LootList](LootList.md) used by Fireplaces.
+返回壁炉使用的唯一 [LootList](LootList.md)。
 
-___
 ### GetHitList () {: aria-label='Functions' }
 #### int[] GetHitList ( ) {: .copyable aria-label='Functions' }
 
@@ -70,9 +59,8 @@ ___
 ___
 ### GetShopkeeperLoot () {: aria-label='Functions' }
 #### [LootList](LootList.md) GetShopkeeperLoot ( ) {: .copyable aria-label='Functions' }
-Returns the unique [LootList](LootList.md) used by Shopkeepers.
+返回店主使用的唯一 [LootList](LootList.md)。
 
-___
 ### GetSirenPlayerEntity () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md) GetSirenPlayerEntity ( ) {: .copyable aria-label='Functions' }
 
@@ -83,19 +71,16 @@ ___
 ___
 ### ReplaceSpritesheet () {: aria-label='Functions' }
 #### void ReplaceSpritesheet ( int LayerId, string PngFilename, bool LoadGraphics = false ) {: .copyable aria-label='Functions' }
-Similar to [Sprite.ReplaceSpritesheet()](https://wofsauge.github.io/IsaacDocs/rep/Sprite.html#replacespritesheet). Appends "_champion"/stage suffix to `PngFilename` if possible.
+类似于 [Sprite.ReplaceSpritesheet()](https://wofsauge.github.io/IsaacDocs/rep/Sprite.html#replacespritesheet)。如果可能的话，会在 `PngFilename` 后面追加 "_champion"/阶段后缀。
 
-___
 ### SetControllerId () {: aria-label='Functions' }
 #### int SetControllerId ( int ControllerId ) {: .copyable aria-label='Functions' }
-Sets the ControllerId for the NPC, which indicates which player will control it. Set it to `-1` for no player controls (back to normal behaviour).
+设置 NPC 的控制器 ID，该 ID 指示哪个玩家将控制它。将其设置为 `-1` 表示没有玩家控制（恢复正常行为）。
 
-___
 ### SetFlyingOverride () {: aria-label='Functions' }
 #### void SetFlyingOverride ( boolean CanFly ) {: .copyable aria-label='Functions' }
-Sets an override to the return value of IsFlying, which is normally based on [EntityGridCollisionClass](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityGridCollisionClass.html). Can be used to make grounded enemies ignore creep, or flying enemies get hit by creep.
+设置对 IsFlying 返回值的覆盖，IsFlying 通常基于 [EntityGridCollisionClass](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityGridCollisionClass.html)。可用于使地面敌人忽略软泥，或使飞行敌人被软泥击中。
 
-___
 ### SetShieldStrength () {: aria-label='Functions' }
 #### void SetShieldStrength ( float Strength ) {: .copyable aria-label='Functions' }
 
@@ -134,30 +119,22 @@ ___
 ___
 ### TryForceTarget () {: aria-label='Functions' }
 #### boolean TryForceTarget ( [Entity](Entity.md) Target, int Duration ) {: .copyable aria-label='Functions' }
-Used by Lost Fly to force this NPC to focus on a specific target.
+由迷失苍蝇使用，用于强制该 NPC 专注于特定目标。
 
-___
 ### TrySplit () {: aria-label='Functions' }
 #### boolean TrySplit ( float DefaultDamage, [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, boolean DoScreenEffects = true ) {: .copyable aria-label='Functions' }
-Will attempt to split the enemy in two like the Meat Cleaver collectible. Returns `false` if the enemy dies from the damage before they split, `true` otherwise.
+将尝试像肉斧道具那样将敌人分裂成两个。如果敌人在分裂前因伤害死亡则返回 `false`，否则返回 `true`。
 
-___
 ### TryThrow () {: aria-label='Functions' }
 #### boolean TryThrow ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, [Vector](Vector.md) Direction, float Force ) {: .copyable aria-label='Functions' }
+???+ info "信息"
+`Force` 仅适用于 NPC 便便（它会被修改，然后用作 V1.y，V1.x 为 -20.0），可能不准确。这需要进一步研究。
 
-???+ info "Info"
-    `Force` only applies to NPC poop (it's modified and then used as V1.y, with V1.x being -20.0) and may be incorrect. This needs further investigation.
-
-___
 ### UpdateDirtColor () {: aria-label='Functions' }
 #### void UpdateDirtColor ( boolean Immediate ) {: .copyable aria-label='Functions' }
-Instructs the entity to update its dirt color. This is generally done automatically on vanilla entities, but up until now, modded ones have been quite limited in this regard.
+指示实体更新其泥土颜色。在原版实体中，这通常是自动完成的，但到目前为止，模组实体在这方面一直相当受限。
+如果设置了 `Immediate`，泥土颜色将被设置为实体下方的确切颜色。否则，它将在多帧的过程中平滑更新。
 
-If `Immediate` is set, the dirt color will be set to exactly what is beneath the entity. Otherwise, it will be updated smoothly over the course of multiple frames.
-
-___
-
-## Variables
 ### V1 {: aria-label='Variables' }
 #### [Vector](Vector.md) V1 {: .copyable aria-label='Variables' }
 Fix of original function that now correctly returns a pointer to the Vector.

@@ -20,44 +20,33 @@ tags:
 
 ### GetCommandHistory () {: aria-label='Functions' }
 #### string[] GetCommandHistory ( ) {: .copyable aria-label='Functions' }
-Returns a table containing current command history.
+返回一个包含当前命令历史记录的表格。
 
-___
 ### GetHistory () {: aria-label='Functions' }
 #### string[] GetHistory ( ) {: .copyable aria-label='Functions' }
-Returns a table containing every previous entry printed to the console this run.
+返回一个包含本次游戏运行期间所有先前打印到控制台条目的表格。
+该表格的排列顺序是从最新到最旧 —— 第一个条目将是当前等待用户输入的空白行，接着是上一次打印的内容，依此类推。最后一行始终是 `忏悔版控制台`。
 
-This is ordered last-to-first- the first entry will be the currently blank line awaiting user input, followed by the previous print, and so on. The last line will always be `Repentance Console`.
-
-___
 ### PopHistory () {: aria-label='Functions' }
 #### void PopHistory ( int Amount = 1 ) {: .copyable aria-label='Functions' }
-Removes previous lines from history. Optionally, use amount to define how many entries should be removed. The line currently awaiting user input in the console counts as a part of the history, but this is already accounted for on the C++ side.
+从历史记录中移除先前的行。可以选择使用 `amount` 参数来指定应移除多少个条目。控制台中当前等待用户输入的行算作历史记录的一部分，但在 C++ 端已经对此进行了处理。
 
-___
 ### PrintError () {: aria-label='Functions' }
 #### void PrintError ( string Error ) {: .copyable aria-label='Functions' }
-Prints an error to the console, errors display in red text.
+将错误信息打印到控制台，错误信息以红色文本显示。
 
-___
 ### PrintWarning () {: aria-label='Functions' }
 #### void PrintWarning ( string Warning ) {: .copyable aria-label='Functions' }
-Prints a warning to the console, warnings display in yellow text.
+将警告信息打印到控制台，警告信息以黄色文本显示。
 
-___
 ### RegisterCommand () {: aria-label='Functions' }
 #### void RegisterCommand ( string Name, string Desc, string HelpText, boolean ShowOnMenu, [AutocompleteType](enums/AutocompleteType.md) Type ) {: .copyable aria-label='Functions' }
-Registers a command in the new console. These will show up in the new console's autocomplete.
+在新控制台中注册一个命令。这些命令将显示在新控制台的自动补全列表中。
+* 输入 `help` 命令时将显示 `Desc`（描述）。
+* 输入 `help (Name)` 时将显示 `HelpText`（帮助文本）。
+* `AutocompleteType`（自动补全类型）将使该命令继承该自动补全类型。如果该命令不属于任何标准类型，请使用 `CUSTOM`（自定义）并结合 [MC_CONSOLE_AUTOCOMPLETE](enums/ModCallbacks.md#mc_console_autocomplete) 为此命令创建一个定制的自动补全类型。
 
-* `Desc` will show when typing the `help` command.
-* `HelpText` will show when typing `help (Name)`.
-* `AutocompleteType` will make the command inherit that autocomplete type. If the command doesn't fit into any of the standard types, use `CUSTOM` combined with [MC_CONSOLE_AUTOCOMPLETE](enums/ModCallbacks.md#mc_console_autocomplete) to create a bespoke one for this command.
-
-___
 ### RegisterMacro () {: aria-label='Functions' }
 #### void RegisterMacro ( string Name, string[] Commands ) {: .copyable aria-label='Functions' }
-Registers a macro in the new console. These will show up in the new console's autocomplete for the `macro` command.
-
-* `Commands` is a table of strings containing the commands that should be executed, in order.
-
-___
+* `Commands`（命令）是一个字符串表格，包含应按顺序执行的命令。
+在新控制台中注册一个宏。这些宏将显示在新控制台 `macro` 命令的自动补全列表中。

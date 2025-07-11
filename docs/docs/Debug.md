@@ -27,5 +27,4 @@ ___
 ___
 ### ListLoadedFiles () {: aria-label='Functions' }
 #### string[] ListLoadedFiles ( ) {: .copyable aria-label='Functions' }
-Returns a list of all files loaded into the LUA environment.
-___
+返回已加载到 LUA 环境中的所有文件的列表。

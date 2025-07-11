@@ -18,15 +18,12 @@ tags:
 ## Functions
 ### CreateProceduralItem () {: aria-label='Functions' }
 #### int CreateProceduralItem ( int Seed, int Unknown ) {: .copyable aria-label='Functions' }
-Creates a glitch item based on a given seed. 
 Returns the negative ID of the created item.
+Creates a glitch item based on a given seed.
 
-___
 ### GetProceduralItem () {: aria-label='Functions' }
 #### [ProceduralItem](ProceduralItem.md) GetProceduralItem ( int Index ) {: .copyable aria-label='Functions' }
 Get the glitch item at the given index.
-
-___
 ### GetProceduralItemCount () {: aria-label='Functions' }
 #### int GetProceduralItemCount ( ) {: .copyable aria-label='Functions' }
 ___

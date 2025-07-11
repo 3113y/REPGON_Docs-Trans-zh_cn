@@ -16,12 +16,14 @@ An example mod using the ColorModifier class can be found [here.](./examples/Col
 ## Constructors
 ### ColorModifier () {: aria-label='Constructors' }
 #### [ColorModifier](ColorModifier.md) ColorModifier ( float R = 1, float G = 1, float B = 1, float A = 0, float Brightness = 0, float Contrast = 1 ) {: .copyable aria-label='Constructors' }
-
 ## Variables
+这充当强度乘数，并且为了使 RGB 产生任何效果，它必须不为零！
+???+ warning "警告"
+
 ### A {: aria-label='Variables' }
 #### float A {: .copyable aria-label='Variables'}
 ???+ warning "Warning"
-    This acts as a strength multiplier and must be non-zero in order for RGB to have any effect!
+    这充当强度乘数，并且为了使 RGB 产生任何效果，它必须不为零！
 ___
 ### B {: aria-label='Variables' }
 #### float B {: .copyable aria-label='Variables'}
@@ -46,26 +48,20 @@ ___
 ## Operators
 ### __add () {: aria-label='Operators' }
 #### [ColorModifier](ColorModifier.md) __add ( [ColorModifier](ColorModifier.md) right ) {: .copyable aria-label='Operators' }
+定义了使用 `+` 运算符对两个 [ColorModifier](ColorModifier.md) 对象进行加法运算。
 
-Defines the addition of two [ColorModifier](ColorModifier.md) objects using the `+` operator.
-___
 ### __div () {: aria-label='Operators' }
 #### [ColorModifier](ColorModifier.md) __div ( [ColorModifier](ColorModifier.md) right ) {: .copyable aria-label='Operators' }
+定义了使用 `/` 运算符对一个 [ColorModifier](ColorModifier.md) 对象和一个 `float` 类型数值进行除法运算。`ColorModifier` 必须位于运算符左侧。
 
-Defines the division of a [ColorModifier](ColorModifier.md) object and a `float` using the `/` operator. The `ColorModifier` must be on the left side.
-___
 ### __eq () {: aria-label='Operators' }
 #### [ColorModifier](ColorModifier.md) __eq ( [ColorModifier](ColorModifier.md) right ) {: .copyable aria-label='Operators' }
+定义了使用 `==` 运算符判断两个 [ColorModifier](ColorModifier.md) 对象是否相等。
 
-Defines equal of two [ColorModifier](ColorModifier.md) objects using the `==` operator.
-___
 ### __mul () {: aria-label='Operators' }
 #### [ColorModifier](ColorModifier.md) __mul ( [ColorModifier](ColorModifier.md) right ) {: .copyable aria-label='Operators' }
+定义了使用 `*` 运算符对一个 [ColorModifier](ColorModifier.md) 对象和一个 `float` 类型数值进行乘法运算。`ColorModifier` 必须位于运算符左侧。
 
-Defines the multiplication of a [ColorModifier](ColorModifier.md) object and a `float` using the `*` operator. The `ColorModifier` must be on the left side.
-___
 ### __sub () {: aria-label='Operators' }
 #### [ColorModifier](ColorModifier.md) __sub ( [ColorModifier](ColorModifier.md) right ) {: .copyable aria-label='Operators' }
-
-Defines the subtraction of two [ColorModifier](ColorModifier.md) objects using the `-` operator.
-___
+定义了使用 `-` 运算符对两个 [ColorModifier](ColorModifier.md) 对象进行减法运算。
