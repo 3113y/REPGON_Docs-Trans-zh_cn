@@ -8,8 +8,16 @@ REPENTOGON是用于《以撒的结合：忏悔》版本v1.7.9b.J835(其它版本
 REPENTOGON通常被社区称为“代码扩展MOD”，它的工作方式与传统的mod有显著差异。它由 *LibZHL* 驱动，这也是 *[抗生（Antibirth）](https://antibirth.com/)* 使用的框架。REPENTOGON直接挂钩（HOOK）至游戏，允许直接管理过去无法在mod中改造的内容，或管理那些需要高性能开销的技巧或重新实现才能改造的内容。
 
 # LUA API文档
-REPENTOGON对Lua API进行了添加和修改，并增加了大量新功能。你可以在这里查看文档:[https://repentogon.com/docs.html](https://repentogon.com/docs.html)
-
+REPENTOGON对Lua API进行了添加和修改，并增加了大量新功能。你可以在这里查看文档:[https://repentogon.com/docs.html](https://repentogon.com/docs.html)（英文文档）
+[中文文档](https://3113y.github.io/REPGON_Docs-Trans-zh_cn/docs.html)
+## NEW
+由于本文档的汉化是由本人在AI辅助的情况下完成的，所以难免有未翻译/翻译错误的地方（此外，由于原英文版文档的部分排版和描述就过于神秘，所以请在参照原版后确认是中文版翻译/排版错误后再提交修改意见）：
+1. fork一个新的代码库
+2. 在fork的代码库中，以main为基分支，新建一个分支，可以叫。
+3. 在该分支上进行翻译/修改（近期我将陆续翻译完成并提交，所以仅修改即可）。
+4. 该分支的目的完成后，推送该分支。创建Pull Request，将该分支合并到3113y/REPGON_Docs-Trans-zh_cn的main分支上。
+5. 等待审核。
+6. 审核通过后，你的分支会被合并到main中。（本方法参照了[cuerzor](https://github.com/Cuerzor/IsaacDocs)所给的汉化修改方法）
 # 安装
 1. 从[GitHub Actions](https://github.com/TeamREPENTOGON/REPENTOGON/actions/workflows/ci.yml)下载构建。
 2. 将压缩文件中的内容解压至你的游戏目录。你可以通过Steam找到目录，在Steam库中右击`The Binding of Isaac: Rebirth`，点击`属性`，然后在弹出的窗口中点击`已安装文件`、`浏览`（位于右上角）。
