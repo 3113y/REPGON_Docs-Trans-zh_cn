@@ -10,4 +10,4 @@ tags:
 
 ### Deflect () {: aria-label='Functions' }
 #### void Deflect ( [Vector](Vector.md) NewVelocity ) {: .copyable aria-label='Functions' }
-Deflects the projectile.
+使泪弹偏转.

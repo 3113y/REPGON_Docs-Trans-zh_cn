@@ -337,7 +337,7 @@ ___
 ___
 ### SpawnWaterImpactEffects () {: aria-label='Functions' }
 #### void SpawnWaterImpactEffects ( [Vector](Vector.md) Position, [Vector](Vector.md) Velocity = Vector.Zero, float Strength ) {: .copyable aria-label='Functions' }
-???+ warning "警告"
+???+ warning "Warning"
 仅当房间的 [水量](Room.md#getwateramount) 大于或等于 `0.2` 时，此函数才会生成效果。
 
 ### TeleportToRandomPosition () {: aria-label='Functions' }

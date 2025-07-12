@@ -10,40 +10,40 @@ tags:
 
 ### ResetSpriteScale () {: aria-label='Modified Functions' }
 #### void ResetSpriteScale ( boolean Force = false ) {: .copyable aria-label='Modified Functions' }
-Now accepts a `Force` argument to force the tear into re-evaluating what tear scale animation it should play.
+现在接受一个 `Force` 参数，用于强制眼泪重新评估应该播放哪种眼泪缩放动画。
 
 ### GetDeadEyeIntensity () {: aria-label='Functions' }
 #### float GetDeadEyeIntensity ( ) {: .copyable aria-label='Functions' }
-Returns the intensity value of the tear as a result of the Dead Eye collectible. It is between `0` and `1`.
+返回眼泪因“死亡之眼”道具产生的强度值，该值介于 `0` 和 `1` 之间。
 
 ### GetDeadEyeSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetDeadEyeSprite ( ) {: .copyable aria-label='Functions' }
-Returns the red aura sprite used by the Dead Eye collectible.
+返回“死亡之眼”道具使用的红色光环精灵图。
 
 ### GetTearEffectSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetTearEffectSprite ( ) {: .copyable aria-label='Functions' }
-Returns the tear effect sprite used by tear variants like Fire Mind and Mysterious Liquid.
+返回像“火之思维”和“神秘液体”等眼泪变体所使用的眼泪特效精灵图。
 
 ### GetTearHaloSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetTearHaloSprite ( ) {: .copyable aria-label='Functions' }
-Returns the tear halo sprite used by Godhead tears.
+返回“神格”眼泪所使用的眼泪光晕精灵图。
 
 ### IsMultidimensionalTouched () {: aria-label='Functions' }
 #### boolean IsMultidimensionalTouched ( ) {: .copyable aria-label='Functions' }
-Returns if the tear was created through the Multi Dimensional Baby effect.
+返回该眼泪是否是通过“多维宝宝”效果创建的。
 
 ### IsPrismTouched () {: aria-label='Functions' }
 #### boolean IsPrismTouched ( ) {: .copyable aria-label='Functions' }
-Returns if the tear was created through the Angelic Prism effect.
+返回该眼泪是否是通过“天使棱镜”效果创建的。
 
 ### MakeMultidimensionalCopy () {: aria-label='Functions' }
 #### [EntityTear](EntityTear.md) MakeMultidimensionalCopy ( ) {: .copyable aria-label='Functions' }
-Copies the tear and applies a black and white effect to it. This effect is the same one used by the Multidimensional Baby familiar.
+复制该眼泪并为其应用黑白效果，此效果与“多维宝宝”跟班所使用的效果相同。
 
 ### SetMultidimensionalTouched () {: aria-label='Functions' }
 #### void SetMultidimensionalTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
-Sets if the tear was created through the Angelic Prism effect.
+设置该眼泪是否是通过“天使棱镜”效果创建的。
 
 ### SetPrismTouched () {: aria-label='Functions' }
 #### void SetPrismTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
-Sets if the tear was created through the Angelic Prism effect.
+设置该眼泪是否是通过“天使棱镜”效果创建的。

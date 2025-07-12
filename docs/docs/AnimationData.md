@@ -4,9 +4,9 @@ tags:
 ---
 # Class "AnimationData"
 
-Cached data for one animation from a loaded ANM2 file. Shared by all Sprites using the same ANM2 and cannot be modified.
+已加载的 ANM2 文件中一个动画的缓存数据。由所有使用相同 ANM2 的精灵共享，且不可修改.
 
-Can be obtained via [Sprite:GetAnimationData()](Sprite.md#getanimationdata), [Sprite:GetCurrentAnimationData()](Sprite.md#getanimationdata) or [Sprite:GetOverlayAnimationData()](Sprite.md#getanimationdata).
+可通过以下方法获取 [Sprite:GetAnimationData()](Sprite.md#getanimationdata), [Sprite:GetCurrentAnimationData()](Sprite.md#getanimationdata) or [Sprite:GetOverlayAnimationData()](Sprite.md#getanimationdata).
 
 ## Functions
 

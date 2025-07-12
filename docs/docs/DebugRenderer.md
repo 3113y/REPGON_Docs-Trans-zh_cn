@@ -6,9 +6,9 @@ tags:
 # Global Class "DebugRenderer"
 
 ???+ info
-    You can get this class by using the `DebugRenderer` global table.
+    你可以通过 `DebugRenderer` 全局表获取这个类.
 
-    **Note that to call these functions, you must use a `.` (period) instead of a `:` (colon)!**
+    **注意：调用这些函数时，必须使用 .（句点）而非 :（冒号）！**
     
     ???+ example "Example Code"
         ```lua

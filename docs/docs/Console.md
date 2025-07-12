@@ -8,7 +8,7 @@ tags:
 ???+ info
     You can get this class by using the `Console` global table.
 
-    **Note that to call these functions, you must use a `.` (period) instead of a `:` (colon)!**
+    **注意：调用这些函数时，必须使用 .（句点）而非 :（冒号）！**
     
     ???+ example "Example Code"
         ```lua
@@ -37,7 +37,7 @@ tags:
 
 ### PrintWarning () {: aria-label='Functions' }
 #### void PrintWarning ( string Warning ) {: .copyable aria-label='Functions' }
-将警告信息打印到控制台，警告信息以黄色文本显示。
+将Warning信息打印到控制台，Warning信息以黄色文本显示。
 
 ### RegisterCommand () {: aria-label='Functions' }
 #### void RegisterCommand ( string Name, string Desc, string HelpText, boolean ShowOnMenu, [AutocompleteType](enums/AutocompleteType.md) Type ) {: .copyable aria-label='Functions' }

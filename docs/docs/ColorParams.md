@@ -5,7 +5,9 @@ tags:
 # Class "ColorParams"
 
 ???+ info
-    This class can be accessed using its constructor:
+
+    可以通过其构造函数访问此类:
+
     ???+ example "Example Code"
         ```lua
         local fiveSecondRedColor = ColorParams(Color(1,0,0,1),255,150,false,false)
@@ -34,7 +36,10 @@ ___
 ___
 ### GetLifespan () {: aria-label='Functions' }
 #### int GetLifespan ( ) {: .copyable aria-label='Functions' }
-定义在这些参数过期之前还剩下多少更新帧数。在每秒 30 次的非插值更新中，每次更新该值会减 1。更改此值将直接影响这些参数在过期前还剩下多少帧数。### GetPriority () {: aria-label='Functions' }
+定义在这些参数过期之前还剩下多少更新帧数。在每秒 30 次的非插值更新中，每次更新该值会减 1。更改此值将直接影响这些参数在过期前还剩下多少帧数。
+
+___
+### GetPriority () {: aria-label='Functions' }
 #### int GetPriority ( ) {: .copyable aria-label='Functions' }
 
 ___

@@ -42,7 +42,7 @@ ___
 ___
 ### GetRandomPickupVelocity () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetRandomPickupVelocity ( [Vector](Vector.md) Position, [RNG](RNG.md) RNG = nil, int VelocityType = 0 ) {: .copyable aria-label='Functions' }
-???+ warning "警告"
+???+ warning "Warning"
 `VelocityType` 1 会将拾取物朝下方的锥形区域射出，主要用于乞丐的奖励。
 `VelocityType` 0 会将拾取物朝所需位置周围的随机方向射出。
 这是一个静态函数，必须通过 `EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)` 调用。
@@ -56,7 +56,7 @@ ___
 #### boolean IsBlind ( ) {: .copyable aria-label='Functions' }
 此值不考虑盲目诅咒，它仅反映通常在不涉及诅咒的情况下处于盲目状态的拾取物的盲目状态。例如：隐藏路线的额外物品。
 如果拾取物是收藏品基座且处于隐藏状态，则返回 `true`。对于非收藏品实体拾取物，始终返回 `false`。
-???+ warning "警告"
+???+ warning "Warning"
 
 ### MakeShopItem () {: aria-label='Functions' }
 #### void MakeShopItem ( int ShopItemID ) {: .copyable aria-label='Functions' }

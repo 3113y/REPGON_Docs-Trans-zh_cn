@@ -4,13 +4,13 @@ tags:
 ---
 # Class "AnimationFrame"
 
-Cached data for a single frame of one layer of an animation from an ANM2 file. Shared by all Sprites using the same ANM2 and cannot be modified.
+来自 ANM2 文件的动画某一层单个帧的缓存数据。由所有使用相同 ANM2 的精灵共享，且不可修改。
 
-Note that interpolation and root animations have already been baked into these values.
+请注意，插值和根动画已预先计算并包含在这些值中。
 
-Otherwise, these values correspond to the same ones viewable in the ANM2 editor, and have been named the same way.
+此外，这些值与 ANM2 编辑器中可见的值相对应，并且命名方式相同.
 
-Obtained via [AnimationLayer:GetFrame()](AnimationLayer.md#getframe).
+可通过 [AnimationLayer:GetFrame()](AnimationLayer.md#getframe) 获取.
 
 ## Functions
 

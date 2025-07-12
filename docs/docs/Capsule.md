@@ -4,11 +4,11 @@ tags:
 ---
 # Class "Capsule"
 
-An example mod using the Capsule class can be found [here.](./examples/Capsules.md)
+[here.](./examples/Capsules.md)可以找到一个使用Capsule类的示例模组
 
 ???+ info
-    You can get this class by using the following functions:
 
+    你可以通过以下函数获取此类:
     * [Entity:GetCollisionCapsule()](Entity.md#getcollisioncapsule)
     * [Entity:GetNullCapsule()](Entity.md#getnullcapsule)
         

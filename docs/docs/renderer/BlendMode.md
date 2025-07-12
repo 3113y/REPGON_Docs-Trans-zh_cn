@@ -7,7 +7,7 @@ tags:
 Determines how a [LayerState](../LayerState.md) should blend with the elements rendered behind it. Specifically, these parameters are used in calls to [glBlendFuncSeparate](https://registry.khronos.org/OpenGL-Refpages/gl2.1/xhtml/glBlendFuncSeparate.xml).
 
 ???+ info
-    You can get this class by using the following functions:
+    你可以通过以下函数获取此类:
 
     * [LayerState:GetBlendMode()](../LayerState.md#getblendmode)
 

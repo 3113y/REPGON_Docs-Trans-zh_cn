@@ -35,30 +35,31 @@ An example mod using the ImGui class can be found [here.](./examples/ImGuiMenu.m
 
 ### AddButton () {: aria-label='Functions' }
 #### void AddButton ( string ParentId, string ElementId, string Label = "", function ClickCallback = nil, boolean IsSmall = false ) {: .copyable aria-label='Functions' }
-## Functions
-Result: ":fontawesome-solid-truck-medical: My Text"
-**Icon usage in Lua:**
-For element types we use the same names as in ImGui itself. Check out the **[interactive ImGui example](https://pthom.github.io/imgui_manual_online/manual/imgui_manual.html)**.
-This will add the "truck-medical" icon in front of the text "My text".
-All imgui text supports the usage of icons. Right now, we use "FontAwesome 6", which provides ~1400 icons. You can search for fitting icons here: [https://fontawesome.com/search?o=r&m=free&s=solid](https://fontawesome.com/search?o=r&m=free&s=solid)
+## 函数
+结果: ":fontawesome-solid-truck-medical: My Text"
+**Lua 中的图标用法**：
+对于元素类型，我们使用与 ImGui 本身相同的名称。查看 **[交互式 ImGui 示例](https://pthom.github.io/imgui_manual_online/manual/imgui_manual.html)**。
+这将在文本 "My text" 前面添加 "truck-medical" 图标。
+所有 ImGui 文本都支持使用图标。目前，我们使用 "FontAwesome 6"，它提供约 1400 个图标。你可以在此处搜索合适的图标：[https://fontawesome.com/search?o=r&m=free&s=solid](https://fontawesome.com/search?o=r&m=free&s=solid)
 `"\u{f0f9} My Text"`
-If you want to add an Icon into your widget, just use the "Unicode" representation of the icon and put it in between a `\u{ }` string. You can find this, by selecting the icon on the fontawesome page, and looking in the top right corner of the popup-window. You can add it to your element like this:
+如果你想在小部件中添加图标，只需使用图标的 "Unicode" 表示形式，并将其放在 `\u{ }` 字符串中。你可以通过在 FontAwesome 页面上选择图标，然后查看弹出窗口的右上角来找到它。你可以像这样将其添加到元素中：
 
 ### AddCallback () {: aria-label='Functions' }
 #### void AddCallback ( string ElementId, [ImGuiCallback](enums/ImGuiCallback.md) Type, Function func ) {: .copyable aria-label='Functions' }
-Add a callback to an ImGui-element. An element can have one callback per type.
+为 ImGui 元素添加回调。一个元素每种类型只能有一个回调。
 
 ### AddCheckbox () {: aria-label='Functions' }
 #### void AddCheckbox ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, boolean IsActive = false ) {: .copyable aria-label='Functions' }
 ___
 ### AddCombobox () {: aria-label='Functions' }
 #### void AddCombobox ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, table Options, int SelectedIndex = 0, boolean IsSlider = false ) {: .copyable aria-label='Functions' }
-Adds a Combobox element which represents a single line element that allows you to select a value from a dropdown menu. If `isSlider` is set to true, instead of a dropdown menu, the values can be selected by interacting with a slider element.
-```lua
-???+ example "Example Code"
-ImGui.AddCombobox("catInput", "combobox1", "Combobox", function(index, val) print(index, val) end, { "Item 1", "Item 2", "Item 3" }, 1)
-```
+添加一个组合框元素，它表示一个单行元素，允许你从下拉菜单中选择一个值。如果 `isSlider` 设置为 true，则可以通过与滑块元素交互来选择值，而不是使用下拉菜单。
 
+???+ example "示例代码"
+
+    ```lua
+    ImGui.AddCombobox("catInput", "combobox1", "Combobox", function(index, val) print(index, val) end, { "Item 1", "Item 2", "Item 3" }, 1)
+    ```
 ### AddDragFloat () {: aria-label='Functions' }
 #### void AddDragFloat ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, float DefaultVal = 0, float Speed = 1, float Min = INTEGER_MIN, float Min = INTEGER_MAX, string Formatting = "%.3f" ) {: .copyable aria-label='Functions' }
 ___
@@ -67,23 +68,26 @@ ___
 ___
 ### AddElement () {: aria-label='Functions' }
 #### void AddElement ( string ParentId, string ElementId = "", [ImGuiElement](enums/ImGuiElement.md) type, string Label = "" ) {: .copyable aria-label='Functions' }
-Adds a generic element to a given parent. Useful to add control elements like "SameLine", "Bullet" or "Text".
+向给定的父元素添加一个通用元素。对于添加像 "SameLine"、"Bullet" 或 "Text" 这样的控制元素很有用.
 
 ### AddInputColor () {: aria-label='Functions' }
 #### void AddInputColor ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, float r = 0, float g = 0, float b = 0) {: .copyable aria-label='Functions' }
+添加一个颜色输入元素。如果设置了参数 `a`，则它作为 RGBA 输入。否则，它只是一个 RGB 输入。浮点值在 `0` 到 `1` 之间.
+
+回调函数会分别传入 r、g、b 和 a 值作为参数.
+
+???+ example "Example Code"
+
 ```lua
 ImGui.AddInputColor("catInput", "inputColorRGB", "RGB input", function(r, g, b) print(r, g, b) end, 1, 0.25, 0.45)
-???+ example "Example Code"
-The callback gets passed the r,g,b and a values as seperate parameters.
-Adds a color input element. If the parameter `a` is set, it acts as an RGBA input. Otherwise its just an RGB input. The float values are between `0` and `1`.
-0.5)
-ImGui.AddInputColor("catInput", "inputColorRGBA", "RGBA input", function(r, g, b, a) print(r, g, b, a) end, 0.5, 0.5, 0.5,
+ImGui.AddInputColor("catInput", "inputColorRGBA", "RGBA input", function(r, g, b, a) print(r, g, b, a) end, 0.5, 0.5, 0.5,0.5)
 ```
 
 ### AddInputController () {: aria-label='Functions' }
 #### void AddInputController ( string ParentId, string ElementId, string ButtonLabel = "", function ChangeCallback = nil, float DefaultVal = 0 ) {: .copyable aria-label='Functions' }
-The callback gets passed the [ButtonAction ID](https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html) and the ImGuiKey name of the new button.
-Adds an input for Gamepad / controller buttons.
+回调函数会传入 [ButtonAction ID](https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html) 和新按钮的 ImGuiKey 名称.
+
+添加一个用于游戏手柄 / 控制器按钮的输入.
 
 ### AddInputFloat () {: aria-label='Functions' }
 #### void AddInputFloat ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, float DefaultVal = 0, float Step = 1, float StepFast = 100  ) {: .copyable aria-label='Functions' }
@@ -93,36 +97,37 @@ ___
 ___
 ### AddInputKeyboard () {: aria-label='Functions' }
 #### void AddInputKeyboard ( string ParentId, string ElementId, string ButtonLabel = "", function ChangeCallback = nil, float DefaultVal = 0 ) {: .copyable aria-label='Functions' }
-Adds an input for keyboard buttons.
-The callback gets passed the [Keyboard key ID](https://wofsauge.github.io/IsaacDocs/rep/enums/Keyboard.html) and the ImGuiKey name of the new button.
+添加一个用于键盘按钮的输入.
+
+回调函数会传入 [Keyboard key ID](https://wofsauge.github.io/IsaacDocs/rep/enums/Keyboard.html) 和新按钮的 ImGuiKey 名称.
 
 ### AddInputText () {: aria-label='Functions' }
 #### void AddInputText ( string ParentId, string ElementId, string Description = "", function ChangeCallback = nil, string DefaultVal = "", string HintText = "" ) {: .copyable aria-label='Functions' }
-Adds a text input element. The text from `HintText` will get displayed as a "placeholder" inside the input element, if the input of the element is empty.
+添加一个文本输入元素。如果元素的输入为空，`HintText` 中的文本将作为“占位符”显示在输入元素内。
 
 ### AddInputTextMultiline () {: aria-label='Functions' }
 #### void AddInputTextMultiline ( string ParentId, string ElementId, string Description = "", function ChangeCallback = nil, string DefaultVal = "", float DisplayedLines = 6 ) {: .copyable aria-label='Functions' }
-Adds a text input element that allows to input multiple lines of text. The attribute `displayedLines` can be used to change the height of the element.
+添加一个允许输入多行文本的文本输入元素。`displayedLines` 属性可用于更改元素的高度。
 
 ### AddPlotHistogram () {: aria-label='Functions' }
 #### void AddPlotHistogram ( string ParentId, string ElementId, string Label = "", table Values, string OverlayText = "", float Minimum = FLT_MIN, float Maximum = FLT_MAX, float Height = 40 ) {: .copyable aria-label='Functions' }
-Adds a bar-diagram displaying the given data as vertical bars. On default, minimum and maximum are set "dynamicaly", making the diagram fit its content perfectly.
+添加一个柱状图，将给定的数据显示为垂直条形。默认情况下，最小值和最大值是“动态”设置的，使图表能够完美适配其内容。
 
 ### AddPlotLines () {: aria-label='Functions' }
 #### void AddPlotLines ( string ParentId, string ElementId, string Label = "", table Values, string OverlayText = "", float Minimum = FLT_MIN, float Maximum = FLT_MAX, float Height = 40 ) {: .copyable aria-label='Functions' }
-Adds a line-diagram connecting the given values using lines. On default, minimum and maximum are set "dynamicaly", making the diagram fit its content perfectly.
+添加一个折线图，使用线条连接给定的值。默认情况下，最小值和最大值是“动态”设置的，使图表能够完美适配其内容。
 
 ### AddProgressBar () {: aria-label='Functions' }
 #### void AddProgressBar ( string ParentId, string ElementId, string Label = "", float Progress = 0, string OverlayText = "__DEFAULT__" ) {: .copyable aria-label='Functions' }
-Adds a progressbar element. The `progress` value defines the fill percentage (`0` to `1`).
-If the `overlayText` was not defined, the progressbar will display the current fill state in percent inside the progressbar (for example 50% when progress is set to 0.5).
-If the `label` is empty, the progressbar will render over the full width of the parent element.
+添加一个进度条元素。`progress` 值定义了填充百分比（范围从 `0` 到 `1`）。
+如果未定义 `overlayText`，进度条将在进度条内显示当前的填充状态百分比（例如，当 `progress` 设置为 0.5 时显示 50%）。
+如果 `label` 为空，进度条将在父元素的整个宽度上渲染。
 
 ### AddRadioButtons () {: aria-label='Functions' }
 #### void AddRadioButtons ( string ParentId, string ElementId, function ChangeCallback = nil, table options, int SelectedIndex = 0, boolean renderSameLine = true ) {: .copyable aria-label='Functions' }
+???+ example "Example Code"
 ```lua
 ImGui.AddRadioButtons("catInput", "radioButtons", function(index) print(index) end, { "Radio 1", "Radio 2", "Radio 3" }, 1)
-???+ example "Example Code"
 ```
 
 ### AddSliderFloat () {: aria-label='Functions' }
@@ -133,84 +138,87 @@ ___
 ___
 ### AddTab () {: aria-label='Functions' }
 #### void AddTab ( string ParentId, string ElementId, string Label ) {: .copyable aria-label='Functions' }
-The parent object needs to be a TabBar.
-A tab is a clickable area that shows another page or area.
+父对象必须是一个标签栏（TabBar）。
+标签（Tab）是一个可点击的区域，点击后会显示另一个页面或区域。
 
 ### AddTabBar () {: aria-label='Functions' }
 #### void AddTabBar ( string ParentId, string ElementId ) {: .copyable aria-label='Functions' }
-A TabBar is a container which is used to store Tab elements.
+标签栏（TabBar）是一个用于存储标签（Tab）元素的容器。
 
 ### AddText () {: aria-label='Functions' }
 #### void AddText ( string ParentId, string Text, boolean WrapText = false, string ElementId = "" ) {: .copyable aria-label='Functions' }
-The ElementId can be set as well, if the text should be able to be edited by later code.
-Creates a text element. If `wrapText` is set to `true`, the text will wrap on the window borders. If set to `false` it will expand the window content till it fits.
+如果后续代码需要编辑该文本，也可以设置元素 ID。
+创建一个文本元素。如果 `wrapText` 设置为 `true`，文本将在窗口边界处换行；如果设置为 `false`，窗口内容将扩展直到文本适应。
 
 ### CreateMenu () {: aria-label='Functions' }
 #### void CreateMenu ( string ElementId, string Label = "" ) {: .copyable aria-label='Functions' }
-Creates an entry to the main menu bar of Repentogon.
+在《以撒的结合：忏悔》拓展模组 REPOTOGON 的主菜单栏中创建一个条目。
 
 ### CreateWindow () {: aria-label='Functions' }
 #### void CreateWindow ( string ElementId, string Title = "" ) {: .copyable aria-label='Functions' }
-Creates a window object. You need to use `LinkWindowToElement()` or `SetVisible()` to toggle the visibility of the window.
+创建一个窗口对象。你需要使用 `LinkWindowToElement()` 或 `SetVisible()` 来切换窗口的可见性。
 
 ### ElementExists () {: aria-label='Functions' }
 #### boolean ElementExists ( string ElementId ) {: .copyable aria-label='Functions' }
-Returns true if an element with the given ID exists already.
+如果具有给定 ID 的元素已经存在，则返回 `true`。
 
 ### GetMousePosition () {: aria-label='Functions' }
 #### void GetMousePosition ( ) {: .copyable aria-label='Functions' }
-Returns the mouse position in Screen coordinates.
-Use this instead of `Input.GetMousePosition()` when working with imgui!
+返回鼠标在屏幕坐标中的位置。
+在使用 ImGui 时，请使用此函数代替 `Input.GetMousePosition()`！
 
 ### GetVisible () {: aria-label='Functions' }
 #### boolean GetVisible ( string ElementId ) {: .copyable aria-label='Functions' }
-Get if a window element is visible or not.
+获取窗口元素是否可见。
 
 ### GetWindowPinned () {: aria-label='Functions' }
 #### boolean GetWindowPinned ( string WindowId ) {: .copyable aria-label='Functions' }
-Get the pinned state of a window.
+获取窗口的固定状态。
 
 ### Hide () {: aria-label='Functions' }
 #### void Hide ( ) {: .copyable aria-label='Functions' }
-Closes ImGui.
+关闭 ImGui。
 
 ### ImGuiToWorld () {: aria-label='Functions' }
 #### void ImGuiToWorld ( [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
-Converts ImGui coordinates into World coordinates.
+将 ImGui 坐标转换为世界坐标。
+
 ???+ bug "Bug"
-This function does not work correctly when the game's scale factor exceeds MaxRenderScale.
+
+    当游戏的缩放因子超过最大渲染缩放时，此函数无法正常工作。
 
 ### IsVisible () {: aria-label='Functions' }
 #### boolean IsVisible ( ) {: .copyable aria-label='Functions' }
-Called when the player is actively in ImGui. This isn't triggered by "pinned" windows.
+当玩家正在积极使用 ImGui 时调用。这不会由“固定”窗口触发。
 
 ### LinkWindowToElement () {: aria-label='Functions' }
 #### void LinkWindowToElement ( string WindowId, string ElementId ) {: .copyable aria-label='Functions' }
-ImGui.CreateMenu("myMenu", "Test Menu")
-this code creates a new menu entry with one menuitem, which on click toggles a window
-ImGui.CreateWindow("myWindow", "Some Window title")
-ImGui.AddElement("myMenu", "myButton", ImGuiElement.MenuItem, "Some Text")
+将窗口或弹出元素连接到另一个元素，使该元素充当该窗口的“开关
+
+???- example "示例代码"
 ```lua
-Connects a Window or Popup element to another element, making said element act as a "toggle" for that window.
+此代码创建一个新的菜单条目，其中包含一个菜单项，点击该菜单项会切换一个窗口
+ImGui.CreateMenu("myMenu", "Test Menu")
+ImGui.AddElement("myMenu", "myButton", ImGuiElement.MenuItem, "Some Text")
+ImGui.CreateWindow("myWindow", "Some Window title")
 ImGui.LinkWindowToElement("myWindow", "myButton")
-???- example "Example Code"
 ```
 
 ### PushNotification () {: aria-label='Functions' }
 #### void PushNotification ( string Text, [ImGuiNotificationType](enums/ImGuiNotificationType.md) notificationType = 0, int lifetime = 5000 ) {: .copyable aria-label='Functions' }        
-Displays a pop-up message window in the style of a notification.
+以通知样式显示一个弹出消息窗口。
 
 ### RemoveCallback () {: aria-label='Functions' }
 #### void RemoveCallback ( string ElementId, [ImGuiCallback](enums/ImGuiCallback.md) type ) {: .copyable aria-label='Functions' }
-Remove the callback of the given type from the element.
+从元素中移除指定类型的回调函数。
 
 ### RemoveColor () {: aria-label='Functions' }
 #### void RemoveColor ( string ElementId, [ImGuiColor](enums/ImGuiColor.md) colorType ) {: .copyable aria-label='Functions' }
-Remove a color modifier of the given type from the element.
+从元素中移除指定类型的颜色修饰符。
 
 ### RemoveElement () {: aria-label='Functions' }
 #### void RemoveElement ( string ElementId ) {: .copyable aria-label='Functions' }
-General function to remove any kind of element.
+用于移除任何类型元素的通用函数。
 
 ### RemoveMenu () {: aria-label='Functions' }
 #### void RemoveMenu ( string ElementId ) {: .copyable aria-label='Functions' }
@@ -222,23 +230,23 @@ ___
 ___
 ### Reset () {: aria-label='Functions' }
 #### void Reset ( ) {: .copyable aria-label='Functions' }
-Removes all custom defined Imgui elements and resets imgui back to its original state.
+移除所有自定义定义的 ImGui 元素，并将 ImGui 恢复到其原始状态。
 
 ### SetColor () {: aria-label='Functions' }
 #### void SetColor ( string ElementId, [ImGuiColor](enums/ImGuiColor.md) ColorType, float r, float g, float b, float a = 1.0 ) {: .copyable aria-label='Functions' }
-Adds a color modifier to a given element.
+为指定元素添加颜色修饰符。
 
 ### SetHelpmarker () {: aria-label='Functions' }
 #### void SetHelpmarker ( string ElementId, string Text ) {: .copyable aria-label='Functions' }
-Adds a helpmarker to a given element. A Helpmarker is a `(?)` element rendered on the right of an element, which when hovered displays a tooltip.
+为指定元素添加一个帮助标记。帮助标记是一个显示在元素右侧的 `(?)` 元素，当鼠标悬停在其上时会显示一个工具提示。
 
 ### SetTextColor () {: aria-label='Functions' }
 #### void SetTextColor ( string ElementId, float r, float g, float b, float a = 1.0 ) {: .copyable aria-label='Functions' }
-Shortcut function to add a color modifier to text of a given element.
+为指定元素的文本添加颜色修饰符的快捷函数。
 
 ### SetTooltip () {: aria-label='Functions' }
 #### void SetTooltip ( string ElementId, string Text ) {: .copyable aria-label='Functions' }
-Adds a tooltip to a given element. The tooltip is visible when the user hovers over the element.
+为指定元素添加一个工具提示。当用户将鼠标悬停在该元素上时，工具提示将显示出来。
 
 ### SetVisible () {: aria-label='Functions' }
 #### void SetVisible ( string ElementId, boolean Visible ) {: .copyable aria-label='Functions' }
@@ -246,31 +254,33 @@ Adds a tooltip to a given element. The tooltip is visible when the user hovers o
 ___
 ### SetWindowPinned () {: aria-label='Functions' }
 #### void SetWindowPinned ( string WindowId, boolean Pinned ) {: .copyable aria-label='Functions' }
-Set the pinned state of a window, making it visible when the ImGui interface is not active.
+设置窗口的固定状态，使窗口在 ImGui 界面未激活时也保持可见。
 
 ### SetWindowPosition () {: aria-label='Functions' }
 #### void SetWindowPosition ( string WindowId, float x, float y ) {: .copyable aria-label='Functions' }
-Set the position of a window in screen coordinates.
+在屏幕坐标中设置窗口的位置。
 
 ### SetWindowSize () {: aria-label='Functions' }
 #### void SetWindowSize ( string WindowId, float width, float Height ) {: .copyable aria-label='Functions' }
-Set the width and height of a window, in pixels.
+以像素为单位设置窗口的宽度和高度。
 
 ### Show () {: aria-label='Functions' }
 #### void Show ( ) {: .copyable aria-label='Functions' }
-Opens ImGui.
+打开 ImGui 界面。
 
 ### UpdateData () {: aria-label='Functions' }
 #### void UpdateData ( string ElementId, [ImGuiData](enums/ImGuiData.md) DataType, int NewDataValue ) {: .copyable aria-label='Functions' }
-Update arbitrary data of a given element. See [ImGuiData](enums/ImGuiData.md) for possible data to update.
-The dataTypes and the expected NewDataValue are evaluated per element. Therefore, if you try to update data of an element where this data is not used, this function will throw an error for you.
+更新指定元素的任意数据。有关可能更新的数据，请参阅 [ImGuiData](enums/ImGuiData.md)。
+数据类型和预期的新数据值是针对每个元素进行评估的。因此，如果你尝试更新某个元素中未使用的数据，此函数将抛出错误。
 
 ### UpdateText () {: aria-label='Functions' }
 #### void UpdateText ( string ElementId, string Text ) {: .copyable aria-label='Functions' }
-Shortcut function to update an element text or label.
+更新元素文本或标签的快捷函数。
 
 ### WorldToImGui () {: aria-label='Functions' }
 #### void WorldToImGui ( [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
+将世界坐标转换为 ImGui 坐标。
+
 ???+ bug "Bug"
-This function does not work correctly when the game's scale factor exceeds MaxRenderScale.
-Converts world coordinates into ImGui coordinates.
+
+    当游戏的缩放因子超过最大渲染缩放时，此函数无法正常工作。

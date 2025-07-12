@@ -5,12 +5,13 @@ tags:
 # Class "ChallengeParam"
 
 ???+ info
-    You can get this class by using the following functions:
+    你可以通过以下函数获取此类:
 
     * [Game():GetChallengeParams()](Game.md#getchallengeparams)
     * [DailyChallenge.GetChallengeParams()](DailyChallenge.md#getchallengeparams)
 
     ???+ example "Example Code"
+    
         ```lua
         local params = Game():GetChallengeParams()
         ```

@@ -4,10 +4,10 @@ tags:
 ---
 # Class "ColorModifier"
 
-An example mod using the ColorModifier class can be found [here.](./examples/ColorModifiers.md)
+[here.](./examples/ColorModifiers.md)可以找到一个使用ColorModifier类的示例模组
 
 ???+ info
-    You can get this class by using its constructor:
+    你可以通过其构造函数获取此类:
     ???+ example "Example Code"
         ```lua
         local tintRed = ColorModifier(1,0,0,0.33,0,1)
@@ -17,12 +17,14 @@ An example mod using the ColorModifier class can be found [here.](./examples/Col
 ### ColorModifier () {: aria-label='Constructors' }
 #### [ColorModifier](ColorModifier.md) ColorModifier ( float R = 1, float G = 1, float B = 1, float A = 0, float Brightness = 0, float Contrast = 1 ) {: .copyable aria-label='Constructors' }
 ## Variables
-这充当强度乘数，并且为了使 RGB 产生任何效果，它必须不为零！
-???+ warning "警告"
 
+???+ warning "Warning"
+
+    这充当强度乘数，并且为了使 RGB 产生任何效果，它必须不为零！
 ### A {: aria-label='Variables' }
 #### float A {: .copyable aria-label='Variables'}
 ???+ warning "Warning"
+
     这充当强度乘数，并且为了使 RGB 产生任何效果，它必须不为零！
 ___
 ### B {: aria-label='Variables' }

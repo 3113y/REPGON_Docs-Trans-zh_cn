@@ -5,7 +5,7 @@ tags:
 # Class "PocketItem"
 
 ???+ info
-    You can get this class by using the following functions:
+    你可以通过以下函数获取此类:
 
     * [EntityPlayer:GetPocketItem()](EntityPlayer.md#getpocketitem)
 

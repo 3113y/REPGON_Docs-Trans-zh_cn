@@ -5,7 +5,8 @@ tags:
 # Class "Color"
 
 ???+ info
-    This class can be accessed using its constructor:
+    可以通过其构造函数访问此类:
+
     ???+ example "Example Code"
         ```lua
         local redColor = Color(1,0,0,1)

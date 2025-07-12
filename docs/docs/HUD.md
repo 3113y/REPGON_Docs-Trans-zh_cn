@@ -5,7 +5,7 @@ tags:
 # Class "HUD"
 
 ???+ info
-    You can get this class by using the following functions:
+    你可以通过以下函数获取此类:
 
     * [Game:GetHUD()](https://wofsauge.github.io/IsaacDocs/rep/Game.html#gethud)
     
@@ -23,11 +23,11 @@ tags:
 ___
 ### GetBossHPBarFill () {: aria-label='Functions' }
 #### float GetBossHPBarFill ( ) {: .copyable aria-label='Functions' }
-Get the fill of the boss hp bar
+获取boss血条的填充量
 
 ### GetCardsPillsSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetCardsPillsSprite ( ) {: .copyable aria-label='Functions' }
-Sprite object used to render pills, cards and rune sprites in the hud.
+用于在HUD中渲染药丸、卡牌和符文图标的精灵对象。
 
 ### GetChargeBarSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetChargeBarSprite ( ) {: .copyable aria-label='Functions' }
@@ -35,15 +35,15 @@ Sprite object used to render pills, cards and rune sprites in the hud.
 ___
 ### GetCoopMenuSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetCoopMenuSprite ( ) {: .copyable aria-label='Functions' }
-Sprite object used to render the coop player selection menu.
+用于渲染合作玩家选择菜单的精灵对象。
 
 ### GetCraftingSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetCraftingSprite ( ) {: .copyable aria-label='Functions' }
-Sprite object used for bag of crafting hud.
+用于制作物品栏HUD的精灵对象。
 
 ### GetFortuneSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetFortuneSprite ( ) {: .copyable aria-label='Functions' }
-Sprite object used for the fortune popup window.
+用于幸运弹窗窗口的精灵对象。
 
 ### GetHeartsSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetHeartsSprite ( ) {: .copyable aria-label='Functions' }
@@ -51,7 +51,7 @@ Sprite object used for the fortune popup window.
 ___
 ### GetInventorySprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetInventorySprite ( ) {: .copyable aria-label='Functions' }
-Sprite object used for Tainted Isaac inventory system.
+用于以撒被污染模式下的物品栏系统的精灵对象。
 
 ### GetPickupsHUDSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetPickupsHUDSprite ( ) {: .copyable aria-label='Functions' }
@@ -63,12 +63,12 @@ ___
 ___
 ### GetPoopSpellSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetPoopSpellSprite ( ) {: .copyable aria-label='Functions' }
-Tainted blue baby poop spell sprite
+被污染的蓝宝宝便便法术精灵
 
 ### GetStreakSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetStreakSprite ( ) {: .copyable aria-label='Functions' }
-Sprite object used for text streak popups. For example: picking up items, displaying floor name, etc.
+用于文本连击弹出窗口的精灵对象。例如：拾取物品、显示楼层名称等。
 
 ### SetBossHPBarFill () {: aria-label='Functions' }
 #### void SetBossHPBarFill ( float percent ) {: .copyable aria-label='Functions' }
-Sets the fill of the boss hp bar. Accepts values between 0 and 1. Numbers below 0 cause the boss hp bar to not be rendered.
+设置boss血条的填充量。接受0到1之间的值。小于0的数字会导致boss血条不被渲染。

@@ -7,7 +7,7 @@ tags:
 ???+ info
     **[MultiShotParams](MultiShotParams.md)** contains information the game uses to properly calculate the position and velocity of every tear fired, among other things.
     
-    You can get this class by using the following functions:
+    你可以通过以下函数获取此类:
 
     * [EntityPlayer:GetMultiShotParams](EntityPlayer.md#getmultishotparams)
 

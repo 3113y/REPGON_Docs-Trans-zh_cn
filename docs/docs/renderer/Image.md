@@ -5,7 +5,7 @@ tags:
 # Class "Image"
 
 ???+ info
-    You can get this class by using the following function:
+    你可以通过以下函数获取此类:
 
     * [Renderer:LoadImage()](Renderer.md#loadimage)
         

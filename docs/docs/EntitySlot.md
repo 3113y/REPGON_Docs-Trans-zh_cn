@@ -12,109 +12,109 @@ It's Real.
 
 ### CreateDropsFromExplosion () {: aria-label='Functions' }
 #### void CreateDropsFromExplosion ( ) {: .copyable aria-label='Functions' }
-This forces the EntitySlot to drop what it typically would if blown up.
+这会强制实体插槽（EntitySlot）掉落其在被炸时通常会掉落的物品。
 
 ### GetDonationValue () {: aria-label='Functions' }
 #### int GetDonationValue ( ) {: .copyable aria-label='Functions' }
-- Demon Beggar: How many hearts have been donated.
-???- info "Return info"
-Returns how many coins have been given to a beggar. The number returned varies based on the beggar.
-- Beggar: How many coins have been donated.
-- Battery Bum, Rotten Beggar: Increases with each payment by random amounts, up to 3, and resets back to 0 upon reward or payout.
-- All other slots: Remains at 0.
+- 恶魔乞丐：已捐赠的红心数量。
+???- info "返回信息"
+返回给予乞丐的硬币数量。返回的数字会根据乞丐的不同而有所变化。
+- 普通乞丐：已捐赠的硬币数量。
+- 电池流浪汉、腐烂乞丐：每次支付时随机增加，最多增加到3，在给予奖励或支付报酬后重置为0。
+- 所有其他插槽：保持为0。
 
 ### GetPrizeCollectible () {: aria-label='Functions' }
 #### [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) GetPrizeCollectible ( ) {: .copyable aria-label='Functions' }
-Seems to only be used by Crane Game and Hell Game. Gets the collectible that will be awarded as the prize when winning.
+似乎仅由抓娃娃机和地狱游戏使用。获取获胜时作为奖品颁发的收藏品。
 
 ### GetPrizeType () {: aria-label='Functions' }
 #### int GetPrizeType ( ) {: .copyable aria-label='Functions' }
-- Slot Machine: Returns a number between `3`-`24`. `3`-`12` cause the machine to spit out a reward
-???- info "Return info"
-- `3`: Fly or pretty fly.
-- `10`-`12`: 1-2 coins.
-- Bomb Bum: Returns a number `1`-`3` based on the type of prize it had output.
-- `1`: Coins.
-- `3`: Collectible.
-- `5`-`6`: Heart.
-- `13`-`24`: Nothing.
-- Shell Game & Hell Game: Returns the `PickupVariant` of the potential prize.
-- `4`: Bomb.
-- `2`: Heart.
-- `7`: Key.
-- `9`: Unknown. This never appears to be used.
-- `8`: Pill.
-Returns an integer that varies based on the slot machine.
+- 老虎机：返回一个介于`3` - `24`之间的数字。`3` - `12`会使机器吐出奖励。
+???- info "返回信息"
+- `3`：苍蝇或漂亮苍蝇。
+- `10` - `12`：1 - 2枚硬币。
+- 炸弹流浪汉：根据其输出的奖品类型返回一个介于`1` - `3`之间的数字。
+- `1`：硬币。
+- `3`：收藏品。
+- `5` - `6`：红心。
+- `13` - `24`：无奖励。
+- 贝壳游戏和地狱游戏：返回潜在奖品的`拾取物变体（PickupVariant）`。
+- `4`：炸弹。
+- `2`：红心。
+- `7`：钥匙。
+- `9`：未知。此值似乎从未被使用过。
+- `8`：药丸。
+返回一个根据老虎机不同而变化的整数。
 
 ### GetShellGameAnimationIndex () {: aria-label='Functions' }
 #### int GetShellGameAnimationIndex ( ) {: .copyable aria-label='Functions' }
-Returns the index used by Shell Game and Hell Game to determine which prize animation to play.
+返回贝壳游戏和地狱游戏用于确定播放哪个奖品动画的索引。
 
 ### GetState () {: aria-label='Functions' }
 #### int GetState ( ) {: .copyable aria-label='Functions' }
-- `4`: Payout
-- `2`: Reward (Shell Game & Hell Game: Idle Reward)
-- `5`: Reward (only for Shell Game & Hell Game)
-- `3`: Bombed
-- `1`: Idle.
-Returns the current state of the slot.
-All slots have a consistent state based on what it's doing that reflect as follows:
-???+ info "Return info"
+- `4`：支付报酬
+- `2`：奖励（贝壳游戏和地狱游戏：闲置奖励状态）
+- `5`：奖励（仅适用于贝壳游戏和地狱游戏）
+- `3`：被炸
+- `1`：闲置。
+返回插槽的当前状态。
+所有插槽都有一个基于其当前行为的一致状态，具体如下：
+???+ info "返回信息"
 
 ### GetTimeout () {: aria-label='Functions' }
 #### int GetTimeout ( ) {: .copyable aria-label='Functions' }
-???- info "Return info"
-- Crane Game: For the first successful payout, minimum timeout is `1 << 16`, still increasing by 30 and counting down. Second payout is `1 << 17`. Third payout is `1 << 16` + `1 << 17`.
-Returns the timeout in frames until the slot determines its prize. Not used by all slots.
-- All other slots: Remains at 0.
-- All beggars except Bomb Beggar: Increases randomly with each payment, returning either `1 << 16`, `1 << 17`, or the sum of them, resetting to 0 upon giving a reward.
+???- info "返回信息"
+- 抓娃娃机：第一次成功支付报酬时，最小超时时间为`1 << 16`，仍会增加30并开始倒计时。第二次支付报酬时为`1 << 17`。第三次支付报酬时为`1 << 16` + `1 << 17`。
+返回插槽确定其奖品之前的超时帧数。并非所有插槽都会使用此功能。
+- 所有其他插槽：保持为0。
+- 除炸弹乞丐外的所有乞丐：每次支付时随机增加，返回`1 << 16`、`1 << 17`或它们的和，在给予奖励后重置为0。
 
 ### GetTouch () {: aria-label='Functions' }
 #### int GetTouch ( ) {: .copyable aria-label='Functions' }
-Returns the slot's touch counter. The touch counter goes up by one every frame a player is touching the slot and is reset once no player is touching it.
+返回插槽的触摸计数器。当玩家触摸插槽时，触摸计数器每帧增加1，当没有玩家触摸时重置。
 
 ### GetTriggerTimerNum () {: aria-label='Functions' }
 #### int GetTriggerTimerNum ( ) {: .copyable aria-label='Functions' }
-Reroll Machine increments this by `1` for every successful reroll. When bombed, has a chance to set it to 11 and reroll another item.
-When bombing Bomb Bum, this is set to `30`
-???+ note "Return Info"
-Returns a number used by Bomb Bum and Reroll Machine.
+重铸机每次成功重铸时将此值增加`1`。被炸时，有机会将其设置为11并重新生成另一个物品。
+轰炸炸弹流浪汉时，此值会被设置为`30`。
+???+ note "返回信息"
+返回炸弹流浪汉和重铸机使用的一个数字。
 
 ### RandomCoinJamAnim () {: aria-label='Functions' }
 #### string RandomCoinJamAnim ( ) {: .copyable aria-label='Functions' }
-Returns a random string from the following options: `CoinJam`, `CoinJam2`, `CoinJam3,` `CoinJam4`. Presumably only used on the donation machines.
+从以下选项中返回一个随机字符串：`CoinJam`、`CoinJam2`、`CoinJam3`、`CoinJam4`。推测仅用于捐赠机器。
 
 ### SetDonationValue () {: aria-label='Functions' }
 #### void SetDonationValue ( int DonationValue ) {: .copyable aria-label='Functions' }
-Sets the slot's donation value. See [GetDonationValue](EntitySlot.md#getdonationvalue) for more info.
+设置插槽的捐赠值。更多信息请参阅[GetDonationValue](EntitySlot.md#getdonationvalue)。
 
 ### SetPrizeCollectible () {: aria-label='Functions' }
 #### void SetPrizeCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
-Seems to only be used by Crane Game and Hell Game. This sets the collectible that the games will pay out with, and updates the rendered collectible accordingly.
+似乎仅由抓娃娃机和地狱游戏使用。此函数设置游戏将支付的收藏品，并相应地更新渲染的收藏品。
 
 ### SetPrizeType () {: aria-label='Functions' }
 #### void SetPrizeType ( int PrizeType ) {: .copyable aria-label='Functions' }
-Sets the prize type of the slot. See [GetPrizeType](EntitySlot.md#getprizetype) for more info.
+设置插槽的奖品类型。更多信息请参阅[GetPrizeType](EntitySlot.md#getprizetype)。
 
 ### SetShellGameAnimationIndex () {: aria-label='Functions' }
 #### void SetShellGameAnimationIndex ( int index ) {: .copyable aria-label='Functions' }
-Sets the index used by Shell Game and Hell Game to determine which prize animation to play.
+设置贝壳游戏和地狱游戏用于确定播放哪个奖品动画的索引。
 
 ### SetState () {: aria-label='Functions' }
 #### void SetState ( int State ) {: .copyable aria-label='Functions' }
-Sets the state of the slot. See [GetState](EntitySlot.md#getstate) for more info.
+设置插槽的状态。更多信息请参阅[GetState](EntitySlot.md#getstate)。
 
 ### SetTimeout () {: aria-label='Functions' }
 #### void SetTimeout ( int Timeout ) {: .copyable aria-label='Functions' }
-Sets the timeout of the slot. See [GetTimeout](EntitySlot.md#gettimeout) for more info.
+设置插槽的超时时间。更多信息请参阅[GetTimeout](EntitySlot.md#gettimeout)。
 
 ### SetTouch () {: aria-label='Functions' }
 #### void SetTouch ( int Touch ) {: .copyable aria-label='Functions' }
-Sets the slot's touch counter. The touch counter goes up by one every frame a player is touching the slot and is reset to zero once no player is touching it.
+设置插槽的触摸计数器。当玩家触摸插槽时，触摸计数器每帧增加1，当没有玩家触摸时重置为0。
 
 ### SetTriggerTimerNum () {: aria-label='Functions' }
 #### void SetTriggerTimerNum ( int num ) {: .copyable aria-label='Functions' }
-???+ note "More Info"
-Reroll Machine increments this by `1` for every successful reroll. When bombed, has a chance to set it to 11 and reroll another item.
-When bombing Bomb Bum, this is set to `30`
-Returns a number used by Bomb Bum and Reroll Machine.
+???+ note "更多信息"
+重铸机每次成功重铸时将此值增加`1`。被炸时，有机会将其设置为11并重新生成另一个物品。
+轰炸炸弹流浪汉时，此值会被设置为`30`。
+返回炸弹流浪汉和重铸机使用的一个数字。

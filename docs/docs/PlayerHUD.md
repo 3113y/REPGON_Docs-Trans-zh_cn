@@ -5,7 +5,7 @@ tags:
 # Class "PlayerHUD"
 
 ???+ info
-    You can get this class by using the following functions:
+    你可以通过以下函数获取此类:
 
     * [HUD.GetPlayerHUD()](HUD.md#getplayerhud)
 

@@ -5,7 +5,7 @@ tags:
 # Class "History"
 
 ???+ info
-    You can get this class by using the following functions:
+    你可以通过以下函数获取此类:
 
     * [EntityPlayer:GetHistory()](EntityPlayer.md#gethistory)
 
@@ -18,9 +18,9 @@ tags:
 
 ### GetCollectiblesHistory () {: aria-label='Functions' }
 #### [HistoryItems](HistoryItem.md)[] GetCollectiblesHistory ( ) {: .copyable aria-label='Functions' }
-Returns table of collectible [HistoryItems](HistoryItem.md).
+返回收藏品[HistoryItems](HistoryItem.md)的表格.
 
 ### RemoveHistoryItemByIndex () {: aria-label='Functions' }
 #### boolean RemoveHistoryItemByIndex ( int Index ) {: .copyable aria-label='Functions' }
-Removes an item from the item history tracker on the right-hand side of the screen. Note that this does not remove the item effect from the player.
-Returns `true` if an item was removed, `false` if not.
+从屏幕右侧的物品历史追踪器中移除一个物品。请注意，这不会从玩家身上移除该物品的效果。
+如果物品被成功移除，返回`true`；否则，返回`false`.

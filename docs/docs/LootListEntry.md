@@ -5,7 +5,7 @@ tags:
 # Class "LootListEntry"
 
 ???+ info
-    You can get this class by using the following function:
+    你可以通过以下函数获取此类:
 
     - [LootList:GetEntries()](LootList.md#getentries)
 

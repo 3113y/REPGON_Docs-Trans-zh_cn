@@ -6,11 +6,12 @@ tags:
 # Global Class "BossPoolManager"
 
 ???+ info
-    You can get this class by using the `BossPoolManager` global table.
 
-    **Note that to call these functions, you must use a `.` (period) instead of a `:` (colon)!**
-    
+    你可以通过 `BossPoolManager` 全局表获取这个类.
+    **注意：调用这些函数时，必须使用 .（句点）而非 :（冒号）！**
+
     ???+ example "Example Code"
+    
         ```lua
         local bossPool = BossPoolManager.GetPool()
         ```

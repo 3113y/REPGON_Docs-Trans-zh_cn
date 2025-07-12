@@ -4,9 +4,9 @@ tags:
 ---
 # Class "AnimationLayer"
 
-Cached data for one layer of an animation from a loaded ANM2 file. Shared by all [Sprites](Sprite.md) using the same ANM2 and cannot be modified.
+已加载ANM2文件中动画某一层的缓存数据。由所有使用相同ANM2的[Sprites](Sprite.md)共享，且不可修改。
 
-Obtained via [AnimationData:GetLayer()](AnimationData.md#getlayer).
+可通过[AnimationData:GetLayer()](AnimationData.md#getlayer)获取。.
 
 ## Functions
 

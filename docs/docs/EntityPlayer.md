@@ -12,7 +12,7 @@ This class contains both new functions and modified reimplementations of existin
 
 ### AddCacheFlags () {: aria-label='Modified Functions' }
 #### void AddCacheFlags ( [CacheFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/CacheFlag.html) CacheFlag, boolean EvaluateItems = false ) {: .copyable aria-label='Modified Functions' }
-Now accepts an optional `bool` to determine if [EntityPlayer](EntityPlayer.md):EvaluateItems() should be automatically called after adding cache flags. In most cases, you'll want to do this.
+现在接受一个可选的布尔值，用于确定在添加缓存标志后是否应自动调用 [EntityPlayer](EntityPlayer.md):EvaluateItems()。在大多数情况下，你可能希望这样做。
 
 ### AddCollectibleEffect, () {: aria-label='Modified Functions' }
 #### void AddCollectibleEffect ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) ctype, bool applycostume, int cooldown = vanillacd, bool additive = true ) {: .copyable aria-label='Modified Functions' }
@@ -26,29 +26,27 @@ Shortcut of TemporaryEffects:AddNullItemEffect with extra args to handle cooldow
 ___
 ### ClearDeadEyeCharge () {: aria-label='Modified Functions' }
 #### void ClearDeadEyeCharge ( boolean Force = false ) {: .copyable aria-label='Modified Functions' }
-Now accepts a `Force` argument to forcefully reset the charge instead of only rolling for a change to reset.
+现在接受一个 `Force` 参数，以强制重置充能，而不是仅通过概率来决定是否重置。
 
 ### GetCollectibleNum () {: aria-label='Modified Functions' }
 #### int GetCollectibleNum ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, boolean OnlyCountTrueItems = false, bool IgnoreSpoof = false ) {: .copyable aria-label='Modified Functions' }
-Now accepts a `IgnoreSpoof` argument that ignores innate items.
+现在接受一个 `IgnoreSpoof` 参数，该参数会忽略固有物品。
 
 ### GetMultiShotParams () {: aria-label='Modified Functions' }
 #### [MultiShotParams](MultiShotParams.md) GetMultiShotParams ( [WeaponType](https://wofsauge.github.io/IsaacDocs/rep/enums/WeaponType.html) WeaponType ) {: .copyable aria-label='Modified Functions' }
-Now returns a proper `MultiShotParams` object.
+现在返回一个合适的 `MultiShotParams` 对象。
 
 ### GetMultiShotPositionVelocity () {: aria-label='Modified Functions' }
 #### [PosVel](https://wofsauge.github.io/IsaacDocs/rep/PlayerTypes_PosVel.html) GetMultiShotPositionVelocity ( int LoopIndex, [WeaponType](https://wofsauge.github.io/IsaacDocs/rep/enums/WeaponType.html) WeaponType, [Vector](Vector.md) ShotDirection, float ShotSpeed, [MultiShotParams](MultiShotParams.md) Params ) {: .copyable aria-label='Modified Functions' }
-Compared to the vanilla function, this implementation has been further augmented to throw an error if LoopIndex is higher than [MultiShotParams:GetNumTears()](MultiShotParams.md#getnumtears).
-This magically vanished from the API some time after 1.7.8.
+与原版函数相比，此实现进一步增强，若 LoopIndex 高于 [MultiShotParams:GetNumTears()](MultiShotParams.md#getnumtears) 则会抛出错误。此函数在 1.7.8 之后的某个时间从 API 中消失了。
 
 ### GetPocketItem () {: aria-label='Modified Functions' }
 #### [PocketItem](PocketItem.md) GetPocketItem ( [PillCardSlot](enums/PillCardSlot.md) Slot ) {: .copyable aria-label='Modified Functions' }
-Gets the card/pill/rune in the specified pocket slot.
-Now returns a proper `PocketItem` object.
+获取指定口袋槽中的卡片/药丸/符文。现在返回一个合适的 `PocketItem` 对象。
 
 ### HasCollectible () {: aria-label='Modified Functions' }
 #### boolean HasCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, boolean IgnoreModifiers = false, boolean IgnoreSpoof = false ) {: .copyable aria-label='Modified Functions' }
-Now accepts a `IgnoreSpoof` argument that ignores innate items.
+现在接受一个 `IgnoreSpoof` 参数，该参数会忽略固有物品。
 
 ### BabySkin {: aria-label='Modified Variables' }
 #### [BabySubType](https://wofsauge.github.io/IsaacDocs/rep/enums/BabySubType.html) BabySkin  {: .copyable aria-label='Modified Variables' }
@@ -60,9 +58,9 @@ ___
 
 ### AddActiveCharge () {: aria-label='Functions' }
 #### int AddActiveCharge ( int Charge, [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot, boolean FlashHUD = true, boolean Overcharge = false, boolean Force = false ) {: .copyable aria-label='Functions' }
-Returns the true amount of charge added, which may have been capped by the targeted item's MaxCharge.
-???- info "Info"
-`FlashHUD` appears to be redundant. Chargebar flashes regardless of using `true` or `false`.
+返回实际添加的充能数量，该数量可能会受到目标物品的最大充能值限制。
+???- info "信息"
+`FlashHUD` 似乎是多余的。无论使用 `true` 还是 `false`，充能条都会闪烁。
 
 ### AddBoneOrbital () {: aria-label='Functions' }
 #### void AddBoneOrbital ( [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
@@ -70,18 +68,17 @@ Returns the true amount of charge added, which may have been capped by the targe
 ___
 ### AddCustomCacheTag () {: aria-label='Functions' }
 #### void AddCustomCacheTag ( string OR \{string, string, ...\}, bool EvaluateItems = false ) {: .copyable aria-label='Functions' }
-Add CustomCacheTag(s) to be evaluated next time EvaluateItems runs (which is right now, if the optional boolean is passed).
-See [items.xml](xml/items.md) for more information on custom caches.
+添加自定义缓存标签，以便在下一次运行 EvaluateItems 时进行评估（如果传递了可选布尔值，则立即进行评估）。有关自定义缓存的更多信息，请参阅 [items.xml](xml/items.md)。
 
 ### AddInnateCollectible () {: aria-label='Functions' }
 #### void AddInnateCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, int Amount = 1 ) {: .copyable aria-label='Functions' }
-???+ bug "Bug"
-Currently this function directly modifies the contents of WispCollectiblesList, so if this list was updated on wisp init/delete, or the player exits the run, your added innate items will not be saved.
+???+ bug "漏洞"
+目前此函数会直接修改 WispCollectiblesList 的内容，因此如果此列表在精灵初始化/删除时更新，或者玩家退出游戏，你添加的固有物品将不会被保存。
 
 ### AddLeprosy () {: aria-label='Functions' }
 #### void AddLeprosy ( ) {: .copyable aria-label='Functions' }
-This is currently still capped at a max of three familiars, and would require further modification to change this.
-???+ info "Info"
+目前此功能仍然限制最多生成三个跟班，若要更改此限制，需要进一步修改。
+???+ info "信息"
 
 ### AddLocust () {: aria-label='Functions' }
 #### void AddLocust ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
@@ -99,15 +96,14 @@ This is currently still capped at a max of three familiars, and would require fu
 - Spoon Bender
 - Ipecac
 - Cricket's Head
-???- info "Supported Items"
-There are a few items which spawn unique locusts.
+???- info "支持的物品"
+有一些物品会生成独特的蝗虫
 - Fire Mind
 - Holy Light
 
 ### AddSmeltedTrinket () {: aria-label='Functions' }
 #### boolean AddSmeltedTrinket ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) Trinket, boolean FirstTimePickingUp = true ) {: .copyable aria-label='Functions' }
-Adds a smelted trinket directly to the player's inventory.
-Returns ``true`` if the trinket was successfully added, otherwise ``false``.
+直接将一个吞下的饰品添加到玩家的库存中。如果饰品成功添加，则返回 `true`，否则返回 `false`。
 
 ### AddUrnSouls () {: aria-label='Functions' }
 #### void AddUrnSouls ( int Count = 0 ) {: .copyable aria-label='Functions' }  
@@ -115,7 +111,7 @@ Returns ``true`` if the trinket was successfully added, otherwise ``false``.
 ___
 ### BlockCollectible () {: aria-label='Functions' }
 #### void BlockCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }  
-Blocks the provided [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html). This will make it so the game thinks you don't have the item, even if it's in your inventory.
+阻止提供的 [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html)。这会使游戏认为你没有该物品，即使它在你的库存中。
 
 ### CanAddCollectibleToInventory () {: aria-label='Functions' }
 #### boolean CanAddCollectibleToInventory ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
@@ -128,8 +124,8 @@ ___
 - Thunder Thighs
 - Leo
 - Stompy
-Returns `true` if the player has one of the following items / effects / transformations.
 - Mega Mush
+如果玩家拥有以下物品/效果/变身之一，则返回 `true`。
 
 ### CanOverrideActiveItem () {: aria-label='Functions' }
 #### boolean CanOverrideActiveItem ( [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot ) {: .copyable aria-label='Functions' }
@@ -137,11 +133,11 @@ Returns `true` if the player has one of the following items / effects / transfor
 ___
 ### CanUsePill () {: aria-label='Functions' }
 #### boolean CanUsePill ( [PillEffect](https://wofsauge.github.io/IsaacDocs/rep/enums/PillEffect.html) ID ) {: .copyable aria-label='Functions' }
-By some conditions, usually health-related, determines whether a player can use a given pill effect.
+根据某些条件（通常与生命值相关），确定玩家是否可以使用给定的药丸效果。
 
 ### CheckFamiliarEx () {: aria-label='Functions' }
 #### [EntityFamiliar](EntityFamiliar.md)[] CheckFamiliarEx ( int [FamiliarVariant](https://wofsauge.github.io/IsaacDocs/rep/enums/FamiliarVariant.html) Familiar, int TargetCount, [RNG](RNG.md) rng, [ItemConfigItem](ItemConfig_Item.md) SourceItemConfigItem = nil, int FamiliarSubType = -1 ) {: .copyable aria-label='Functions' }
-A version of [CheckFamiliar](https://wofsauge.github.io/IsaacDocs/rep/EntityPlayer.html#checkfamiliar) that returns all familiars spawned by the function as a table.
+[CheckFamiliar](https://wofsauge.github.io/IsaacDocs/rep/EntityPlayer.html#checkfamiliar) 的一个版本，它会将该函数生成的所有跟班作为一个表返回。
 
 ### ClearCollectibleAnim () {: aria-label='Functions' }
 #### void ClearCollectibleAnim ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible) {: .copyable aria-label='Functions' }
@@ -153,11 +149,11 @@ ___
 ___
 ### DropCollectible () {: aria-label='Functions' }
 #### void DropCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, [EntityPickup](EntityPickup.md) ExistingPedestal = nil, boolean RemoveFromPlayerForm = false ) {: .copyable aria-label='Functions' }
-If `ExistingPedestal` is set, the collectible it contains will be swapped out for the dropped collectible instead of a new pedestal spawning.
+如果设置了 `ExistingPedestal`，则该基座中包含的收藏品将被替换为掉落的收藏品，而不是生成一个新的基座。
 
 ### DropCollectibleByHistoryIndex () {: aria-label='Functions' }
 #### [EntityPickup](EntityPickup.md) DropCollectibleByHistoryIndex ( int Idx, [EntityPickup](EntityPickup.md) ExistingPedestal = nil ) {: .copyable aria-label='Functions' }
-If `ExistingPedestal` is set, the collectible it contains will be swapped out for the dropped collectible instead of a new pedestal spawning.
+如果设置了 `ExistingPedestal`，则该基座中包含的收藏品将被替换为掉落的收藏品，而不是生成一个新的基座。
 
 ### EnableWeaponType () {: aria-label='Functions' }
 #### void EnableWeaponType ( [WeaponType](https://wofsauge.github.io/IsaacDocs/rep/enums/WeaponType.html) Weapon, boolean Set ) {: .copyable aria-label='Functions' }
@@ -165,8 +161,8 @@ If `ExistingPedestal` is set, the collectible it contains will be swapped out fo
 ___
 ### FireBrimstoneBall () {: aria-label='Functions' }
 #### [EntityEffect](EntityEffect.md) FireBrimstoneBall ( [Vector](Vector.md) Position, [Vector](Vector.md) Velocity, [Vector](Vector.md) Offset = Vector.Zero ) {: .copyable aria-label='Functions' }
-If the player has Tech X, this function will fire an [EntityLaser](EntityLaser.md) as well. The laser will have the Brimstone ball effect as a parent, it's unclear if the effect also links back to the laser.
-???+ info "Info"
+如果玩家拥有科技 X，此函数还会发射一个 [EntityLaser](EntityLaser.md)。激光将以硫磺火球效果为父对象，但不清楚该效果是否也会链接回激光。
+???+ info "信息"
 
 ### GetActiveItemDesc () {: aria-label='Functions' }
 #### [ActiveItemDesc](https://wofsauge.github.io/IsaacDocs/rep/PlayerTypes_ActiveItemDesc.html) GetActiveItemDesc ( [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot = ActiveSlot.SLOT_PRIMARY ) {: .copyable aria-label='Functions' }
@@ -198,11 +194,11 @@ ___
 ___
 ### GetBagOfCraftingSlot () {: aria-label='Functions' }
 #### [BagOfCraftingPickup](enums/BagOfCraftingPickup.md) GetBagOfCraftingSlot ( int SlotID ) {: .copyable aria-label='Functions' }
-Gets the current content of the bag in the given `SlotID`.
+获取给定 `SlotID` 中合成袋的当前内容。
 
 ### GetBladderCharge () {: aria-label='Functions' }
 #### int GetBladderCharge ( ) {: .copyable aria-label='Functions' }
-Returns the current charge for when the player stops shooting and charges the Kidney Stone item.
+返回玩家停止射击并为肾结石物品充能时的当前充能值。
 
 ### GetBloodLustCounter () {: aria-label='Functions' }
 #### int GetBloodLustCounter ( ) {: .copyable aria-label='Functions' }
@@ -214,70 +210,71 @@ ___
 ___
 ### GetBombPlaceDelay () {: aria-label='Functions' }
 #### int GetBombPlaceDelay ( ) {: .copyable aria-label='Functions' }
-Default bomb place delay is `30 frames`.
+默认炸弹放置延迟为 `30 帧`。
 
 ### GetCambionConceptionState () {: aria-label='Functions' }
 #### int GetCambionConceptionState ( ) {: .copyable aria-label='Functions' }
-Returns how many times the player has taken damage with the Cambion Conception item.
+返回玩家使用恶魔受胎物品受到伤害的次数。
 
 ### GetCambionPregnancyLevel () {: aria-label='Functions' }
 #### int GetCambionPregnancyLevel ( ) {: .copyable aria-label='Functions' }
-Corresponds to the current visible state of Cambion Conception's costume (0-2).
+对应恶魔受胎服装的当前可见状态（0 - 2）。
 
 ### GetCollectiblesList () {: aria-label='Functions' }
 #### table GetCollectiblesList ( ) {: .copyable aria-label='Functions' }
-Returns a table with the amount of each collectible the player has, without counting innate items.
-print(collectiblesList[CollectibleType.COLLECTIBLE_SAD_ONION])
+返回一个表，其中包含玩家拥有的每个收藏品的数量，不计算固有物品。
+???- example "示例代码"
+这段代码打印玩家拥有的悲伤洋葱的数量
 ```lua
 local collectiblesList = player:GetCollectiblesList()
-This code prints how many sad onions the player has.
-???- example "Example Code"
+print(collectiblesList[CollectibleType.COLLECTIBLE_SAD_ONION])
 ```
 
 ### GetConceptionFamiliarFlags () {: aria-label='Functions' }
 #### int GetConceptionFamiliarFlags ( ) {: .copyable aria-label='Functions' }
-Returns the bitmask corresponding to which familiars have been spawned by Cambion/Immaculate Conception. The additional familiars provided by this bitmask are spawned during familiar cache evaluation, but only while the player has one of those two items.
+返回一个位掩码，对应由圣灵受胎 / 恶魔受胎生成的跟班。此位掩码提供的额外跟班在跟班缓存评估期间生成，但仅当玩家拥有这两个物品之一时才会生成.
 
 ### GetCostumeLayerMap () {: aria-label='Functions' }
 #### table GetCostumeLayerMap ( ) {: .copyable aria-label='Functions' }
-local map = Isaac.GetPlayer():GetCostumeLayerMap()
-print(layer - 1, "-", layerName, "-", costumeName, "-", spritePath)
-local costumeSpriteDescs = player:GetCostumeSpriteDescs()
-Below is a snippet of code that displays all currently occupied costume layers.
-```lua
-print("-------------------------------------------------------------------")
-| priority | int | Costume's priority as listed in `costumes2.xml`. `-1` if no costume is on that layer. |
-local costumeSpriteDesc = costumeSpriteDescs[mapData.costumeIndex + 1]
-local sprite = costumeSpriteDesc:GetSprite()
-if mapData.costumeIndex == -1 then goto continue end
-| costumeIndex | int | Index of active/visible costume for that layer.  `-1` if no costume is on that layer. |
-Returns table of player sprite layers data for costumes with the following fields:
-| isBodyLayer | boolean | `true` if the costume is a body costume. `false` if not or if no costume is on that layer. |
-local costumeName = itemConfig.Name ~= "" and Isaac.GetString("Items", itemConfig.Name) or "NullItemID "..itemConfig.ID
-|:--|:--|:--|
-The returned table's index order corresponds to PlayerSpriteLayer. However, due to the differences in the starting index of arrays between Lua and C++, CostumeLayerMap's index needs to be decreased by 1 and it's costumeIndex increased by 1 in order to get accurate information.
-end
-for layer, mapData in ipairs(map) do
-Prints are sectioned as such: PlayerSpriteLayer - Layer Name - Item Name/NullItemID - Anm2 filepath
-| layerID | int | ID of the sprite's layer corresponding to its anm2 file. `-1` if no costume is on that layer. |
-local layerName = sprite:GetLayer(mapData.layerID):GetName()
+返回玩家服装精灵层数据的表格，包含以下字段：
+| Field | Type | Comment |
+| :-- | :-- | :-- |
+| costumeIndex | int | 该层活跃/可见服装的索引。若该层无服装，值为 `-1`. |
+| priority | int | 对应动画文件（anm2）的精灵层 ID。若该层无服装，值为 `-1`. |
+| layerID | int | 服装在 `costumes2.xml` 中列出的优先级。若该层无服装，值为 `-1` |
+| isBodyLayer | boolean | 若服装是身体服装则为 `true` ，否则（包括该层无服装时）为 `false`. |
 ???- info "More Layer Map Info"
-local player = Isaac.GetPlayer()
-|Field|Type|Comment|
-local spritePath = sprite:GetFilename()
-local itemConfig = costumeSpriteDesc:GetItemConfig()
+返回表格的索引顺序与 `PlayerSpriteLayer` 对应。但由于 Lua 和 C++ 数组起始索引的差异，`CostumeLayerMap` 的索引需减 1 ，且其 `costumeIndex` 需加 1 才能获取准确信息
+
+下方代码片段用于显示所有当前已占用的服装层，打印内容格式为：`PlayerSpriteLayer - 层名称 - 物品名称/NullItemID - Anm2 文件路径` 
 ???+ example "Example Code"
-::continue::
+```lua
+    local player = Isaac.GetPlayer()
+    local map = Isaac.GetPlayer():GetCostumeLayerMap()
+    print("-------------------------------------------------------------------")
+    local costumeSpriteDescs = player:GetCostumeSpriteDescs()
+    for layer, mapData in ipairs(map) do
+        if mapData.costumeIndex == -1 then goto continue end
+        local costumeSpriteDesc = costumeSpriteDescs[mapData.costumeIndex + 1]
+        local sprite = costumeSpriteDesc:GetSprite()
+        local itemConfig = costumeSpriteDesc:GetItemConfig()
+        local layerName = sprite:GetLayer(mapData.layerID):GetName()
+        local costumeName = itemConfig.Name ~= "" and Isaac.GetString("Items", itemConfig.Name) or "NullItemID "..itemConfig.ID
+        local spritePath = sprite:GetFilename()
+        print(layer - 1, "-", layerName, "-", costumeName, "-", spritePath)
+        ::continue::
+    end
+    print("-------------------------------------------------------------------")
 ```
 
 ### GetCostumeSpriteDescs () {: aria-label='Functions' }
 #### [CostumeSpriteDesc](CostumeSpriteDesc.md)[] GetCostumeSpriteDescs ( ) {: .copyable aria-label='Functions' }
-Returns a table of [CostumeSpriteDesc](CostumeSpriteDesc.md).
+返回一个 [CostumeSpriteDesc](CostumeSpriteDesc.md) 类型的表。
 
 ### GetCustomCacheValue () {: aria-label='Functions' }
 #### float GetCustomCacheValue ( string CustomCacheTag ) {: .copyable aria-label='Functions' }
-Returns the current cached value for the specified CustomCacheTag. Will return `0` by default if the provided tag has not been evaluated.
-See [items.xml](xml/items.md) for more information on custom caches.
+返回指定自定义缓存标签的当前缓存值。如果提供的标签尚未评估，则默认返回 `0`。
+有关自定义缓存的更多信息，请参阅 [items.xml](xml/items.md)。
 
 ### GetD8DamageModifier () {: aria-label='Functions' }
 #### int GetD8DamageModifier ( ) {: .copyable aria-label='Functions' }
@@ -297,9 +294,9 @@ ___
 ___
 ### GetDamageModifier () {: aria-label='Functions' }
 #### int GetDamageModifier ( ) {: .copyable aria-label='Functions' }
-Modifier is applied to the player as flat damage.
-Experimental Treatment adds `-1`, `0` or `1` depending on the damage rolled. Void may randomly add `1`.
-Used for Experimental Treatment and for stat boosts from Void.
+该修饰符以固定伤害的形式应用于玩家。
+“实验性治疗” 根据随机生成的伤害值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### GetDeadEyeCharge () {: aria-label='Functions' }
 #### int GetDeadEyeCharge ( ) {: .copyable aria-label='Functions' }
@@ -307,35 +304,35 @@ Used for Experimental Treatment and for stat boosts from Void.
 ___
 ### GetDeathAnimName () {: aria-label='Functions' }
 #### string GetDeathAnimName ( ) {: .copyable aria-label='Functions' }
-- `LostDeath` - When playing as the Lost, under the Lost Curse, playing as Forgotten's Soul, or in Tainted Jacob's Ghost form.
-Returns the name of the player's death animation.
-This can return the following strings:
-- `Death` - The regular death animation name.
-???+ info "Return info"
+- `LostDeath` - 当玩家扮演 “迷失者”、处于 “迷失者诅咒” 状态、扮演 “遗忘者之魂” 或处于 “堕落雅各布的幽灵形态” 时。
+返回玩家死亡动画的名称。
+可能返回以下字符串：
+- `Death` - 常规死亡动画名称。
+???+ info "返回信息"
 
 ### GetEdenDamage () {: aria-label='Functions' }
 #### float GetEdenDamage ( ) {: .copyable aria-label='Functions' }
-Returns the offset of the player's damage stat for Eden's random stats.
+返回玩家伊甸随机属性中伤害属性的偏移量。
 
 ### GetEdenFireDelay () {: aria-label='Functions' }
 #### float GetEdenFireDelay ( ) {: .copyable aria-label='Functions' }
-Returns the offset of the player's fire delay stat for Eden's random stats.
+返回玩家伊甸随机属性中射击延迟属性的偏移量。
 
 ### GetEdenLuck () {: aria-label='Functions' }
 #### float GetEdenLuck ( ) {: .copyable aria-label='Functions' }
-Returns the offset of the player's luck stat for Eden's random stats.
+返回玩家伊甸随机属性中幸运属性的偏移量。
 
 ### GetEdenRange () {: aria-label='Functions' }
 #### float GetEdenRange ( ) {: .copyable aria-label='Functions' }
-Returns the offset of the player's range stat for Eden's random stats.
+返回玩家伊甸随机属性中射程属性的偏移量。
 
 ### GetEdenShotSpeed () {: aria-label='Functions' }
 #### float GetEdenShotSpeed ( ) {: .copyable aria-label='Functions' }
-Returns the offset of the player's shot speed stat for Eden's random stats.
+返回玩家伊甸随机属性中射击速度属性的偏移量。
 
 ### GetEdenSpeed () {: aria-label='Functions' }
 #### float GetEdenSpeed ( ) {: .copyable aria-label='Functions' }
-Returns the offset of the player's speed stat for Eden's random stats.
+返回玩家伊甸随机属性中移动速度属性的偏移量。
 
 ### GetEnterPosition () {: aria-label='Functions' }
 #### [Vector](Vector.md) GetEnterPosition ( ) {: .copyable aria-label='Functions' }        
@@ -351,23 +348,23 @@ ___
 ___
 ### GetEveSumptoriumCharge () {: aria-label='Functions' }
 #### int GetEveSumptoriumCharge ( ) {: .copyable aria-label='Functions' }
-Returns the current charge of Tainted Eve's innate Sumptorium ability.
+返回 “堕落夏娃” 固有 “吸食器” 能力的当前充能值。
 
 ### GetFireDelayModifier () {: aria-label='Functions' }
 #### int GetFireDelayModifier ( ) {: .copyable aria-label='Functions' }
-Experimental Treatment adds `-1`, `0` or `1` depending on the fire delay rolled. Void may randomly add `1`.
-Grants `0.5 * modifier` flat tears per second to the player.
-Used for Experimental Treatment and for stat boosts from Void.
+“实验性治疗” 根据随机生成的射击延迟值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+为玩家提供 `0.5 * 修饰符` 的固定每秒眼泪数。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### GetFlippedForm () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md) GetFlippedForm ( ) {: .copyable aria-label='Functions' }
-Returns flipped form of the current character. (only used for Tainted Lazarus)
-Otherwise, returns `nil`.
+返回当前角色的翻转形态（仅适用于 “堕落拉撒路”）。
+否则返回 `nil`。
 
 ### GetFocusEntity () {: aria-label='Functions' }
 #### [Entity](Entity.md) GetFocusEntity ( ) {: .copyable aria-label='Functions' }
-Returns the entity used by Active Camera to determine where the camera should focus. This can be either the [Marked](https://bindingofisaacrebirth.fandom.com/wiki/Marked) target [EntityEffect](EntityEffect.md) or a weapon's entity.
-If none of these exist, this returns `nil`.
+返回活动相机用于确定相机焦点的实体。这可以是 [标记](https://bindingofisaacrebirth.fandom.com/wiki/Marked) 目标 [EntityEffect](EntityEffect.md) 或武器实体。
+如果这些都不存在，则返回 `nil`。
 
 ### GetFootprintColor () {: aria-label='Functions' }
 #### [KColor](https://wofsauge.github.io/IsaacDocs/rep/KColor.html) GetFootprintColor ( boolean LeftFootprint ) {: .copyable aria-label='Functions' }
@@ -379,7 +376,7 @@ ___
 ___
 ### GetGlyphOfBalanceDrop () {: aria-label='Functions' }
 #### table GetGlyphOfBalanceDrop ( int Variant = -1, int SubType = -1 ) {: .copyable aria-label='Functions' }
-Returns a table containing the variant and subtype of the possible [Glyph of Balance](https://bindingofisaacrebirth.fandom.com/wiki/Glyph_of_Balance) drop.
+返回一个表，其中包含可能掉落的 [平衡符文](https://bindingofisaacrebirth.fandom.com/wiki/Glyph_of_Balance) 的变体和子类型。
 
 ### GetGnawedLeafTimer () {: aria-label='Functions' }
 #### int GetGnawedLeafTimer ( ) {: .copyable aria-label='Functions' }
@@ -391,11 +388,11 @@ ___
 ___
 ### GetHallowedGroundCountdown () {: aria-label='Functions' }
 #### int GetHallowedGroundCountdown ( ) {: .copyable aria-label='Functions' }
-Returns the grace period countdown of retaining stats from the Hallowed Ground/Star of Bethlehem aura.
+返回玩家从 “神圣之地/伯利恒之星” 光环中保留属性的宽限期倒计时。
 
 ### GetHeadDirectionLockTime () {: aria-label='Functions' }
 #### int GetHeadDirectionLockTime ( ) {: .copyable aria-label='Functions' }
-How long the player's head should be forced to stay in its current direction. `-1` (or lower) indicates the direction is not currently locked.
+玩家头部应强制保持当前方向的时长。`-1`（或更低）表示当前方向未被锁定。
 
 ### GetHealthType () {: aria-label='Functions' }
 #### [HealthType](enums/HealthType.md) GetHealthType ( ) {: .copyable aria-label='Functions' }
@@ -403,12 +400,12 @@ How long the player's head should be forced to stay in its current direction. `-
 ___
 ### GetHeldEntity () {: aria-label='Functions' }
 #### [Entity](Entity.md) GetHeldEntity ( ) {: .copyable aria-label='Functions' }
-Returns `nil` if no entity is currently being held.
-Returns the Entity that the player is holding over their head, such as with throwable red bombs or [Suplex!](https://bindingofisaacrebirth.fandom.com/wiki/Suplex!)
+如果玩家当前没有手持实体，则返回 `nil`。
+返回玩家举在头顶的实体，例如可投掷的红色炸弹或 [抱摔！](https://bindingofisaacrebirth.fandom.com/wiki/Suplex!)。
 
 ### GetHeldSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetHeldSprite ( ) {: .copyable aria-label='Functions' }
-Gets the [Sprite](Sprite.md) object used for when the player is doing an animation that involves holding a sprite over their head, such as active item usage.
+获取玩家进行涉及将精灵举在头顶的动画时使用的 [Sprite](Sprite.md) 对象，例如使用主动道具时。
 
 ### GetHistory () {: aria-label='Functions' }
 #### [History](History.md) GetHistory ( ) {: .copyable aria-label='Functions' }
@@ -416,11 +413,11 @@ Gets the [Sprite](Sprite.md) object used for when the player is doing an animati
 ___
 ### GetImmaculateConceptionState () {: aria-label='Functions' }
 #### int GetImmaculateConceptionState ( ) {: .copyable aria-label='Functions' }
-Returns how many hearts have been collected with the Immaculate Conception item. Resets to 0 after spawning a familiar/soul heart.
+返回玩家使用 “圣灵受胎” 道具收集到的红心数量。在生成跟班/魂心后重置为 0。
 
 ### GetKeepersSackBonus () {: aria-label='Functions' }
 #### int GetKeepersSackBonus ( ) {: .copyable aria-label='Functions' }
-Gets the number of coins spent while possessing [Keeper's Sack](https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack).
+获取玩家持有 [“守护者之袋”](https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack) 时花费的硬币数量。
 
 ### GetLaserColor () {: aria-label='Functions' }
 #### [Color](Color.md) GetLaserColor ( ) {: .copyable aria-label='Functions' }
@@ -428,38 +425,38 @@ Gets the number of coins spent while possessing [Keeper's Sack](https://bindingo
 ___
 ### GetLuckModifier () {: aria-label='Functions' }
 #### int GetLuckModifier ( ) {: .copyable aria-label='Functions' }
-Experimental Treatment adds `-1`, `0` or `1` depending on the luck rolled. Void may randomly add `1`.
-The modifier is added directly to the player's Luck stat.
-Used for Experimental Treatment and for stat boosts from Void.
+“实验性治疗” 根据随机生成的幸运值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+该修饰符直接添加到玩家的幸运属性上。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### GetMaggySwingCooldown () {: aria-label='Functions' }
 #### int GetMaggySwingCooldown ( ) {: .copyable aria-label='Functions' }
-Returns the amount of frames left until Tainted Magdalene's swing attack from being damaged can be used again. Returns `0` if the player is not Tainted Magdalene.
+返回 “堕落抹大拉” 受到伤害后挥击攻击的冷却剩余帧数。如果玩家不是 “堕落抹大拉”，则返回 `0`。
 
 ### GetMarkedTarget () {: aria-label='Functions' }
 #### [EntityEffect](https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html) GetMarkedTarget ( ) { : .copyable aria-label='Functions' }
-If the target is not displayed on the ground, this function returns `nil`.
-Returns the entity effect representing the target of the [Marked](https://bindingofisaacrebirth.fandom.com/wiki/Marked) item.
+如果目标未显示在地面上，此函数返回 `nil`。
+返回代表 [标记](https://bindingofisaacrebirth.fandom.com/wiki/Marked) 道具目标的实体效果。
 
 ### GetMaxBladderCharge () {: aria-label='Functions' }
 #### int GetMaxBladderCharge ( ) {: .copyable aria-label='Functions' }
-Returns the maximum charge for when the player stops shooting and charges the Kidney Stone item.
+返回玩家停止射击并为 “肾结石” 道具充能时的最大充能值。
 
 ### GetMaxBombs () {: aria-label='Functions' }
 #### int GetMaxBombs ( ) {: .copyable aria-label='Functions' }
-Returns the maximum number of bombs the player can currently hold.
+返回玩家当前可持有的最大炸弹数量。
 
 ### GetMaxCoins () {: aria-label='Functions' }
 #### int GetMaxCoins ( ) {: .copyable aria-label='Functions' }
-Returns the maximum number of coins the player can currently hold.
+返回玩家当前可持有的最大硬币数量。
 
 ### GetMaxKeys () {: aria-label='Functions' }
 #### int GetMaxKeys ( ) {: .copyable aria-label='Functions' }
-Returns the maximum number of keys the player can currently hold.
+返回玩家当前可持有的最大钥匙数量。
 
 ### GetMaxPeeBurstCooldown () {: aria-label='Functions' }
 #### int GetMaxPeeBurstCooldown ( ) {: .copyable aria-label='Functions' }
-Returns the maximum attack duration of the Kidney Stone item.
+返回 “肾结石” 道具的最大攻击持续时间。
 
 ### GetMaxPocketItems () {: aria-label='Functions' }
 #### int GetMaxPocketItems ( ) {: .copyable aria-label='Functions' }
@@ -475,19 +472,19 @@ ___
 ___
 ### GetMovingBoxContents () {: aria-label='Functions' }
 #### [EntitiesSaveStateVector](EntitiesSaveStateVector.md) GetMovingBoxContents ( ) {: .copyable aria-label='Functions' }
-Returns the pickups that are stored on the player through the use of the Moving Box collectible.
+返回玩家通过 “移动箱” 道具存储的拾取物。
 
 ### GetNextUrethraBlockFrame () {: aria-label='Functions' }
 #### int GetNextUrethraBlockFrame ( ) {: .copyable aria-label='Functions' }
-Returns the frame at which the player stops shooting and starts charging the [Kidney Stone](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) item.
+返回玩家停止射击并开始为 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具充能的帧数。
 
 ### GetPeeBurstCooldown () {: aria-label='Functions' }
 #### int GetPeeBurstCooldown ( ) {: .copyable aria-label='Functions' }
-Returns the attack duration of the [Kidney Stone](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) item.
+返回 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具的攻击持续时间。
 
 ### GetPlayerFormCounter () {: aria-label='Functions' }
 #### int GetPlayerFormCounter ( [PlayerForm](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerForm.html) PlayerFormID ) {: .copyable aria-label='Functions' } 
-Returns the amount of collectibles the player has tied to the specified transformation.
+返回玩家与指定变身相关联的道具数量。
 
 ### GetPlayerIndex () {: aria-label='Functions' }
 #### int GetPlayerIndex ( ) {: .copyable aria-label='Functions' }
@@ -495,27 +492,27 @@ Returns the amount of collectibles the player has tied to the specified transfor
 ___
 ### GetPonyCharge () {: aria-label='Functions' }
 #### int GetPonyCharge ( ) {: .copyable aria-label='Functions' }
-Returns the amount of frames left until the charging effect from the A Pony or White Pony item deactivates.
+返回 “一匹小马” 或 “白色小马” 道具充能效果停用前的剩余帧数。
 
 ### GetPurityState () {: aria-label='Functions' }
 #### [PurityState](enums/PurityState.md) GetPurityState ( ) {: .copyable aria-label='Functions' }
-Returns the state in which the [Purity](https://bindingofisaacrebirth.fandom.com/wiki/Purity) item effect currently is. Returns `PurityState.BLUE` if the player does not have the Purity collectible.
+返回 [“纯洁”](https://bindingofisaacrebirth.fandom.com/wiki/Purity) 道具效果的当前状态。如果玩家没有 “纯洁” 道具，则返回 `PurityState.BLUE`。
 
 ### GetRedStewBonusDuration () {: aria-label='Functions' }
 #### int GetRedStewBonusDuration ( ) {: .copyable aria-label='Functions' }
-Returns the frames left until the damage bonus from Red Stew expires.
+返回 “红炖菜” 道具伤害加成效果的剩余帧数。
 
 ### GetShotSpeedModifier () {: aria-label='Functions' }
 #### int GetShotSpeedModifier ( ) {: .copyable aria-label='Functions' }
-Experimental Treatment adds `-1`, `0` or `1` depending on the shot speed rolled. Void may randomly add `1`.
-Adds `0.2 * modifier` to the player's ShotSpeed.
-Used for Experimental Treatment and for stat boosts from Void.
+“实验性治疗” 根据随机生成的射击速度值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+为玩家的射击速度增加 `0.2 * 修饰符`。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### GetSmeltedTrinkets () {: aria-label='Functions' }
 #### table GetSmeltedTrinkets ( ) {: .copyable aria-label='Functions' }
-Returns a table of smelted trinkets and their corresponding amounts. The returned table contains the following fields:
+返回一个包含熔炼饰品及其对应数量的表。返回的表包含以下字段：
 |:--|:--|:--|
-|Field|Type|Comment|
+|字段|类型|说明|
 | goldenTrinketAmount | int | |
 | trinketAmount | int | |
 
@@ -525,24 +522,24 @@ Returns a table of smelted trinkets and their corresponding amounts. The returne
 ___
 ### GetSpeedModifier () {: aria-label='Functions' }
 #### int GetSpeedModifier ( ) {: .copyable aria-label='Functions' }
-Adds `0.2 * modifier` to the player's MoveSpeed.
-Experimental Treatment adds `-1`, `0` or `1` depending on the speed rolled. Void may randomly add `1`.
-Used for Experimental Treatment and for stat boosts from Void.
+为玩家的移动速度增加 `0.2 * 修饰符`。
+“实验性治疗” 根据随机生成的移动速度值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### GetSpoofedCollectiblesList () {: aria-label='Functions' }
 #### table[] GetSpoofedCollectiblesList ( ) {: .copyable aria-label='Functions' }
-| IsBlocked | boolean | |
-| CollectibleID | [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) | |
+| 是否被阻挡 | boolean | |
+| 道具 ID | [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) | |
 |:--|:--|:--|
-|Field|Type|Comment|
-| AppendedCount | int | |
+|字段|类型|说明|
+| 追加数量 | int | |
 
 ### GetTearDisplacement () {: aria-label='Functions' }
 #### int GetTearDisplacement ( ) {: .copyable aria-label='Functions' }
-- `1` Right eye
-???+ info "Return info"
-- `-1` Left eye
-Returns the player's TearDisplacement value, used to check what eye the player is shooting from.
+- `1` 右眼
+???+ info "返回信息"
+- `-1` 左眼
+返回玩家的眼泪偏移值，用于检查玩家从哪只眼睛射击。
 
 ### GetTotalActiveCharge () {: aria-label='Functions' }
 #### int GetTotalActiveCharge ( [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot ) {: .copyable aria-label='Functions' }
@@ -554,49 +551,49 @@ ___
 ___
 ### GetVoidedCollectiblesList () {: aria-label='Functions' }
 #### [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html)[] GetVoidedCollectiblesList ( ) {: .copyable aria-label='Functions' }
-Retuns a table containing the [CollectibleTypes](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) of all voided Active items.
+返回一个包含所有被 “虚空” 道具吞噬的主动道具 [CollectibleTypes](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) 的表。
 
 ### GetWeapon () {: aria-label='Functions' }
 #### [Weapon](Weapon.md) GetWeapon ( int Slot ) {: .copyable aria-label='Functions' }
-???- info "Info"
-Always check for `nil`, even for slot `1` as it can be deleted by mods via [Isaac.DestroyWeapon()](Isaac.md#destroyweapon).
-- `4` - Additional Weapon.
-Weapon slots and their descriptions:
-Returns the Weapon object in the corresponding slot, or `nil` if no Weapon can be found. Slot needs to be between `0` and `4`.
-- `2` - Additional Weapon. Few instances of this exist in the vanilla game, but it can be populated by mods.
-- `1` - Primary Weapon.
-- `3` - Additional Weapon.
-- `0` - Backup Weapon such as Notched Axe and Urn of Souls.
+???- info "信息"
+始终检查是否为 `nil`，即使是插槽 `1`，因为它可以被模组通过 [Isaac.DestroyWeapon()](Isaac.md#destroyweapon) 删除。
+- `4` - 额外武器。
+武器插槽及其说明：
+返回相应插槽中的武器对象，如果未找到武器则返回 `nil`。插槽编号必须在 `0` 到 `4` 之间。
+- `2` - 额外武器。原版游戏中很少有这种情况，但模组可以填充此插槽。
+- `1` - 主武器。
+- `3` - 额外武器。
+- `0` - 备用武器，如 “缺口斧” 和 “灵魂瓮”。
 
 ### GetWeaponModifiers () {: aria-label='Functions' }
 #### int GetWeaponModifiers ( ) {: .copyable aria-label='Functions' }
-Returns a bitmask of [WeaponModifiers](enums/WeaponModifier.md).
+返回一个 [WeaponModifiers](enums/WeaponModifier.md) 类型的位掩码。
 
 ### GetWildCardItem () {: aria-label='Functions' }
 #### int GetWildCardItem ( ) {: .copyable aria-label='Functions' }
-If the player used an active item, its `CollectibleType` is returned. If the player used a consumable, its variant is returned. If the player used ? Mark Card, returns `1`. If no active item had ever been used by the player before, turns `0`.
-Returns the item that was last used by the player and would be activated again upon using Wild Card.
+如果玩家使用了主动道具，则返回其 `CollectibleType`。如果玩家使用了消耗品，则返回其变体。如果玩家使用了 “问号卡”，则返回 `1`。如果玩家之前从未使用过主动道具，则返回 `0`。
+返回玩家最后使用的道具，再次使用 “万能卡” 时将激活该道具。
 
 ### GetWildCardItemType () {: aria-label='Functions' }
 #### [PocketItemType](enums/PocketItemType.md) GetWildCardItemType ( ) {: .copyable aria-label='Functions' }
-Returns the type of item that was last used by the player and would be activated again upon using Wild Card.
-If the player used a consumable (including ? Mark Card), returns `ItemType.ITEM_PASSIVE`. If no active item had been used by the player before, returns `255`.
+返回玩家最后使用的道具类型，再次使用 “万能卡” 时将激活该道具。
+如果玩家使用了消耗品（包括 “问号卡”），则返回 `ItemType.ITEM_PASSIVE`。如果玩家之前从未使用过主动道具，则返回 `255`。
 
 ### GetWispCollectiblesList () {: aria-label='Functions' }
 #### table GetWispCollectiblesList ( ) {: .copyable aria-label='Functions' }
-Returns a table of [CollectibleTypes](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) corresponding to the item wisps the player has.
+返回一个与玩家拥有的道具幽灵对应的 [CollectibleTypes](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) 表。
 
 ### HasChanceRevive () {: aria-label='Functions' }
 #### boolean HasChanceRevive ( ) {: .copyable aria-label='Functions' }
-Returns true if a "?" would be displayed on the player's extra life count (ie, the player has Guppy's Collar, or a modded revive item with the `chancerevive` string in REPENTOGON's [customtags items.xml attribute](xml/items.md)).
+如果玩家的额外生命计数上会显示 “?”，则返回 true（即玩家拥有 “古比项圈”，或在 REPENTOGON 的 [自定义标签 items.xml 属性](xml/items.md) 中有 `chancerevive` 字符串的模组复活道具）。
 
 ### HasGoldenTrinket () {: aria-label='Functions' }
 #### boolean HasGoldenTrinket ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) Trinket ) {: .copyable aria-label='Functions' }
-Returns true if you have a golden variant of the provided [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html).
+如果玩家拥有指定 [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) 的金色变体，则返回 true。
 
 ### HasInstantDeathCurse () {: aria-label='Functions' }
 #### boolean HasInstantDeathCurse ( ) {: .copyable aria-label='Functions' }
-Returns true when the player is in the Lost form triggered by either the white fire in Downpour or Soul of The Lost. (or when in Tainted Jacob's ghost form when being touched by Dark Esau)
+当玩家处于由下水道的白色火焰或 “迷失者之魂” 触发的 “迷失者” 形态时（或在 “堕落雅各布” 的幽灵形态下被 “黑暗以扫” 触摸时），返回 true。
 
 ### HasPoisonImmunity () {: aria-label='Functions' }
 #### boolean HasPoisonImmunity ( ) {: .copyable aria-label='Functions' }
@@ -604,30 +601,30 @@ Returns true when the player is in the Lost form triggered by either the white f
 ___
 ### IncrementPlayerFormCounter () {: aria-label='Functions' }
 #### void IncrementPlayerFormCounter ( [PlayerForm](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerForm.html) Form, int Count ) {: .copyable aria-label='Functions' }
-Increases or decreases the counter towards one of the player's transformations. `Count` can be negative to decrement the [PlayerForm](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerForm.html).
+增加或减少玩家向某一变身的计数器。`Count` 可以为负数，以减少 [PlayerForm](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerForm.html)。
 
 ### InitPostLevelInitStats () {: aria-label='Functions' }
 #### void InitPostLevelInitStats ( ) {: .copyable aria-label='Functions' }
-Call this after spawning characters with "special" tears (Forgotten, Lilith, Azazel etc) with InitTwin, or they won't have their proper tear type.
+在使用 `InitTwin` 生成具有 “特殊” 眼泪的角色（如 “遗忘者”、“莉莉丝”、“阿撒兹勒” 等）后调用此函数，否则他们将不会拥有正确的眼泪类型。
 
 ### InitTwin () {: aria-label='Functions' }
 #### [EntityPlayer](EntityPlayer.md) InitTwin ( [PlayerType](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html) PlayerType ) {: .copyable aria-label='Functions' }
-Initializes a new player that is controlled by the player's same controller.
+初始化一个由玩家同一控制器控制的新玩家。
 ???+ bug "Bug"
-We've received confirmation from \_Kilburn that this is hardcoded to be handled on vanilla characters. We will need to add a workaround for this.
-The twin player will desync from its main twin on save and continue. This softlocks the game in singleplayer, as the game prompts for a controller.
+我们已从 \_Kilburn 处确认，这在原版角色中是硬编码处理的。我们需要为此添加一个解决方案。
+双胞胎玩家在保存并继续游戏时会与其主双胞胎不同步。这会在单人游戏中导致软锁，因为游戏会提示连接控制器。
 
 ### IsCollectibleAnimFinished () {: aria-label='Functions' }
 #### boolean IsCollectibleAnimFinished ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, string Animation ) {: .copyable aria-label='Functions' }
-Returns true if the animation associated with the collectible is visible.
+如果与道具关联的动画可见，则返回 true。
 
 ### IsCollectibleBlocked () {: aria-label='Functions' }
 #### boolean IsCollectibleBlocked ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
-Returns true if the [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) was blocked. Collectibles can only be blocked by use of [BlockCollectible](EntityPlayer.md#blockcollectible).
+如果 [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) 被阻挡，则返回 true。道具只能通过 [BlockCollectible](EntityPlayer.md#blockcollectible) 函数阻挡。
 
 ### IsCollectibleCostumeVisible () {: aria-label='Functions' }
 #### boolean IsCollectibleCostumeVisible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, int PlayerSpriteLayerID ) {: .copyable aria-label='Functions' }
-Returns `true` if the costume associated with the collectible is visible.
+如果与道具关联的服装可见，则返回 `true`。
 
 ### IsEntityValidTarget () {: aria-label='Functions' }
 #### boolean IsEntityValidTarget ( [Entity](Entity.md) Entity ) {: .copyable aria-label='Functions' }
@@ -635,22 +632,22 @@ Returns `true` if the costume associated with the collectible is visible.
 ___
 ### IsFootstepFrame () {: aria-label='Functions' }
 #### boolean IsFootstepFrame ( int Foot = -1 ) {: .copyable aria-label='Functions' }       
-- `0` - Returns true every 24 frames.
-???+ info "Info"
-- `1` - Always false.
-- `-1` - Returns true every 12 frames.
+- `0` - 每 24 帧返回 true。
+???+ info "信息"
+- `1` - 始终为 false。
+- `-1` - 每 12 帧返回 true。
 
 ### IsHeadless () {: aria-label='Functions' }
 #### boolean IsHeadless ( ) {: .copyable aria-label='Functions' }
-Returns `true` is the player is headless due to collectibles such as Guillotine, The Intruder, Scissors, and Decap Attack.
+如果玩家因 “断头台”、“入侵者”、“剪刀” 和 “斩首攻击” 等道具而无头，则返回 `true`。
 
 ### IsHologram () {: aria-label='Functions' }
 #### boolean IsHologram ( ) {: .copyable aria-label='Functions' }
-Returns `true` if the player is the non-active form of Tainted Lazarus with Birthright.
+如果玩家是拥有 “诞生之权” 的 “堕落拉撒路” 的非激活形态，则返回 `true`。
 
 ### IsInvisible () {: aria-label='Functions' }
 #### boolean IsInvisible ( ) {: .copyable aria-label='Functions' }
-Returns `true` if the player has the Faded Polaroid / Camo Undies effect active.
+如果玩家拥有 “褪色宝丽来/迷彩内裤” 效果，则返回 `true`。
 
 ### IsItemCostumeVisible () {: aria-label='Functions' }
 #### boolean IsItemCostumeVisible ( [ItemConfig_Item](ItemConfig_Item.md) Item, int PlayerSpriteLayerID ) {: .copyable aria-label='Functions' }
@@ -659,7 +656,7 @@ Returns `true` if the player has the Faded Polaroid / Camo Undies effect active.
 ___
 ### IsLocalPlayer () {: aria-label='Functions' }
 #### boolean IsLocalPlayer ( ) {: .copyable aria-label='Functions' }
-For online play. Returns `true` if you're a local player, `false` otherwise.
+用于在线游戏。如果是本地玩家，则返回 `true`，否则返回 `false`。
 
 ### IsNullItemCostumeVisible () {: aria-label='Functions' }
 #### boolean IsNullItemCostumeVisible ( int nullItem, int layerID = 0 ) {: .copyable aria-label='Functions' }
@@ -672,23 +669,23 @@ ___
 ___
 ### IsUrethraBlocked () {: aria-label='Functions' }
 #### boolean IsUrethraBlocked ( ) {: .copyable aria-label='Functions' }
-Returns true when the player can no longer shoot due to charging the [Kidney Stone](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) item.
+当玩家因为 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具充能而无法射击时，返回 true。
 
 ### MorphToCoopGhost () {: aria-label='Functions' }
 #### void MorphToCoopGhost ( ) {: .copyable aria-label='Functions' }
-Turns the player into a co-op ghost.
+将玩家转变为合作幽灵。
 
 ### PlayCollectibleAnim () {: aria-label='Functions' }
 #### void PlayCollectibleAnim ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, boolean CheckBodyLayers, string AnimationName, int Frame = -1 ) {: .copyable aria-label='Functions' }
-Plays an animation tied to the provided collectible.
+播放与提供的道具关联的动画。
 
 ### PlayDelayedSFX () {: aria-label='Functions' }
 #### void PlayDelayedSFX ( [SoundEffect](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) ID, int SoundDelay = 0, int FrameDelay = 2, float Volume = 1.0 ) {: .copyable aria-label='Functions' }
-Plays a sound effect after a delay.
+延迟播放音效。
 
 ### RemoveCollectibleByHistoryIndex () {: aria-label='Functions' }
 #### void RemoveCollectibleByHistoryIndex ( int Index ) {: .copyable aria-label='Functions' }
-Removes the collectible from the player associated with the specified history index.
+从玩家处移除与指定历史索引关联的道具。
 
 ### RemovePocketItem () {: aria-label='Functions' }
 #### void RemovePocketItem ( [PillCardSlot](enums/PillCardSlot.md) Slot ) {: .copyable aria-label='Functions' }
@@ -696,16 +693,16 @@ Removes the collectible from the player associated with the specified history in
 ___
 ### RemovePoopSpell () {: aria-label='Functions' }
 #### void RemovePoopSpell ( int Position = 0 ) {: .copyable aria-label='Functions' }
-Removes the poop spell from the specified queue position and shifts all spells after it forward to fill the space. A new spell is randomly picked to fill the last position. Poop spells are only used by Tainted ???.
+从指定队列位置移除便便法术，并将其后的所有法术向前移动以填充空位。最后一个位置将随机选择一个新法术填充。便便法术仅由 “堕落？？？” 使用。
 
 ### RerollAllCollectibles () {: aria-label='Functions' }
 #### void RerollAllCollectibles ( [RNG](RNG.md) rng, boolean includeActiveItems ) {: .copyable aria-label='Functions' }
-Rerolls all of the player's collectibles.
+重新随机玩家的所有道具。
 
 ### ResetPlayer () {: aria-label='Functions' }
 #### void ResetPlayer ( ) {: .copyable aria-label='Functions' }
-This is used by the Genesis active item.
-???+ info "Info"
+此函数由 “创世纪” 主动道具使用。
+???+ info "信息"
 
 ### ReviveCoopGhost () {: aria-label='Functions' }
 #### boolean ReviveCoopGhost ( ) {: .copyable aria-label='Functions' }
@@ -713,9 +710,9 @@ This is used by the Genesis active item.
 ___
 ### SalvageCollectible () {: aria-label='Functions' }
 #### void SalvageCollectible ( [EntityPickup](EntityPickup.md) Pickup, [RNG](RNG.md) rng = PickupDropRNG, [ItemPoolType](https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html) Pool = ItemPoolType.POOL_NULL) {: .copyable aria-label='Functions' }
-The provided [EntityPickup](EntityPickup.md) will be removed by this function. Use the override to avoid this.
-???+ info "Info"
-Produces a random quantity of various pickups, similar to Tainted Cain's ability.
+此函数将移除提供的 [EntityPickup](EntityPickup.md)。可以使用覆盖参数避免这种情况。
+???+ info "信息"
+产生随机数量的各种拾取物，类似于 “堕落该隐” 的能力。
 
 ### SetActiveVarData () {: aria-label='Functions' }
 #### void SetActiveVarData ( int VarData, [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot ) {: .copyable aria-label='Functions' }
@@ -723,15 +720,15 @@ Produces a random quantity of various pickups, similar to Tainted Cain's ability
 ___
 ### SetBagOfCraftingContent () {: aria-label='Functions' }
 #### void SetBagOfCraftingContent ( [BagOfCraftingPickup](enums/BagOfCraftingPickup.md)[] ContentTable ) {: .copyable aria-label='Functions' }
-Sets the content of the bag to the content of the table. Table must use valid [BagOfCraftingPickup](enums/BagOfCraftingPickup.md) ids. Table can be shorter than 8, in which case the remaining indexes are set to empty.
+将合成袋的内容设置为表中的内容。表必须使用有效的 [BagOfCraftingPickup](enums/BagOfCraftingPickup.md) ID。表可以短于 8，此时剩余索引将设置为空。
 
 ### SetBagOfCraftingOutput () {: aria-label='Functions' }
 #### void SetBagOfCraftingOutput ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
-Sets the output of the player's Bag of Crafting to the specified collectible.
+将玩家合成袋的输出设置为指定道具。
 
 ### SetBagOfCraftingSlot () {: aria-label='Functions' }
 #### void SetBagOfCraftingSlot ( int SlotID, [BagOfCraftingPickup](enums/BagOfCraftingPickup.md) PickupID ) {: .copyable aria-label='Functions' }
-Sets the specified slot in the player's Bag of Crafting to the specified pickup.
+将玩家合成袋的指定插槽设置为指定拾取物。
 
 ### SetBlackHeart () {: aria-label='Functions' }
 #### void SetBlackHeart ( int BlackHeart ) {: .copyable aria-label='Functions' }
@@ -739,9 +736,9 @@ Sets the specified slot in the player's Bag of Crafting to the specified pickup.
 ___
 ### SetBladderCharge () {: aria-label='Functions' }
 #### void SetBladderCharge ( int Charge ) {: .copyable aria-label='Functions' }
-Used by the [Kidney Stone](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) item.
+由 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具使用。
 ???+ bug "Bug"
-The player's head turns pitch black when this function is used without Kidney Stone.
+如果在没有 “肾结石” 道具的情况下使用此函数，玩家的头部会变黑。
 
 ### SetBloodLustCounter () {: aria-label='Functions' }
 #### void SetBloodLustCounter ( int Counter ) {: .copyable aria-label='Functions' }
@@ -753,66 +750,66 @@ ___
 ___
 ### SetCambionConceptionState () {: aria-label='Functions' }
 #### void SetCambionConceptionState ( int State ) {: .copyable aria-label='Functions' }
-Note that the game only spawns a familiar when the player takes damage, if this counter is now at 15, 30, 60 or 90. You cannot trigger a birth directly with this function.
-Sets how much damage has been taken for the Cambion Conception item.
+请注意，游戏仅在玩家受到伤害且此计数器达到 15、30、60 或 90 时才会生成跟班。你不能直接使用此函数触发诞生。
+设置玩家使用 “恶魔受胎” 道具受到的伤害量。
 
 ### SetCanShoot () {: aria-label='Functions' }
 #### boolean SetCanShoot ( boolean CanShoot ) {: .copyable aria-label='Functions' }
-Instantaneously disables (or enables) the player's ability to shoot. The base game primarily uses this for special challenges.
+立即禁用（或启用）玩家的射击能力。基础游戏主要在特殊挑战中使用此功能。
 
 ### SetConceptionFamiliarFlags () {: aria-label='Functions' }
 #### void SetConceptionFamiliarFlags ( [ConceptionFamiliarFlag](enums/ConceptionFamiliarFlag.md) Flags ) {: .copyable aria-label='Functions' }
-Sets the bitmask corresponding to which familiars have been spawned by Cambion/Immaculate Conception. The additional familiars provided by this bitmask are spawned during familiar cache evaluation, but only while the player has one of those two items.
+设置与 “恶魔受胎/圣灵受胎” 生成的跟班对应的位掩码。此位掩码提供的额外跟班在跟班缓存评估期间生成，但仅当玩家拥有这两个道具之一时才会生成。
 
 ### SetControllerIndex () {: aria-label='Functions' }
 #### void SetControllerIndex ( int Idx ) {: .copyable aria-label='Functions' }        
-Changes the player's controller index.
+更改玩家的控制器索引。
 
 ### SetDamageModifier () {: aria-label='Functions' }
 #### void SetDamageModifier ( int Modifier ) {: .copyable aria-label='Functions' }
-Modifier is applied to the player as flat damage.
-Experimental Treatment adds `-1`, `0` or `1` depending on the damage rolled. Void may randomly add `1`.
-Used for Experimental Treatment and for stat boosts from Void.
+该修饰符以固定伤害的形式应用于玩家。
+“实验性治疗” 根据随机生成的伤害值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### SetEdenDamage () {: aria-label='Functions' }
 #### void SetEdenDamage ( float Value ) {: .copyable aria-label='Functions' }
-Sets the offset of the player's damage stat for Eden's random stats. Has no effect on players that aren't Eden or Tainted Eden.
+设置玩家伊甸随机属性中伤害属性的偏移量。对非伊甸或堕落伊甸的玩家无效。
 
 ### SetEdenFireDelay () {: aria-label='Functions' }
 #### void SetEdenFireDelay ( float Value ) {: .copyable aria-label='Functions' }
-Sets the offset of the player's fire delay stat for Eden's random stats. Has no effect on players that aren't Eden or Tainted Eden.
+设置玩家伊甸随机属性中射击延迟属性的偏移量。对非伊甸或堕落伊甸的玩家无效。
 
 ### SetEdenLuck () {: aria-label='Functions' }
 #### void SetEdenLuck ( float Value ) {: .copyable aria-label='Functions' }
-Sets the offset of the player's luck stat for Eden's random stats. Has no effect on players that aren't Eden or Tainted Eden.
+设置玩家伊甸随机属性中幸运属性的偏移量。对非伊甸或堕落伊甸的玩家无效。
 
 ### SetEdenRange () {: aria-label='Functions' }
 #### void SetEdenRange ( float Value ) {: .copyable aria-label='Functions' }
-Sets the offset of the player's range stat for Eden's random stats. Has no effect on players that aren't Eden or Tainted Eden.
+设置玩家伊甸随机属性中射程属性的偏移量。对非伊甸或堕落伊甸的玩家无效。
 
 ### SetEdenShotSpeed () {: aria-label='Functions' }
 #### void SetEdenShotSpeed ( float Value ) {: .copyable aria-label='Functions' }
-Sets the offset of the player's shot speed stat for Eden's random stats. Has no effect on players that aren't Eden or Tainted Eden.
+设置玩家伊甸随机属性中射击速度属性的偏移量。对非伊甸或堕落伊甸的玩家无效。
 
 ### SetEdenSpeed () {: aria-label='Functions' }
 #### void SetEdenSpeed ( float Value ) {: .copyable aria-label='Functions' }
-Sets the offset of the player's speed stat for Eden's random stats. Has no effect on players that aren't Eden or Tainted Eden.
+设置玩家伊甸随机属性中移动速度属性的偏移量。对非伊甸或堕落伊甸的玩家无效。
 
 ### SetEveSumptoriumCharge () {: aria-label='Functions' }
 #### void SetEveSumptoriumCharge ( int ChargeNum ) {: .copyable aria-label='Functions' }
-Sets the current charge of Tainted Eve's innate Sumptorium ability.
+设置 “堕落夏娃” 固有 “吸食器” 能力的当前充能值。
 
 ### SetFireDelayModifier () {: aria-label='Functions' }
 #### void SetFireDelayModifier ( int Modifier ) {: .copyable aria-label='Functions' }
-Experimental Treatment adds `-1`, `0` or `1` depending on the fire delay rolled. Void may randomly add `1`.
-Grants `0.5 * modifier` flat tears per second to the player.
-Used for Experimental Treatment and for stat boosts from Void.
+“实验性治疗” 根据随机生成的射击延迟值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+为玩家提供 `0.5 * 修饰符` 的固定每秒眼泪数。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### SetFootprintColor () {: aria-label='Functions' }
 #### void SetFootprintColor ( [KColor](https://wofsauge.github.io/IsaacDocs/rep/KColor.html) color, boolean RightFoot = false ) {: .copyable aria-label='Functions' }
-Sets the player's footprint color.
+设置玩家的脚印颜色。
 ???+ bug "Bug"
-This function currently crashes the game - will be fixed in a future update.
+此函数目前会导致游戏崩溃 - 将在未来更新中修复。
 
 ### SetGnawedLeafTimer () {: aria-label='Functions' }
 #### void SetGnawedLeafTimer ( int Timer ) {: .copyable aria-label='Functions' }
@@ -820,85 +817,85 @@ This function currently crashes the game - will be fixed in a future update.
 ___
 ### SetHallowedGroundCountdown () {: aria-label='Functions' }
 #### void SetHallowedGroundCountdown ( int Countdown ) {: .copyable aria-label='Functions' }
-Sets the grace period countdown of retaining stats from the Hallowed Ground/Star of Bethlehem aura.
+设置玩家从 “神圣之地/伯利恒之星” 光环中保留属性的宽限期倒计时。
 
 ### SetHeadDirection () {: aria-label='Functions' }
 #### void SetHeadDirection ( [Direction](https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html) Direction, int Time, boolean Force = false ) {: .copyable aria-label='Functions' }
-Locks the player's head animation to the specified [Direction](https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html). `Force` will override existing head direction locks, such as the one from firing Mom's Knife.
+将玩家的头部动画锁定到指定的 [Direction](https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html)。`Force` 参数将覆盖现有的头部方向锁定，例如使用 “妈妈的刀” 时的锁定。
 
 ### SetHeadDirectionLockTime () {: aria-label='Functions' }
 #### void SetHeadDirectionLockTime ( int Time ) {: .copyable aria-label='Functions' }
-How long the player's head should be forced to stay in its current direction.
+设置玩家头部应强制保持当前方向的时长。
 
 ### SetImmaculateConceptionState () {: aria-label='Functions' }
 #### void SetImmaculateConceptionState ( int State ) {: .copyable aria-label='Functions' }
-If you set a value that is greater than 14, the value is automatically capped at 14, meaning that the next heart picked up will spawn a familiar.
-Note that the game checks to spawn a familiar only when the player picks up a heart, so you cannot trigger that directly with this function.
-Sets how many hearts have been collected for the Immaculate Conception item.
+如果你设置的值大于 14，该值将自动上限为 14，这意味着下一次拾取红心将生成一个跟班。
+请注意，游戏仅在玩家拾取红心时检查是否生成跟班，因此你不能直接使用此函数触发该效果。
+设置玩家使用 “圣灵受胎” 道具收集到的红心数量。
 
 ### SetItemState () {: aria-label='Functions' }
 #### void SetItemState ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
-Changes the player's item state to the specified collectible. This is usually used for collectibles that the player holds above their head before activating (i.e: Bob's Rotten Head, Glass Cannon).
+将玩家的道具状态更改为指定道具。这通常用于玩家在激活前举在头顶的道具（如 “鲍勃的烂头”、“玻璃大炮”）。
 
 ### SetKeepersSackBonus () {: aria-label='Functions' }
 #### void SetKeepersSackBonus ( int Bonus ) {: .copyable aria-label='Functions' }
-Sets the current coin bonus for the player's [Keeper's Sack](https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack) collectible.
+设置玩家 [“守护者之袋”](https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack) 道具的当前硬币奖励。
 
 ### SetLaserColor () {: aria-label='Functions' }
 #### void SetLaserColor ( [Color](Color.md) color ) {: .copyable aria-label='Functions' }
-Sets the player's laser color.
+设置玩家的激光颜色。
 
 ### SetLuckModifier () {: aria-label='Functions' }
 #### void SetLuckModifier ( int Modifier ) {: .copyable aria-label='Functions' }
-Experimental Treatment adds `-1`, `0` or `1` depending on the luck rolled. Void may randomly add `1`.
-The modifier is added directly to the player's Luck stat.
-Used for Experimental Treatment and for stat boosts from Void.
+“实验性治疗” 根据随机生成的幸运值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+该修饰符直接添加到玩家的幸运属性上。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### SetMaggySwingCooldown () {: aria-label='Functions' }
 #### void SetMaggySwingCooldown ( int Cooldown ) {: .copyable aria-label='Functions' }
-Sets the cooldown of Tainted Magdalene's swing attack to the specified amount of frames.
+将 “堕落抹大拉” 挥击攻击的冷却时间设置为指定的帧数。
 
 ### SetMaxBladderCharge () {: aria-label='Functions' }
 #### void SetMaxBladderCharge ( int Charge ) {: .copyable aria-label='Functions' }
-Sets the maximum charge for when the player stops shooting and charges the Kidney Stone item.
+设置玩家停止射击并为 “肾结石” 道具充能时的最大充能值。
 
 ### SetMegaBlastDuration () {: aria-label='Functions' }
 #### void SetMegaBlastDuration ( int Duration ) {: .copyable aria-label='Functions' }
 ???+ bug "Bug"
-If the Mega Blast laser is active and you call the function again with a lower duration, the laser will persist even after the amount of frames has passed until the player leaves the room.
-Sets the duration of the Mega Blast laser to the specified amount of frames. Setting the duration above zero will activate the effect if it wasn't already active.
+如果 “巨型爆破” 激光处于激活状态，并且你再次调用此函数并设置较低的持续时间，激光将在指定帧数过去后仍然存在，直到玩家离开房间。
+将 “巨型爆破” 激光的持续时间设置为指定的帧数。如果激光尚未激活，将其持续时间设置为大于零的值将激活该效果。
 
 ### SetNextUrethraBlockFrame () {: aria-label='Functions' }
 #### void SetNextUrethraBlockFrame ( int Frame ) {: .copyable aria-label='Functions' }
-Sets the frame at which the player stops shooting and starts charging the Kidney Stone item.
+设置玩家停止射击并开始为 “肾结石” 道具充能的帧数。
 
 ### SetPonyCharge () {: aria-label='Functions' }
 #### void SetPonyCharge ( int Time ) {: .copyable aria-label='Functions' }
-Sets the duration of the charge effect from the A Pony and White Pony to the specified amount of frames.
+将 “一匹小马” 和 “白色小马” 道具的充能效果持续时间设置为指定的帧数。
 
 ### SetPoopSpell () {: aria-label='Functions' }
 #### void SetPoopSpell ( int Slot, [PoopSpellType](https://wofsauge.github.io/IsaacDocs/rep/enums/PoopSpellType.html) PoopSpellType ) {: .copyable aria-label='Functions' }
-Sets the specified slot in the poop list to a type of poop. This is only used by Tainted ???.
+将便便列表中的指定插槽设置为一种便便类型。这仅由 “堕落？？？” 使用。
 
 ### SetPurityState () {: aria-label='Functions' }
 #### void SetPurityState ( [PurityState](enums/PurityState.md) State ) {: .copyable aria-label='Functions' }
-Set the state in which the [Purity](https://bindingofisaacrebirth.fandom.com/wiki/Purity) item effect currently is.
+设置 [“纯洁”](https://bindingofisaacrebirth.fandom.com/wiki/Purity) 道具效果的当前状态。
 
 ### SetRedStewBonusDuration () {: aria-label='Functions' }
 #### void SetRedStewBonusDuration ( int Duration ) {: .copyable aria-label='Functions' }
-Sets the duration of the damage bonus given by the Red Stew collectible to the specified amount of frames. Setting the duration above 0 will activate the effect if it wasn't active already.
+将 “红炖菜” 道具的伤害加成持续时间设置为指定的帧数。将持续时间设置为大于 0 的值将激活该效果（如果尚未激活）。
 
 ### SetShotSpeedModifier () {: aria-label='Functions' }
 #### void SetShotSpeedModifier ( int Modifier ) {: .copyable aria-label='Functions' }
-Experimental Treatment adds `-1`, `0` or `1` depending on the shot speed rolled. Void may randomly add `1`.
-Adds `0.2 * modifier` to the player's ShotSpeed.
-Used for Experimental Treatment and for stat boosts from Void.
+“实验性治疗” 根据随机生成的射击速度值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+为玩家的射击速度增加 `0.2 * 修饰符`。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### SetSpeedModifier () {: aria-label='Functions' }
 #### void SetSpeedModifier ( int Modifier ) {: .copyable aria-label='Functions' }
-Adds `0.2 * modifier` to the player's MoveSpeed.
-Experimental Treatment adds `-1`, `0` or `1` depending on the speed rolled. Void may randomly add `1`.
-Used for Experimental Treatment and for stat boosts from Void.
+为玩家的移动速度增加 `0.2 * 修饰符`。
+“实验性治疗” 根据随机生成的移动速度值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### SetTearPoisonDamage () {: aria-label='Functions' }
 #### void SetTearPoisonDamage ( float Damage ) {: .copyable aria-label='Functions' }
@@ -906,55 +903,55 @@ Used for Experimental Treatment and for stat boosts from Void.
 ___
 ### SetTearRangeModifier () {: aria-label='Functions' }
 #### void SetTearRangeModifier ( int Modifier ) {: .copyable aria-label='Functions' }
-Adds `2.5 * modifier` to the player's TearRange.
-Experimental Treatment adds `-1`, `0` or `1` depending on the range rolled. Void may randomly add `1`.
-Used for Experimental Treatment and for stat boosts from Void.
+为玩家的眼泪射程增加 `2.5 * 修饰符`。
+“实验性治疗” 根据随机生成的射程值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### SetUrethraBlock () {: aria-label='Functions' }
 #### void SetUrethraBlock ( boolean Blocked ) {: .copyable aria-label='Functions' }
 ???+ bug "Bug"
-Setting the `Blocked` argument to `false` seems to do nothing at all.
-Sets whether the tear spam attack from the Kidney Stone collectible is about to activate. If the player does not have the Kidney Stone collectible, the effect is immediately activated.
+将 `Blocked` 参数设置为 `false` 似乎没有任何效果。
+设置 “肾结石” 道具的眼泪狂轰滥炸攻击是否即将激活。如果玩家没有 “肾结石” 道具，该效果将立即激活。
 
 ### SetWeapon () {: aria-label='Functions' }
 #### void SetWeapon ( [Weapon](Weapon.md) Weapon, int WeaponSlot ) {: .copyable aria-label='Functions' }
-???- info "Info"
-Always check for `nil`, even for slot `1` as it can be deleted by mods via [Isaac.DestroyWeapon()](Isaac.md#destroyweapon).
-- `4` - Additional Weapon.
-Weapon slots and their descriptions:
-- `2` - Additional Weapon. Few instances of this exist in the vanilla game, but it can be populated by mods.
-- `1` - Primary Weapon.
-- `3` - Additional Weapon.
-- `0` - Backup Weapon such as Notched Axe and Urn of Souls.
-Sets the active Weapon in the assigned `WeaponSlot`.
+???- info "信息"
+始终检查是否为 `nil`，即使是插槽 `1`，因为它可以被模组通过 [Isaac.DestroyWeapon()](Isaac.md#destroyweapon) 删除。
+- `4` - 额外武器。
+武器插槽及其说明：
+- `2` - 额外武器。原版游戏中很少有这种情况，但模组可以填充此插槽。
+- `1` - 主武器。
+- `3` - 额外武器。
+- `0` - 备用武器，如 “缺口斧” 和 “灵魂瓮”。
+将指定 `WeaponSlot` 中的活动武器设置为指定武器。
 
 ### ShootBlueCandle () {: aria-label='Functions' }
 #### void ShootBlueCandle ( [Vector](Vector.md) Direction ) {: .copyable aria-label='Functions' }
-Makes the player shoot a blue flame from the Candle collectible.
+使玩家从 “蜡烛” 道具发射蓝色火焰。
 
 ### ShuffleCostumes () {: aria-label='Functions' }
 #### void ShuffleCostumes ( int Seed = Random( ) ) {: .copyable aria-label='Functions' }
-Randomizes the current costumes.
+随机化当前的服装。
 
 ### SpawnAquariusCreep () {: aria-label='Functions' }
 #### [EntityEffect](https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html) SpawnAquariusCreep ( [TearParams](https://wofsauge.github.io/IsaacDocs/rep/TearParams.html) TearParams = self.TearParams) {: .copyable aria-label='Functions' }
 ``player->GetTearHitParams(&params, WeaponType.WEAPON_TEARS, (*player->GetTearPoisonDamage() * 0.666f) / player->_damage, -(int)(-Isaac::Random(2) != 0) & 2 - 1, nil)``
-???+ info "Info"
-For reference, this is how the game calculates the `TearParams` for this normally:
-Spawns a creep effect that acts like the ones created by Aquarius, including inhereting the player's `TearParams`. Supports passing a custom `TearParams` instead.
+???+ info "信息"
+供参考，游戏通常是这样计算 `TearParams` 的：
+生成一个类似于 “宝瓶座” 产生的爬行效果，包括继承玩家的 `TearParams`。支持传递自定义的 `TearParams`。
 
 ### SpawnClot () {: aria-label='Functions' }
 #### void SpawnClot ( [Vector](Vector.md) pos, boolean AllowPlayerDeath = false ) {: .copyable aria-label='Functions' } 
-Acts like a use of Sumptorium, removing health and spawning a clot with the type of health removed. If `AllowPlayerDeath` is set, a clot will spawn even if the health drained will kill the player.
+作用类似于使用 “吸食器”，移除生命值并生成一个与移除的生命值类型相同的血块。如果设置了 `AllowPlayerDeath`，即使移除的生命值会导致玩家死亡，也会生成一个血块。
 
 ### SpawnSaturnusTears () {: aria-label='Functions' }
 #### int SpawnSaturnusTears ( ) {: .copyable aria-label='Functions' }
-Spawns a ring of tears that orbit around the player akin to the Saturnus collectible.
+生成一圈类似于 “土星” 道具的眼泪，围绕玩家旋转。
 
 ### SwapForgottenForm () {: aria-label='Functions' }
 #### void SwapForgottenForm ( boolean Force = false, boolean NoEffects = false) {: .copyable aria-label='Functions' }
-If the player is The Forgotten/The Soul, the two will swap forms. Otherwise, this function does nothing.
-`Force` will swap even if the subplayer doesn't have any health, or while a room/stage transition is active. `NoEffects` will disable the dust effect & fade from white when switching from The Soul to The Forgotten.
+如果玩家是 “遗忘者/灵魂”，两者将交换形态。否则，此函数不执行任何操作。
+`Force` 参数将强制交换，即使副玩家没有生命值，或者在房间/关卡过渡期间。`NoEffects` 参数将禁用从 “灵魂” 切换到 “遗忘者” 时的灰尘效果和白色渐变效果。
 
 ### SyncConsumableCounts () {: aria-label='Functions' }
 #### void SyncConsumableCounts ( [EntityPlayer](EntityPlayer.md) Player, int CollectibleFlags ) {: .copyable aria-label='Functions' }      
@@ -962,48 +959,48 @@ If the player is The Forgotten/The Soul, the two will swap forms. Otherwise, thi
 ___
 ### Teleport () {: aria-label='Functions' }
 #### void Teleport ( [Vector](Vector.md) Position, boolean DoEffects = true, boolean TeleportTwinPlayers = false ) {: .copyable aria-label='Functions' }
-`DoEffects` controls whether the teleport animation and sound plays. `TeleportTwinPlayers` controls whether twin players (e.g. Esau, Tainted Lazarus w/ Birthright) are teleported alongside this one.
-Teleports the player to a position within the room.
+`DoEffects` 控制是否播放传送动画和音效。`TeleportTwinPlayers` 控制双胞胎玩家（如 “以扫”、拥有 “诞生之权” 的 “堕落拉撒路”）是否与该玩家一起传送。
+将玩家传送到房间内的指定位置。
 
 ### TriggerRoomClear () {: aria-label='Functions' }
 #### void TriggerRoomClear ( ) {: .copyable aria-label='Functions' }
-Triggers effects on the player as if a room was cleared (i.e. Charging actives).
+触发玩家身上类似于房间清理的效果（如为主动道具充能）。
 
 ### TryAddToBagOfCrafting () {: aria-label='Functions' }
 #### void TryAddToBagOfCrafting ( [EntityPickup](EntityPickup.md) Pickup ) {: .copyable aria-label='Functions' }
-Tries to add the specified pickup to the player's Bag of Crafting.
+尝试将指定的拾取物添加到玩家的合成袋中。
 
 ### TryDecreaseGlowingHourglassUses () {: aria-label='Functions' }
 #### void TryDecreaseGlowingHourglassUses ( int Uses, boolean ForceHourglass = false ) {: .copyable aria-label='Functions' }
 ???+ bug "Bug"
-Attempts to decrease the uses left for the Glowing Hourglass collectible, if the player has it. `ForceHourglass` instantly removes all the charges and turns Glowing Hourglass into it's regular Hourglass form.
-`Uses` are only decreased by 1 regardless of how large of a number you tell it to remove.
+尝试减少玩家拥有的 “发光沙漏” 道具的剩余使用次数。`ForceHourglass` 参数将立即移除所有充能并将 “发光沙漏” 变为普通沙漏形态。
+无论你指定移除的数字有多大，`Uses` 仅减少 1。
 
 ### TryFakeDeath () {: aria-label='Functions' }
 #### boolean TryFakeDeath ( ) {: .copyable aria-label='Functions' }
-Spawns a copy of the player at its current position and plays the death animation and sound.
+在玩家当前位置生成一个玩家的副本，并播放死亡动画和音效。
 
 ### TryForgottenThrow () {: aria-label='Functions' }
 #### boolean TryForgottenThrow ( [Vector](Vector.md) Direction ) {: .copyable aria-label='Functions' }
-If the player is holding Tainted Forgotten, he is thrown towards the specified direction.
+如果玩家持有 “堕落遗忘者”，他将朝指定方向被抛出。
 
 ### TryPreventDeath () {: aria-label='Functions' }
 #### boolean TryPreventDeath ( ) {: .copyable aria-label='Functions' }
-Returns `true` on success, otherwise `false`.
-Adds a heart container to a character if there are none left to prevent death, depending on its [HealthType](enums/HealthType.md).
+成功时返回 `true`，否则返回 `false`。
+根据角色的 [HealthType](enums/HealthType.md)，如果角色没有剩余的心之容器，则添加一个以防止死亡。
 
 ### TryRemoveSmeltedTrinket () {: aria-label='Functions' }
 #### void TryRemoveSmeltedTrinket ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) ID ) {: .copyable aria-label='Functions' }    
-Tries to remove the specified smelted trinket from the player.
+尝试从玩家处移除指定的熔炼饰品。
 
 ### UnblockCollectible () {: aria-label='Functions' }
 #### void UnblockCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
-Unblocks the [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) that was blocked through [BlockCollectible](EntityPlayer.md#blockcollectible).
+解除通过 [BlockCollectible](EntityPlayer.md#blockcollectible) 阻挡的 [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html)。
 
 ### UpdateIsaacPregnancy () {: aria-label='Functions' }
 #### void UpdateIsaacPregnancy ( boolean UpdateCambion ) {: .copyable aria-label='Functions' }
-Set `true` if you want to update the [Cambion Conception](https://bindingofisaacrebirth.fandom.com/wiki/Cambion_Conception) costume, otherwise updates the [Immaculate Conception](https://bindingofisaacrebirth.fandom.com/wiki/Immaculate_Conception) costume.
+如果你想更新 [“恶魔受胎”](https://bindingofisaacrebirth.fandom.com/wiki/Cambion_Conception) 服装，则设置为 `true`，否则更新 [“圣灵受胎”](https://bindingofisaacrebirth.fandom.com/wiki/Immaculate_Conception) 服装。
 
 ### VoidHasCollectible () {: aria-label='Functions' }
 #### boolean VoidHasCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
-Returns true if the specified collectible has been consumed by the Void collectible.
+如果指定的道具已被 “虚空” 道具吞噬，则返回 true。
