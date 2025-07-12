@@ -22,7 +22,7 @@ ___
 #### void AddIce ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, int Duration ) {: .copyable aria-label='Functions' }
 
 ___
-### AddKnockback () {: aria-label='Functions' }
+### AddKnockback () 添加击退效果 {: aria-label='Functions' }
 #### void AddKnockback ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, [Vector](Vector.md) PushDirection, int Duration, boolean TakeImpactDamage ) {: .copyable aria-label='Functions' }
 ???+ info "持续时间信息"
 持续时间最长为 0.5 秒/15 帧。
