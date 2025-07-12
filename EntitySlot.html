@@ -8372,117 +8372,117 @@
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="createdropsfromexplosion">CreateDropsFromExplosion ()<a class="headerlink" href="#createdropsfromexplosion" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-createdropsfromexplosion">void CreateDropsFromExplosion ( )<a class="headerlink" href="#void-createdropsfromexplosion" title="Permanent link">⚓︎</a></h4>
-<p>This forces the EntitySlot to drop what it typically would if blown up.</p>
+<p>这会强制实体插槽（EntitySlot）掉落其在被炸时通常会掉落的物品。</p>
 <h3 aria-label="Functions" id="getdonationvalue">GetDonationValue ()<a class="headerlink" href="#getdonationvalue" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getdonationvalue">int GetDonationValue ( )<a class="headerlink" href="#int-getdonationvalue" title="Permanent link">⚓︎</a></h4>
 <ul>
-<li>Demon Beggar: How many hearts have been donated.</li>
+<li>恶魔乞丐：已捐赠的红心数量。</li>
 </ul>
 <details class="- info">
-<summary>Return info</summary>
+<summary>返回信息</summary>
 </details>
-<p>Returns how many coins have been given to a beggar. The number returned varies based on the beggar.
-- Beggar: How many coins have been donated.
-- Battery Bum, Rotten Beggar: Increases with each payment by random amounts, up to 3, and resets back to 0 upon reward or payout.
-- All other slots: Remains at 0.</p>
+<p>返回给予乞丐的硬币数量。返回的数字会根据乞丐的不同而有所变化。
+- 普通乞丐：已捐赠的硬币数量。
+- 电池流浪汉、腐烂乞丐：每次支付时随机增加，最多增加到3，在给予奖励或支付报酬后重置为0。
+- 所有其他插槽：保持为0。</p>
 <h3 aria-label="Functions" id="getprizecollectible">GetPrizeCollectible ()<a class="headerlink" href="#getprizecollectible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="collectibletype-getprizecollectible"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> GetPrizeCollectible ( )<a class="headerlink" href="#collectibletype-getprizecollectible" title="Permanent link">⚓︎</a></h4>
-<p>Seems to only be used by Crane Game and Hell Game. Gets the collectible that will be awarded as the prize when winning.</p>
+<p>似乎仅由抓娃娃机和地狱游戏使用。获取获胜时作为奖品颁发的收藏品。</p>
 <h3 aria-label="Functions" id="getprizetype">GetPrizeType ()<a class="headerlink" href="#getprizetype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getprizetype">int GetPrizeType ( )<a class="headerlink" href="#int-getprizetype" title="Permanent link">⚓︎</a></h4>
 <ul>
-<li>Slot Machine: Returns a number between <code>3</code>-<code>24</code>. <code>3</code>-<code>12</code> cause the machine to spit out a reward</li>
+<li>老虎机：返回一个介于<code>3</code> - <code>24</code>之间的数字。<code>3</code> - <code>12</code>会使机器吐出奖励。</li>
 </ul>
 <details class="- info">
-<summary>Return info</summary>
+<summary>返回信息</summary>
 </details>
 <ul>
-<li><code>3</code>: Fly or pretty fly.</li>
-<li><code>10</code>-<code>12</code>: 1-2 coins.</li>
-<li>Bomb Bum: Returns a number <code>1</code>-<code>3</code> based on the type of prize it had output.</li>
-<li><code>1</code>: Coins.</li>
-<li><code>3</code>: Collectible.</li>
-<li><code>5</code>-<code>6</code>: Heart.</li>
-<li><code>13</code>-<code>24</code>: Nothing.</li>
-<li>Shell Game &amp; Hell Game: Returns the <code>PickupVariant</code> of the potential prize.</li>
-<li><code>4</code>: Bomb.</li>
-<li><code>2</code>: Heart.</li>
-<li><code>7</code>: Key.</li>
-<li><code>9</code>: Unknown. This never appears to be used.</li>
-<li><code>8</code>: Pill.
-Returns an integer that varies based on the slot machine.</li>
+<li><code>3</code>：苍蝇或漂亮苍蝇。</li>
+<li><code>10</code> - <code>12</code>：1 - 2枚硬币。</li>
+<li>炸弹流浪汉：根据其输出的奖品类型返回一个介于<code>1</code> - <code>3</code>之间的数字。</li>
+<li><code>1</code>：硬币。</li>
+<li><code>3</code>：收藏品。</li>
+<li><code>5</code> - <code>6</code>：红心。</li>
+<li><code>13</code> - <code>24</code>：无奖励。</li>
+<li>贝壳游戏和地狱游戏：返回潜在奖品的<code>拾取物变体（PickupVariant）</code>。</li>
+<li><code>4</code>：炸弹。</li>
+<li><code>2</code>：红心。</li>
+<li><code>7</code>：钥匙。</li>
+<li><code>9</code>：未知。此值似乎从未被使用过。</li>
+<li><code>8</code>：药丸。
+返回一个根据老虎机不同而变化的整数。</li>
 </ul>
 <h3 aria-label="Functions" id="getshellgameanimationindex">GetShellGameAnimationIndex ()<a class="headerlink" href="#getshellgameanimationindex" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getshellgameanimationindex">int GetShellGameAnimationIndex ( )<a class="headerlink" href="#int-getshellgameanimationindex" title="Permanent link">⚓︎</a></h4>
-<p>Returns the index used by Shell Game and Hell Game to determine which prize animation to play.</p>
+<p>返回贝壳游戏和地狱游戏用于确定播放哪个奖品动画的索引。</p>
 <h3 aria-label="Functions" id="getstate">GetState ()<a class="headerlink" href="#getstate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getstate">int GetState ( )<a class="headerlink" href="#int-getstate" title="Permanent link">⚓︎</a></h4>
 <ul>
-<li><code>4</code>: Payout</li>
-<li><code>2</code>: Reward (Shell Game &amp; Hell Game: Idle Reward)</li>
-<li><code>5</code>: Reward (only for Shell Game &amp; Hell Game)</li>
-<li><code>3</code>: Bombed</li>
-<li><code>1</code>: Idle.
-Returns the current state of the slot.
-All slots have a consistent state based on what it's doing that reflect as follows:</li>
+<li><code>4</code>：支付报酬</li>
+<li><code>2</code>：奖励（贝壳游戏和地狱游戏：闲置奖励状态）</li>
+<li><code>5</code>：奖励（仅适用于贝壳游戏和地狱游戏）</li>
+<li><code>3</code>：被炸</li>
+<li><code>1</code>：闲置。
+返回插槽的当前状态。
+所有插槽都有一个基于其当前行为的一致状态，具体如下：</li>
 </ul>
 <details class="info" open="open">
-<summary>Return info</summary>
+<summary>返回信息</summary>
 </details>
 <h3 aria-label="Functions" id="gettimeout">GetTimeout ()<a class="headerlink" href="#gettimeout" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-gettimeout">int GetTimeout ( )<a class="headerlink" href="#int-gettimeout" title="Permanent link">⚓︎</a></h4>
 <details class="- info">
-<summary>Return info</summary>
+<summary>返回信息</summary>
 </details>
 <ul>
-<li>Crane Game: For the first successful payout, minimum timeout is <code>1 &lt;&lt; 16</code>, still increasing by 30 and counting down. Second payout is <code>1 &lt;&lt; 17</code>. Third payout is <code>1 &lt;&lt; 16</code> + <code>1 &lt;&lt; 17</code>.
-Returns the timeout in frames until the slot determines its prize. Not used by all slots.</li>
-<li>All other slots: Remains at 0.</li>
-<li>All beggars except Bomb Beggar: Increases randomly with each payment, returning either <code>1 &lt;&lt; 16</code>, <code>1 &lt;&lt; 17</code>, or the sum of them, resetting to 0 upon giving a reward.</li>
+<li>抓娃娃机：第一次成功支付报酬时，最小超时时间为<code>1 &lt;&lt; 16</code>，仍会增加30并开始倒计时。第二次支付报酬时为<code>1 &lt;&lt; 17</code>。第三次支付报酬时为<code>1 &lt;&lt; 16</code> + <code>1 &lt;&lt; 17</code>。
+返回插槽确定其奖品之前的超时帧数。并非所有插槽都会使用此功能。</li>
+<li>所有其他插槽：保持为0。</li>
+<li>除炸弹乞丐外的所有乞丐：每次支付时随机增加，返回<code>1 &lt;&lt; 16</code>、<code>1 &lt;&lt; 17</code>或它们的和，在给予奖励后重置为0。</li>
 </ul>
 <h3 aria-label="Functions" id="gettouch">GetTouch ()<a class="headerlink" href="#gettouch" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-gettouch">int GetTouch ( )<a class="headerlink" href="#int-gettouch" title="Permanent link">⚓︎</a></h4>
-<p>Returns the slot's touch counter. The touch counter goes up by one every frame a player is touching the slot and is reset once no player is touching it.</p>
+<p>返回插槽的触摸计数器。当玩家触摸插槽时，触摸计数器每帧增加1，当没有玩家触摸时重置。</p>
 <h3 aria-label="Functions" id="gettriggertimernum">GetTriggerTimerNum ()<a class="headerlink" href="#gettriggertimernum" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-gettriggertimernum">int GetTriggerTimerNum ( )<a class="headerlink" href="#int-gettriggertimernum" title="Permanent link">⚓︎</a></h4>
-<p>Reroll Machine increments this by <code>1</code> for every successful reroll. When bombed, has a chance to set it to 11 and reroll another item.
-When bombing Bomb Bum, this is set to <code>30</code></p>
+<p>重铸机每次成功重铸时将此值增加<code>1</code>。被炸时，有机会将其设置为11并重新生成另一个物品。
+轰炸炸弹流浪汉时，此值会被设置为<code>30</code>。</p>
 <details class="note" open="open">
-<summary>Return Info</summary>
+<summary>返回信息</summary>
 </details>
-<p>Returns a number used by Bomb Bum and Reroll Machine.</p>
+<p>返回炸弹流浪汉和重铸机使用的一个数字。</p>
 <h3 aria-label="Functions" id="randomcoinjamanim">RandomCoinJamAnim ()<a class="headerlink" href="#randomcoinjamanim" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-randomcoinjamanim">string RandomCoinJamAnim ( )<a class="headerlink" href="#string-randomcoinjamanim" title="Permanent link">⚓︎</a></h4>
-<p>Returns a random string from the following options: <code>CoinJam</code>, <code>CoinJam2</code>, <code>CoinJam3,</code> <code>CoinJam4</code>. Presumably only used on the donation machines.</p>
+<p>从以下选项中返回一个随机字符串：<code>CoinJam</code>、<code>CoinJam2</code>、<code>CoinJam3</code>、<code>CoinJam4</code>。推测仅用于捐赠机器。</p>
 <h3 aria-label="Functions" id="setdonationvalue">SetDonationValue ()<a class="headerlink" href="#setdonationvalue" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdonationvalue-int-donationvalue">void SetDonationValue ( int DonationValue )<a class="headerlink" href="#void-setdonationvalue-int-donationvalue" title="Permanent link">⚓︎</a></h4>
-<p>Sets the slot's donation value. See <a href="EntitySlot.html#getdonationvalue">GetDonationValue</a> for more info.</p>
+<p>设置插槽的捐赠值。更多信息请参阅<a href="EntitySlot.html#getdonationvalue">GetDonationValue</a>。</p>
 <h3 aria-label="Functions" id="setprizecollectible">SetPrizeCollectible ()<a class="headerlink" href="#setprizecollectible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setprizecollectible-collectibletype-collectible">void SetPrizeCollectible ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> Collectible )<a class="headerlink" href="#void-setprizecollectible-collectibletype-collectible" title="Permanent link">⚓︎</a></h4>
-<p>Seems to only be used by Crane Game and Hell Game. This sets the collectible that the games will pay out with, and updates the rendered collectible accordingly.</p>
+<p>似乎仅由抓娃娃机和地狱游戏使用。此函数设置游戏将支付的收藏品，并相应地更新渲染的收藏品。</p>
 <h3 aria-label="Functions" id="setprizetype">SetPrizeType ()<a class="headerlink" href="#setprizetype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setprizetype-int-prizetype">void SetPrizeType ( int PrizeType )<a class="headerlink" href="#void-setprizetype-int-prizetype" title="Permanent link">⚓︎</a></h4>
-<p>Sets the prize type of the slot. See <a href="EntitySlot.html#getprizetype">GetPrizeType</a> for more info.</p>
+<p>设置插槽的奖品类型。更多信息请参阅<a href="EntitySlot.html#getprizetype">GetPrizeType</a>。</p>
 <h3 aria-label="Functions" id="setshellgameanimationindex">SetShellGameAnimationIndex ()<a class="headerlink" href="#setshellgameanimationindex" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setshellgameanimationindex-int-index">void SetShellGameAnimationIndex ( int index )<a class="headerlink" href="#void-setshellgameanimationindex-int-index" title="Permanent link">⚓︎</a></h4>
-<p>Sets the index used by Shell Game and Hell Game to determine which prize animation to play.</p>
+<p>设置贝壳游戏和地狱游戏用于确定播放哪个奖品动画的索引。</p>
 <h3 aria-label="Functions" id="setstate">SetState ()<a class="headerlink" href="#setstate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setstate-int-state">void SetState ( int State )<a class="headerlink" href="#void-setstate-int-state" title="Permanent link">⚓︎</a></h4>
-<p>Sets the state of the slot. See <a href="EntitySlot.html#getstate">GetState</a> for more info.</p>
+<p>设置插槽的状态。更多信息请参阅<a href="EntitySlot.html#getstate">GetState</a>。</p>
 <h3 aria-label="Functions" id="settimeout">SetTimeout ()<a class="headerlink" href="#settimeout" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-settimeout-int-timeout">void SetTimeout ( int Timeout )<a class="headerlink" href="#void-settimeout-int-timeout" title="Permanent link">⚓︎</a></h4>
-<p>Sets the timeout of the slot. See <a href="EntitySlot.html#gettimeout">GetTimeout</a> for more info.</p>
+<p>设置插槽的超时时间。更多信息请参阅<a href="EntitySlot.html#gettimeout">GetTimeout</a>。</p>
 <h3 aria-label="Functions" id="settouch">SetTouch ()<a class="headerlink" href="#settouch" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-settouch-int-touch">void SetTouch ( int Touch )<a class="headerlink" href="#void-settouch-int-touch" title="Permanent link">⚓︎</a></h4>
-<p>Sets the slot's touch counter. The touch counter goes up by one every frame a player is touching the slot and is reset to zero once no player is touching it.</p>
+<p>设置插槽的触摸计数器。当玩家触摸插槽时，触摸计数器每帧增加1，当没有玩家触摸时重置为0。</p>
 <h3 aria-label="Functions" id="settriggertimernum">SetTriggerTimerNum ()<a class="headerlink" href="#settriggertimernum" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-settriggertimernum-int-num">void SetTriggerTimerNum ( int num )<a class="headerlink" href="#void-settriggertimernum-int-num" title="Permanent link">⚓︎</a></h4>
 <details class="note" open="open">
-<summary>More Info</summary>
+<summary>更多信息</summary>
 </details>
-<p>Reroll Machine increments this by <code>1</code> for every successful reroll. When bombed, has a chance to set it to 11 and reroll another item.
-When bombing Bomb Bum, this is set to <code>30</code>
-Returns a number used by Bomb Bum and Reroll Machine.</p>
+<p>重铸机每次成功重铸时将此值增加<code>1</code>。被炸时，有机会将其设置为11并重新生成另一个物品。
+轰炸炸弹流浪汉时，此值会被设置为<code>30</code>。
+返回炸弹流浪汉和重铸机使用的一个数字。</p>
 
 
 
