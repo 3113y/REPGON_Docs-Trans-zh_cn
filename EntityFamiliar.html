@@ -3731,6 +3731,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#updatedirtcolor" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateDirtColor ()
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8294,6 +8303,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#updatedirtcolor" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateDirtColor ()
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8394,29 +8412,34 @@
 <h4 aria-label="Functions" class="copyable" id="itemconfigitem-getitemconfig"><a href="ItemConfig_Item.html">ItemConfigItem</a> GetItemConfig ( )<a class="headerlink" href="#itemconfigitem-getitemconfig" title="Permanent link">⚓︎</a></h4>
 <p>如果跟班不是由道具生成的，则返回 nil。
 返回与赋予此跟班的道具相对应的 ItemConfigItem 对象。</p>
+<hr />
 <h3 aria-label="Functions" id="getmovedelaynum">GetMoveDelayNum ()<a class="headerlink" href="#getmovedelaynum" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getmovedelaynum">int GetMoveDelayNum ( )<a class="headerlink" href="#int-getmovedelaynum" title="Permanent link">⚓︎</a></h4>
 <p>返回跟班的移动相对于玩家的移动延迟的帧数。30 帧 = 1 秒。</p>
+<hr />
 <h3 aria-label="Functions" id="getmultiplier">GetMultiplier ()<a class="headerlink" href="#getmultiplier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getmultiplier">float GetMultiplier ( )<a class="headerlink" href="#float-getmultiplier" title="Permanent link">⚓︎</a></h4>
 <p>返回跟班的“乘数”，该乘数受诸如 <strong>BFFS!</strong> 或 <strong>Hive Mind</strong> 等效果的影响。通常用于乘以跟班的伤害等属性。</p>
 <details class="- info">
 <summary>乘数</summary>
-</details>
 <ul>
 <li><strong>堕化拉撒路长子权</strong>：x0.25</li>
 <li><strong>BFFS!</strong> 和 <strong>Hive Mind</strong>：x2.0</li>
 <li><strong>堕化伯大尼</strong>：x0.75</li>
 </ul>
+</details>
+<hr />
 <h3 aria-label="Functions" id="getpathfinder">GetPathFinder ()<a class="headerlink" href="#getpathfinder" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="pathfinder-getpathfinder"><a href="https://wofsauge.github.io/IsaacDocs/rep/PathFinder.html">PathFinder</a> GetPathFinder ( )<a class="headerlink" href="#pathfinder-getpathfinder" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getweapon">GetWeapon ()<a class="headerlink" href="#getweapon" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="weapon-getweapon"><a href="Weapon.html">Weapon</a> GetWeapon ( )<a class="headerlink" href="#weapon-getweapon" title="Permanent link">⚓︎</a></h4>
 <p>对于不模仿玩家攻击的跟班（如魅魔等），返回 <code>nil</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="invalidatecachedmultiplier">InvalidateCachedMultiplier ()<a class="headerlink" href="#invalidatecachedmultiplier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-invalidatecachedmultiplier">void InvalidateCachedMultiplier ( )<a class="headerlink" href="#void-invalidatecachedmultiplier" title="Permanent link">⚓︎</a></h4>
 <p>当下一次调用 <a href="EntityFamiliar.html#getmultiplier">GetMultiplier</a> 时，触发 <a href="enums/ModCallbacks.html#mc_evaluate_familiar_multiplier">MC_EVALUATE_FAMILIAR_MULTIPLIER</a> 来重新计算/允许修改乘数。</p>
+<hr />
 <h3 aria-label="Functions" id="ischarmed">IsCharmed ()<a class="headerlink" href="#ischarmed" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ischarmed">boolean IsCharmed ( )<a class="headerlink" href="#boolean-ischarmed" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8426,12 +8449,15 @@
 <h3 aria-label="Functions" id="setmovedelaynum">SetMoveDelayNum ()<a class="headerlink" href="#setmovedelaynum" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setmovedelaynum-int-delay">void SetMoveDelayNum ( int Delay )<a class="headerlink" href="#void-setmovedelaynum-int-delay" title="Permanent link">⚓︎</a></h4>
 <p>设置跟班的移动相对于玩家的移动延迟的帧数。30 帧 = 1 秒。</p>
+<hr />
 <h3 aria-label="Functions" id="triggerroomclear">TriggerRoomClear ()<a class="headerlink" href="#triggerroomclear" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-triggerroomclear">void TriggerRoomClear ( )<a class="headerlink" href="#void-triggerroomclear" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="tryaimatmarkedtarget">TryAimAtMarkedTarget ()<a class="headerlink" href="#tryaimatmarkedtarget" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-tryaimatmarkedtarget-vector-aimdirection-direction-direction"><a href="Vector.html">Vector</a> TryAimAtMarkedTarget ( <a href="Vector.html">Vector</a> AimDirection, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html">Direction</a> Direction)<a class="headerlink" href="#vector-tryaimatmarkedtarget-vector-aimdirection-direction-direction" title="Permanent link">⚓︎</a></h4>
-<p>如果失败则返回 <code>nil</code>。### UpdateDirtColor () {: aria-label='Functions' }</p>
+<p>如果失败则返回 <code>nil</code>。</p>
+<hr />
+<h3 aria-label="Functions" id="updatedirtcolor">UpdateDirtColor ()<a class="headerlink" href="#updatedirtcolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-updatedirtcolor">void UpdateDirtColor ( )<a class="headerlink" href="#void-updatedirtcolor" title="Permanent link">⚓︎</a></h4>
 <hr />
 

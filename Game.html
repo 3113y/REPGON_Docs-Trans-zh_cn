@@ -1344,6 +1344,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#setdonationmodangel" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetDonationModAngel ()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#setdonationmodgreed" class="md-nav__link">
     <span class="md-ellipsis">
       SetDonationModGreed ()
@@ -4599,6 +4608,15 @@
   <a href="#setdizzyamount" class="md-nav__link">
     <span class="md-ellipsis">
       SetDizzyAmount ()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setdonationmodangel" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetDonationModAngel ()
     </span>
   </a>
   
@@ -8901,6 +8919,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#setdonationmodangel" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetDonationModAngel ()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#setdonationmodgreed" class="md-nav__link">
     <span class="md-ellipsis">
       SetDonationModGreed ()
@@ -8966,57 +8993,71 @@
 <h3 aria-label="Modified Functions" id="getlastdevilroomstage">GetLastDevilRoomStage ()<a class="headerlink" href="#getlastdevilroomstage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="levelstage-getlastdevilroomstage"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> GetLastDevilRoomStage ( )<a class="headerlink" href="#levelstage-getlastdevilroomstage" title="Permanent link">⚓︎</a></h4>
 <p>现在返回整数，而非无法使用的用户数据。</p>
+<hr />
 <h3 aria-label="Modified Functions" id="getlastlevelwithdamage">GetLastLevelWithDamage ()<a class="headerlink" href="#getlastlevelwithdamage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="levelstage-getlastlevelwithdamage"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> GetLastLevelWithDamage ( )<a class="headerlink" href="#levelstage-getlastlevelwithdamage" title="Permanent link">⚓︎</a></h4>
 <p>现在返回整数，而非无法使用的用户数据。</p>
+<hr />
 <h3 aria-label="Modified Functions" id="getlastlevelwithouthalfhp">GetLastLevelWithoutHalfHp ()<a class="headerlink" href="#getlastlevelwithouthalfhp" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="levelstage-getlastlevelwithouthalfhp"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> GetLastLevelWithoutHalfHp ( )<a class="headerlink" href="#levelstage-getlastlevelwithouthalfhp" title="Permanent link">⚓︎</a></h4>
 <p>现在返回整数，而非无法使用的用户数据。</p>
+<hr />
 <h3 aria-label="Modified Functions" id="getplayer">GetPlayer ()<a class="headerlink" href="#getplayer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="entityplayer-getplayer-int-index"><a href="EntityPlayer.html">EntityPlayer</a> GetPlayer ( int Index )<a class="headerlink" href="#entityplayer-getplayer-int-index" title="Permanent link">⚓︎</a></h4>
 <p>如果不存在玩家，现在将返回 <code>nil</code> 以防止崩溃。无效的索引将返回索引 <code>0</code>。</p>
+<hr />
 <h3 aria-label="Modified Functions" id="movetorandomroom">Move·To·Random·Room ()<a class="headerlink" href="#movetorandomroom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-movetorandomroom-boolean-iamerrorroom-int-seed-entityplayer-player">void MoveToRandomRoom ( boolean IAmErrorRoom, int Seed, <a href="EntityPlayer.html">EntityPlayer</a> Player )<a class="headerlink" href="#void-movetorandomroom-boolean-iamerrorroom-int-seed-entityplayer-player" title="Permanent link">⚓︎</a></h4>
-<p>Now no longer crashes the game when given a seed equal <code>0</code>.</p>
+<p>现在，当给定的种子等于 <code>0</code> 时，游戏将不再崩溃.</p>
 <hr />
 <h3 aria-label="Modified Functions" id="startstagetransition">StartStageTransition ()<a class="headerlink" href="#startstagetransition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-startstagetransition-boolean-samestage-int-transitionoverride-entityplayer-player-nil">void StartStageTransition ( boolean SameStage, int TransitionOverride, <a href="EntityPlayer.html">EntityPlayer</a> Player = nil )<a class="headerlink" href="#void-startstagetransition-boolean-samestage-int-transitionoverride-entityplayer-player-nil" title="Permanent link">⚓︎</a></h4>
 <p><code>Player</code> 现在是可选的（将默认使用 <code>GetPlayer(0)</code>）。
 修复了有时由于 C++ 端调用不正确而导致的崩溃问题。</p>
+<hr />
 <h3 aria-label="Functions" id="achievementunlocksdisallowed">AchievementUnlocksDisallowed ()<a class="headerlink" href="#achievementunlocksdisallowed" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-achievementunlocksdisallowed">boolean AchievementUnlocksDisallowed ( )<a class="headerlink" href="#boolean-achievementunlocksdisallowed" title="Permanent link">⚓︎</a></h4>
 <p>如果本次游戏流程中无法解锁成就（如挑战模式、有种子的游戏等），则返回 <code>true</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="adddebugflags">AddDebugFlags ()<a class="headerlink" href="#adddebugflags" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-adddebugflags-debugflag-flag">void AddDebugFlags ( <a href="enums/DebugFlag.html">DebugFlag</a> Flag )<a class="headerlink" href="#void-adddebugflags-debugflag-flag" title="Permanent link">⚓︎</a></h4>
 <p>向游戏中添加调试标志。可以使用按位连接同时添加多个标志（例如 <code>DebugFlag.ENTITY_POSITIONS | DebugFlag.HITSPHERES</code>）。</p>
+<hr />
 <h3 aria-label="Functions" id="addshopvisits">AddShopVisits ()<a class="headerlink" href="#addshopvisits" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addshopvisits-int-count">void AddShopVisits ( int Count )<a class="headerlink" href="#void-addshopvisits-int-count" title="Permanent link">⚓︎</a></h4>
 <p>增加玩家在本次游戏流程中进入商店的次数。</p>
+<hr />
 <h3 aria-label="Functions" id="clearerasedenemies">ClearErasedEnemies ()<a class="headerlink" href="#clearerasedenemies" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearerasedenemies">void ClearErasedEnemies ( )<a class="headerlink" href="#void-clearerasedenemies" title="Permanent link">⚓︎</a></h4>
 <p>清除所有被标记为已清除的敌人，使它们能够再次生成。</p>
+<hr />
 <h3 aria-label="Functions" id="devolveenemy">DevolveEnemy ()<a class="headerlink" href="#devolveenemy" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-devolveenemy-entity">void DevolveEnemy ( <a href="Entity.html">Entity</a> )<a class="headerlink" href="#void-devolveenemy-entity" title="Permanent link">⚓︎</a></h4>
 <p>使敌人退化，就好像使用了道具 D10 一样。</p>
+<hr />
 <h3 aria-label="Functions" id="getchallengeparams">GetChallengeParams ()<a class="headerlink" href="#getchallengeparams" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="challengeparam-getchallengeparams"><a href="ChallengeParam.html">ChallengeParam</a> GetChallengeParams ( )<a class="headerlink" href="#challengeparam-getchallengeparams" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getcurrentcolormodifier">GetCurrentColorModifier ()<a class="headerlink" href="#getcurrentcolormodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="colormodifier-getcurrentcolormodifier"><a href="ColorModifier.html">ColorModifier</a> GetCurrentColorModifier ( )<a class="headerlink" href="#colormodifier-getcurrentcolormodifier" title="Permanent link">⚓︎</a></h4>
 <p>获取《忏悔》中引入的颜色校正的副本。这存储的是当前正在使用的原始值（可能会受到诸如“星体投射”等道具的影响），而不是房间设置使用的值（有关此内容，请参阅 <a href="FXParams.html#colormodifier">FXParams.ColorModifier</a>）。</p>
+<hr />
 <h3 aria-label="Functions" id="getdebugflags">GetDebugFlags ()<a class="headerlink" href="#getdebugflags" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getdebugflags">int GetDebugFlags ( )<a class="headerlink" href="#int-getdebugflags" title="Permanent link">⚓︎</a></h4>
 <p>返回一个 <a href="enums/DebugFlag.html">DebugFlag</a> 位掩码。</p>
+<hr />
 <h3 aria-label="Functions" id="getdizzyamount">GetDizzyAmount ()<a class="headerlink" href="#getdizzyamount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getdizzyamount">float GetDizzyAmount ( )<a class="headerlink" href="#float-getdizzyamount" title="Permanent link">⚓︎</a></h4>
 <p>返回当前类似于“波浪帽”的眩晕程度。</p>
+<hr />
 <h3 aria-label="Functions" id="getgenericprompt">GetGenericPrompt ()<a class="headerlink" href="#getgenericprompt" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="genericprompt-getgenericprompt"><a href="GenericPrompt.html">GenericPrompt</a> GetGenericPrompt ( )<a class="headerlink" href="#genericprompt-getgenericprompt" title="Permanent link">⚓︎</a></h4>
 <p>返回当前活动的 <code>GenericPrompt</code> 对象。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-</details>
 <p>在游戏流程中且没有活动提示时使用此函数会导致游戏崩溃。</p>
+</details>
+<hr />
 <h3 aria-label="Functions" id="getlerpcolormodifier">GetLerpColorModifier ()<a class="headerlink" href="#getlerpcolormodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="colormodifier-getlerpcolormodifier"><a href="ColorModifier.html">ColorModifier</a> GetLerpColorModifier ( )<a class="headerlink" href="#colormodifier-getlerpcolormodifier" title="Permanent link">⚓︎</a></h4>
 <p>返回插值颜色校正器。其格式为绝对变化率（即，所有值都是正数）。</p>
@@ -9026,33 +9067,43 @@
 <h3 aria-label="Functions" id="getplanetariumsvisited">GetPlanetariumsVisited ()<a class="headerlink" href="#getplanetariumsvisited" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getplanetariumsvisited">int GetPlanetariumsVisited ( )<a class="headerlink" href="#int-getplanetariumsvisited" title="Permanent link">⚓︎</a></h4>
 <p>返回玩家在本次游戏流程中进入天文馆的次数。</p>
+<hr />
 <h3 aria-label="Functions" id="getshopvisits">GetShopVisits ()<a class="headerlink" href="#getshopvisits" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getshopvisits">int GetShopVisits ( )<a class="headerlink" href="#int-getshopvisits" title="Permanent link">⚓︎</a></h4>
 <p>返回玩家在本次游戏流程中进入商店的次数。</p>
+<hr />
 <h3 aria-label="Functions" id="gettargetcolormodifier">GetTargetColorModifier ()<a class="headerlink" href="#gettargetcolormodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="colormodifier-gettargetcolormodifier"><a href="ColorModifier.html">ColorModifier</a> GetTargetColorModifier ( )<a class="headerlink" href="#colormodifier-gettargetcolormodifier" title="Permanent link">⚓︎</a></h4>
 <p>返回目标颜色校正器。如果当前正在两个 <a href="ColorModifier.html">ColorModifier</a> 状态之间进行插值，则返回目标状态。否则，它与 <a href="Game.html#getcurrentcolormodifier">GetCurrentColorModifier</a> 相同。</p>
+<hr />
 <h3 aria-label="Functions" id="iserased">IsErased ()<a class="headerlink" href="#iserased" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-iserased-entity-entity">boolean IsErased ( <a href="Entity.html">Entity</a> Entity )<a class="headerlink" href="#boolean-iserased-entity-entity" title="Permanent link">⚓︎</a></h4>
 <p>检查一个实体是否已被清除。</p>
+<hr />
 <h3 aria-label="Functions" id="isgreedboss">IsGreedBoss ()<a class="headerlink" href="#isgreedboss" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isgreedboss">boolean IsGreedBoss ( )<a class="headerlink" href="#boolean-isgreedboss" title="Permanent link">⚓︎</a></h4>
 <p>如果下一波或当前波是 boss 波，则返回 <code>true</code>。否则返回 <code>false</code>，如果不在贪婪模式下也返回 <code>false</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="isgreedfinalboss">IsGreedFinalBoss ()<a class="headerlink" href="#isgreedfinalboss" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isgreedfinalboss">boolean IsGreedFinalBoss ( )<a class="headerlink" href="#boolean-isgreedfinalboss" title="Permanent link">⚓︎</a></h4>
 <p>如果下一波或当前波是可选的“噩梦”波，则返回 <code>true</code>。否则返回 <code>false</code>，如果不在贪婪模式下也返回 <code>false</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="ishardmode">IsHardMode ()<a class="headerlink" href="#ishardmode" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ishardmode">boolean IsHardMode ( )<a class="headerlink" href="#boolean-ishardmode" title="Permanent link">⚓︎</a></h4>
 <p>如果当前模式是困难模式或贪婪ier模式，则返回 <code>true</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="ispausemenuopen">IsPauseMenuOpen ()<a class="headerlink" href="#ispausemenuopen" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ispausemenuopen">boolean IsPauseMenuOpen ( )<a class="headerlink" href="#boolean-ispausemenuopen" title="Permanent link">⚓︎</a></h4>
 <p>如果暂停菜单已打开，则返回 <code>true</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="isrerun">IsRerun ()<a class="headerlink" href="#isrerun" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isrerun">boolean IsRerun ( )<a class="headerlink" href="#boolean-isrerun" title="Permanent link">⚓︎</a></h4>
 <p>如果当前游戏流程是重玩，则返回 <code>true</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="recordplayercompletion">RecordPlayerCompletion ()<a class="headerlink" href="#recordplayercompletion" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-recordplayercompletion-completiontype-type">void RecordPlayerCompletion ( <a href="enums/CompletionType.html">CompletionType</a> Type )<a class="headerlink" href="#void-recordplayercompletion-completiontype-type" title="Permanent link">⚓︎</a></h4>
 <p>为所有玩家设置与该类型相关的标记并解锁成就。游戏使用此函数来授予标记以及受污染的完成纸组。</p>
+<hr />
 <h3 aria-label="Functions" id="setbloom">SetBloom ()<a class="headerlink" href="#setbloom" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setbloom-float-duration-float-amount">void SetBloom ( float Duration, float Amount )<a class="headerlink" href="#void-setbloom-float-duration-float-amount" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9061,13 +9112,15 @@
 <hr />
 <h3 aria-label="Functions" id="setdizzyamount">SetDizzyAmount ()<a class="headerlink" href="#setdizzyamount" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdizzyamount-float-targetintensity-float-currentintensity">void SetDizzyAmount ( float TargetIntensity , float CurrentIntensity )<a class="headerlink" href="#void-setdizzyamount-float-targetintensity-float-currentintensity" title="Permanent link">⚓︎</a></h4>
-<p>使用此函数时，最好将值保持在 <code>0</code> - <code>1</code> 之间，并以 0.1 为增量进行调整。<code>1</code> 对屏幕的影响最极端，而 <code>0</code> 则移除该效果。
-效果的当前强度将逐渐向“目标强度”移动。</p>
+<p>设置类似于“波浪帽”的眩晕程度。</p>
+<p>效果的当前强度将逐渐向“目标强度”移动。</p>
+<p>向此函数提供“当前强度”是可选的。如果提供了该值，当前强度将立即更改为该值。如果未指定，则当前强度将保持不变。</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
+<p>使用此函数时，最好将值保持在 <code>0</code> - <code>1</code> 之间，并以 0.1 为增量进行调整。<code>1</code> 对屏幕的影响最极端，而 <code>0</code> 则移除该效果。</p>
 </details>
-<p>向此函数提供“当前强度”是可选的。如果提供了该值，当前强度将立即更改为该值。如果未指定，则当前强度将保持不变。
-设置类似于“波浪帽”的眩晕程度。### SetDonationModAngel () {: aria-label='Functions' }</p>
+<hr />
+<h3 aria-label="Functions" id="setdonationmodangel">SetDonationModAngel ()<a class="headerlink" href="#setdonationmodangel" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdonationmodangel-int-amount">void SetDonationModAngel ( int Amount )<a class="headerlink" href="#void-setdonationmodangel-int-amount" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="setdonationmodgreed">SetDonationModGreed ()<a class="headerlink" href="#setdonationmodgreed" title="Permanent link">⚓︎</a></h3>

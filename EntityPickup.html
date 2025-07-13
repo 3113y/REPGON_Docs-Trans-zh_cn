@@ -8485,23 +8485,25 @@
 <hr />
 <h3 aria-label="Functions" id="getrandompickupvelocity">GetRandomPickupVelocity ()<a class="headerlink" href="#getrandompickupvelocity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="vector-getrandompickupvelocity-vector-position-rng-rng-nil-int-velocitytype-0"><a href="Vector.html">Vector</a> GetRandomPickupVelocity ( <a href="Vector.html">Vector</a> Position, <a href="RNG.html">RNG</a> RNG = nil, int VelocityType = 0 )<a class="headerlink" href="#vector-getrandompickupvelocity-vector-position-rng-rng-nil-int-velocitytype-0" title="Permanent link">⚓︎</a></h4>
-<details class="warning" open="open">
-<summary>Warning</summary>
-</details>
 <p><code>VelocityType</code> 1 会将拾取物朝下方的锥形区域射出，主要用于乞丐的奖励。
 <code>VelocityType</code> 0 会将拾取物朝所需位置周围的随机方向射出。
-这是一个静态函数，必须通过 <code>EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)</code> 调用。
 <code>VelocityType</code> 似乎也会影响挑战房间中的拾取物，使其速度更慢。</p>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>这是一个静态函数，必须通过 <code>EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)</code> 调用。</p>
+</details>
+<hr />
 <h3 aria-label="Functions" id="getvardata">GetVarData ()<a class="headerlink" href="#getvardata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getvardata">int GetVarData ( )<a class="headerlink" href="#int-getvardata" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="isblind">IsBlind ()<a class="headerlink" href="#isblind" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isblind">boolean IsBlind ( )<a class="headerlink" href="#boolean-isblind" title="Permanent link">⚓︎</a></h4>
-<p>此值不考虑盲目诅咒，它仅反映通常在不涉及诅咒的情况下处于盲目状态的拾取物的盲目状态。例如：隐藏路线的额外物品。
-如果拾取物是收藏品基座且处于隐藏状态，则返回 <code>true</code>。对于非收藏品实体拾取物，始终返回 <code>false</code>。</p>
+<p>如果拾取物是收藏品基座且处于隐藏状态，则返回 <code>true</code>。对于非收藏品实体拾取物，始终返回 <code>false</code>。</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
+<p>此值不考虑盲目诅咒，它仅反映通常在不涉及诅咒的情况下处于盲目状态的拾取物的盲目状态。例如：隐藏路线的额外物品。</p>
 </details>
+<hr />
 <h3 aria-label="Functions" id="makeshopitem">MakeShopItem ()<a class="headerlink" href="#makeshopitem" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-makeshopitem-int-shopitemid">void MakeShopItem ( int ShopItemID )<a class="headerlink" href="#void-makeshopitem-int-shopitemid" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8511,34 +8513,42 @@
 <h3 aria-label="Functions" id="setalternatepedestal">SetAlternatePedestal ()<a class="headerlink" href="#setalternatepedestal" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setalternatepedestal-int-pedestaltype">void SetAlternatePedestal ( int PedestalType )<a class="headerlink" href="#void-setalternatepedestal-int-pedestaltype" title="Permanent link">⚓︎</a></h4>
 <p>设置物品基座的图形。对非收藏品实体拾取物无效。</p>
+<hr />
 <h3 aria-label="Functions" id="setdropdelay">SetDropDelay ()<a class="headerlink" href="#setdropdelay" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdropdelay-int-delay">void SetDropDelay ( int Delay )<a class="headerlink" href="#void-setdropdelay-int-delay" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="setforceblind">SetForceBlind ()<a class="headerlink" href="#setforceblind" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setforceblind-boolean-setblind">void SetForceBlind ( boolean SetBlind )<a class="headerlink" href="#void-setforceblind-boolean-setblind" title="Permanent link">⚓︎</a></h4>
 <p>像盲目诅咒一样隐藏基座物品。对非收藏品实体拾取物无效。</p>
+<hr />
 <h3 aria-label="Functions" id="setnewoptionspickupindex">SetNewOptionsPickupIndex ()<a class="headerlink" href="#setnewoptionspickupindex" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-setnewoptionspickupindex">int SetNewOptionsPickupIndex ( )<a class="headerlink" href="#int-setnewoptionspickupindex" title="Permanent link">⚓︎</a></h4>
 <p>返回新的拾取物索引。</p>
+<hr />
 <h3 aria-label="Functions" id="setvardata">SetVarData ()<a class="headerlink" href="#setvardata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setvardata-int-vardata">void SetVarData ( int VarData )<a class="headerlink" href="#void-setvardata-int-vardata" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="triggertheresoptionspickup">TriggerTheresOptionsPickup ()<a class="headerlink" href="#triggertheresoptionspickup" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-triggertheresoptionspickup">void TriggerTheresOptionsPickup ( )<a class="headerlink" href="#void-triggertheresoptionspickup" title="Permanent link">⚓︎</a></h4>
 <p>移除与目标拾取物具有相同选项组（OptionsPickupIndex）的拾取物。</p>
+<hr />
 <h3 aria-label="Functions" id="tryflip">TryFlip ()<a class="headerlink" href="#tryflip" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-tryflip">boolean TryFlip ( )<a class="headerlink" href="#boolean-tryflip" title="Permanent link">⚓︎</a></h4>
 <p>尝试翻转收藏品，例如在使用翻转物品对带有第二个全息收藏品（位于第一个后面）的收藏品基座进行操作时。如果成功则返回 <code>true</code>，否则返回 <code>false</code>；如果用于非收藏品实体拾取物，也返回 <code>false</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="tryinitoptioncycle">TryInitOptionCycle ()<a class="headerlink" href="#tryinitoptioncycle" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-tryinitoptioncycle-int-numcycle">boolean TryInitOptionCycle ( int NumCycle )<a class="headerlink" href="#boolean-tryinitoptioncycle-int-numcycle" title="Permanent link">⚓︎</a></h4>
 <p>使收藏品基座开始循环显示指定数量的收藏品，包括其自身的收藏品类型。</p>
+<hr />
 <h3 aria-label="Functions" id="tryremovecollectible">TryRemoveCollectible ()<a class="headerlink" href="#tryremovecollectible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-tryremovecollectible">boolean TryRemoveCollectible ( )<a class="headerlink" href="#boolean-tryremovecollectible" title="Permanent link">⚓︎</a></h4>
 <p>如果成功从基座上移除了一个收藏品，则返回 <code>true</code>。如果基座已经为空，或者对非收藏品实体拾取物调用此函数，则返回 <code>false</code>。
 尝试从物品基座上移除收藏品。</p>
+<hr />
 <h3 aria-label="Functions" id="updatepickupghosts">UpdatePickupGhosts ()<a class="headerlink" href="#updatepickupghosts" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-updatepickupghosts">void UpdatePickupGhosts ( )<a class="headerlink" href="#void-updatepickupghosts" title="Permanent link">⚓︎</a></h4>
 <p>根据拾取物当前的 <a href="LootList.html">LootList</a> 更新 <code>EffectVariant.PICKUP_GHOST</code> 实体效果。</p>
+<hr />
 
 
 
