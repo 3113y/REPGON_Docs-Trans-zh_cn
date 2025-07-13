@@ -12,18 +12,24 @@ search:
     * [RoomConfigStage.GetRoomSet()](RoomConfigStage.md#getroomset)
 
     ???+ example "Example Code"
+
         ```lua
         local roomConfigSet = RoomConfig.GetStage(StbType.BASEMENT):GetRoomSet(0)`
         ```
 ## Operators
+
 ### __len () {: aria-label='Operators' }
 [ ](#){: .abrep .tooltip .badge }
 长度 (#) 操作。返回列表中实体的数量
 
+___
 ## Functions
+
 ### Get () {: aria-label='Functions' }
 [ ](#){: .abrep .tooltip .badge }
 返回列表中指定索引处的 [RoomConfigRoom](https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html)。
+
+___
 ### Size {: aria-label='Variables' }
 [ ](#){: .const .tooltip .badge } [ ](#){: .abrep .tooltip .badge }
 #### const int Size  {: .copyable aria-label='Variables' }

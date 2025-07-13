@@ -5,11 +5,13 @@ tags:
 # Class "Camera"
 
 ???+ info
+
     你可以通过以下函数获取此类:
 
     * [Room:GetCamera()](Room.md#getcamera)
 
     ???+ example "Example Code"
+
         ```lua
         local camera = Game():GetRoom():GetCamera()
         ```
@@ -28,6 +30,7 @@ tags:
 
 此函数必须在诸如 `ModCallbacks.MC_POST_UPDATE` 之类的更新回调中调用，否则游戏将覆盖相机的位置。
 
+___
 ### SnapToPosition () {: aria-label='Functions' }
 #### void SnapToPosition ( [Vector](Vector.md) Pos ) {: .copyable aria-label='Functions' }
 立即将相机的位置设置为指定位置。
@@ -39,3 +42,5 @@ tags:
 ???+ bug "Bug"
 
     此函数似乎仅在“主动相机”关闭时有效。
+
+___

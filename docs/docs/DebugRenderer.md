@@ -6,6 +6,7 @@ tags:
 # Global Class "DebugRenderer"
 
 ???+ info
+
     你可以通过 `DebugRenderer` 全局表获取这个类.
 
     **注意：调用这些函数时，必须使用 .（句点）而非 :（冒号）！**

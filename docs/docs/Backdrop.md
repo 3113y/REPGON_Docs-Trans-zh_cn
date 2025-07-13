@@ -36,6 +36,9 @@ ___
 #### [Image](renderer/Image.md) GetFloorImage ( ) {: .copyable aria-label='Functions' }
 返回包含当前房间地板纹理的缓冲区。
 
+___
 ### GetWallImage () {: aria-label='Functions' }
 #### [Image](renderer/Image.md) GetWallImage ( ) {: .copyable aria-label='Functions' }
 返回包含当前房间墙壁纹理的缓冲区。
+
+___

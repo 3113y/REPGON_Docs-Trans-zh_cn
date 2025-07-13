@@ -118,13 +118,18 @@ ___
 #### void SetI2 ( int Num ) {: .copyable aria-label='Functions' }
 用于存储主动道具拾取物的充能数。
 
+___
 ### SetI3 () {: aria-label='Functions' }
 #### void SetI3 ( int Num ) {: .copyable aria-label='Functions' }
 用于存储拾取物的商店价格。
 
+___
 ### SetI4 () {: aria-label='Functions' }
 #### void SetI4 ( int Num ) {: .copyable aria-label='Functions' }
-用于存储拾取物的商店物品ID。### SetI5 () {: aria-label='Functions' }
+用于存储拾取物的商店物品ID。
+
+___
+### SetI5 () {: aria-label='Functions' }
 #### void SetI5 ( int Num ) {: .copyable aria-label='Functions' }
 
 ___

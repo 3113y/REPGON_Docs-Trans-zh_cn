@@ -32,14 +32,17 @@ ___
 #### float GetRocketAngle ( ) {: .copyable aria-label='Functions' }
 火箭炸弹的目标角度。它会影响火箭炸弹的移动和精灵图的朝向。
 
+___
 ### GetRocketSpeed () {: aria-label='Functions' }
 #### float GetRocketSpeed ( ) {: .copyable aria-label='Functions' }
 火箭炸弹的目标速度。自然情况下，其速度每帧增加1。
 
+___
 ### GetScale () {: aria-label='Functions' }
 #### float GetScale ( ) {: .copyable aria-label='Functions' }
 用于应用炸弹外观的动画集。
 
+___
 ### IsLoadingCostumes () {: aria-label='Functions' }
 #### boolean IsLoadingCostumes ( ) {: .copyable aria-label='Functions' }
 
@@ -48,6 +51,7 @@ ___
 #### boolean IsPrismTouched ( ) {: .copyable aria-label='Functions' }
 返回该炸弹是否是通过天使棱镜效果创建的。
 
+___
 ### SetFallingSpeed () {: aria-label='Functions' }
 #### void SetFallingSpeed ( float Speed ) {: .copyable aria-label='Functions' }
 
@@ -64,17 +68,23 @@ ___
 #### void SetPrismTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
 设置该炸弹是否是通过天使棱镜效果创建的。
 
+___
 ### SetRocketAngle () {: aria-label='Functions' }
 #### void SetRocketAngle ( float Angle ) {: .copyable aria-label='Functions' }
 设置火箭炸弹的目标角度。它会影响火箭炸弹的移动和精灵图的朝向。
 
+___
 ### SetRocketSpeed () {: aria-label='Functions' }
 #### void SetRocketSpeed ( float Speed ) {: .copyable aria-label='Functions' }
 设置火箭炸弹的目标速度。请注意，其速度自然情况下每帧会增加1。
 
+___
 ### SetScale () {: aria-label='Functions' }
 #### void SetScale ( float Scale ) {: .copyable aria-label='Functions' }
-应与 [SetLoadCostumes](#setloadcostumes) 方法一起使用。### UpdateDirtColor () {: aria-label='Functions' }
+应与 [SetLoadCostumes](#setloadcostumes) 方法一起使用。
+
+___
+### UpdateDirtColor () {: aria-label='Functions' }
 #### void UpdateDirtColor ( ) {: .copyable aria-label='Functions' }
 
 ___

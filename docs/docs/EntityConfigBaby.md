@@ -5,11 +5,13 @@ tags:
 # Class "EntityConfigBaby"
 
 ???+ info
+
     你可以通过以下函数获取此类:
 
     * [EntityConfig.GetBaby()](EntityConfig.md#getbaby)
 
     ???+ example "Example Code"
+    
         ```lua
         local bloatBabyConfig = EntityConfig.GetBaby(BabySubType.BABY_BLOAT)
         ```

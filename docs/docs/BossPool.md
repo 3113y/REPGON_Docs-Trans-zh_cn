@@ -20,6 +20,7 @@ ___
 | achievementID | [Achievement](enums/Achievement.md) | |
 | weightAlt | float | |
 
+___
 ### GetName () {: aria-label='Functions' }
 #### string GetName ( ) {: .copyable aria-label='Functions' }
 

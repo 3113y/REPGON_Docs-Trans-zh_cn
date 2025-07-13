@@ -24,10 +24,12 @@ ___
 #### boolean IsMultidimensionalTouched ( ) {: .copyable aria-label='Functions' }
 返回该匕首是否通过“多维宝贝”效果创建。
 
+___
 ### IsPrismTouched () {: aria-label='Functions' }
 #### boolean IsPrismTouched ( ) {: .copyable aria-label='Functions' }
 返回该匕首是否通过“天使棱镜”效果创建。
 
+___
 ### SetIsSpinAttack () {: aria-label='Functions' }
 #### void SetIsSpinAttack ( boolean isSpinAttack ) {: .copyable aria-label='Functions' }
 
@@ -40,6 +42,9 @@ ___
 #### void SetMultidimensionalTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
 设置该匕首是否通过“多维宝宝”效果创建。
 
+___
 ### SetPrismTouched () {: aria-label='Functions' }
 #### void SetPrismTouched ( boolean IsTouched ) {: .copyable aria-label='Functions' }
 设置该匕首是否通过“天使棱镜”效果创建。
+
+___

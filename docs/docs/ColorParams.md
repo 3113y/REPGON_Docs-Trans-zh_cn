@@ -9,6 +9,7 @@ tags:
     可以通过其构造函数访问此类:
 
     ???+ example "Example Code"
+    
         ```lua
         local fiveSecondRedColor = ColorParams(Color(1,0,0,1),255,150,false,false)
         ```

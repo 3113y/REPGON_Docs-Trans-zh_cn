@@ -10,6 +10,7 @@ tags:
 
 ___
 ## Functions
+
 ### Get () {: aria-label='Functions' }
 #### [EntitiesSaveState](EntitiesSaveState.md) Get ( int Index ) {: .copyable aria-label='Functions' }
 

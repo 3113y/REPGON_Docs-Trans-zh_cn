@@ -5,11 +5,13 @@ tags:
 # Class "CostumeSpriteDesc"
 
 ???+ info
+
     你可以通过以下函数获取此类:
 
     * [EntityPlayer:GetCostumeSpriteDescs()](EntityPlayer.md#getcostumespritedescs)
 
     ???+ example "Example Code"
+    
         ```lua
         local firstCostumeDesc = Isaac.GetPlayer():GetCostumeSpriteDescs()[1]
         ```
@@ -43,6 +45,8 @@ ___
 ### GetSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetSprite ( ) {: .copyable aria-label='Functions' }
 返回与该服装相关联的精灵。
+
+___
 ### HasOverlay () {: aria-label='Functions' }
 #### boolean HasOverlay ( ) {: .copyable aria-label='Functions' }
 

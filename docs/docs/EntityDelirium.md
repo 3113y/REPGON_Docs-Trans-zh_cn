@@ -8,101 +8,123 @@ tags:
 
 ### GetTeleportationTimer () {: aria-label='Functions' }
 #### int GetTeleportationTimer ( ) {: .copyable aria-label='Functions' }
-Return the number of frames before Delirium teleports.
+返回精神错乱（Delirium）变身前的帧数.
 
+___
 ### IsRedMode () {: aria-label='Functions' }
 #### boolean IsRedMode ( ) {: .copyable aria-label='Functions' }
-Returns a boolean indicating if the red mode is activated or not.
-While this mode is active, Delirium's movement speed is increased in a way that cannot be observed through the modding API as it occurs outside of the update callbacks.
-Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red.
-Red mode is mechanic in the Delirium fight where Delirium's sprite is tinted red. 
+返回一个布尔值，指示精神错乱是否“变红”.
+
 ???+ info "About red mode"
 
+    红色模式是精神错乱战斗中的一种机制，在该模式下，精神错乱的精灵会被染成红色，详见 [Wiki](https://isaac.huijiwiki.com/wiki/%E5%AE%9E%E4%BD%93/412#412.0.0).
+
+___
 ### SetRedMode () {: aria-label='Functions' }
 #### void SetRedMode ( boolean On ) {: .copyable aria-label='Functions' }
-Enable or disable red mode according to the parameter `on`.
-Please refer to the note in the documentation of [IsRedMode](EntityDelirium.md#isredmode) for an explanation of red mode.
+根据参数 `on` 启用或禁用红色模式.
+
 ???+ info "About red mode"
 
+    有关红色模式的解释，请参考 [IsRedMode](EntityDelirium.md) 文档中的注释.
+
+___
 ### SetTeleportationTimer () {: aria-label='Functions' }
 #### void SetTeleportationTimer ( int Timer ) {: .copyable aria-label='Functions' }
-Set the number of frames before Delirium teleports. Negative values are not allowed.
+设置精神错乱传送前的帧数。不允许使用负值.
 
+___
 ### Transform () {: aria-label='Functions' }
 #### void Transform ( int Type, int Variant = 0 ) {: .copyable aria-label='Functions' }
-As such, the transformation will not be effective immediately, but instead on the next frame.
-Internally, this function forces the transformation timer to 1 frame and lets Delirium's AI update as needed.
-???+ warn "Warning"
-Transform Delirium into the entity with the specified type and variant.
-The validation of the type and variant is only as strong as the validation performed by the game when it attempts to transform Delirium.
-In other words, this behaves exactly as if the game itself attempted to transform Delirium, with everything it implies if the specified entity is invalid.
-In order to properly handle transformations, we use the native transformation mechanic of Delirium.
+将精神错乱转变为具有指定`type`和`variant`的实体.
 
+???+ warn "Warning"
+
+    类型和变体的验证强度仅与游戏尝试转变精神错乱时所执行的验证强度相同。
+    换句话说，这与游戏本身尝试转变精神错乱的行为完全相同，包括指定实体无效时所隐含的一切情况。
+
+???+ warn "Warning"
+
+    为了正确处理转变，我们使用了精神错乱的原生转变机制。 
+    因此，转变不会立即生效，而是在下一帧生效。 
+    从内部实现来看，此函数会将转变计时器强制设置为 1 帧，并让精神错乱的 AI 按需更新。
+
+___
 ### Angle {: aria-label='Variables' }
 #### int8 Angle {: .copyable aria-label='Variables' }
-Angle of Delirium's projectiles. 
+精神错乱发射的弹幕的角度. 
 
 ???+ warn "Geometric system"
-    This variable is an eight bit integers, so the allowed values are the integers from 0 to 255 (inclusive).
-    You can use a linear interpolation between the \[0: 255] and the \[0: 360\[ ranges in order to convert angles in degree to this system.
+
+    此变量是一个 8 位整数，因此允许的值是从 0 到 255（含）的整数。
+    你可以使用 \[0: 255] 和 \[0: 360] 范围之间的线性插值，将角度从度数转换为这个系统。
 
 ???+ info "WTH"
-    All of Delirium bullet hell patterns can be influenced by this variable. Unlike most bosses, Delirium does not aim its projectiles at the player, instead spawning them in random directions (with some control to prevent "absurd" patterns).
-    For instance, if Delirium spawns eight tears around it, and `Angle` is set to 0, the 8 tears will fire in the cardinal and ordinal directions. If `Angle` is set to 32, all tears will be rotated by 45°.
-    No, I have no idea why Nicalis used an eight bits integer to represent an angle (analyzing the memory layout of Delirium shows that it would have made no difference using a 32 bits float).
+
+    精神错乱的所有弹幕地狱模式都可以受此变量影响。与大多数首领不同，精神错乱不会将其弹幕瞄准玩家，而是向随机方向发射（有一定控制以防止出现“荒谬”的模式）。
+    例如，如果精神错乱在其周围发射 8 颗眼泪，并且 `Angle` 设置为 0，则这 8 颗眼泪将沿基本方向和斜向方向发射。如果 `Angle` 设置为 32，则所有眼泪将旋转 45°。
+    我不知道为什么 Nicalis 使用 8 位整数来表示角度（对精神错乱的内存布局进行分析表明，使用 32 位浮点数不会有任何区别）。
+
 ___
 ### AttackID {: aria-label='Variables' }
 #### int AttackID {: .copyable aria-label='Variables' }
-Internal [I1](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#I1) value used by Delirium to identify the bullet hell pattern it is currently executing.
+精神错乱用于识别其当前正在执行的弹幕地狱模式的内部 [I1](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#I1) 值。
 
 ___
 ### BossType {: aria-label='Variables' }
 [ ](#){: .const .tooltip .badge }
 #### const int BossType {: .copyable aria-label='Variables' }
-[EntityType](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html) of the boss Delirium is currently transformed as.
+精神错乱当前所转变为的首领的 [EntityType](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html).
 
 ___
 ### BossVariant {: aria-label='Variables' }
 [ ](#){: .const .tooltip .badge }
 #### const int BossVariant {: .copyable aria-label='Variables' }
-Variant of the boss Delirium is currently transformed as.
+精神错乱当前所转变为的首领的 Variant.
 
 ___
 ### Cycle {: aria-label='Variables' }
 #### int Cycle {: .copyable aria-label='Variables' }
-Internal [I2](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#I2) value used by Delirium to identify whether red mode is activated and the amount of time before a teleportation.
-You should not use this variable directly and instead rely on the [GetTeleportationTimer](EntityDelirium.md#getteleportationtimer), [SetTeleportationTimer](EntityDelirium.md#setteleportationtimer), [IsRedMode](EntityDelirium.md#isredmode) and [SetRedMode](EntityDelirium.md#setredmode) functions instead.
-The only reason to use this variable directly is if you want to freeze it to a certain value that you know will do exactly what you want (for instance disable red mode and prevent teleportation).
+精神错乱用于识别红色模式是否激活以及传送前剩余时间的内部 [I2](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#I2) 值。
+你不应直接使用此变量，而应依赖 [GetTeleportationTimer](EntityDelirium.md#getteleportationtimer)、[SetTeleportationTimer](EntityDelirium.md#setteleportationtimer)、[IsRedMode](EntityDelirium.md#isredmode) 和 [SetRedMode](EntityDelirium.md#setredmode) 函数。
+直接使用此变量的唯一原因是，如果你想将其冻结为一个你知道会产生预期效果的值（例如，禁用红色模式并防止传送）。
 
 ???+ info "Format of the variable"
-    The variable is 32 bits wide and is structured as follows: bits 0 to 6 (inclusive) are unknown, bits 7 to 14 (inclusive) indicate whether red mode is active (it is active if any of the bits is set) and bits 15 to 25 (inclusive) are the teleportation timer.
+
+    此变量为 32 位宽，结构如下：第 0 到 6 位（含）未知，第 7 到 14 位（含）指示红色模式是否激活（如果任何一位被设置，则表示激活），第 15 到 25 位（含）是传送计时器。
+
 
 ???+ info "Preservation of state"
-    The aforementioned methods used to manipulate this variable preserve the bits of the variable that are irrelevant to the operation performed.
-    For instance, enabling or disabling red mode will not change the transformation timer. 
+
+    上述用于操作此变量的方法会保留与所执行操作无关的变量位。
+    例如，启用或禁用红色模式不会更改转变计时器。 
+
 ___
 ### RemainingAttacks {: aria-label='Variables' }
 #### int RemainingAttacks {: .copyable aria-label='Variables' }
-Number of attacks remaining before Delirium transforms into another boss.
+精神错乱转变为另一个首领之前剩余的攻击次数.
 
 ???+ info "About remaining attacks" 
-    This variable is Nicalis answer to prevent Delirium from performing too many attacks as a single boss before transforming.
-    Under certain conditions, the game will decrement this value by 1. If it reaches 0, Delirium transforms regardless of the transformation timer.
-    The conditions that must be met (simultaneously) are: the [StateFrame](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#stateframe) variable must be 1 during the current frame, and the [State](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.md#state) variable must be set to any of the attack states.
-    This is the reason why Delirium will sometimes initiate an attack as a boss and immediately transform. 
-    You can refer to the [complete breakdown of bosses AI configurations](https://wofsauge.github.io/IsaacDocs/rep/customData/bosses.xlsx) to see the AI configuration of each attack.
+
+    此变量是 Nicalis 为防止精神错乱在转变为另一个首领之前作为单个首领执行过多攻击而采取的措施。
+    在某些条件下，游戏会将此值减 1。如果该值达到 0，则无论转变计时器的值如何，精神错乱都会转变。
+    必须同时满足的条件是：当前帧的 [StateFrame](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#stateframe) 变量必须为 1，并且 [State](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.md#state) 变量必须设置为任何攻击状态。
+    这就是为什么精神错乱有时会作为一个首领发起攻击并立即转变的原因。 
+    你可以参考 [首领 AI 配置的完整明细](https://wofsauge.github.io/IsaacDocs/rep/customData/bosses.xlsx) 来查看每个攻击的 AI 配置。
+
 ___
 ### StateD {: aria-label='Variables' }
 #### [NpcState](https://wofsauge.github.io/IsaacDocs/rep/enums/NpcState.html) StateD {: .copyable aria-label='Variables' }
-Internal [State](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#State) of Delirium.
+精神错乱的内部 [State](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#State)。
 
 ___
 ### TransformationTimer {: aria-label='Variables' }
 #### int TransformationTimer {: .copyable aria-label='Variables' }
-Get or set the amount of time before Delirium transforms into another boss.
+获取或设置精神错乱转变为另一个首领之前的剩余时间。
 
 ???+ warn "On transformations" 
-    Delirium can transform in two situations: either this value reaches 0, or the value of [RemainingAttacks](EntityDelirium.md#remainingattacks) reaches 0. 
-    Refer to the documentation of [RemainingAttacks](EntityDelirium.md#remainingattacks) for a more detailed explanation of that mechanic.
+
+    精神错乱可以在两种情况下转变：要么此值达到 0，要么 [RemainingAttacks](EntityDelirium.md#remainingattacks) 的值达到 0。 
+    有关该机制的更详细解释，请参考 [RemainingAttacks](EntityDelirium.md#remainingattacks) 的文档
     
 ___
