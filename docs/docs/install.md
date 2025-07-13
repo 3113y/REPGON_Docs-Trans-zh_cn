@@ -1,4 +1,5 @@
 # Installation
+**(这是有关忏悔龙的安装，既然你能看到这里，那么必然是安装好了的，因此不翻译了)**
 
 We have two methods of installation: **Automatic** and **Manual.** We also have a **Steam Workshop** page that has a similar method to **Manual**.
 
