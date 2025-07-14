@@ -4686,21 +4686,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      函数
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="函数">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#addcallback" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8478,21 +8463,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      函数
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="函数">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#addcallback" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8997,26 +8967,20 @@
 </code></pre></div></td></tr></table></div>
 </details>
 <h3 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">⚓︎</a></h3>
-<p>For element types we use the same names as in ImGui itself. Check out the <strong><a href="https://pthom.github.io/imgui_manual_online/manual/imgui_manual.html">interactive ImGui example</a></strong>.</p>
+<p>对于元素类型，我们使用与 ImGui 本身相同的名称。查看 <strong><a href="https://pthom.github.io/imgui_manual_online/manual/imgui_manual.html">交互式 ImGui 示例</a></strong>。</p>
 <h3 id="icons">Icons<a class="headerlink" href="#icons" title="Permanent link">⚓︎</a></h3>
-<p>All imgui text supports the usage of icons. Right now, we use "FontAwesome 6", which provides ~1400 icons. You can search for fitting icons here: <a href="https://fontawesome.com/search?o=r&amp;m=free&amp;s=solid">https://fontawesome.com/search?o=r&amp;m=free&amp;s=solid</a></p>
-<p><strong>Icon usage in Lua:</strong></p>
-<p>If you want to add an Icon into your widget, just use the "Unicode" representation of the icon and put it in between a <code>\u{ }</code> string. You can find this, by selecting the icon on the fontawesome page, and looking in the top right corner of the popup-window. You can add it to your element like this:</p>
+<p>所有 ImGui 文本都支持使用图标。目前，我们使用 "FontAwesome 6"，它提供约 1400 个图标。你可以在此处搜索合适的图标：<a href="https://fontawesome.com/search?o=r&amp;m=free&amp;s=solid">https://fontawesome.com/search?o=r&amp;m=free&amp;s=solid</a></p>
+<p><strong>Lua 中的图标用法</strong>：</p>
+<p>如果你想在小部件中添加图标，只需使用图标的 "Unicode" 表示形式，并将其放在 <code>\u{ }</code> 字符串中。你可以通过在 FontAwesome 页面上选择图标，然后查看弹出窗口的右上角来找到它。你可以像这样将其添加到元素中：</p>
 <p><code>"\u{f0f9} My Text"</code></p>
-<p>This will add the "truck-medical" icon in front of the text "My text".</p>
-<p>Result: "<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 48C0 21.5 21.5 0 48 0h320c26.5 0 48 21.5 48 48v48h50.7c17 0 33.3 6.7 45.3 18.7l77.3 77.3c12 12 18.7 28.3 18.7 45.3V352c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32c0 53-43 96-96 96s-96-43-96-96H256c0 53-43 96-96 96s-96-43-96-96H48c-26.5 0-48-21.5-48-48zm416 208h128v-18.7L466.7 160H416zM160 464a48 48 0 1 0 0-96 48 48 0 1 0 0 96m368-48a48 48 0 1 0-96 0 48 48 0 1 0 96 0M176 80v48h-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h48v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-48V80c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16"/></svg></span> My Text"</p>
+<p>这将在文本 "My text" 前面添加 "truck-medical" 图标。</p>
+<p>输出: "<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 48C0 21.5 21.5 0 48 0h320c26.5 0 48 21.5 48 48v48h50.7c17 0 33.3 6.7 45.3 18.7l77.3 77.3c12 12 18.7 28.3 18.7 45.3V352c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32c0 53-43 96-96 96s-96-43-96-96H256c0 53-43 96-96 96s-96-43-96-96H48c-26.5 0-48-21.5-48-48zm416 208h128v-18.7L466.7 160H416zM160 464a48 48 0 1 0 0-96 48 48 0 1 0 0 96m368-48a48 48 0 1 0-96 0 48 48 0 1 0 96 0M176 80v48h-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h48v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-48V80c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16"/></svg></span> My Text"</p>
 </details>
+<hr />
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="addbutton">AddButton ()<a class="headerlink" href="#addbutton" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addbutton-string-parentid-string-elementid-string-label-function-clickcallback-nil-boolean-issmall-false">void AddButton ( string ParentId, string ElementId, string Label = "", function ClickCallback = nil, boolean IsSmall = false )<a class="headerlink" href="#void-addbutton-string-parentid-string-elementid-string-label-function-clickcallback-nil-boolean-issmall-false" title="Permanent link">⚓︎</a></h4>
-<h2 id="_1">函数<a class="headerlink" href="#_1" title="Permanent link">⚓︎</a></h2>
-<p>结果: "<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 48C0 21.5 21.5 0 48 0h320c26.5 0 48 21.5 48 48v48h50.7c17 0 33.3 6.7 45.3 18.7l77.3 77.3c12 12 18.7 28.3 18.7 45.3V352c17.7 0 32 14.3 32 32s-14.3 32-32 32h-32c0 53-43 96-96 96s-96-43-96-96H256c0 53-43 96-96 96s-96-43-96-96H48c-26.5 0-48-21.5-48-48zm416 208h128v-18.7L466.7 160H416zM160 464a48 48 0 1 0 0-96 48 48 0 1 0 0 96m368-48a48 48 0 1 0-96 0 48 48 0 1 0 96 0M176 80v48h-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h48v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-48V80c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16"/></svg></span> My Text"
-<strong>Lua 中的图标用法</strong>：
-对于元素类型，我们使用与 ImGui 本身相同的名称。查看 <strong><a href="https://pthom.github.io/imgui_manual_online/manual/imgui_manual.html">交互式 ImGui 示例</a></strong>。
-这将在文本 "My text" 前面添加 "truck-medical" 图标。
-所有 ImGui 文本都支持使用图标。目前，我们使用 "FontAwesome 6"，它提供约 1400 个图标。你可以在此处搜索合适的图标：<a href="https://fontawesome.com/search?o=r&amp;m=free&amp;s=solid">https://fontawesome.com/search?o=r&amp;m=free&amp;s=solid</a>
-<code>"\u{f0f9} My Text"</code>
-如果你想在小部件中添加图标，只需使用图标的 "Unicode" 表示形式，并将其放在 <code>\u{ }</code> 字符串中。你可以通过在 FontAwesome 页面上选择图标，然后查看弹出窗口的右上角来找到它。你可以像这样将其添加到元素中：</p>
+<hr />
 <h3 aria-label="Functions" id="addcallback">AddCallback ()<a class="headerlink" href="#addcallback" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addcallback-string-elementid-imguicallback-type-function-func">void AddCallback ( string ElementId, <a href="enums/ImGuiCallback.html">ImGuiCallback</a> Type, Function func )<a class="headerlink" href="#void-addcallback-string-elementid-imguicallback-type-function-func" title="Permanent link">⚓︎</a></h4>
 <p>为 ImGui 元素添加回调。一个元素每种类型只能有一个回调。</p>
@@ -9031,6 +8995,7 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">ImGui</span><span class="p">.</span><span class="nf">AddCombobox</span><span class="p">(</span><span class="s2">&quot;catInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;combobox1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Combobox&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">index</span><span class="p">,</span><span class="w"> </span><span class="nv">val</span><span class="p">)</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="nv">index</span><span class="p">,</span><span class="w"> </span><span class="nv">val</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Item 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Item 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Item 3&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 </details>
+<hr />
 <h3 aria-label="Functions" id="adddragfloat">AddDragFloat ()<a class="headerlink" href="#adddragfloat" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-adddragfloat-string-parentid-string-elementid-string-label-function-changecallback-nil-float-defaultval-0-float-speed-1-float-min-integer_min-float-min-integer_max-string-formatting-3f">void AddDragFloat ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, float DefaultVal = 0, float Speed = 1, float Min = INTEGER_MIN, float Min = INTEGER_MAX, string Formatting = "%.3f" )<a class="headerlink" href="#void-adddragfloat-string-parentid-string-elementid-string-label-function-changecallback-nil-float-defaultval-0-float-speed-1-float-min-integer_min-float-min-integer_max-string-formatting-3f" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9040,21 +9005,24 @@
 <h3 aria-label="Functions" id="addelement">AddElement ()<a class="headerlink" href="#addelement" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addelement-string-parentid-string-elementid-imguielement-type-string-label">void AddElement ( string ParentId, string ElementId = "", <a href="enums/ImGuiElement.html">ImGuiElement</a> type, string Label = "" )<a class="headerlink" href="#void-addelement-string-parentid-string-elementid-imguielement-type-string-label" title="Permanent link">⚓︎</a></h4>
 <p>向给定的父元素添加一个通用元素。对于添加像 "SameLine"、"Bullet" 或 "Text" 这样的控制元素很有用.</p>
+<hr />
 <h3 aria-label="Functions" id="addinputcolor">AddInputColor ()<a class="headerlink" href="#addinputcolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addinputcolor-string-parentid-string-elementid-string-label-function-changecallback-nil-float-r-0-float-g-0-float-b-0">void AddInputColor ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, float r = 0, float g = 0, float b = 0)<a class="headerlink" href="#void-addinputcolor-string-parentid-string-elementid-string-label-function-changecallback-nil-float-r-0-float-g-0-float-b-0" title="Permanent link">⚓︎</a></h4>
 <p>添加一个颜色输入元素。如果设置了参数 <code>a</code>，则它作为 RGBA 输入。否则，它只是一个 RGB 输入。浮点值在 <code>0</code> 到 <code>1</code> 之间.</p>
 <p>回调函数会分别传入 r、g、b 和 a 值作为参数.</p>
 <details class="example" open="open">
 <summary>Example Code</summary>
-</details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">ImGui</span><span class="p">.</span><span class="nf">AddInputColor</span><span class="p">(</span><span class="s2">&quot;catInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;inputColorRGB&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;RGB input&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.45</span><span class="p">)</span>
 <span class="nv">ImGui</span><span class="p">.</span><span class="nf">AddInputColor</span><span class="p">(</span><span class="s2">&quot;catInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;inputColorRGBA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;RGBA input&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="nv">r</span><span class="p">,</span><span class="w"> </span><span class="nv">g</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+</details>
+<hr />
 <h3 aria-label="Functions" id="addinputcontroller">AddInputController ()<a class="headerlink" href="#addinputcontroller" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addinputcontroller-string-parentid-string-elementid-string-buttonlabel-function-changecallback-nil-float-defaultval-0">void AddInputController ( string ParentId, string ElementId, string ButtonLabel = "", function ChangeCallback = nil, float DefaultVal = 0 )<a class="headerlink" href="#void-addinputcontroller-string-parentid-string-elementid-string-buttonlabel-function-changecallback-nil-float-defaultval-0" title="Permanent link">⚓︎</a></h4>
 <p>回调函数会传入 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ButtonAction.html">ButtonAction ID</a> 和新按钮的 ImGuiKey 名称.</p>
 <p>添加一个用于游戏手柄 / 控制器按钮的输入.</p>
+<hr />
 <h3 aria-label="Functions" id="addinputfloat">AddInputFloat ()<a class="headerlink" href="#addinputfloat" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addinputfloat-string-parentid-string-elementid-string-label-function-changecallback-nil-float-defaultval-0-float-step-1-float-stepfast-100">void AddInputFloat ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, float DefaultVal = 0, float Step = 1, float StepFast = 100  )<a class="headerlink" href="#void-addinputfloat-string-parentid-string-elementid-string-label-function-changecallback-nil-float-defaultval-0-float-step-1-float-stepfast-100" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9065,30 +9033,37 @@
 <h4 aria-label="Functions" class="copyable" id="void-addinputkeyboard-string-parentid-string-elementid-string-buttonlabel-function-changecallback-nil-float-defaultval-0">void AddInputKeyboard ( string ParentId, string ElementId, string ButtonLabel = "", function ChangeCallback = nil, float DefaultVal = 0 )<a class="headerlink" href="#void-addinputkeyboard-string-parentid-string-elementid-string-buttonlabel-function-changecallback-nil-float-defaultval-0" title="Permanent link">⚓︎</a></h4>
 <p>添加一个用于键盘按钮的输入.</p>
 <p>回调函数会传入 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Keyboard.html">Keyboard key ID</a> 和新按钮的 ImGuiKey 名称.</p>
+<hr />
 <h3 aria-label="Functions" id="addinputtext">AddInputText ()<a class="headerlink" href="#addinputtext" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addinputtext-string-parentid-string-elementid-string-description-function-changecallback-nil-string-defaultval-string-hinttext">void AddInputText ( string ParentId, string ElementId, string Description = "", function ChangeCallback = nil, string DefaultVal = "", string HintText = "" )<a class="headerlink" href="#void-addinputtext-string-parentid-string-elementid-string-description-function-changecallback-nil-string-defaultval-string-hinttext" title="Permanent link">⚓︎</a></h4>
 <p>添加一个文本输入元素。如果元素的输入为空，<code>HintText</code> 中的文本将作为“占位符”显示在输入元素内。</p>
+<hr />
 <h3 aria-label="Functions" id="addinputtextmultiline">AddInputTextMultiline ()<a class="headerlink" href="#addinputtextmultiline" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addinputtextmultiline-string-parentid-string-elementid-string-description-function-changecallback-nil-string-defaultval-float-displayedlines-6">void AddInputTextMultiline ( string ParentId, string ElementId, string Description = "", function ChangeCallback = nil, string DefaultVal = "", float DisplayedLines = 6 )<a class="headerlink" href="#void-addinputtextmultiline-string-parentid-string-elementid-string-description-function-changecallback-nil-string-defaultval-float-displayedlines-6" title="Permanent link">⚓︎</a></h4>
 <p>添加一个允许输入多行文本的文本输入元素。<code>displayedLines</code> 属性可用于更改元素的高度。</p>
+<hr />
 <h3 aria-label="Functions" id="addplothistogram">AddPlotHistogram ()<a class="headerlink" href="#addplothistogram" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addplothistogram-string-parentid-string-elementid-string-label-table-values-string-overlaytext-float-minimum-flt_min-float-maximum-flt_max-float-height-40">void AddPlotHistogram ( string ParentId, string ElementId, string Label = "", table Values, string OverlayText = "", float Minimum = FLT_MIN, float Maximum = FLT_MAX, float Height = 40 )<a class="headerlink" href="#void-addplothistogram-string-parentid-string-elementid-string-label-table-values-string-overlaytext-float-minimum-flt_min-float-maximum-flt_max-float-height-40" title="Permanent link">⚓︎</a></h4>
 <p>添加一个柱状图，将给定的数据显示为垂直条形。默认情况下，最小值和最大值是“动态”设置的，使图表能够完美适配其内容。</p>
+<hr />
 <h3 aria-label="Functions" id="addplotlines">AddPlotLines ()<a class="headerlink" href="#addplotlines" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addplotlines-string-parentid-string-elementid-string-label-table-values-string-overlaytext-float-minimum-flt_min-float-maximum-flt_max-float-height-40">void AddPlotLines ( string ParentId, string ElementId, string Label = "", table Values, string OverlayText = "", float Minimum = FLT_MIN, float Maximum = FLT_MAX, float Height = 40 )<a class="headerlink" href="#void-addplotlines-string-parentid-string-elementid-string-label-table-values-string-overlaytext-float-minimum-flt_min-float-maximum-flt_max-float-height-40" title="Permanent link">⚓︎</a></h4>
 <p>添加一个折线图，使用线条连接给定的值。默认情况下，最小值和最大值是“动态”设置的，使图表能够完美适配其内容。</p>
+<hr />
 <h3 aria-label="Functions" id="addprogressbar">AddProgressBar ()<a class="headerlink" href="#addprogressbar" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addprogressbar-string-parentid-string-elementid-string-label-float-progress-0-string-overlaytext-default">void AddProgressBar ( string ParentId, string ElementId, string Label = "", float Progress = 0, string OverlayText = "<strong>DEFAULT</strong>" )<a class="headerlink" href="#void-addprogressbar-string-parentid-string-elementid-string-label-float-progress-0-string-overlaytext-default" title="Permanent link">⚓︎</a></h4>
 <p>添加一个进度条元素。<code>progress</code> 值定义了填充百分比（范围从 <code>0</code> 到 <code>1</code>）。
-如果未定义 <code>overlayText</code>，进度条将在进度条内显示当前的填充状态百分比（例如，当 <code>progress</code> 设置为 0.5 时显示 50%）。
-如果 <code>label</code> 为空，进度条将在父元素的整个宽度上渲染。</p>
+如果未定义 <code>overlayText</code>，进度条将在进度条内显示当前的填充状态百分比（例如，当 <code>progress</code> 设置为 0.5 时显示 50%）。</p>
+<p>如果 <code>label</code> 为空，进度条将在父元素的整个宽度上渲染。</p>
+<hr />
 <h3 aria-label="Functions" id="addradiobuttons">AddRadioButtons ()<a class="headerlink" href="#addradiobuttons" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addradiobuttons-string-parentid-string-elementid-function-changecallback-nil-table-options-int-selectedindex-0-boolean-rendersameline-true">void AddRadioButtons ( string ParentId, string ElementId, function ChangeCallback = nil, table options, int SelectedIndex = 0, boolean renderSameLine = true )<a class="headerlink" href="#void-addradiobuttons-string-parentid-string-elementid-function-changecallback-nil-table-options-int-selectedindex-0-boolean-rendersameline-true" title="Permanent link">⚓︎</a></h4>
 <details class="example" open="open">
 <summary>Example Code</summary>
-</details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">ImGui</span><span class="p">.</span><span class="nf">AddRadioButtons</span><span class="p">(</span><span class="s2">&quot;catInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;radioButtons&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">index</span><span class="p">)</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="nv">index</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;Radio 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Radio 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Radio 3&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+</details>
+<hr />
 <h3 aria-label="Functions" id="addsliderfloat">AddSliderFloat ()<a class="headerlink" href="#addsliderfloat" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addsliderfloat-string-parentid-string-elementid-string-label-function-changecallback-nil-float-defaultval-0-float-min-integer_min-float-max-integer_max-string-formatting-3f">void AddSliderFloat ( string ParentId, string ElementId, string Label = "", function ChangeCallback = nil, float DefaultVal = 0, float Min = INTEGER_MIN, float Max = INTEGER_MAX, string Formatting = "%.3f" )<a class="headerlink" href="#void-addsliderfloat-string-parentid-string-elementid-string-label-function-changecallback-nil-float-defaultval-0-float-min-integer_min-float-max-integer_max-string-formatting-3f" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9099,35 +9074,45 @@
 <h4 aria-label="Functions" class="copyable" id="void-addtab-string-parentid-string-elementid-string-label">void AddTab ( string ParentId, string ElementId, string Label )<a class="headerlink" href="#void-addtab-string-parentid-string-elementid-string-label" title="Permanent link">⚓︎</a></h4>
 <p>父对象必须是一个标签栏（TabBar）。
 标签（Tab）是一个可点击的区域，点击后会显示另一个页面或区域。</p>
+<hr />
 <h3 aria-label="Functions" id="addtabbar">AddTabBar ()<a class="headerlink" href="#addtabbar" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addtabbar-string-parentid-string-elementid">void AddTabBar ( string ParentId, string ElementId )<a class="headerlink" href="#void-addtabbar-string-parentid-string-elementid" title="Permanent link">⚓︎</a></h4>
 <p>标签栏（TabBar）是一个用于存储标签（Tab）元素的容器。</p>
+<hr />
 <h3 aria-label="Functions" id="addtext">AddText ()<a class="headerlink" href="#addtext" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addtext-string-parentid-string-text-boolean-wraptext-false-string-elementid">void AddText ( string ParentId, string Text, boolean WrapText = false, string ElementId = "" )<a class="headerlink" href="#void-addtext-string-parentid-string-text-boolean-wraptext-false-string-elementid" title="Permanent link">⚓︎</a></h4>
 <p>如果后续代码需要编辑该文本，也可以设置元素 ID。
 创建一个文本元素。如果 <code>wrapText</code> 设置为 <code>true</code>，文本将在窗口边界处换行；如果设置为 <code>false</code>，窗口内容将扩展直到文本适应。</p>
+<hr />
 <h3 aria-label="Functions" id="createmenu">CreateMenu ()<a class="headerlink" href="#createmenu" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-createmenu-string-elementid-string-label">void CreateMenu ( string ElementId, string Label = "" )<a class="headerlink" href="#void-createmenu-string-elementid-string-label" title="Permanent link">⚓︎</a></h4>
 <p>在《以撒的结合：忏悔》拓展模组 REPOTOGON 的主菜单栏中创建一个条目。</p>
+<hr />
 <h3 aria-label="Functions" id="createwindow">CreateWindow ()<a class="headerlink" href="#createwindow" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-createwindow-string-elementid-string-title">void CreateWindow ( string ElementId, string Title = "" )<a class="headerlink" href="#void-createwindow-string-elementid-string-title" title="Permanent link">⚓︎</a></h4>
 <p>创建一个窗口对象。你需要使用 <code>LinkWindowToElement()</code> 或 <code>SetVisible()</code> 来切换窗口的可见性。</p>
+<hr />
 <h3 aria-label="Functions" id="elementexists">ElementExists ()<a class="headerlink" href="#elementexists" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-elementexists-string-elementid">boolean ElementExists ( string ElementId )<a class="headerlink" href="#boolean-elementexists-string-elementid" title="Permanent link">⚓︎</a></h4>
 <p>如果具有给定 ID 的元素已经存在，则返回 <code>true</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="getmouseposition">GetMousePosition ()<a class="headerlink" href="#getmouseposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-getmouseposition">void GetMousePosition ( )<a class="headerlink" href="#void-getmouseposition" title="Permanent link">⚓︎</a></h4>
 <p>返回鼠标在屏幕坐标中的位置。
 在使用 ImGui 时，请使用此函数代替 <code>Input.GetMousePosition()</code>！</p>
+<hr />
 <h3 aria-label="Functions" id="getvisible">GetVisible ()<a class="headerlink" href="#getvisible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-getvisible-string-elementid">boolean GetVisible ( string ElementId )<a class="headerlink" href="#boolean-getvisible-string-elementid" title="Permanent link">⚓︎</a></h4>
 <p>获取窗口元素是否可见。</p>
+<hr />
 <h3 aria-label="Functions" id="getwindowpinned">GetWindowPinned ()<a class="headerlink" href="#getwindowpinned" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-getwindowpinned-string-windowid">boolean GetWindowPinned ( string WindowId )<a class="headerlink" href="#boolean-getwindowpinned-string-windowid" title="Permanent link">⚓︎</a></h4>
 <p>获取窗口的固定状态。</p>
+<hr />
 <h3 aria-label="Functions" id="hide">Hide ()<a class="headerlink" href="#hide" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-hide">void Hide ( )<a class="headerlink" href="#void-hide" title="Permanent link">⚓︎</a></h4>
 <p>关闭 ImGui。</p>
+<hr />
 <h3 aria-label="Functions" id="imguitoworld">ImGuiToWorld ()<a class="headerlink" href="#imguitoworld" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-imguitoworld-vector-position">void ImGuiToWorld ( <a href="Vector.html">Vector</a> Position )<a class="headerlink" href="#void-imguitoworld-vector-position" title="Permanent link">⚓︎</a></h4>
 <p>将 ImGui 坐标转换为世界坐标。</p>
@@ -9135,15 +9120,16 @@
 <summary>Bug</summary>
 <p>当游戏的缩放因子超过最大渲染缩放时，此函数无法正常工作。</p>
 </details>
+<hr />
 <h3 aria-label="Functions" id="isvisible">IsVisible ()<a class="headerlink" href="#isvisible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isvisible">boolean IsVisible ( )<a class="headerlink" href="#boolean-isvisible" title="Permanent link">⚓︎</a></h4>
 <p>当玩家正在积极使用 ImGui 时调用。这不会由“固定”窗口触发。</p>
+<hr />
 <h3 aria-label="Functions" id="linkwindowtoelement">LinkWindowToElement ()<a class="headerlink" href="#linkwindowtoelement" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-linkwindowtoelement-string-windowid-string-elementid">void LinkWindowToElement ( string WindowId, string ElementId )<a class="headerlink" href="#void-linkwindowtoelement-string-windowid-string-elementid" title="Permanent link">⚓︎</a></h4>
 <p>将窗口或弹出元素连接到另一个元素，使该元素充当该窗口的“开关</p>
 <details class="- example">
 <summary>示例代码</summary>
-</details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -9154,18 +9140,24 @@
 <span class="nv">ImGui</span><span class="p">.</span><span class="nf">CreateWindow</span><span class="p">(</span><span class="s2">&quot;myWindow&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Some Window title&quot;</span><span class="p">)</span>
 <span class="nv">ImGui</span><span class="p">.</span><span class="nf">LinkWindowToElement</span><span class="p">(</span><span class="s2">&quot;myWindow&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;myButton&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+</details>
+<hr />
 <h3 aria-label="Functions" id="pushnotification">PushNotification ()<a class="headerlink" href="#pushnotification" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-pushnotification-string-text-imguinotificationtype-notificationtype-0-int-lifetime-5000">void PushNotification ( string Text, <a href="enums/ImGuiNotificationType.html">ImGuiNotificationType</a> notificationType = 0, int lifetime = 5000 )<a class="headerlink" href="#void-pushnotification-string-text-imguinotificationtype-notificationtype-0-int-lifetime-5000" title="Permanent link">⚓︎</a></h4>
 <p>以通知样式显示一个弹出消息窗口。</p>
+<hr />
 <h3 aria-label="Functions" id="removecallback">RemoveCallback ()<a class="headerlink" href="#removecallback" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-removecallback-string-elementid-imguicallback-type">void RemoveCallback ( string ElementId, <a href="enums/ImGuiCallback.html">ImGuiCallback</a> type )<a class="headerlink" href="#void-removecallback-string-elementid-imguicallback-type" title="Permanent link">⚓︎</a></h4>
 <p>从元素中移除指定类型的回调函数。</p>
+<hr />
 <h3 aria-label="Functions" id="removecolor">RemoveColor ()<a class="headerlink" href="#removecolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-removecolor-string-elementid-imguicolor-colortype">void RemoveColor ( string ElementId, <a href="enums/ImGuiColor.html">ImGuiColor</a> colorType )<a class="headerlink" href="#void-removecolor-string-elementid-imguicolor-colortype" title="Permanent link">⚓︎</a></h4>
 <p>从元素中移除指定类型的颜色修饰符。</p>
+<hr />
 <h3 aria-label="Functions" id="removeelement">RemoveElement ()<a class="headerlink" href="#removeelement" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-removeelement-string-elementid">void RemoveElement ( string ElementId )<a class="headerlink" href="#void-removeelement-string-elementid" title="Permanent link">⚓︎</a></h4>
 <p>用于移除任何类型元素的通用函数。</p>
+<hr />
 <h3 aria-label="Functions" id="removemenu">RemoveMenu ()<a class="headerlink" href="#removemenu" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-removemenu-string-elementid">void RemoveMenu ( string ElementId )<a class="headerlink" href="#void-removemenu-string-elementid" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -9175,40 +9167,51 @@
 <h3 aria-label="Functions" id="reset">Reset ()<a class="headerlink" href="#reset" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-reset">void Reset ( )<a class="headerlink" href="#void-reset" title="Permanent link">⚓︎</a></h4>
 <p>移除所有自定义定义的 ImGui 元素，并将 ImGui 恢复到其原始状态。</p>
+<hr />
 <h3 aria-label="Functions" id="setcolor">SetColor ()<a class="headerlink" href="#setcolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcolor-string-elementid-imguicolor-colortype-float-r-float-g-float-b-float-a-10">void SetColor ( string ElementId, <a href="enums/ImGuiColor.html">ImGuiColor</a> ColorType, float r, float g, float b, float a = 1.0 )<a class="headerlink" href="#void-setcolor-string-elementid-imguicolor-colortype-float-r-float-g-float-b-float-a-10" title="Permanent link">⚓︎</a></h4>
 <p>为指定元素添加颜色修饰符。</p>
+<hr />
 <h3 aria-label="Functions" id="sethelpmarker">SetHelpmarker ()<a class="headerlink" href="#sethelpmarker" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-sethelpmarker-string-elementid-string-text">void SetHelpmarker ( string ElementId, string Text )<a class="headerlink" href="#void-sethelpmarker-string-elementid-string-text" title="Permanent link">⚓︎</a></h4>
 <p>为指定元素添加一个帮助标记。帮助标记是一个显示在元素右侧的 <code>(?)</code> 元素，当鼠标悬停在其上时会显示一个工具提示。</p>
+<hr />
 <h3 aria-label="Functions" id="settextcolor">SetTextColor ()<a class="headerlink" href="#settextcolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-settextcolor-string-elementid-float-r-float-g-float-b-float-a-10">void SetTextColor ( string ElementId, float r, float g, float b, float a = 1.0 )<a class="headerlink" href="#void-settextcolor-string-elementid-float-r-float-g-float-b-float-a-10" title="Permanent link">⚓︎</a></h4>
 <p>为指定元素的文本添加颜色修饰符的快捷函数。</p>
+<hr />
 <h3 aria-label="Functions" id="settooltip">SetTooltip ()<a class="headerlink" href="#settooltip" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-settooltip-string-elementid-string-text">void SetTooltip ( string ElementId, string Text )<a class="headerlink" href="#void-settooltip-string-elementid-string-text" title="Permanent link">⚓︎</a></h4>
 <p>为指定元素添加一个工具提示。当用户将鼠标悬停在该元素上时，工具提示将显示出来。</p>
+<hr />
 <h3 aria-label="Functions" id="setvisible">SetVisible ()<a class="headerlink" href="#setvisible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setvisible-string-elementid-boolean-visible">void SetVisible ( string ElementId, boolean Visible )<a class="headerlink" href="#void-setvisible-string-elementid-boolean-visible" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="setwindowpinned">SetWindowPinned ()<a class="headerlink" href="#setwindowpinned" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setwindowpinned-string-windowid-boolean-pinned">void SetWindowPinned ( string WindowId, boolean Pinned )<a class="headerlink" href="#void-setwindowpinned-string-windowid-boolean-pinned" title="Permanent link">⚓︎</a></h4>
 <p>设置窗口的固定状态，使窗口在 ImGui 界面未激活时也保持可见。</p>
+<hr />
 <h3 aria-label="Functions" id="setwindowposition">SetWindowPosition ()<a class="headerlink" href="#setwindowposition" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setwindowposition-string-windowid-float-x-float-y">void SetWindowPosition ( string WindowId, float x, float y )<a class="headerlink" href="#void-setwindowposition-string-windowid-float-x-float-y" title="Permanent link">⚓︎</a></h4>
 <p>在屏幕坐标中设置窗口的位置。</p>
+<hr />
 <h3 aria-label="Functions" id="setwindowsize">SetWindowSize ()<a class="headerlink" href="#setwindowsize" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setwindowsize-string-windowid-float-width-float-height">void SetWindowSize ( string WindowId, float width, float Height )<a class="headerlink" href="#void-setwindowsize-string-windowid-float-width-float-height" title="Permanent link">⚓︎</a></h4>
 <p>以像素为单位设置窗口的宽度和高度。</p>
+<hr />
 <h3 aria-label="Functions" id="show">Show ()<a class="headerlink" href="#show" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-show">void Show ( )<a class="headerlink" href="#void-show" title="Permanent link">⚓︎</a></h4>
 <p>打开 ImGui 界面。</p>
+<hr />
 <h3 aria-label="Functions" id="updatedata">UpdateData ()<a class="headerlink" href="#updatedata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-updatedata-string-elementid-imguidata-datatype-int-newdatavalue">void UpdateData ( string ElementId, <a href="enums/ImGuiData.html">ImGuiData</a> DataType, int NewDataValue )<a class="headerlink" href="#void-updatedata-string-elementid-imguidata-datatype-int-newdatavalue" title="Permanent link">⚓︎</a></h4>
-<p>更新指定元素的任意数据。有关可能更新的数据，请参阅 <a href="enums/ImGuiData.html">ImGuiData</a>。
-数据类型和预期的新数据值是针对每个元素进行评估的。因此，如果你尝试更新某个元素中未使用的数据，此函数将抛出错误。</p>
+<p>更新指定元素的任意数据。有关可能更新的数据，请参阅 <a href="enums/ImGuiData.html">ImGuiData</a>。</p>
+<p>数据类型和预期的新数据值是针对每个元素进行评估的。因此，如果你尝试更新某个元素中未使用的数据，此函数将抛出错误。</p>
+<hr />
 <h3 aria-label="Functions" id="updatetext">UpdateText ()<a class="headerlink" href="#updatetext" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-updatetext-string-elementid-string-text">void UpdateText ( string ElementId, string Text )<a class="headerlink" href="#void-updatetext-string-elementid-string-text" title="Permanent link">⚓︎</a></h4>
 <p>更新元素文本或标签的快捷函数。</p>
+<hr />
 <h3 aria-label="Functions" id="worldtoimgui">WorldToImGui ()<a class="headerlink" href="#worldtoimgui" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-worldtoimgui-vector-position">void WorldToImGui ( <a href="Vector.html">Vector</a> Position )<a class="headerlink" href="#void-worldtoimgui-vector-position" title="Permanent link">⚓︎</a></h4>
 <p>将世界坐标转换为 ImGui 坐标。</p>
@@ -9216,6 +9219,7 @@
 <summary>Bug</summary>
 <p>当游戏的缩放因子超过最大渲染缩放时，此函数无法正常工作。</p>
 </details>
+<hr />
 
 
 

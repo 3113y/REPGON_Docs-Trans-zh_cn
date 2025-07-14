@@ -8221,24 +8221,30 @@
 <h3 aria-label="Functions" id="getcurrentwave">GetCurrentWave ()<a class="headerlink" href="#getcurrentwave" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getcurrentwave">int GetCurrentWave ( )<a class="headerlink" href="#int-getcurrentwave" title="Permanent link">⚓︎</a></h4>
 <p>返回当前挑战房或Boss冲刺房的当前波数。</p>
+<hr />
 <h3 aria-label="Functions" id="getmaxbosschallengewaves">GetMaxBossChallengeWaves ()<a class="headerlink" href="#getmaxbosschallengewaves" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getmaxbosschallengewaves">int GetMaxBossChallengeWaves ( )<a class="headerlink" href="#int-getmaxbosschallengewaves" title="Permanent link">⚓︎</a></h4>
 <p>返回Boss挑战房的最大波数。</p>
 <p>默认情况下，Boss挑战房的最大波数为 <code>2</code>。需要注意的是，模组可以修改Boss挑战房的最大波数。</p>
+<hr />
 <h3 aria-label="Functions" id="getmaxbossrushwaves">GetMaxBossrushWaves ()<a class="headerlink" href="#getmaxbossrushwaves" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getmaxbossrushwaves">int GetMaxBossrushWaves ( )<a class="headerlink" href="#int-getmaxbossrushwaves" title="Permanent link">⚓︎</a></h4>
 <p>返回Boss冲刺的最大波数。</p>
 <p>默认情况下，Boss冲刺的最大波数为 <code>15</code>。需要注意的是，模组可以修改Boss冲刺的最大波数。</p>
+<hr />
 <h3 aria-label="Functions" id="getmaxchallengewaves">GetMaxChallengeWaves ()<a class="headerlink" href="#getmaxchallengewaves" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getmaxchallengewaves">int GetMaxChallengeWaves ( )<a class="headerlink" href="#int-getmaxchallengewaves" title="Permanent link">⚓︎</a></h4>
 <p>默认情况下，挑战房的最大波数为 <code>3</code>。需要注意的是，模组可以修改挑战房的最大波数。
 返回挑战房的最大波数。</p>
+<hr />
 <h3 aria-label="Functions" id="getnextwave">GetNextWave ()<a class="headerlink" href="#getnextwave" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="roomconfigroom-getnextwave"><a href="RoomConfigRoom.html">RoomConfigRoom</a> GetNextWave ( )<a class="headerlink" href="#roomconfigroom-getnextwave" title="Permanent link">⚓︎</a></h4>
 <p>返回下一波挑战房的 <a href="RoomConfigRoom.html">RoomConfigRoom</a>。在挑战房外调用此函数将导致错误。</p>
+<hr />
 <h3 aria-label="Functions" id="getnextwaves">GetNextWaves ()<a class="headerlink" href="#getnextwaves" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="roomconfigroom-getnextwaves"><a href="RoomConfigRoom.html">RoomConfigRoom</a>[] GetNextWaves ( )<a class="headerlink" href="#roomconfigroom-getnextwaves" title="Permanent link">⚓︎</a></h4>
 <p>返回一个包含下几波挑战房的 <a href="RoomConfigRoom.html">RoomConfigRoom</a> 的表。</p>
+<hr />
 <h3 aria-label="Functions" id="setmaxbosschallengewaves">SetMaxBossChallengeWaves ()<a class="headerlink" href="#setmaxbosschallengewaves" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setmaxbosschallengewaves-int-waves">void SetMaxBossChallengeWaves ( int Waves )<a class="headerlink" href="#void-setmaxbosschallengewaves-int-waves" title="Permanent link">⚓︎</a></h4>
 <p>设置Boss挑战房的最大波数。</p>
@@ -8249,6 +8255,7 @@
 <h3 aria-label="Functions" id="setmaxbossrushwaves">SetMaxBossrushWaves ()<a class="headerlink" href="#setmaxbossrushwaves" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setmaxbossrushwaves-int-waves">void SetMaxBossrushWaves ( int Waves )<a class="headerlink" href="#void-setmaxbossrushwaves-int-waves" title="Permanent link">⚓︎</a></h4>
 <p>设置Boss冲刺的最大波数。截至目前，最大波数上限为 <code>25</code> 波。</p>
+<hr />
 <h3 aria-label="Functions" id="setmaxchallengewaves">SetMaxChallengeWaves ()<a class="headerlink" href="#setmaxchallengewaves" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setmaxchallengewaves-int-waves">void SetMaxChallengeWaves ( int Waves )<a class="headerlink" href="#void-setmaxchallengewaves-int-waves" title="Permanent link">⚓︎</a></h4>
 <p>设置挑战房的最大波数。</p>
@@ -8256,6 +8263,7 @@
 <summary>Bug</summary>
 <p>目前，此值在游戏重启时不会重置。一旦我们弄清楚如何在C++端的初始化时干净利落地运行代码，这个问题就会得到修复！</p>
 </details>
+<hr />
 <h3 aria-label="Functions" id="spawnbossrushwave">SpawnBossrushWave ()<a class="headerlink" href="#spawnbossrushwave" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-spawnbossrushwave">void SpawnBossrushWave ( )<a class="headerlink" href="#void-spawnbossrushwave" title="Permanent link">⚓︎</a></h4>
 <p>在当前房间生成一波Boss冲刺。</p>
@@ -8263,6 +8271,7 @@
 <summary>Bug</summary>
 <p>除非在当前游戏会话中至少触发过一次Boss冲刺，否则调用此函数将不会有任何效果。</p>
 </details>
+<hr />
 <h3 aria-label="Functions" id="spawnwave">SpawnWave ()<a class="headerlink" href="#spawnwave" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-spawnwave">void SpawnWave ( )<a class="headerlink" href="#void-spawnwave" title="Permanent link">⚓︎</a></h4>
 <p>生成与当前楼层相关的挑战房波次。</p>
@@ -8271,6 +8280,7 @@
 <p>如果当前楼层是蓝子宫，游戏也会崩溃。
 如果当前游戏模式是贪婪模式或更贪婪模式，调用此函数会导致游戏崩溃。</p>
 </details>
+<hr />
 <h3 aria-label="Functions" id="startchallenge">StartChallenge ()<a class="headerlink" href="#startchallenge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-startchallenge">void StartChallenge ( )<a class="headerlink" href="#void-startchallenge" title="Permanent link">⚓︎</a></h4>
 <p>触发挑战房或Boss冲刺。</p>
@@ -8278,6 +8288,7 @@
 <summary>Bug</summary>
 <p>在Boss冲刺房或挑战房外调用此函数除了会永久关闭门之外不会有任何效果，从而导致软锁定。</p>
 </details>
+<hr />
 
 
 

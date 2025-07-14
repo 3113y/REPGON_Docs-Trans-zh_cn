@@ -3318,6 +3318,39 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      译者注
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coloremberfade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color.EmberFade
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#colorlaseralmond" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8400,6 +8433,39 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      译者注
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coloremberfade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color.EmberFade
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#colorlaseralmond" class="md-nav__link">
     <span class="md-ellipsis">
@@ -8790,23 +8856,36 @@
 <h3 aria-label="Modified Constructors" id="color">Color ()<a class="headerlink" href="#color" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Constructors" class="copyable" id="color-color-float-r-1-float-g-1-float-b-1-float-a-1-float-ro-0-float-go-0-float-bo-0-float-rc-0-float-gc-0-float-bc-0-float-ac-0"><a href="Color.html">Color</a> Color ( float R = 1, float G = 1, float B = 1, float A = 1, float RO = 0, float GO = 0, float BO = 0, float RC = 0, float GC = 0, float BC = 0, float AC = 0 )<a class="headerlink" href="#color-color-float-r-1-float-g-1-float-b-1-float-a-1-float-ro-0-float-go-0-float-bo-0-float-rc-0-float-gc-0-float-bc-0-float-ac-0" title="Permanent link">⚓︎</a></h4>
 <p>所有参数现在都是可选的。现在可以通过构造函数设置 <code>Colorize</code>。</p>
+<hr />
 <h3 aria-label="Functions" id="getcolorize">GetColorize ()<a class="headerlink" href="#getcolorize" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getcolorize">table GetColorize ( )<a class="headerlink" href="#table-getcolorize" title="Permanent link">⚓︎</a></h4>
 <p>返回一个表格，对应颜色当前的 Colorize 值：<code>{R, G, B, A}</code></p>
+<hr />
 <h3 aria-label="Functions" id="getoffset">GetOffset ()<a class="headerlink" href="#getoffset" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getoffset">table GetOffset ( )<a class="headerlink" href="#table-getoffset" title="Permanent link">⚓︎</a></h4>
 <p>返回一个表格，对应颜色当前的 Offset 值：<code>{R, G, B}</code>
 虽然 <a href="https://wofsauge.github.io/IsaacDocs/rep/Color.html">Color</a> 类已经包含了用于此目的的 <a href="https://wofsauge.github.io/IsaacDocs/rep/Color.html#ro">.RO</a>、<a href="https://wofsauge.github.io/IsaacDocs/rep/Color.html#go">.GO</a> 和 <a href="https://wofsauge.github.io/IsaacDocs/rep/Color.html#bo">.BO</a> 变量，但在需要访问所有三个值的情况下，GetOffset() 的速度被测量为快约 30%，因此在这种情况下建议使用它。当访问两个变量时，性能几乎相同；当访问一个变量时，性能更差。在只需要一个或两个偏移值的情况下，请继续使用变量。</p>
+<hr />
 <h3 aria-label="Functions" id="gettint">GetTint ()<a class="headerlink" href="#gettint" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-gettint">table GetTint ( )<a class="headerlink" href="#table-gettint" title="Permanent link">⚓︎</a></h4>
 <p>返回一个表格，对应颜色当前的 Tint 值：<code>{R, G, B, A}</code></p>
+<hr />
 <h3 aria-label="Functions" id="print">Print ()<a class="headerlink" href="#print" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-print">string Print ( )<a class="headerlink" href="#string-print" title="Permanent link">⚓︎</a></h4>
 <p>返回颜色对象的字符串表示形式。</p>
+<hr />
 <h3 aria-label="Functions" id="__tostring">__tostring ()<a class="headerlink" href="#__tostring" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Operators" class="copyable" id="string-__tostring">string __tostring ( )<a class="headerlink" href="#string-__tostring" title="Permanent link">⚓︎</a></h4>
 <p>这允许通过 <code>print(myColorObj)</code> 直接打印对象。
-创建颜色对象的字符串表示形式。### Color.EmberFade {: aria-label='Constants' }</p>
+创建颜色对象的字符串表示形式。</p>
+<hr />
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">⚓︎</a></h2>
+<h3 id="_1">译者注<a class="headerlink" href="#_1" title="Permanent link">⚓︎</a></h3>
+<p>下方函数均为修改实体/激光/泪弹为对应某道具的颜色</p>
+<p>例如<code>Color.LaserAlmond</code>为将<code>激光</code>设为拥有道具<code>杏仁奶</code>时的颜色。</p>
+<p>因此，如有需要，请前往<a href="https://isaac.huijiwiki.com/wiki/">以撒Wiki</a>查找想要颜色的道具英文名称后来本界面搜索</p>
+<hr />
+<h3 aria-label="Constants" id="coloremberfade">Color.EmberFade<a class="headerlink" href="#coloremberfade" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Constants" class="copyable" id="color-emberfade"><a href="Color.html">Color</a> EmberFade<a class="headerlink" href="#color-emberfade" title="Permanent link">⚓︎</a></h4>
 <p>Used for enemies like Crackles and Coal Spiders. This color has a hardcoded special property; gibs start orange and fade into grey.</p>
 <details class="- info">

@@ -13759,7 +13759,7 @@
 
 
 <h1 id="class-entityplayer">Class "EntityPlayer"<a class="headerlink" href="#class-entityplayer" title="Permanent link">⚓︎</a></h1>
-<p>This class contains both new functions and modified reimplementations of existing ones.</p>
+<p>这个类既包含新功能，也包含对现有功能的修改后的重新实现.</p>
 <h2 id="class-diagram">Class Diagram<a class="headerlink" href="#class-diagram" title="Permanent link">⚓︎</a></h2>
 <div class="mermaidDiagram">
 <pre class="mermaid"><code>    classDiagram
@@ -13805,11 +13805,11 @@
 <p>现在接受一个可选的布尔值，用于确定在添加缓存标志后是否应自动调用 <a href="EntityPlayer.html">EntityPlayer</a>:EvaluateItems()。在大多数情况下，你可能希望这样做。</p>
 <h3 aria-label="Modified Functions" id="addcollectibleeffect">AddCollectibleEffect, ()<a class="headerlink" href="#addcollectibleeffect" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-addcollectibleeffect-collectibletype-ctype-bool-applycostume-int-cooldown-vanillacd-bool-additive-true">void AddCollectibleEffect ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> ctype, bool applycostume, int cooldown = vanillacd, bool additive = true )<a class="headerlink" href="#void-addcollectibleeffect-collectibletype-ctype-bool-applycostume-int-cooldown-vanillacd-bool-additive-true" title="Permanent link">⚓︎</a></h4>
-<p>Shortcut of TemporaryEffects:AddCollectibleEffect with extra args to handle cooldown. The additive parameter determines if the cooldown should be added to the preexistent cooldown value or if it should be set for that value. You can use negative cooldown values with additive to reduce preexistent cooldown.</p>
+<p>这是 <code>TemporaryEffects:AddCollectibleEffect</code> 的快捷方式，附带额外参数来处理冷却时间。<code>additive</code> 参数决定冷却时间是应添加到已有的冷却值上，还是应设置为该值。你可以结合 <code>additive</code> 使用负的冷却时间值，以减少已有的冷却时间.</p>
 <hr />
 <h3 aria-label="Modified Functions" id="addnullitemeffect">AddNullItemEffect, ()<a class="headerlink" href="#addnullitemeffect" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-addnullitemeffect-int-nullitemid-bool-applycostume-int-cooldown-vanillacd-bool-additive-true">void AddNullItemEffect ( int nullItemid, bool applycostume, int cooldown = vanillacd, bool additive = true )<a class="headerlink" href="#void-addnullitemeffect-int-nullitemid-bool-applycostume-int-cooldown-vanillacd-bool-additive-true" title="Permanent link">⚓︎</a></h4>
-<p>Shortcut of TemporaryEffects:AddNullItemEffect with extra args to handle cooldown. The additive parameter determines if the cooldown should be added to the preexistent cooldown value or if it should be set for that value. You can use negative cooldown values with additive to reduce preexistent cooldown.</p>
+<p>这是 <code>TemporaryEffects:AddNullItemEffect</code> 的快捷方式，附带额外参数来处理冷却时间。<code>additive</code> 参数决定冷却时间是应添加到已有的冷却值上，还是应设置为该值。你可以结合 <code>additive</code> 使用负的冷却时间值，以减少已有的冷却时间.</p>
 <hr />
 <h3 aria-label="Modified Functions" id="cleardeadeyecharge">ClearDeadEyeCharge ()<a class="headerlink" href="#cleardeadeyecharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-cleardeadeyecharge-boolean-force-false">void ClearDeadEyeCharge ( boolean Force = false )<a class="headerlink" href="#void-cleardeadeyecharge-boolean-force-false" title="Permanent link">⚓︎</a></h4>
@@ -13831,16 +13831,16 @@
 <p>现在接受一个 <code>IgnoreSpoof</code> 参数，该参数会忽略固有物品。</p>
 <h3 aria-label="Modified Variables" id="babyskin">BabySkin<a class="headerlink" href="#babyskin" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Variables" class="copyable" id="babysubtype-babyskin"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/BabySubType.html">BabySubType</a> BabySkin<a class="headerlink" href="#babysubtype-babyskin" title="Permanent link">⚓︎</a></h4>
-<p>Same as default, but now returns a proper integer value instead of userdata.</p>
+<p>与默认行为相同，但现在会返回正确的整数值而非用户数据.</p>
 <hr />
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Functions" id="addactivecharge">AddActiveCharge ()<a class="headerlink" href="#addactivecharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-addactivecharge-int-charge-activeslot-slot-boolean-flashhud-true-boolean-overcharge-false-boolean-force-false">int AddActiveCharge ( int Charge, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html">ActiveSlot</a> Slot, boolean FlashHUD = true, boolean Overcharge = false, boolean Force = false )<a class="headerlink" href="#int-addactivecharge-int-charge-activeslot-slot-boolean-flashhud-true-boolean-overcharge-false-boolean-force-false" title="Permanent link">⚓︎</a></h4>
 <p>返回实际添加的充能数量，该数量可能会受到目标物品的最大充能值限制。</p>
 <details class="- info">
-<summary>信息</summary>
-</details>
+<summary>Info</summary>
 <p><code>FlashHUD</code> 似乎是多余的。无论使用 <code>true</code> 还是 <code>false</code>，充能条都会闪烁。</p>
+</details>
 <h3 aria-label="Functions" id="addboneorbital">AddBoneOrbital ()<a class="headerlink" href="#addboneorbital" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addboneorbital-vector-position">void AddBoneOrbital ( <a href="Vector.html">Vector</a> Position )<a class="headerlink" href="#void-addboneorbital-vector-position" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -13850,39 +13850,37 @@
 <h3 aria-label="Functions" id="addinnatecollectible">AddInnateCollectible ()<a class="headerlink" href="#addinnatecollectible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addinnatecollectible-collectibletype-collectible-int-amount-1">void AddInnateCollectible ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> Collectible, int Amount = 1 )<a class="headerlink" href="#void-addinnatecollectible-collectibletype-collectible-int-amount-1" title="Permanent link">⚓︎</a></h4>
 <details class="bug" open="open">
-<summary>漏洞</summary>
-</details>
+<summary>Bug</summary>
 <p>目前此函数会直接修改 WispCollectiblesList 的内容，因此如果此列表在精灵初始化/删除时更新，或者玩家退出游戏，你添加的固有物品将不会被保存。</p>
+</details>
 <h3 aria-label="Functions" id="addleprosy">AddLeprosy ()<a class="headerlink" href="#addleprosy" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addleprosy">void AddLeprosy ( )<a class="headerlink" href="#void-addleprosy" title="Permanent link">⚓︎</a></h4>
-<p>目前此功能仍然限制最多生成三个跟班，若要更改此限制，需要进一步修改。</p>
 <details class="info" open="open">
-<summary>信息</summary>
+<summary>Info</summary>
+<p>目前此功能仍然限制最多生成三个跟班，若要更改此限制，需要进一步修改。</p>
 </details>
 <h3 aria-label="Functions" id="addlocust">AddLocust ()<a class="headerlink" href="#addlocust" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-addlocust-collectibletype-collectible-vector-position">void AddLocust ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> Collectible, <a href="Vector.html">Vector</a> Position )<a class="headerlink" href="#void-addlocust-collectibletype-collectible-vector-position" title="Permanent link">⚓︎</a></h4>
-<ul>
-<li>Scorpio</li>
-<li>Mutant Spider</li>
-<li>120 Volt</li>
-<li>Breakfast (default)</li>
-<li>Brimstone</li>
-<li>Number One</li>
-<li>The Inner Eye</li>
-<li>The Common Cold</li>
-<li>Jacob's Ladder</li>
-<li>Blood of the Martyr</li>
-<li>Halo of Flies</li>
-<li>Spoon Bender</li>
-<li>Ipecac</li>
-<li>Cricket's Head</li>
-</ul>
 <details class="- info">
-<summary>支持的物品</summary>
-</details>
+<summary>Supported Items</summary>
 <p>有一些物品会生成独特的蝗虫
 - Fire Mind
-- Holy Light</p>
+- Holy Light
+- Scorpio
+- Mutant Spider
+- 120 Volt
+- Breakfast (default)
+- Brimstone
+- Number One
+- The Inner Eye
+- The Common Cold
+- Jacob's Ladder
+- Blood of the Martyr
+- Halo of Flies
+- Spoon Bender
+- Ipecac
+- Cricket's Head</p>
+</details>
 <h3 aria-label="Functions" id="addsmeltedtrinket">AddSmeltedTrinket ()<a class="headerlink" href="#addsmeltedtrinket" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-addsmeltedtrinket-trinkettype-trinket-boolean-firsttimepickingup-true">boolean AddSmeltedTrinket ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html">TrinketType</a> Trinket, boolean FirstTimePickingUp = true )<a class="headerlink" href="#boolean-addsmeltedtrinket-trinkettype-trinket-boolean-firsttimepickingup-true" title="Permanent link">⚓︎</a></h4>
 <p>直接将一个吞下的饰品添加到玩家的库存中。如果饰品成功添加，则返回 <code>true</code>，否则返回 <code>false</code>。</p>
@@ -13897,19 +13895,15 @@
 <hr />
 <h3 aria-label="Functions" id="cancrushrocks">CanCrushRocks ()<a class="headerlink" href="#cancrushrocks" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-cancrushrocks">boolean CanCrushRocks ( )<a class="headerlink" href="#boolean-cancrushrocks" title="Permanent link">⚓︎</a></h4>
-<ul>
-<li>The Nail</li>
-</ul>
 <details class="- info">
 <summary>Info</summary>
+<p>如果玩家拥有以下物品/效果/变身之一，则返回 <code>true</code>。
+- The Nail
+- Thunder Thighs
+- Leo
+- Stompy
+- Mega Mush</p>
 </details>
-<ul>
-<li>Thunder Thighs</li>
-<li>Leo</li>
-<li>Stompy</li>
-<li>Mega Mush
-如果玩家拥有以下物品/效果/变身之一，则返回 <code>true</code>。</li>
-</ul>
 <h3 aria-label="Functions" id="canoverrideactiveitem">CanOverrideActiveItem ()<a class="headerlink" href="#canoverrideactiveitem" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-canoverrideactiveitem-activeslot-slot">boolean CanOverrideActiveItem ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html">ActiveSlot</a> Slot )<a class="headerlink" href="#boolean-canoverrideactiveitem-activeslot-slot" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -13936,9 +13930,9 @@
 <hr />
 <h3 aria-label="Functions" id="firebrimstoneball">FireBrimstoneBall ()<a class="headerlink" href="#firebrimstoneball" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityeffect-firebrimstoneball-vector-position-vector-velocity-vector-offset-vectorzero"><a href="EntityEffect.html">EntityEffect</a> FireBrimstoneBall ( <a href="Vector.html">Vector</a> Position, <a href="Vector.html">Vector</a> Velocity, <a href="Vector.html">Vector</a> Offset = Vector.Zero )<a class="headerlink" href="#entityeffect-firebrimstoneball-vector-position-vector-velocity-vector-offset-vectorzero" title="Permanent link">⚓︎</a></h4>
-<p>如果玩家拥有科技 X，此函数还会发射一个 <a href="EntityLaser.html">EntityLaser</a>。激光将以硫磺火球效果为父对象，但不清楚该效果是否也会链接回激光。</p>
 <details class="info" open="open">
-<summary>信息</summary>
+<summary>Info</summary>
+<p>如果玩家拥有科技 X，此函数还会发射一个 <a href="EntityLaser.html">EntityLaser</a>。激光将以硫磺火球效果为父对象，但不清楚该效果是否也会链接回激光。</p>
 </details>
 <h3 aria-label="Functions" id="getactiveitemdesc">GetActiveItemDesc ()<a class="headerlink" href="#getactiveitemdesc" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="activeitemdesc-getactiveitemdesc-activeslot-slot-activeslotslot_primary"><a href="https://wofsauge.github.io/IsaacDocs/rep/PlayerTypes_ActiveItemDesc.html">ActiveItemDesc</a> GetActiveItemDesc ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html">ActiveSlot</a> Slot = ActiveSlot.SLOT_PRIMARY )<a class="headerlink" href="#activeitemdesc-getactiveitemdesc-activeslot-slot-activeslotslot_primary" title="Permanent link">⚓︎</a></h4>
@@ -13987,12 +13981,12 @@
 <p>返回一个表，其中包含玩家拥有的每个收藏品的数量，不计算固有物品。</p>
 <details class="- example">
 <summary>示例代码</summary>
-</details>
 <p>这段代码打印玩家拥有的悲伤洋葱的数量
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">local</span><span class="w"> </span><span class="nv">collectiblesList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">player</span><span class="p">:</span><span class="nf">GetCollectiblesList</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="nv">collectiblesList</span><span class="p">[</span><span class="nv">CollectibleType</span><span class="p">.</span><span class="py">COLLECTIBLE_SAD_ONION</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div></p>
+</details>
 <h3 aria-label="Functions" id="getconceptionfamiliarflags">GetConceptionFamiliarFlags ()<a class="headerlink" href="#getconceptionfamiliarflags" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getconceptionfamiliarflags">int GetConceptionFamiliarFlags ( )<a class="headerlink" href="#int-getconceptionfamiliarflags" title="Permanent link">⚓︎</a></h4>
 <p>返回一个位掩码，对应由圣灵受胎 / 恶魔受胎生成的跟班。此位掩码提供的额外跟班在跟班缓存评估期间生成，但仅当玩家拥有这两个物品之一时才会生成.</p>
@@ -14007,12 +14001,10 @@
 | isBodyLayer | boolean | 若服装是身体服装则为 <code>true</code> ，否则（包括该层无服装时）为 <code>false</code>. |</p>
 <details class="- info">
 <summary>More Layer Map Info</summary>
-</details>
 <p>返回表格的索引顺序与 <code>PlayerSpriteLayer</code> 对应。但由于 Lua 和 C++ 数组起始索引的差异，<code>CostumeLayerMap</code> 的索引需减 1 ，且其 <code>costumeIndex</code> 需加 1 才能获取准确信息</p>
 <p>下方代码片段用于显示所有当前已占用的服装层，打印内容格式为：<code>PlayerSpriteLayer - 层名称 - 物品名称/NullItemID - Anm2 文件路径</code> </p>
 <details class="example" open="open">
 <summary>Example Code</summary>
-</details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -14045,6 +14037,8 @@
 <span class="w">    </span><span class="kr">end</span>
 <span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------------------------&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+</details>
+</details>
 <h3 aria-label="Functions" id="getcostumespritedescs">GetCostumeSpriteDescs ()<a class="headerlink" href="#getcostumespritedescs" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="costumespritedesc-getcostumespritedescs"><a href="CostumeSpriteDesc.html">CostumeSpriteDesc</a>[] GetCostumeSpriteDescs ( )<a class="headerlink" href="#costumespritedesc-getcostumespritedescs" title="Permanent link">⚓︎</a></h4>
 <p>返回一个 <a href="CostumeSpriteDesc.html">CostumeSpriteDesc</a> 类型的表。</p>
@@ -14066,22 +14060,20 @@
 <hr />
 <h3 aria-label="Functions" id="getdamagemodifier">GetDamageModifier ()<a class="headerlink" href="#getdamagemodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getdamagemodifier">int GetDamageModifier ( )<a class="headerlink" href="#int-getdamagemodifier" title="Permanent link">⚓︎</a></h4>
-<p>该修饰符以固定伤害的形式应用于玩家。
-“实验性治疗” 根据随机生成的伤害值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>该修饰符以固定伤害的形式应用于玩家。</p>
+<p>“实验性治疗” 根据随机生成的伤害值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="getdeadeyecharge">GetDeadEyeCharge ()<a class="headerlink" href="#getdeadeyecharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getdeadeyecharge">int GetDeadEyeCharge ( )<a class="headerlink" href="#int-getdeadeyecharge" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getdeathanimname">GetDeathAnimName ()<a class="headerlink" href="#getdeathanimname" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="string-getdeathanimname">string GetDeathAnimName ( )<a class="headerlink" href="#string-getdeathanimname" title="Permanent link">⚓︎</a></h4>
-<ul>
-<li><code>LostDeath</code> - 当玩家扮演 “迷失者”、处于 “迷失者诅咒” 状态、扮演 “遗忘者之魂” 或处于 “堕落雅各布的幽灵形态” 时。
-返回玩家死亡动画的名称。
-可能返回以下字符串：</li>
-<li><code>Death</code> - 常规死亡动画名称。</li>
-</ul>
+<p>返回玩家死亡动画的名称。</p>
 <details class="info" open="open">
-<summary>返回信息</summary>
+<summary>Return info</summary>
+<p>可能返回以下字符串：
+- <code>Death</code> - 常规死亡动画名称。
+- <code>LostDeath</code> - 当玩家扮演 “游魂”、处于 “Lost Curse” 状态、扮演 “遗骸之魂” 或处于 “堕化雅各之魂” 时。</p>
 </details>
 <h3 aria-label="Functions" id="getedendamage">GetEdenDamage ()<a class="headerlink" href="#getedendamage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="float-getedendamage">float GetEdenDamage ( )<a class="headerlink" href="#float-getedendamage" title="Permanent link">⚓︎</a></h4>
@@ -14112,15 +14104,15 @@
 <hr />
 <h3 aria-label="Functions" id="getevesumptoriumcharge">GetEveSumptoriumCharge ()<a class="headerlink" href="#getevesumptoriumcharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getevesumptoriumcharge">int GetEveSumptoriumCharge ( )<a class="headerlink" href="#int-getevesumptoriumcharge" title="Permanent link">⚓︎</a></h4>
-<p>返回 “堕落夏娃” 固有 “吸食器” 能力的当前充能值。</p>
+<p>返回 “堕化夏娃” 固有 “圣血吸管” 能力的当前充能值。</p>
 <h3 aria-label="Functions" id="getfiredelaymodifier">GetFireDelayModifier ()<a class="headerlink" href="#getfiredelaymodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getfiredelaymodifier">int GetFireDelayModifier ( )<a class="headerlink" href="#int-getfiredelaymodifier" title="Permanent link">⚓︎</a></h4>
-<p>“实验性治疗” 根据随机生成的射击延迟值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-为玩家提供 <code>0.5 * 修饰符</code> 的固定每秒眼泪数。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>为玩家提供 <code>0.5 * 修饰符</code> 的固定每秒眼泪数。</p>
+<p>“实验性治疗” 根据随机生成的射击延迟值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="getflippedform">GetFlippedForm ()<a class="headerlink" href="#getflippedform" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityplayer-getflippedform"><a href="EntityPlayer.html">EntityPlayer</a> GetFlippedForm ( )<a class="headerlink" href="#entityplayer-getflippedform" title="Permanent link">⚓︎</a></h4>
-<p>返回当前角色的翻转形态（仅适用于 “堕落拉撒路”）。
+<p>返回当前角色的翻转形态（仅适用于 “堕化拉撒路”）。
 否则返回 <code>nil</code>。</p>
 <h3 aria-label="Functions" id="getfocusentity">GetFocusEntity ()<a class="headerlink" href="#getfocusentity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entity-getfocusentity"><a href="Entity.html">Entity</a> GetFocusEntity ( )<a class="headerlink" href="#entity-getfocusentity" title="Permanent link">⚓︎</a></h4>
@@ -14134,7 +14126,7 @@
 <hr />
 <h3 aria-label="Functions" id="getglyphofbalancedrop">GetGlyphOfBalanceDrop ()<a class="headerlink" href="#getglyphofbalancedrop" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getglyphofbalancedrop-int-variant-1-int-subtype-1">table GetGlyphOfBalanceDrop ( int Variant = -1, int SubType = -1 )<a class="headerlink" href="#table-getglyphofbalancedrop-int-variant-1-int-subtype-1" title="Permanent link">⚓︎</a></h4>
-<p>返回一个表，其中包含可能掉落的 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Glyph_of_Balance">平衡符文</a> 的变体和子类型。</p>
+<p>返回一个表，其中包含可能掉落的 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Glyph_of_Balance">平衡符号</a> 的变体和子类型。</p>
 <h3 aria-label="Functions" id="getgnawedleaftimer">GetGnawedLeafTimer ()<a class="headerlink" href="#getgnawedleaftimer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getgnawedleaftimer">int GetGnawedLeafTimer ( )<a class="headerlink" href="#int-getgnawedleaftimer" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -14143,7 +14135,7 @@
 <hr />
 <h3 aria-label="Functions" id="gethallowedgroundcountdown">GetHallowedGroundCountdown ()<a class="headerlink" href="#gethallowedgroundcountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-gethallowedgroundcountdown">int GetHallowedGroundCountdown ( )<a class="headerlink" href="#int-gethallowedgroundcountdown" title="Permanent link">⚓︎</a></h4>
-<p>返回玩家从 “神圣之地/伯利恒之星” 光环中保留属性的宽限期倒计时。</p>
+<p>返回玩家从 “圣地大便/伯列恒之星” 光环中保留属性的宽限期倒计时。</p>
 <h3 aria-label="Functions" id="getheaddirectionlocktime">GetHeadDirectionLockTime ()<a class="headerlink" href="#getheaddirectionlocktime" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getheaddirectionlocktime">int GetHeadDirectionLockTime ( )<a class="headerlink" href="#int-getheaddirectionlocktime" title="Permanent link">⚓︎</a></h4>
 <p>玩家头部应强制保持当前方向的时长。<code>-1</code>（或更低）表示当前方向未被锁定。</p>
@@ -14153,7 +14145,7 @@
 <h3 aria-label="Functions" id="getheldentity">GetHeldEntity ()<a class="headerlink" href="#getheldentity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entity-getheldentity"><a href="Entity.html">Entity</a> GetHeldEntity ( )<a class="headerlink" href="#entity-getheldentity" title="Permanent link">⚓︎</a></h4>
 <p>如果玩家当前没有手持实体，则返回 <code>nil</code>。
-返回玩家举在头顶的实体，例如可投掷的红色炸弹或 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Suplex!">抱摔！</a>。</p>
+返回玩家举在头顶的实体，例如可投掷的红色炸弹或 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Suplex!">背摔！</a>。</p>
 <h3 aria-label="Functions" id="getheldsprite">GetHeldSprite ()<a class="headerlink" href="#getheldsprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="sprite-getheldsprite"><a href="Sprite.html">Sprite</a> GetHeldSprite ( )<a class="headerlink" href="#sprite-getheldsprite" title="Permanent link">⚓︎</a></h4>
 <p>获取玩家进行涉及将精灵举在头顶的动画时使用的 <a href="Sprite.html">Sprite</a> 对象，例如使用主动道具时。</p>
@@ -14165,22 +14157,22 @@
 <p>返回玩家使用 “圣灵受胎” 道具收集到的红心数量。在生成跟班/魂心后重置为 0。</p>
 <h3 aria-label="Functions" id="getkeeperssackbonus">GetKeepersSackBonus ()<a class="headerlink" href="#getkeeperssackbonus" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getkeeperssackbonus">int GetKeepersSackBonus ( )<a class="headerlink" href="#int-getkeeperssackbonus" title="Permanent link">⚓︎</a></h4>
-<p>获取玩家持有 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack">“守护者之袋”</a> 时花费的硬币数量。</p>
+<p>获取玩家持有 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack">“店主的胯袋”</a> 时花费的硬币数量。</p>
 <h3 aria-label="Functions" id="getlasercolor">GetLaserColor ()<a class="headerlink" href="#getlasercolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="color-getlasercolor"><a href="Color.html">Color</a> GetLaserColor ( )<a class="headerlink" href="#color-getlasercolor" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getluckmodifier">GetLuckModifier ()<a class="headerlink" href="#getluckmodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getluckmodifier">int GetLuckModifier ( )<a class="headerlink" href="#int-getluckmodifier" title="Permanent link">⚓︎</a></h4>
-<p>“实验性治疗” 根据随机生成的幸运值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-该修饰符直接添加到玩家的幸运属性上。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>该修饰符直接添加到玩家的幸运属性上。</p>
+<p>“实验性治疗” 根据随机生成的幸运值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="getmaggyswingcooldown">GetMaggySwingCooldown ()<a class="headerlink" href="#getmaggyswingcooldown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getmaggyswingcooldown">int GetMaggySwingCooldown ( )<a class="headerlink" href="#int-getmaggyswingcooldown" title="Permanent link">⚓︎</a></h4>
-<p>返回 “堕落抹大拉” 受到伤害后挥击攻击的冷却剩余帧数。如果玩家不是 “堕落抹大拉”，则返回 <code>0</code>。</p>
+<p>返回 “堕化抹大拉” 受到伤害后挥击攻击的冷却剩余帧数。如果玩家不是 “堕化抹大拉”，则返回 <code>0</code>。</p>
 <h3 aria-label="Functions" id="getmarkedtarget">GetMarkedTarget ()<a class="headerlink" href="#getmarkedtarget" title="Permanent link">⚓︎</a></h3>
 <h4 :=":" aria-label="Functions" class="copyable" id="entityeffect-getmarkedtarget"><a href="https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html">EntityEffect</a> GetMarkedTarget ( )<a class="headerlink" href="#entityeffect-getmarkedtarget" title="Permanent link">⚓︎</a></h4>
-<p>如果目标未显示在地面上，此函数返回 <code>nil</code>。
-返回代表 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Marked">标记</a> 道具目标的实体效果。</p>
+<p>返回代表 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Marked">标记</a> 道具目标的实体效果。</p>
+<p>如果目标未显示在地面上，此函数返回 <code>nil</code>。</p>
 <h3 aria-label="Functions" id="getmaxbladdercharge">GetMaxBladderCharge ()<a class="headerlink" href="#getmaxbladdercharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getmaxbladdercharge">int GetMaxBladderCharge ( )<a class="headerlink" href="#int-getmaxbladdercharge" title="Permanent link">⚓︎</a></h4>
 <p>返回玩家停止射击并为 “肾结石” 道具充能时的最大充能值。</p>
@@ -14236,38 +14228,74 @@
 用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
 <h3 aria-label="Functions" id="getsmeltedtrinkets">GetSmeltedTrinkets ()<a class="headerlink" href="#getsmeltedtrinkets" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getsmeltedtrinkets">table GetSmeltedTrinkets ( )<a class="headerlink" href="#table-getsmeltedtrinkets" title="Permanent link">⚓︎</a></h4>
-<p>返回一个包含熔炼饰品及其对应数量的表。返回的表包含以下字段：
-|:--|:--|:--|
-|字段|类型|说明|
-| goldenTrinketAmount | int | |
-| trinketAmount | int | |</p>
+<p>返回一个包含熔炼饰品及其对应数量的表。返回的表包含以下字段：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">字段</th>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">goldenTrinketAmount</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">trinketAmount</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
 <h3 aria-label="Functions" id="getspecialgridcollision">GetSpecialGridCollision ()<a class="headerlink" href="#getspecialgridcollision" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getspecialgridcollision-vector-position-selfposition">int GetSpecialGridCollision ( <a href="Vector.html">Vector</a> Position = self.Position )<a class="headerlink" href="#int-getspecialgridcollision-vector-position-selfposition" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="getspeedmodifier">GetSpeedModifier ()<a class="headerlink" href="#getspeedmodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getspeedmodifier">int GetSpeedModifier ( )<a class="headerlink" href="#int-getspeedmodifier" title="Permanent link">⚓︎</a></h4>
-<p>为玩家的移动速度增加 <code>0.2 * 修饰符</code>。
-“实验性治疗” 根据随机生成的移动速度值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>为玩家的移动速度增加 <code>0.2 * 修饰符</code>。</p>
+<p>“实验性治疗” 根据随机生成的移动速度值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="getspoofedcollectibleslist">GetSpoofedCollectiblesList ()<a class="headerlink" href="#getspoofedcollectibleslist" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getspoofedcollectibleslist">table[] GetSpoofedCollectiblesList ( )<a class="headerlink" href="#table-getspoofedcollectibleslist" title="Permanent link">⚓︎</a></h4>
-<p>| 是否被阻挡 | boolean | |
-| 道具 ID | <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> | |
-|:--|:--|:--|
-|字段|类型|说明|
-| 追加数量 | int | |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">字段</th>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">道具 ID</td>
+<td style="text-align: left;"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">追加数量</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">是否被阻挡</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
 <h3 aria-label="Functions" id="getteardisplacement">GetTearDisplacement ()<a class="headerlink" href="#getteardisplacement" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getteardisplacement">int GetTearDisplacement ( )<a class="headerlink" href="#int-getteardisplacement" title="Permanent link">⚓︎</a></h4>
+<p>返回玩家的眼泪偏移值，用于检查玩家从哪只眼睛射击。</p>
+<details class="info" open="open">
+<summary>Return info</summary>
 <ul>
 <li><code>1</code> 右眼</li>
+<li><code>-1</code> 左眼</li>
 </ul>
-<details class="info" open="open">
-<summary>返回信息</summary>
 </details>
-<ul>
-<li><code>-1</code> 左眼
-返回玩家的眼泪偏移值，用于检查玩家从哪只眼睛射击。</li>
-</ul>
 <h3 aria-label="Functions" id="gettotalactivecharge">GetTotalActiveCharge ()<a class="headerlink" href="#gettotalactivecharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-gettotalactivecharge-activeslot-slot">int GetTotalActiveCharge ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html">ActiveSlot</a> Slot )<a class="headerlink" href="#int-gettotalactivecharge-activeslot-slot" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -14279,40 +14307,40 @@
 <p>返回一个包含所有被 “虚空” 道具吞噬的主动道具 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleTypes</a> 的表。</p>
 <h3 aria-label="Functions" id="getweapon">GetWeapon ()<a class="headerlink" href="#getweapon" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="weapon-getweapon-int-slot"><a href="Weapon.html">Weapon</a> GetWeapon ( int Slot )<a class="headerlink" href="#weapon-getweapon-int-slot" title="Permanent link">⚓︎</a></h4>
+<p>返回相应插槽中的武器对象，如果未找到武器则返回 <code>nil</code>。插槽编号必须在 <code>0</code> 到 <code>4</code> 之间。</p>
 <details class="- info">
-<summary>信息</summary>
-</details>
-<p>始终检查是否为 <code>nil</code>，即使是插槽 <code>1</code>，因为它可以被模组通过 <a href="Isaac.html#destroyweapon">Isaac.DestroyWeapon()</a> 删除。
-- <code>4</code> - 额外武器。
-武器插槽及其说明：
-返回相应插槽中的武器对象，如果未找到武器则返回 <code>nil</code>。插槽编号必须在 <code>0</code> 到 <code>4</code> 之间。
-- <code>2</code> - 额外武器。原版游戏中很少有这种情况，但模组可以填充此插槽。
+<summary>Info</summary>
+<p>武器插槽及其说明：
+- <code>0</code> - 备用武器，如 “缺口斧” 和 “灵魂瓮”。
 - <code>1</code> - 主武器。
+- <code>2</code> - 额外武器。原版游戏中很少有这种情况，但模组可以填充此插槽。
 - <code>3</code> - 额外武器。
-- <code>0</code> - 备用武器，如 “缺口斧” 和 “灵魂瓮”。</p>
+- <code>4</code> - 额外武器。
+始终检查是否为 <code>nil</code>，即使是插槽 <code>1</code>，因为它可以被模组通过 <a href="Isaac.html#destroyweapon">Isaac.DestroyWeapon()</a> 删除。</p>
+</details>
 <h3 aria-label="Functions" id="getweaponmodifiers">GetWeaponModifiers ()<a class="headerlink" href="#getweaponmodifiers" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getweaponmodifiers">int GetWeaponModifiers ( )<a class="headerlink" href="#int-getweaponmodifiers" title="Permanent link">⚓︎</a></h4>
 <p>返回一个 <a href="enums/WeaponModifier.html">WeaponModifiers</a> 类型的位掩码。</p>
 <h3 aria-label="Functions" id="getwildcarditem">GetWildCardItem ()<a class="headerlink" href="#getwildcarditem" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="int-getwildcarditem">int GetWildCardItem ( )<a class="headerlink" href="#int-getwildcarditem" title="Permanent link">⚓︎</a></h4>
-<p>如果玩家使用了主动道具，则返回其 <code>CollectibleType</code>。如果玩家使用了消耗品，则返回其变体。如果玩家使用了 “问号卡”，则返回 <code>1</code>。如果玩家之前从未使用过主动道具，则返回 <code>0</code>。
-返回玩家最后使用的道具，再次使用 “万能卡” 时将激活该道具。</p>
+<p>返回玩家最后使用的道具，再次使用 “万能卡” 时将激活该道具。</p>
+<p>如果玩家使用了主动道具，则返回其 <code>CollectibleType</code>。如果玩家使用了消耗品，则返回其变体。如果玩家使用了 “问号卡”，则返回 <code>1</code>。如果玩家之前从未使用过主动道具，则返回 <code>0</code>。</p>
 <h3 aria-label="Functions" id="getwildcarditemtype">GetWildCardItemType ()<a class="headerlink" href="#getwildcarditemtype" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="pocketitemtype-getwildcarditemtype"><a href="enums/PocketItemType.html">PocketItemType</a> GetWildCardItemType ( )<a class="headerlink" href="#pocketitemtype-getwildcarditemtype" title="Permanent link">⚓︎</a></h4>
-<p>返回玩家最后使用的道具类型，再次使用 “万能卡” 时将激活该道具。
-如果玩家使用了消耗品（包括 “问号卡”），则返回 <code>ItemType.ITEM_PASSIVE</code>。如果玩家之前从未使用过主动道具，则返回 <code>255</code>。</p>
+<p>返回玩家最后使用的道具类型，再次使用 “万能卡” 时将激活该道具。</p>
+<p>如果玩家使用了消耗品（包括 “问号卡”），则返回 <code>ItemType.ITEM_PASSIVE</code>。如果玩家之前从未使用过主动道具，则返回 <code>255</code>。</p>
 <h3 aria-label="Functions" id="getwispcollectibleslist">GetWispCollectiblesList ()<a class="headerlink" href="#getwispcollectibleslist" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="table-getwispcollectibleslist">table GetWispCollectiblesList ( )<a class="headerlink" href="#table-getwispcollectibleslist" title="Permanent link">⚓︎</a></h4>
 <p>返回一个与玩家拥有的道具幽灵对应的 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleTypes</a> 表。</p>
 <h3 aria-label="Functions" id="haschancerevive">HasChanceRevive ()<a class="headerlink" href="#haschancerevive" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-haschancerevive">boolean HasChanceRevive ( )<a class="headerlink" href="#boolean-haschancerevive" title="Permanent link">⚓︎</a></h4>
-<p>如果玩家的额外生命计数上会显示 “?”，则返回 true（即玩家拥有 “古比项圈”，或在 REPENTOGON 的 <a href="xml/items.html">自定义标签 items.xml 属性</a> 中有 <code>chancerevive</code> 字符串的模组复活道具）。</p>
+<p>如果玩家的额外生命计数上会显示 “?”，则返回 true（即玩家拥有 “嗝屁猫的项圈”，或在 REPENTOGON 的 <a href="xml/items.html">自定义标签 items.xml 属性</a> 中有 <code>chancerevive</code> 字符串的模组复活道具）。</p>
 <h3 aria-label="Functions" id="hasgoldentrinket">HasGoldenTrinket ()<a class="headerlink" href="#hasgoldentrinket" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-hasgoldentrinket-trinkettype-trinket">boolean HasGoldenTrinket ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html">TrinketType</a> Trinket )<a class="headerlink" href="#boolean-hasgoldentrinket-trinkettype-trinket" title="Permanent link">⚓︎</a></h4>
 <p>如果玩家拥有指定 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html">TrinketType</a> 的金色变体，则返回 true。</p>
 <h3 aria-label="Functions" id="hasinstantdeathcurse">HasInstantDeathCurse ()<a class="headerlink" href="#hasinstantdeathcurse" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-hasinstantdeathcurse">boolean HasInstantDeathCurse ( )<a class="headerlink" href="#boolean-hasinstantdeathcurse" title="Permanent link">⚓︎</a></h4>
-<p>当玩家处于由下水道的白色火焰或 “迷失者之魂” 触发的 “迷失者” 形态时（或在 “堕落雅各布” 的幽灵形态下被 “黑暗以扫” 触摸时），返回 true。</p>
+<p>当玩家处于由下水道的白色火焰或 “游魂的魂石” 触发的 “游魂诅咒” 形态时（或在 “堕化雅各布” 的幽灵形态下被 “堕化以扫” 触摸时），返回 true。</p>
 <h3 aria-label="Functions" id="haspoisonimmunity">HasPoisonImmunity ()<a class="headerlink" href="#haspoisonimmunity" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-haspoisonimmunity">boolean HasPoisonImmunity ( )<a class="headerlink" href="#boolean-haspoisonimmunity" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -14321,15 +14349,15 @@
 <p>增加或减少玩家向某一变身的计数器。<code>Count</code> 可以为负数，以减少 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerForm.html">PlayerForm</a>。</p>
 <h3 aria-label="Functions" id="initpostlevelinitstats">InitPostLevelInitStats ()<a class="headerlink" href="#initpostlevelinitstats" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-initpostlevelinitstats">void InitPostLevelInitStats ( )<a class="headerlink" href="#void-initpostlevelinitstats" title="Permanent link">⚓︎</a></h4>
-<p>在使用 <code>InitTwin</code> 生成具有 “特殊” 眼泪的角色（如 “遗忘者”、“莉莉丝”、“阿撒兹勒” 等）后调用此函数，否则他们将不会拥有正确的眼泪类型。</p>
+<p>在使用 <code>InitTwin</code> 生成具有 “特殊” 眼泪的角色（如 “游魂”、“莉莉丝”、“阿撒兹勒” 等）后调用此函数，否则他们将不会拥有正确的眼泪类型。</p>
 <h3 aria-label="Functions" id="inittwin">InitTwin ()<a class="headerlink" href="#inittwin" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityplayer-inittwin-playertype-playertype"><a href="EntityPlayer.html">EntityPlayer</a> InitTwin ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html">PlayerType</a> PlayerType )<a class="headerlink" href="#entityplayer-inittwin-playertype-playertype" title="Permanent link">⚓︎</a></h4>
 <p>初始化一个由玩家同一控制器控制的新玩家。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
+<p>双胞胎玩家在保存并继续游戏时会与其主双胞胎不同步。这会在单人游戏中导致软锁，因为游戏会提示连接控制器。
+我们已从 _Kilburn 处确认，这在原版角色中是硬编码处理的。我们需要为此添加一个解决方案。</p>
 </details>
-<p>我们已从 _Kilburn 处确认，这在原版角色中是硬编码处理的。我们需要为此添加一个解决方案。
-双胞胎玩家在保存并继续游戏时会与其主双胞胎不同步。这会在单人游戏中导致软锁，因为游戏会提示连接控制器。</p>
 <h3 aria-label="Functions" id="iscollectibleanimfinished">IsCollectibleAnimFinished ()<a class="headerlink" href="#iscollectibleanimfinished" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-iscollectibleanimfinished-collectibletype-collectible-string-animation">boolean IsCollectibleAnimFinished ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> Collectible, string Animation )<a class="headerlink" href="#boolean-iscollectibleanimfinished-collectibletype-collectible-string-animation" title="Permanent link">⚓︎</a></h4>
 <p>如果与道具关联的动画可见，则返回 true。</p>
@@ -14344,25 +14372,23 @@
 <hr />
 <h3 aria-label="Functions" id="isfootstepframe">IsFootstepFrame ()<a class="headerlink" href="#isfootstepframe" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isfootstepframe-int-foot-1">boolean IsFootstepFrame ( int Foot = -1 )<a class="headerlink" href="#boolean-isfootstepframe-int-foot-1" title="Permanent link">⚓︎</a></h4>
-<ul>
-<li><code>0</code> - 每 24 帧返回 true。</li>
-</ul>
 <details class="info" open="open">
-<summary>信息</summary>
-</details>
+<summary>Info</summary>
 <ul>
-<li><code>1</code> - 始终为 false。</li>
 <li><code>-1</code> - 每 12 帧返回 true。</li>
+<li><code>0</code> - 每 24 帧返回 true。</li>
+<li><code>1</code> - 始终为 false。</li>
 </ul>
+</details>
 <h3 aria-label="Functions" id="isheadless">IsHeadless ()<a class="headerlink" href="#isheadless" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isheadless">boolean IsHeadless ( )<a class="headerlink" href="#boolean-isheadless" title="Permanent link">⚓︎</a></h4>
-<p>如果玩家因 “断头台”、“入侵者”、“剪刀” 和 “斩首攻击” 等道具而无头，则返回 <code>true</code>。</p>
+<p>如果玩家因 “断头台”、“侵体蜘蛛”、“剪刀” 和 “飞头攻击” 等道具而无头，则返回 <code>true</code>。</p>
 <h3 aria-label="Functions" id="ishologram">IsHologram ()<a class="headerlink" href="#ishologram" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-ishologram">boolean IsHologram ( )<a class="headerlink" href="#boolean-ishologram" title="Permanent link">⚓︎</a></h4>
-<p>如果玩家是拥有 “诞生之权” 的 “堕落拉撒路” 的非激活形态，则返回 <code>true</code>。</p>
+<p>如果玩家是拥有 “长子名分” 的 “堕化拉撒路” 的非激活形态，则返回 <code>true</code>。</p>
 <h3 aria-label="Functions" id="isinvisible">IsInvisible ()<a class="headerlink" href="#isinvisible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isinvisible">boolean IsInvisible ( )<a class="headerlink" href="#boolean-isinvisible" title="Permanent link">⚓︎</a></h4>
-<p>如果玩家拥有 “褪色宝丽来/迷彩内裤” 效果，则返回 <code>true</code>。</p>
+<p>如果玩家拥有 “褪色的全家福/迷彩内裤” 效果，则返回 <code>true</code>。</p>
 <h3 aria-label="Functions" id="isitemcostumevisible">IsItemCostumeVisible ()<a class="headerlink" href="#isitemcostumevisible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isitemcostumevisible-itemconfig_item-item-int-playerspritelayerid">boolean IsItemCostumeVisible ( <a href="ItemConfig_Item.html">ItemConfig_Item</a> Item, int PlayerSpriteLayerID )<a class="headerlink" href="#boolean-isitemcostumevisible-itemconfig_item-item-int-playerspritelayerid" title="Permanent link">⚓︎</a></h4>
 <h4 aria-label="Functions" class="copyable" id="boolean-isitemcostumevisible-itemconfig_item-item-int-playerspritelayername">boolean IsItemCostumeVisible ( <a href="ItemConfig_Item.html">ItemConfig_Item</a> Item, int PlayerSpriteLayerName )<a class="headerlink" href="#boolean-isitemcostumevisible-itemconfig_item-item-int-playerspritelayername" title="Permanent link">⚓︎</a></h4>
@@ -14397,26 +14423,26 @@
 <hr />
 <h3 aria-label="Functions" id="removepoopspell">RemovePoopSpell ()<a class="headerlink" href="#removepoopspell" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-removepoopspell-int-position-0">void RemovePoopSpell ( int Position = 0 )<a class="headerlink" href="#void-removepoopspell-int-position-0" title="Permanent link">⚓︎</a></h4>
-<p>从指定队列位置移除便便法术，并将其后的所有法术向前移动以填充空位。最后一个位置将随机选择一个新法术填充。便便法术仅由 “堕落？？？” 使用。</p>
+<p>从指定队列位置移除便便法术，并将其后的所有法术向前移动以填充空位。最后一个位置将随机选择一个新法术填充。便便法术仅由 “堕化？？？” 使用。</p>
 <h3 aria-label="Functions" id="rerollallcollectibles">RerollAllCollectibles ()<a class="headerlink" href="#rerollallcollectibles" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-rerollallcollectibles-rng-rng-boolean-includeactiveitems">void RerollAllCollectibles ( <a href="RNG.html">RNG</a> rng, boolean includeActiveItems )<a class="headerlink" href="#void-rerollallcollectibles-rng-rng-boolean-includeactiveitems" title="Permanent link">⚓︎</a></h4>
 <p>重新随机玩家的所有道具。</p>
 <h3 aria-label="Functions" id="resetplayer">ResetPlayer ()<a class="headerlink" href="#resetplayer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-resetplayer">void ResetPlayer ( )<a class="headerlink" href="#void-resetplayer" title="Permanent link">⚓︎</a></h4>
-<p>此函数由 “创世纪” 主动道具使用。</p>
 <details class="info" open="open">
-<summary>信息</summary>
+<summary>Info</summary>
+<p>此函数由 “创世纪” 主动道具使用。</p>
 </details>
 <h3 aria-label="Functions" id="revivecoopghost">ReviveCoopGhost ()<a class="headerlink" href="#revivecoopghost" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-revivecoopghost">boolean ReviveCoopGhost ( )<a class="headerlink" href="#boolean-revivecoopghost" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="salvagecollectible">SalvageCollectible ()<a class="headerlink" href="#salvagecollectible" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-salvagecollectible-entitypickup-pickup-rng-rng-pickupdroprng-itempooltype-pool-itempooltypepool_null">void SalvageCollectible ( <a href="EntityPickup.html">EntityPickup</a> Pickup, <a href="RNG.html">RNG</a> rng = PickupDropRNG, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html">ItemPoolType</a> Pool = ItemPoolType.POOL_NULL)<a class="headerlink" href="#void-salvagecollectible-entitypickup-pickup-rng-rng-pickupdroprng-itempooltype-pool-itempooltypepool_null" title="Permanent link">⚓︎</a></h4>
-<p>此函数将移除提供的 <a href="EntityPickup.html">EntityPickup</a>。可以使用覆盖参数避免这种情况。</p>
+<p>产生随机数量的各种拾取物，类似于 “堕化该隐” 的能力。</p>
 <details class="info" open="open">
-<summary>信息</summary>
+<summary>Info</summary>
+<p>此函数将移除提供的 <a href="EntityPickup.html">EntityPickup</a>。可以使用覆盖参数避免这种情况。</p>
 </details>
-<p>产生随机数量的各种拾取物，类似于 “堕落该隐” 的能力。</p>
 <h3 aria-label="Functions" id="setactivevardata">SetActiveVarData ()<a class="headerlink" href="#setactivevardata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setactivevardata-int-vardata-activeslot-slot">void SetActiveVarData ( int VarData, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html">ActiveSlot</a> Slot )<a class="headerlink" href="#void-setactivevardata-int-vardata-activeslot-slot" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -14437,8 +14463,8 @@
 <p>由 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone">“肾结石”</a> 道具使用。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-</details>
 <p>如果在没有 “肾结石” 道具的情况下使用此函数，玩家的头部会变黑。</p>
+</details>
 <h3 aria-label="Functions" id="setbloodlustcounter">SetBloodLustCounter ()<a class="headerlink" href="#setbloodlustcounter" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setbloodlustcounter-int-counter">void SetBloodLustCounter ( int Counter )<a class="headerlink" href="#void-setbloodlustcounter-int-counter" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -14447,8 +14473,8 @@
 <hr />
 <h3 aria-label="Functions" id="setcambionconceptionstate">SetCambionConceptionState ()<a class="headerlink" href="#setcambionconceptionstate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcambionconceptionstate-int-state">void SetCambionConceptionState ( int State )<a class="headerlink" href="#void-setcambionconceptionstate-int-state" title="Permanent link">⚓︎</a></h4>
-<p>请注意，游戏仅在玩家受到伤害且此计数器达到 15、30、60 或 90 时才会生成跟班。你不能直接使用此函数触发诞生。
-设置玩家使用 “恶魔受胎” 道具受到的伤害量。</p>
+<p>设置玩家使用 “恶魔受胎” 道具受到的伤害量。</p>
+<p>请注意，游戏仅在玩家受到伤害且此计数器达到 15、30、60 或 90 时才会生成跟班。你不能直接使用此函数触发诞生。</p>
 <h3 aria-label="Functions" id="setcanshoot">SetCanShoot ()<a class="headerlink" href="#setcanshoot" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-setcanshoot-boolean-canshoot">boolean SetCanShoot ( boolean CanShoot )<a class="headerlink" href="#boolean-setcanshoot-boolean-canshoot" title="Permanent link">⚓︎</a></h4>
 <p>立即禁用（或启用）玩家的射击能力。基础游戏主要在特殊挑战中使用此功能。</p>
@@ -14460,48 +14486,48 @@
 <p>更改玩家的控制器索引。</p>
 <h3 aria-label="Functions" id="setdamagemodifier">SetDamageModifier ()<a class="headerlink" href="#setdamagemodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setdamagemodifier-int-modifier">void SetDamageModifier ( int Modifier )<a class="headerlink" href="#void-setdamagemodifier-int-modifier" title="Permanent link">⚓︎</a></h4>
-<p>该修饰符以固定伤害的形式应用于玩家。
-“实验性治疗” 根据随机生成的伤害值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>该修饰符以固定伤害的形式应用于玩家。</p>
+<p>“实验性治疗” 根据随机生成的伤害值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="setedendamage">SetEdenDamage ()<a class="headerlink" href="#setedendamage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setedendamage-float-value">void SetEdenDamage ( float Value )<a class="headerlink" href="#void-setedendamage-float-value" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家伊甸随机属性中伤害属性的偏移量。对非伊甸或堕落伊甸的玩家无效。</p>
+<p>设置玩家伊甸随机属性中伤害属性的偏移量。对非伊甸或堕化伊甸的玩家无效。</p>
 <h3 aria-label="Functions" id="setedenfiredelay">SetEdenFireDelay ()<a class="headerlink" href="#setedenfiredelay" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setedenfiredelay-float-value">void SetEdenFireDelay ( float Value )<a class="headerlink" href="#void-setedenfiredelay-float-value" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家伊甸随机属性中射击延迟属性的偏移量。对非伊甸或堕落伊甸的玩家无效。</p>
+<p>设置玩家伊甸随机属性中射击延迟属性的偏移量。对非伊甸或堕化伊甸的玩家无效。</p>
 <h3 aria-label="Functions" id="setedenluck">SetEdenLuck ()<a class="headerlink" href="#setedenluck" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setedenluck-float-value">void SetEdenLuck ( float Value )<a class="headerlink" href="#void-setedenluck-float-value" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家伊甸随机属性中幸运属性的偏移量。对非伊甸或堕落伊甸的玩家无效。</p>
+<p>设置玩家伊甸随机属性中幸运属性的偏移量。对非伊甸或堕化伊甸的玩家无效。</p>
 <h3 aria-label="Functions" id="setedenrange">SetEdenRange ()<a class="headerlink" href="#setedenrange" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setedenrange-float-value">void SetEdenRange ( float Value )<a class="headerlink" href="#void-setedenrange-float-value" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家伊甸随机属性中射程属性的偏移量。对非伊甸或堕落伊甸的玩家无效。</p>
+<p>设置玩家伊甸随机属性中射程属性的偏移量。对非伊甸或堕化伊甸的玩家无效。</p>
 <h3 aria-label="Functions" id="setedenshotspeed">SetEdenShotSpeed ()<a class="headerlink" href="#setedenshotspeed" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setedenshotspeed-float-value">void SetEdenShotSpeed ( float Value )<a class="headerlink" href="#void-setedenshotspeed-float-value" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家伊甸随机属性中射击速度属性的偏移量。对非伊甸或堕落伊甸的玩家无效。</p>
+<p>设置玩家伊甸随机属性中射击速度属性的偏移量。对非伊甸或堕化伊甸的玩家无效。</p>
 <h3 aria-label="Functions" id="setedenspeed">SetEdenSpeed ()<a class="headerlink" href="#setedenspeed" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setedenspeed-float-value">void SetEdenSpeed ( float Value )<a class="headerlink" href="#void-setedenspeed-float-value" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家伊甸随机属性中移动速度属性的偏移量。对非伊甸或堕落伊甸的玩家无效。</p>
+<p>设置玩家伊甸随机属性中移动速度属性的偏移量。对非伊甸或堕化伊甸的玩家无效。</p>
 <h3 aria-label="Functions" id="setevesumptoriumcharge">SetEveSumptoriumCharge ()<a class="headerlink" href="#setevesumptoriumcharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setevesumptoriumcharge-int-chargenum">void SetEveSumptoriumCharge ( int ChargeNum )<a class="headerlink" href="#void-setevesumptoriumcharge-int-chargenum" title="Permanent link">⚓︎</a></h4>
-<p>设置 “堕落夏娃” 固有 “吸食器” 能力的当前充能值。</p>
+<p>设置 “堕化夏娃” 固有 “吸食器” 能力的当前充能值。</p>
 <h3 aria-label="Functions" id="setfiredelaymodifier">SetFireDelayModifier ()<a class="headerlink" href="#setfiredelaymodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setfiredelaymodifier-int-modifier">void SetFireDelayModifier ( int Modifier )<a class="headerlink" href="#void-setfiredelaymodifier-int-modifier" title="Permanent link">⚓︎</a></h4>
-<p>“实验性治疗” 根据随机生成的射击延迟值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-为玩家提供 <code>0.5 * 修饰符</code> 的固定每秒眼泪数。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>为玩家提供 <code>0.5 * 修饰符</code> 的固定每秒眼泪数。</p>
+<p>“实验性治疗” 根据随机生成的射击延迟值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="setfootprintcolor">SetFootprintColor ()<a class="headerlink" href="#setfootprintcolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setfootprintcolor-kcolor-color-boolean-rightfoot-false">void SetFootprintColor ( <a href="https://wofsauge.github.io/IsaacDocs/rep/KColor.html">KColor</a> color, boolean RightFoot = false )<a class="headerlink" href="#void-setfootprintcolor-kcolor-color-boolean-rightfoot-false" title="Permanent link">⚓︎</a></h4>
 <p>设置玩家的脚印颜色。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-</details>
 <p>此函数目前会导致游戏崩溃 - 将在未来更新中修复。</p>
+</details>
 <h3 aria-label="Functions" id="setgnawedleaftimer">SetGnawedLeafTimer ()<a class="headerlink" href="#setgnawedleaftimer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setgnawedleaftimer-int-timer">void SetGnawedLeafTimer ( int Timer )<a class="headerlink" href="#void-setgnawedleaftimer-int-timer" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="sethallowedgroundcountdown">SetHallowedGroundCountdown ()<a class="headerlink" href="#sethallowedgroundcountdown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-sethallowedgroundcountdown-int-countdown">void SetHallowedGroundCountdown ( int Countdown )<a class="headerlink" href="#void-sethallowedgroundcountdown-int-countdown" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家从 “神圣之地/伯利恒之星” 光环中保留属性的宽限期倒计时。</p>
+<p>设置玩家从 “圣地大便/伯列恒之星” 光环中保留属性的宽限期倒计时。</p>
 <h3 aria-label="Functions" id="setheaddirection">SetHeadDirection ()<a class="headerlink" href="#setheaddirection" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setheaddirection-direction-direction-int-time-boolean-force-false">void SetHeadDirection ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html">Direction</a> Direction, int Time, boolean Force = false )<a class="headerlink" href="#void-setheaddirection-direction-direction-int-time-boolean-force-false" title="Permanent link">⚓︎</a></h4>
 <p>将玩家的头部动画锁定到指定的 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html">Direction</a>。<code>Force</code> 参数将覆盖现有的头部方向锁定，例如使用 “妈妈的刀” 时的锁定。</p>
@@ -14510,89 +14536,89 @@
 <p>设置玩家头部应强制保持当前方向的时长。</p>
 <h3 aria-label="Functions" id="setimmaculateconceptionstate">SetImmaculateConceptionState ()<a class="headerlink" href="#setimmaculateconceptionstate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setimmaculateconceptionstate-int-state">void SetImmaculateConceptionState ( int State )<a class="headerlink" href="#void-setimmaculateconceptionstate-int-state" title="Permanent link">⚓︎</a></h4>
-<p>如果你设置的值大于 14，该值将自动上限为 14，这意味着下一次拾取红心将生成一个跟班。
-请注意，游戏仅在玩家拾取红心时检查是否生成跟班，因此你不能直接使用此函数触发该效果。
-设置玩家使用 “圣灵受胎” 道具收集到的红心数量。</p>
+<p>设置玩家使用 “圣灵受胎” 道具收集到的红心数量。</p>
+<p>请注意，游戏仅在玩家拾取红心时检查是否生成跟班，因此你不能直接使用此函数触发该效果。</p>
+<p>如果你设置的值大于 14，该值将自动上限为 14，这意味着下一次拾取红心将生成一个跟班。</p>
 <h3 aria-label="Functions" id="setitemstate">SetItemState ()<a class="headerlink" href="#setitemstate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setitemstate-collectibletype-collectible">void SetItemState ( <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> Collectible )<a class="headerlink" href="#void-setitemstate-collectibletype-collectible" title="Permanent link">⚓︎</a></h4>
 <p>将玩家的道具状态更改为指定道具。这通常用于玩家在激活前举在头顶的道具（如 “鲍勃的烂头”、“玻璃大炮”）。</p>
 <h3 aria-label="Functions" id="setkeeperssackbonus">SetKeepersSackBonus ()<a class="headerlink" href="#setkeeperssackbonus" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setkeeperssackbonus-int-bonus">void SetKeepersSackBonus ( int Bonus )<a class="headerlink" href="#void-setkeeperssackbonus-int-bonus" title="Permanent link">⚓︎</a></h4>
-<p>设置玩家 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack">“守护者之袋”</a> 道具的当前硬币奖励。</p>
+<p>设置玩家 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack">“店主的胯袋”</a> 道具的当前硬币奖励。</p>
 <h3 aria-label="Functions" id="setlasercolor">SetLaserColor ()<a class="headerlink" href="#setlasercolor" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setlasercolor-color-color">void SetLaserColor ( <a href="Color.html">Color</a> color )<a class="headerlink" href="#void-setlasercolor-color-color" title="Permanent link">⚓︎</a></h4>
 <p>设置玩家的激光颜色。</p>
 <h3 aria-label="Functions" id="setluckmodifier">SetLuckModifier ()<a class="headerlink" href="#setluckmodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setluckmodifier-int-modifier">void SetLuckModifier ( int Modifier )<a class="headerlink" href="#void-setluckmodifier-int-modifier" title="Permanent link">⚓︎</a></h4>
-<p>“实验性治疗” 根据随机生成的幸运值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-该修饰符直接添加到玩家的幸运属性上。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>该修饰符直接添加到玩家的幸运属性上。</p>
+<p>“实验性治疗” 根据随机生成的幸运值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="setmaggyswingcooldown">SetMaggySwingCooldown ()<a class="headerlink" href="#setmaggyswingcooldown" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setmaggyswingcooldown-int-cooldown">void SetMaggySwingCooldown ( int Cooldown )<a class="headerlink" href="#void-setmaggyswingcooldown-int-cooldown" title="Permanent link">⚓︎</a></h4>
-<p>将 “堕落抹大拉” 挥击攻击的冷却时间设置为指定的帧数。</p>
+<p>将 “堕化抹大拉” 挥击攻击的冷却时间设置为指定的帧数。</p>
 <h3 aria-label="Functions" id="setmaxbladdercharge">SetMaxBladderCharge ()<a class="headerlink" href="#setmaxbladdercharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setmaxbladdercharge-int-charge">void SetMaxBladderCharge ( int Charge )<a class="headerlink" href="#void-setmaxbladdercharge-int-charge" title="Permanent link">⚓︎</a></h4>
 <p>设置玩家停止射击并为 “肾结石” 道具充能时的最大充能值。</p>
 <h3 aria-label="Functions" id="setmegablastduration">SetMegaBlastDuration ()<a class="headerlink" href="#setmegablastduration" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setmegablastduration-int-duration">void SetMegaBlastDuration ( int Duration )<a class="headerlink" href="#void-setmegablastduration-int-duration" title="Permanent link">⚓︎</a></h4>
+<p>将 “超级喷射” 激光的持续时间设置为指定的帧数。如果激光尚未激活，将其持续时间设置为大于零的值将激活该效果。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
+<p>如果 “超级喷射” 激光处于激活状态，并且你再次调用此函数并设置较低的持续时间，激光将在指定帧数过去后仍然存在，直到玩家离开房间。</p>
 </details>
-<p>如果 “巨型爆破” 激光处于激活状态，并且你再次调用此函数并设置较低的持续时间，激光将在指定帧数过去后仍然存在，直到玩家离开房间。
-将 “巨型爆破” 激光的持续时间设置为指定的帧数。如果激光尚未激活，将其持续时间设置为大于零的值将激活该效果。</p>
 <h3 aria-label="Functions" id="setnexturethrablockframe">SetNextUrethraBlockFrame ()<a class="headerlink" href="#setnexturethrablockframe" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setnexturethrablockframe-int-frame">void SetNextUrethraBlockFrame ( int Frame )<a class="headerlink" href="#void-setnexturethrablockframe-int-frame" title="Permanent link">⚓︎</a></h4>
 <p>设置玩家停止射击并开始为 “肾结石” 道具充能的帧数。</p>
 <h3 aria-label="Functions" id="setponycharge">SetPonyCharge ()<a class="headerlink" href="#setponycharge" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setponycharge-int-time">void SetPonyCharge ( int Time )<a class="headerlink" href="#void-setponycharge-int-time" title="Permanent link">⚓︎</a></h4>
-<p>将 “一匹小马” 和 “白色小马” 道具的充能效果持续时间设置为指定的帧数。</p>
+<p>将 “小黑马” 和 “小白马” 道具的充能效果持续时间设置为指定的帧数。</p>
 <h3 aria-label="Functions" id="setpoopspell">SetPoopSpell ()<a class="headerlink" href="#setpoopspell" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setpoopspell-int-slot-poopspelltype-poopspelltype">void SetPoopSpell ( int Slot, <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PoopSpellType.html">PoopSpellType</a> PoopSpellType )<a class="headerlink" href="#void-setpoopspell-int-slot-poopspelltype-poopspelltype" title="Permanent link">⚓︎</a></h4>
-<p>将便便列表中的指定插槽设置为一种便便类型。这仅由 “堕落？？？” 使用。</p>
+<p>将便便列表中的指定插槽设置为一种便便类型。这仅由 “堕化？？？” 使用。</p>
 <h3 aria-label="Functions" id="setpuritystate">SetPurityState ()<a class="headerlink" href="#setpuritystate" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setpuritystate-puritystate-state">void SetPurityState ( <a href="enums/PurityState.html">PurityState</a> State )<a class="headerlink" href="#void-setpuritystate-puritystate-state" title="Permanent link">⚓︎</a></h4>
 <p>设置 <a href="https://bindingofisaacrebirth.fandom.com/wiki/Purity">“纯洁”</a> 道具效果的当前状态。</p>
 <h3 aria-label="Functions" id="setredstewbonusduration">SetRedStewBonusDuration ()<a class="headerlink" href="#setredstewbonusduration" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setredstewbonusduration-int-duration">void SetRedStewBonusDuration ( int Duration )<a class="headerlink" href="#void-setredstewbonusduration-int-duration" title="Permanent link">⚓︎</a></h4>
-<p>将 “红炖菜” 道具的伤害加成持续时间设置为指定的帧数。将持续时间设置为大于 0 的值将激活该效果（如果尚未激活）。</p>
+<p>将 <code>红豆汤</code> 道具的伤害加成持续时间设置为指定的帧数。将持续时间设置为大于 0 的值将激活该效果（如果尚未激活）。</p>
 <h3 aria-label="Functions" id="setshotspeedmodifier">SetShotSpeedModifier ()<a class="headerlink" href="#setshotspeedmodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setshotspeedmodifier-int-modifier">void SetShotSpeedModifier ( int Modifier )<a class="headerlink" href="#void-setshotspeedmodifier-int-modifier" title="Permanent link">⚓︎</a></h4>
-<p>“实验性治疗” 根据随机生成的射击速度值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-为玩家的射击速度增加 <code>0.2 * 修饰符</code>。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>为玩家的射击速度增加 <code>0.2 * 修饰符</code>。</p>
+<p>“实验性治疗” 根据随机生成的射击速度值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="setspeedmodifier">SetSpeedModifier ()<a class="headerlink" href="#setspeedmodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setspeedmodifier-int-modifier">void SetSpeedModifier ( int Modifier )<a class="headerlink" href="#void-setspeedmodifier-int-modifier" title="Permanent link">⚓︎</a></h4>
-<p>为玩家的移动速度增加 <code>0.2 * 修饰符</code>。
-“实验性治疗” 根据随机生成的移动速度值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>为玩家的移动速度增加 <code>0.2 * 修饰符</code>。</p>
+<p>“实验性治疗” 根据随机生成的移动速度值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="settearpoisondamage">SetTearPoisonDamage ()<a class="headerlink" href="#settearpoisondamage" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-settearpoisondamage-float-damage">void SetTearPoisonDamage ( float Damage )<a class="headerlink" href="#void-settearpoisondamage-float-damage" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="settearrangemodifier">SetTearRangeModifier ()<a class="headerlink" href="#settearrangemodifier" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-settearrangemodifier-int-modifier">void SetTearRangeModifier ( int Modifier )<a class="headerlink" href="#void-settearrangemodifier-int-modifier" title="Permanent link">⚓︎</a></h4>
-<p>为玩家的眼泪射程增加 <code>2.5 * 修饰符</code>。
-“实验性治疗” 根据随机生成的射程值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。
-用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>用于 “实验性治疗” 和 “虚空” 带来的属性提升。</p>
+<p>为玩家的眼泪射程增加 <code>2.5 * 修饰符</code>。</p>
+<p>“实验性治疗” 根据随机生成的射程值增加 <code>-1</code>、<code>0</code> 或 <code>1</code>。“虚空” 可能会随机增加 <code>1</code>。</p>
 <h3 aria-label="Functions" id="seturethrablock">SetUrethraBlock ()<a class="headerlink" href="#seturethrablock" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-seturethrablock-boolean-blocked">void SetUrethraBlock ( boolean Blocked )<a class="headerlink" href="#void-seturethrablock-boolean-blocked" title="Permanent link">⚓︎</a></h4>
+<p>设置 “肾结石” 道具的眼泪狂轰滥炸攻击是否即将激活。如果玩家没有 “肾结石” 道具，该效果将立即激活。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
+<p>将 <code>Blocked</code> 参数设置为 <code>false</code> 似乎没有任何效果。</p>
 </details>
-<p>将 <code>Blocked</code> 参数设置为 <code>false</code> 似乎没有任何效果。
-设置 “肾结石” 道具的眼泪狂轰滥炸攻击是否即将激活。如果玩家没有 “肾结石” 道具，该效果将立即激活。</p>
 <h3 aria-label="Functions" id="setweapon">SetWeapon ()<a class="headerlink" href="#setweapon" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setweapon-weapon-weapon-int-weaponslot">void SetWeapon ( <a href="Weapon.html">Weapon</a> Weapon, int WeaponSlot )<a class="headerlink" href="#void-setweapon-weapon-weapon-int-weaponslot" title="Permanent link">⚓︎</a></h4>
+<p>将指定 <code>WeaponSlot</code> 中的活动武器设置为指定武器。</p>
 <details class="- info">
-<summary>信息</summary>
-</details>
-<p>始终检查是否为 <code>nil</code>，即使是插槽 <code>1</code>，因为它可以被模组通过 <a href="Isaac.html#destroyweapon">Isaac.DestroyWeapon()</a> 删除。
-- <code>4</code> - 额外武器。
-武器插槽及其说明：
-- <code>2</code> - 额外武器。原版游戏中很少有这种情况，但模组可以填充此插槽。
-- <code>1</code> - 主武器。
-- <code>3</code> - 额外武器。
+<summary>Info</summary>
+<p>武器插槽及其说明：
 - <code>0</code> - 备用武器，如 “缺口斧” 和 “灵魂瓮”。
-将指定 <code>WeaponSlot</code> 中的活动武器设置为指定武器。</p>
+- <code>1</code> - 主武器。
+- <code>2</code> - 额外武器。原版游戏中很少有这种情况，但模组可以填充此插槽。
+- <code>3</code> - 额外武器。
+- <code>4</code> - 额外武器。
+始终检查是否为 <code>nil</code>，即使是插槽 <code>1</code>，因为它可以被模组通过 <a href="Isaac.html#destroyweapon">Isaac.DestroyWeapon()</a> 删除</p>
+</details>
 <h3 aria-label="Functions" id="shootbluecandle">ShootBlueCandle ()<a class="headerlink" href="#shootbluecandle" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-shootbluecandle-vector-direction">void ShootBlueCandle ( <a href="Vector.html">Vector</a> Direction )<a class="headerlink" href="#void-shootbluecandle-vector-direction" title="Permanent link">⚓︎</a></h4>
 <p>使玩家从 “蜡烛” 道具发射蓝色火焰。</p>
@@ -14601,12 +14627,12 @@
 <p>随机化当前的服装。</p>
 <h3 aria-label="Functions" id="spawnaquariuscreep">SpawnAquariusCreep ()<a class="headerlink" href="#spawnaquariuscreep" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="entityeffect-spawnaquariuscreep-tearparams-tearparams-selftearparams"><a href="https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html">EntityEffect</a> SpawnAquariusCreep ( <a href="https://wofsauge.github.io/IsaacDocs/rep/TearParams.html">TearParams</a> TearParams = self.TearParams)<a class="headerlink" href="#entityeffect-spawnaquariuscreep-tearparams-tearparams-selftearparams" title="Permanent link">⚓︎</a></h4>
-<p><code>player-&gt;GetTearHitParams(&amp;params, WeaponType.WEAPON_TEARS, (*player-&gt;GetTearPoisonDamage() * 0.666f) / player-&gt;_damage, -(int)(-Isaac::Random(2) != 0) &amp; 2 - 1, nil)</code></p>
+<p>生成一个类似于 “宝瓶座” 产生的爬行效果，包括继承玩家的 <code>TearParams</code>。支持传递自定义的 <code>TearParams</code>。</p>
 <details class="info" open="open">
-<summary>信息</summary>
+<summary>Info</summary>
+<p>供参考，游戏通常是这样计算 <code>TearParams</code> 的：</p>
+<p><code>player-&gt;GetTearHitParams(&amp;params, WeaponType.WEAPON_TEARS, (*player-&gt;GetTearPoisonDamage() * 0.666f) / player-&gt;_damage, -(int)(-Isaac::Random(2) != 0) &amp; 2 - 1, nil)</code></p>
 </details>
-<p>供参考，游戏通常是这样计算 <code>TearParams</code> 的：
-生成一个类似于 “宝瓶座” 产生的爬行效果，包括继承玩家的 <code>TearParams</code>。支持传递自定义的 <code>TearParams</code>。</p>
 <h3 aria-label="Functions" id="spawnclot">SpawnClot ()<a class="headerlink" href="#spawnclot" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-spawnclot-vector-pos-boolean-allowplayerdeath-false">void SpawnClot ( <a href="Vector.html">Vector</a> pos, boolean AllowPlayerDeath = false )<a class="headerlink" href="#void-spawnclot-vector-pos-boolean-allowplayerdeath-false" title="Permanent link">⚓︎</a></h4>
 <p>作用类似于使用 “吸食器”，移除生命值并生成一个与移除的生命值类型相同的血块。如果设置了 <code>AllowPlayerDeath</code>，即使移除的生命值会导致玩家死亡，也会生成一个血块。</p>
@@ -14622,7 +14648,7 @@
 <hr />
 <h3 aria-label="Functions" id="teleport">Teleport ()<a class="headerlink" href="#teleport" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-teleport-vector-position-boolean-doeffects-true-boolean-teleporttwinplayers-false">void Teleport ( <a href="Vector.html">Vector</a> Position, boolean DoEffects = true, boolean TeleportTwinPlayers = false )<a class="headerlink" href="#void-teleport-vector-position-boolean-doeffects-true-boolean-teleporttwinplayers-false" title="Permanent link">⚓︎</a></h4>
-<p><code>DoEffects</code> 控制是否播放传送动画和音效。<code>TeleportTwinPlayers</code> 控制双胞胎玩家（如 “以扫”、拥有 “诞生之权” 的 “堕落拉撒路”）是否与该玩家一起传送。
+<p><code>DoEffects</code> 控制是否播放传送动画和音效。<code>TeleportTwinPlayers</code> 控制双胞胎玩家（如 “以扫”、拥有 “诞生之权” 的 “堕化拉撒路”）是否与该玩家一起传送。
 将玩家传送到房间内的指定位置。</p>
 <h3 aria-label="Functions" id="triggerroomclear">TriggerRoomClear ()<a class="headerlink" href="#triggerroomclear" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-triggerroomclear">void TriggerRoomClear ( )<a class="headerlink" href="#void-triggerroomclear" title="Permanent link">⚓︎</a></h4>
@@ -14632,17 +14658,17 @@
 <p>尝试将指定的拾取物添加到玩家的合成袋中。</p>
 <h3 aria-label="Functions" id="trydecreaseglowinghourglassuses">TryDecreaseGlowingHourglassUses ()<a class="headerlink" href="#trydecreaseglowinghourglassuses" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-trydecreaseglowinghourglassuses-int-uses-boolean-forcehourglass-false">void TryDecreaseGlowingHourglassUses ( int Uses, boolean ForceHourglass = false )<a class="headerlink" href="#void-trydecreaseglowinghourglassuses-int-uses-boolean-forcehourglass-false" title="Permanent link">⚓︎</a></h4>
+<p>尝试减少玩家拥有的 “发光沙漏” 道具的剩余使用次数。<code>ForceHourglass</code> 参数将立即移除所有充能并将 “发光沙漏” 变为普通沙漏形态。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
+<p>无论你指定移除的数字有多大，<code>Uses</code> 仅减少 1。</p>
 </details>
-<p>尝试减少玩家拥有的 “发光沙漏” 道具的剩余使用次数。<code>ForceHourglass</code> 参数将立即移除所有充能并将 “发光沙漏” 变为普通沙漏形态。
-无论你指定移除的数字有多大，<code>Uses</code> 仅减少 1。</p>
 <h3 aria-label="Functions" id="tryfakedeath">TryFakeDeath ()<a class="headerlink" href="#tryfakedeath" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-tryfakedeath">boolean TryFakeDeath ( )<a class="headerlink" href="#boolean-tryfakedeath" title="Permanent link">⚓︎</a></h4>
 <p>在玩家当前位置生成一个玩家的副本，并播放死亡动画和音效。</p>
 <h3 aria-label="Functions" id="tryforgottenthrow">TryForgottenThrow ()<a class="headerlink" href="#tryforgottenthrow" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-tryforgottenthrow-vector-direction">boolean TryForgottenThrow ( <a href="Vector.html">Vector</a> Direction )<a class="headerlink" href="#boolean-tryforgottenthrow-vector-direction" title="Permanent link">⚓︎</a></h4>
-<p>如果玩家持有 “堕落遗忘者”，他将朝指定方向被抛出。</p>
+<p>如果玩家持有 “堕化遗骸”，他将朝指定方向被抛出。</p>
 <h3 aria-label="Functions" id="trypreventdeath">TryPreventDeath ()<a class="headerlink" href="#trypreventdeath" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-trypreventdeath">boolean TryPreventDeath ( )<a class="headerlink" href="#boolean-trypreventdeath" title="Permanent link">⚓︎</a></h4>
 <p>成功时返回 <code>true</code>，否则返回 <code>false</code>。
