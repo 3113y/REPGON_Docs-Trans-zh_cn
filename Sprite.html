@@ -7111,6 +7111,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#setoverlaylayerframe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetOverlayLayerFrame ()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#setrenderflags" class="md-nav__link">
     <span class="md-ellipsis">
       SetRenderFlags ()
@@ -8430,6 +8439,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#setoverlaylayerframe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetOverlayLayerFrame ()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#setrenderflags" class="md-nav__link">
     <span class="md-ellipsis">
       SetRenderFlags ()
@@ -8494,34 +8512,35 @@
 <h2 id="modified-constructors">Modified Constructors<a class="headerlink" href="#modified-constructors" title="Permanent link">⚓︎</a></h2>
 <h3 aria-label="Modified Constructors" id="sprite">Sprite ()<a class="headerlink" href="#sprite" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Constructors" class="copyable" id="spritebool-sprite-string-anm2path-bool-loadgraphics-true"><a href="Sprite.html">Sprite</a>,bool Sprite ( string ANM2Path, bool LoadGraphics = true )<a class="headerlink" href="#spritebool-sprite-string-anm2path-bool-loadgraphics-true" title="Permanent link">⚓︎</a></h4>
-<p>Added two optional arguments, the function now returns two values: <a href="Sprite.html">Sprite</a> object and the bool signifying whether the sprite was loaded successfully or not.</p>
+<p>添加了两个可选参数，该函数现在返回两个值：<a href="Sprite.html">Sprite</a> 对象和一个布尔值，用于表示精灵是否成功加载。</p>
 <h3 aria-label="Modified Functions" id="replacespritesheet">ReplaceSpritesheet ()<a class="headerlink" href="#replacespritesheet" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-replacespritesheet-int-layerid-string-pngfilename-boolean-loadgraphics-false">void ReplaceSpritesheet ( int LayerId, string PngFilename, boolean LoadGraphics = false )<a class="headerlink" href="#void-replacespritesheet-int-layerid-string-pngfilename-boolean-loadgraphics-false" title="Permanent link">⚓︎</a></h4>
-<p>Now accepts an optional <code>bool</code> to determine if Sprite:LoadGraphics should be called after replacing the spritesheet. In most cases, you'll want to do this.</p>
+<p>现在接受一个可选的 <code>bool</code> 参数，用于确定在替换精灵表单后是否调用 <code>Sprite:LoadGraphics</code>。在大多数情况下，你会希望这样做。</p>
 <h3 aria-label="Modified Functions" id="setoverlayframe">SetOverlayFrame ()<a class="headerlink" href="#setoverlayframe" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-setoverlayframe-int-framenum">void SetOverlayFrame ( int FrameNum )<a class="headerlink" href="#void-setoverlayframe-int-framenum" title="Permanent link">⚓︎</a></h4>
-<p>New overload for <code>SetOverlayFrame()</code> that sets the frame for the current animation without stopping it, akin to the one for <code>SetFrame()</code>.</p>
+<p><code>SetOverlayFrame()</code> 的新重载，用于设置当前动画的帧而不停止动画，类似于 <code>SetFrame()</code> 的重载。</p>
 <h3 aria-label="Modified Functions" id="stop">Stop ()<a class="headerlink" href="#stop" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Modified Functions" class="copyable" id="void-stop-boolean-stopoverlay-true">void Stop ( boolean StopOverlay = true )<a class="headerlink" href="#void-stop-boolean-stopoverlay-true" title="Permanent link">⚓︎</a></h4>
-<p>Now accepts an optional <code>bool</code> for whether to also stop the overlay animation. Defaults to true.</p>
+<p>现在接受一个可选的 <code>bool</code> 参数，用于确定是否也停止覆盖动画。默认值为 true。</p>
 <h3 aria-label="Functions" id="clearcustomchampionshader">ClearCustomChampionShader ()<a class="headerlink" href="#clearcustomchampionshader" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearcustomchampionshader">void ClearCustomChampionShader ( )<a class="headerlink" href="#void-clearcustomchampionshader" title="Permanent link">⚓︎</a></h4>
-<p>Removes any custom <code>coloroffset_champion</code> shader applied by <code>sprite:SetCustomChampionShader(path)</code>.</p>
+<p>移除由 <code>sprite:SetCustomChampionShader(path)</code> 应用的任何自定义 <code>coloroffset_champion</code> 着色器。</p>
 <h3 aria-label="Functions" id="clearcustomshader">ClearCustomShader ()<a class="headerlink" href="#clearcustomshader" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-clearcustomshader">void ClearCustomShader ( )<a class="headerlink" href="#void-clearcustomshader" title="Permanent link">⚓︎</a></h4>
-<p>Removes any custom <code>coloroffset</code> shader applied by <code>sprite:SetCustomShader(path)</code>.</p>
+<p>移除由 <code>sprite:SetCustomShader(path)</code> 应用的任何自定义 <code>coloroffset</code> 着色器。</p>
 <h3 aria-label="Functions" id="continue">Continue ()<a class="headerlink" href="#continue" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-continue-boolean-continueoverlay-true">void Continue ( boolean ContinueOverlay = true )<a class="headerlink" href="#void-continue-boolean-continueoverlay-true" title="Permanent link">⚓︎</a></h4>
-<p>If the animation is currently stopped, makes it start playing again from the current frame. Will not restart a finished, non-looping animation.</p>
+<p>如果动画当前已停止，则使其从当前帧继续播放。不会重新启动已完成的非循环动画。</p>
 <h3 aria-label="Functions" id="continueoverlay">ContinueOverlay ()<a class="headerlink" href="#continueoverlay" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-continueoverlay">void ContinueOverlay ( )<a class="headerlink" href="#void-continueoverlay" title="Permanent link">⚓︎</a></h4>
-<p>Same as above, but only for the overlay animation.</p>
+<p>与上述功能相同，但仅适用于覆盖动画。</p>
 <h3 aria-label="Functions" id="getallanimationdata">GetAllAnimationData ()<a class="headerlink" href="#getallanimationdata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="animationdata-getallanimationdata"><a href="AnimationData.html">AnimationData</a>[] GetAllAnimationData ( )<a class="headerlink" href="#animationdata-getallanimationdata" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table of <a href="AnimationData.html">AnimationData</a> representing all animations in this anm2 file.</p>
+<p>返回一个表示此 anm2 文件中所有动画的 <a href="AnimationData.html">AnimationData</a> 表。</p>
 <h3 aria-label="Functions" id="getalllayers">GetAllLayers ()<a class="headerlink" href="#getalllayers" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="layerstates-getalllayers"><a href="LayerState.html">LayerStates</a>[] GetAllLayers ( )<a class="headerlink" href="#layerstates-getalllayers" title="Permanent link">⚓︎</a></h4>
-<p>Returns a table of all <a href="LayerState.html">LayerStates</a> in this Sprite.</p>
+<p>返回此精灵中所有 <a href="LayerState.html">LayerStates</a> 的表。</p>
+<hr />
 <h3 aria-label="Functions" id="getanimationdata">GetAnimationData ()<a class="headerlink" href="#getanimationdata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="animationdata-getanimationdata-string-animationname"><a href="AnimationData.html">AnimationData</a> GetAnimationData ( string AnimationName )<a class="headerlink" href="#animationdata-getanimationdata-string-animationname" title="Permanent link">⚓︎</a></h4>
 <hr />
@@ -8530,47 +8549,48 @@
 <hr />
 <h3 aria-label="Functions" id="getlayer">GetLayer ()<a class="headerlink" href="#getlayer" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="layerstate-getlayer-int-layerid"><a href="LayerState.html">LayerState</a> GetLayer ( int LayerId )<a class="headerlink" href="#layerstate-getlayer-int-layerid" title="Permanent link">⚓︎</a></h4>
-<p>Returns the layer data from the provided layer id.</p>
+<p>返回提供的图层 ID 的图层数据。</p>
 <h3 aria-label="Functions" id="getlayerframedata">GetLayerFrameData ()<a class="headerlink" href="#getlayerframedata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="animationframe-getlayerframedata-int-layer"><a href="AnimationFrame.html">AnimationFrame</a> GetLayerFrameData ( int Layer )<a class="headerlink" href="#animationframe-getlayerframedata-int-layer" title="Permanent link">⚓︎</a></h4>
-<p>Returns the <a href="AnimationFrame.html">AnimationFrame</a> currently being displayed on the specified layer.</p>
+<p>返回指定图层上当前显示的 <a href="AnimationFrame.html">AnimationFrame</a>。</p>
 <h3 aria-label="Functions" id="getnullframe">GetNullFrame ()<a class="headerlink" href="#getnullframe" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="nullframe-getnullframe-string-layername"><a href="NullFrame.html">NullFrame</a> GetNullFrame ( string LayerName )<a class="headerlink" href="#nullframe-getnullframe-string-layername" title="Permanent link">⚓︎</a></h4>
-<p>Returns the <a href="NullFrame.html">NullFrame</a> from the provided layer name.</p>
+<p>返回提供的图层名称的 <a href="NullFrame.html">NullFrame</a>。</p>
 <h3 aria-label="Functions" id="getoverlayanimationdata">GetOverlayAnimationData ()<a class="headerlink" href="#getoverlayanimationdata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="animationdata-getoverlayanimationdata"><a href="AnimationData.html">AnimationData</a> GetOverlayAnimationData ( )<a class="headerlink" href="#animationdata-getoverlayanimationdata" title="Permanent link">⚓︎</a></h4>
-<p>Returns the <a href="AnimationData.html">AnimationData</a> of the currently playing overlay.</p>
+<p>返回当前播放的覆盖动画的 <a href="AnimationData.html">AnimationData</a>。</p>
 <h3 aria-label="Functions" id="getoverlaylayerframedata">GetOverlayLayerFrameData ()<a class="headerlink" href="#getoverlaylayerframedata" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="animationframe-getoverlaylayerframedata-int-layer"><a href="AnimationFrame.html">AnimationFrame</a> GetOverlayLayerFrameData ( int Layer )<a class="headerlink" href="#animationframe-getoverlaylayerframedata-int-layer" title="Permanent link">⚓︎</a></h4>
-<p>Returns the <a href="AnimationFrame.html">AnimationFrame</a> currently being displayed on the specified layer of the overlay animation.</p>
+<p>返回覆盖动画指定图层上当前显示的 <a href="AnimationFrame.html">AnimationFrame</a>。</p>
 <h3 aria-label="Functions" id="getoverlaynullframe">GetOverlayNullFrame ()<a class="headerlink" href="#getoverlaynullframe" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="nullframe-getoverlaynullframe-string-layername"><a href="NullFrame.html">NullFrame</a> GetOverlayNullFrame ( string LayerName )<a class="headerlink" href="#nullframe-getoverlaynullframe-string-layername" title="Permanent link">⚓︎</a></h4>
-<p>Returns the <a href="NullFrame.html">NullFrame</a> from the provided layer name of the overlay animation.</p>
+<p>返回覆盖动画提供的图层名称的 <a href="NullFrame.html">NullFrame</a>。</p>
 <h3 aria-label="Functions" id="getrenderflags">GetRenderFlags ()<a class="headerlink" href="#getrenderflags" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="animrenderflags-getrenderflags"><a href="enums/AnimRenderFlags.html">AnimRenderFlags</a> GetRenderFlags ( )<a class="headerlink" href="#animrenderflags-getrenderflags" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="hascustomchampionshader">HasCustomChampionShader ()<a class="headerlink" href="#hascustomchampionshader" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-hascustomchampionshader-string-shaderpath">boolean HasCustomChampionShader ( string ShaderPath )<a class="headerlink" href="#boolean-hascustomchampionshader-string-shaderpath" title="Permanent link">⚓︎</a></h4>
-<p>Returns true if the specified custom champion shader is currently loaded (see <code>SetCustomChampionShader</code> below). If no string is provided, returns true if ANY custom champion shader is applied.</p>
+<p>如果指定的自定义冠军着色器当前已加载，则返回 true（请参阅下面的 <code>SetCustomChampionShader</code>）。如果未提供字符串，则如果应用了任何自定义冠军着色器，则返回 true。</p>
 <h3 aria-label="Functions" id="hascustomshader">HasCustomShader ()<a class="headerlink" href="#hascustomshader" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-hascustomshader-string-shaderpath">boolean HasCustomShader ( string ShaderPath )<a class="headerlink" href="#boolean-hascustomshader-string-shaderpath" title="Permanent link">⚓︎</a></h4>
-<p>Returns true if the specified custom shader is currently loaded (see <code>SetCustomShader</code> below). If no string is provided, returns true if ANY custom shader is applied.</p>
+<p>如果指定的自定义着色器当前已加载，则返回 true（请参阅下面的 <code>SetCustomShader</code>）。如果未提供字符串，则如果应用了任何自定义着色器，则返回 true。</p>
 <h3 aria-label="Functions" id="isoverlayeventtriggered">IsOverlayEventTriggered ()<a class="headerlink" href="#isoverlayeventtriggered" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="boolean-isoverlayeventtriggered-string-eventname">boolean IsOverlayEventTriggered ( string EventName )<a class="headerlink" href="#boolean-isoverlayeventtriggered-string-eventname" title="Permanent link">⚓︎</a></h4>
-<p>Returns <code>true</code> if the currently playing overlay animation just reached the event with the provided name.</p>
+<p>如果当前播放的覆盖动画刚刚到达具有提供名称的事件，则返回 <code>true</code>。</p>
 <h3 aria-label="Functions" id="setcustomchampionshader">SetCustomChampionShader ()<a class="headerlink" href="#setcustomchampionshader" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcustomchampionshader-string-shaderpath">void SetCustomChampionShader ( string ShaderPath )<a class="headerlink" href="#void-setcustomchampionshader-string-shaderpath" title="Permanent link">⚓︎</a></h4>
-<p>The custom champion shader will only be used by the game if the entity is actually a champion.
-You can also set a per-layer shader via <a href="LayerState.html">LayerState</a>.
-Specify a custom champion shader file for this Sprite to use instead of the usual <code>coloroffset_champion</code> shader. Provided path is expected to start at <code>.../resources/</code> and to find both a .vs and .fs file at that location. For example: <code>sprite:SetCustomChampionShader("shaders/my_shader")</code> will load <code>.../resources/shaders/my_shader.vs</code> and <code>.../resources/shaders/my_shader.fs</code>.
-Note that the custom shader must take the exact same inputs as the default <code>coloroffset_champion</code> shader the game uses (it has one additional input compared to <code>coloroffset</code>).</p>
+<p>仅当实体实际上是精英怪时，游戏才会使用自定义精英怪着色器。
+你还可以通过 <a href="LayerState.html">LayerState</a> 设置每层的着色器。
+为这个精灵指定一个自定义精英怪着色器文件，以代替通常的 <code>coloroffset_champion</code> 着色器。提供的路径预计从 <code>.../resources/</code> 开始，并在该位置找到 .vs 和 .fs 文件。例如：<code>sprite:SetCustomChampionShader("shaders/my_shader")</code> 将加载 <code>.../resources/shaders/my_shader.vs</code> 和 <code>.../resources/shaders/my_shader.fs</code>。
+请注意，自定义着色器必须采用游戏使用的默认 <code>coloroffset_champion</code> 着色器完全相同的输入（与 <code>coloroffset</code> 相比，它有一个额外的输入）。</p>
 <h3 aria-label="Functions" id="setcustomshader">SetCustomShader ()<a class="headerlink" href="#setcustomshader" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setcustomshader-string-shaderpath">void SetCustomShader ( string ShaderPath )<a class="headerlink" href="#void-setcustomshader-string-shaderpath" title="Permanent link">⚓︎</a></h4>
-<p>Note that the custom shader must take the exact same inputs as the default <code>coloroffset</code> shader the game uses. The gold and dogma shaders also use the same inputs, and can be a good reference.
-This custom shader will not be used by the game if the entity is a champion, or if it has the gold/dogma shader applied.
-You can also set a per-layer shader via <a href="LayerState.html">LayerState</a>.
-Specify a custom shader file for this Sprite to use instead of the default <code>coloroffset</code> shader. Provided path is expected to start at <code>.../resources/</code> and to find both a .vs and .fs file at that location. For example: <code>sprite:SetCustomShader("shaders/my_shader")</code> will load <code>.../resources/shaders/my_shader.vs</code> and <code>.../resources/shaders/my_shader.fs</code>.</p>
+<p>请注意，自定义着色器必须采用游戏使用的默认 <code>coloroffset</code> 着色器完全相同的输入。gold和教条着色器也使用相同的输入，可以作为很好的参考。
+如果实体是精英怪，或者它应用了gold/教条着色器，游戏将不会使用此自定义着色器。
+你还可以通过 <a href="LayerState.html">LayerState</a> 设置每层的着色器。
+为这个精灵指定一个自定义着色器文件，以代替默认的 <code>coloroffset</code> 着色器。提供的路径预计从 <code>.../resources/</code> 开始，并在该位置找到 .vs 和 .fs 文件。例如：<code>sprite:SetCustomShader("shaders/my_shader")</code> 将加载 <code>.../resources/shaders/my_shader.vs</code> 和 <code>.../resources/shaders/my_shader.fs</code>。</p>
 <h3 aria-label="Functions" id="setoverlaylayerframe">SetOverlayLayerFrame ()<a class="headerlink" href="#setoverlaylayerframe" title="Permanent link">⚓︎</a></h3>
+<h3 aria-label="Functions" id="setoverlaylayerframe_1">SetOverlayLayerFrame ()<a class="headerlink" href="#setoverlaylayerframe_1" title="Permanent link">⚓︎</a></h3>
 <h4 aria-label="Functions" class="copyable" id="void-setoverlaylayerframe-int-layer-int-frame">void SetOverlayLayerFrame ( int Layer, int Frame )<a class="headerlink" href="#void-setoverlaylayerframe-int-layer-int-frame" title="Permanent link">⚓︎</a></h4>
 <hr />
 <h3 aria-label="Functions" id="setrenderflags">SetRenderFlags ()<a class="headerlink" href="#setrenderflags" title="Permanent link">⚓︎</a></h3>

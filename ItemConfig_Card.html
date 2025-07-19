@@ -8148,7 +8148,7 @@
 <h4 aria-label="Modified Functions" class="copyable" id="void-setavailabilitycondition-function-availabilitycondition">void SetAvailabilityCondition ( function AvailabilityCondition )<a class="headerlink" href="#void-setavailabilitycondition-function-availabilitycondition" title="Permanent link">⚓︎</a></h4>
 <p>Sets an additional function that runs when <a href="https://wofsauge.github.io/IsaacDocs/rep/ItemConfig_Card.html#isavailable">IsAvailable()</a> is called, internally or through the Lua API.</p>
 <p>The function must return a boolean that determines whether or not the card is available.</p>
-<p>This is function is only checked after the GreedModeAllowed, Achievement and Hidden check have all being passed, as such this cannot be used to overwrite those evaluations </p>
+<p>This is function is only checked after the GreedModeAllowed, Achievement and Hidden check have all being passed, as such this cannot be used to overwrite those evaluations</p>
 <details class="warning" open="open">
 <summary>Function Errors</summary>
 <p>If at any point the function errors whilst being executed, then it will be treated the same as if <code>true</code> was returned.</p>
