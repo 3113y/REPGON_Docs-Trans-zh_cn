@@ -8,44 +8,44 @@ tags:
 
 ### Sprite () {: aria-label='Modified Constructors' }
 #### [Sprite](Sprite.md),bool Sprite ( string ANM2Path, bool LoadGraphics = true ) {: .copyable aria-label='Modified Constructors' }
-Added two optional arguments, the function now returns two values: [Sprite](Sprite.md) object and the bool signifying whether the sprite was loaded successfully or not.
+添加了两个可选参数，该函数现在返回两个值：[Sprite](Sprite.md) 对象和一个布尔值，用于表示精灵是否成功加载。
 
 ### ReplaceSpritesheet () {: aria-label='Modified Functions' }
 #### void ReplaceSpritesheet ( int LayerId, string PngFilename, boolean LoadGraphics = false ) {: .copyable aria-label='Modified Functions' }
-Now accepts an optional `bool` to determine if Sprite:LoadGraphics should be called after replacing the spritesheet. In most cases, you'll want to do this.
+现在接受一个可选的 `bool` 参数，用于确定在替换精灵表单后是否调用 `Sprite:LoadGraphics`。在大多数情况下，你会希望这样做。
 
 ### SetOverlayFrame () {: aria-label='Modified Functions' }
 #### void SetOverlayFrame ( int FrameNum ) {: .copyable aria-label='Modified Functions' }
-New overload for `SetOverlayFrame()` that sets the frame for the current animation without stopping it, akin to the one for `SetFrame()`.
+`SetOverlayFrame()` 的新重载，用于设置当前动画的帧而不停止动画，类似于 `SetFrame()` 的重载。
 
 ### Stop () {: aria-label='Modified Functions' }
 #### void Stop ( boolean StopOverlay = true ) {: .copyable aria-label='Modified Functions' }
-Now accepts an optional `bool` for whether to also stop the overlay animation. Defaults to true.
+现在接受一个可选的 `bool` 参数，用于确定是否也停止覆盖动画。默认值为 true。
 
 ### ClearCustomChampionShader () {: aria-label='Functions' }
 #### void ClearCustomChampionShader ( ) {: .copyable aria-label='Functions' }
-Removes any custom `coloroffset_champion` shader applied by `sprite:SetCustomChampionShader(path)`.
+移除由 `sprite:SetCustomChampionShader(path)` 应用的任何自定义 `coloroffset_champion` 着色器。
 
 ### ClearCustomShader () {: aria-label='Functions' }
 #### void ClearCustomShader ( ) {: .copyable aria-label='Functions' }
-Removes any custom `coloroffset` shader applied by `sprite:SetCustomShader(path)`.
+移除由 `sprite:SetCustomShader(path)` 应用的任何自定义 `coloroffset` 着色器。
 
 ### Continue () {: aria-label='Functions' }
 #### void Continue ( boolean ContinueOverlay = true ) {: .copyable aria-label='Functions' }
-If the animation is currently stopped, makes it start playing again from the current frame. Will not restart a finished, non-looping animation.
+如果动画当前已停止，则使其从当前帧继续播放。不会重新启动已完成的非循环动画。
 
 ### ContinueOverlay () {: aria-label='Functions' }
 #### void ContinueOverlay ( ) {: .copyable aria-label='Functions' }
-Same as above, but only for the overlay animation.
+与上述功能相同，但仅适用于覆盖动画。
 
 ### GetAllAnimationData () {: aria-label='Functions' }
 #### [AnimationData](AnimationData.md)[] GetAllAnimationData ( ) {: .copyable aria-label='Functions' }
-Returns a table of [AnimationData](AnimationData.md) representing all animations in this anm2 file.
+返回一个表示此 anm2 文件中所有动画的 [AnimationData](AnimationData.md) 表。
 
 ### GetAllLayers () {: aria-label='Functions' }
 #### [LayerStates](LayerState.md)[] GetAllLayers ( ) {: .copyable aria-label='Functions' }
-Returns a table of all [LayerStates](LayerState.md) in this Sprite.
-
+返回此精灵中所有 [LayerStates](LayerState.md) 的表。
+___
 ### GetAnimationData () {: aria-label='Functions' }
 #### [AnimationData](AnimationData.md) GetAnimationData ( string AnimationName ) {: .copyable aria-label='Functions' }
 
@@ -56,27 +56,27 @@ ___
 ___
 ### GetLayer () {: aria-label='Functions' }
 #### [LayerState](LayerState.md) GetLayer ( int LayerId ) {: .copyable aria-label='Functions' }
-Returns the layer data from the provided layer id.
+返回提供的图层 ID 的图层数据。
 
 ### GetLayerFrameData () {: aria-label='Functions' }
 #### [AnimationFrame](AnimationFrame.md) GetLayerFrameData ( int Layer ) {: .copyable aria-label='Functions' }
-Returns the [AnimationFrame](AnimationFrame.md) currently being displayed on the specified layer.
+返回指定图层上当前显示的 [AnimationFrame](AnimationFrame.md)。
 
 ### GetNullFrame () {: aria-label='Functions' }
 #### [NullFrame](NullFrame.md) GetNullFrame ( string LayerName ) {: .copyable aria-label='Functions' }
-Returns the [NullFrame](NullFrame.md) from the provided layer name.
+返回提供的图层名称的 [NullFrame](NullFrame.md)。
 
 ### GetOverlayAnimationData () {: aria-label='Functions' }
 #### [AnimationData](AnimationData.md) GetOverlayAnimationData ( ) {: .copyable aria-label='Functions' }
-Returns the [AnimationData](AnimationData.md) of the currently playing overlay.
+返回当前播放的覆盖动画的 [AnimationData](AnimationData.md)。
 
 ### GetOverlayLayerFrameData () {: aria-label='Functions' }
 #### [AnimationFrame](AnimationFrame.md) GetOverlayLayerFrameData ( int Layer ) {: .copyable aria-label='Functions' }
-Returns the [AnimationFrame](AnimationFrame.md) currently being displayed on the specified layer of the overlay animation.
+返回覆盖动画指定图层上当前显示的 [AnimationFrame](AnimationFrame.md)。
 
 ### GetOverlayNullFrame () {: aria-label='Functions' }
 #### [NullFrame](NullFrame.md) GetOverlayNullFrame ( string LayerName ) {: .copyable aria-label='Functions' }
-Returns the [NullFrame](NullFrame.md) from the provided layer name of the overlay animation.
+返回覆盖动画提供的图层名称的 [NullFrame](NullFrame.md)。
 
 ### GetRenderFlags () {: aria-label='Functions' }
 #### [AnimRenderFlags](enums/AnimRenderFlags.md) GetRenderFlags ( ) {: .copyable aria-label='Functions' }
@@ -84,29 +84,31 @@ Returns the [NullFrame](NullFrame.md) from the provided layer name of the overla
 ___
 ### HasCustomChampionShader () {: aria-label='Functions' }
 #### boolean HasCustomChampionShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-Returns true if the specified custom champion shader is currently loaded (see `SetCustomChampionShader` below). If no string is provided, returns true if ANY custom champion shader is applied.
+如果指定的自定义冠军着色器当前已加载，则返回 true（请参阅下面的 `SetCustomChampionShader`）。如果未提供字符串，则如果应用了任何自定义冠军着色器，则返回 true。
 
 ### HasCustomShader () {: aria-label='Functions' }
 #### boolean HasCustomShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-Returns true if the specified custom shader is currently loaded (see `SetCustomShader` below). If no string is provided, returns true if ANY custom shader is applied.
+如果指定的自定义着色器当前已加载，则返回 true（请参阅下面的 `SetCustomShader`）。如果未提供字符串，则如果应用了任何自定义着色器，则返回 true。
 
 ### IsOverlayEventTriggered () {: aria-label='Functions' }
 #### boolean IsOverlayEventTriggered ( string EventName ) {: .copyable aria-label='Functions' }
-Returns `true` if the currently playing overlay animation just reached the event with the provided name.
+如果当前播放的覆盖动画刚刚到达具有提供名称的事件，则返回 `true`。
 
 ### SetCustomChampionShader () {: aria-label='Functions' }
 #### void SetCustomChampionShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-The custom champion shader will only be used by the game if the entity is actually a champion.
-You can also set a per-layer shader via [LayerState](LayerState.md).
-Specify a custom champion shader file for this Sprite to use instead of the usual `coloroffset_champion` shader. Provided path is expected to start at `.../resources/` and to find both a .vs and .fs file at that location. For example: `sprite:SetCustomChampionShader("shaders/my_shader")` will load `.../resources/shaders/my_shader.vs` and `.../resources/shaders/my_shader.fs`.
-Note that the custom shader must take the exact same inputs as the default `coloroffset_champion` shader the game uses (it has one additional input compared to `coloroffset`).
+仅当实体实际上是精英怪时，游戏才会使用自定义精英怪着色器。
+你还可以通过 [LayerState](LayerState.md) 设置每层的着色器。
+为这个精灵指定一个自定义精英怪着色器文件，以代替通常的 `coloroffset_champion` 着色器。提供的路径预计从 `.../resources/` 开始，并在该位置找到 .vs 和 .fs 文件。例如：`sprite:SetCustomChampionShader("shaders/my_shader")` 将加载 `.../resources/shaders/my_shader.vs` 和 `.../resources/shaders/my_shader.fs`。
+请注意，自定义着色器必须采用游戏使用的默认 `coloroffset_champion` 着色器完全相同的输入（与 `coloroffset` 相比，它有一个额外的输入）。
+
 
 ### SetCustomShader () {: aria-label='Functions' }
 #### void SetCustomShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-Note that the custom shader must take the exact same inputs as the default `coloroffset` shader the game uses. The gold and dogma shaders also use the same inputs, and can be a good reference.
-This custom shader will not be used by the game if the entity is a champion, or if it has the gold/dogma shader applied.
-You can also set a per-layer shader via [LayerState](LayerState.md).
-Specify a custom shader file for this Sprite to use instead of the default `coloroffset` shader. Provided path is expected to start at `.../resources/` and to find both a .vs and .fs file at that location. For example: `sprite:SetCustomShader("shaders/my_shader")` will load `.../resources/shaders/my_shader.vs` and `.../resources/shaders/my_shader.fs`.
+请注意，自定义着色器必须采用游戏使用的默认 `coloroffset` 着色器完全相同的输入。gold和教条着色器也使用相同的输入，可以作为很好的参考。
+如果实体是精英怪，或者它应用了gold/教条着色器，游戏将不会使用此自定义着色器。
+你还可以通过 [LayerState](LayerState.md) 设置每层的着色器。
+为这个精灵指定一个自定义着色器文件，以代替默认的 `coloroffset` 着色器。提供的路径预计从 `.../resources/` 开始，并在该位置找到 .vs 和 .fs 文件。例如：`sprite:SetCustomShader("shaders/my_shader")` 将加载 `.../resources/shaders/my_shader.vs` 和 `.../resources/shaders/my_shader.fs`。
+### SetOverlayLayerFrame () {: aria-label='Functions' }
 ### SetOverlayLayerFrame () {: aria-label='Functions' }
 #### void SetOverlayLayerFrame ( int Layer, int Frame ) {: .copyable aria-label='Functions' }
 
