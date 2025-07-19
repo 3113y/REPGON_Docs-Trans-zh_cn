@@ -1236,13 +1236,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#new-callbacks" class="md-nav__link">
+  <a href="#modified-new-callbacks" class="md-nav__link">
     <span class="md-ellipsis">
-      New Callbacks
+      Modified New Callbacks
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="New Callbacks">
+    <nav class="md-nav" aria-label="Modified New Callbacks">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5177,13 +5177,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#new-callbacks" class="md-nav__link">
+  <a href="#modified-new-callbacks" class="md-nav__link">
     <span class="md-ellipsis">
-      New Callbacks
+      Modified New Callbacks
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="New Callbacks">
+    <nav class="md-nav" aria-label="Modified New Callbacks">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -13526,13 +13526,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#new-callbacks" class="md-nav__link">
+  <a href="#modified-new-callbacks" class="md-nav__link">
     <span class="md-ellipsis">
-      New Callbacks
+      Modified New Callbacks
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="New Callbacks">
+    <nav class="md-nav" aria-label="Modified New Callbacks">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -16155,8 +16155,8 @@
 <p>This is a list of all new callbacks added by REPENTOGON.</p>
 <h2 id="modified-old-callbacks">Modified Old Callbacks<a class="headerlink" href="#modified-old-callbacks" title="Permanent link">⚓︎</a></h2>
 <h3 id="mc_use_pill">MC_USE_PILL<a class="headerlink" href="#mc_use_pill" title="Permanent link">⚓︎</a></h3>
-<p>MC_USE_PILL now passes PillColor as an argument.
-Accepts no return parameters.</p>
+<p><code>MC_USE_PILL</code> 现在会将 <code>PillColor</code> 作为参数传递。
+不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -16178,21 +16178,21 @@ Accepts no return parameters.</p>
 </tbody>
 </table>
 <h3 id="mc_post_pickup_selection">MC_POST_PICKUP_SELECTION<a class="headerlink" href="#mc_post_pickup_selection" title="Permanent link">⚓︎</a></h3>
-<p>MC_POST_PICKUP_COLLISION now passes the <strong>Requested Variant</strong> and <strong>Requested SubType</strong>, as well as <strong>RNG</strong>.<br />
-<strong>Requested Variant</strong> and <strong>Requested SubType</strong> represents the variant and subtype set when spawning the entity.   </p>
-<p>A third optional <code>Continue</code> parameter has been added to the return table.<br />
-If set to <code>true</code> the callback will instead replace the <code>Variant</code> and <code>SubType</code> parameter with the specified values and continue running.</p>
-<p>These changes aim to make the callback a viable option for handling pickup pools.</p>
+<p><code>MC_POST_PICKUP_COLLISION</code> 现在会传递 <strong>请求的变体</strong> 和 <strong>请求的子类型</strong> 以及 <strong>随机数生成器（RNG）</strong>。
+<strong>请求的变体</strong> 和 <strong>请求的子类型</strong> 表示生成实体时设置的变体和子类型。</p>
+<p>返回表中添加了第三个可选的 <code>Continue</code> 参数。
+如果设置为 <code>true</code>，回调将用指定的值替换 <code>Variant</code> 和 <code>SubType</code> 参数并继续运行。</p>
+<p>这些更改旨在使此回调成为处理拾取物池的可行选项。</p>
 <details class="info" open="open">
-<summary>Usage</summary>
-<p>Internally the game always attempts to randomize the spawned pickup's variant and subtype, even when re-entering an already visited room, however there are checks in place to make sure that randomization only occurs if either of these values are initially set to 0.</p>
-<p>Therefore, any callback should always check <code>if RequestedVariant == 0 or RequestedSubType == 0</code> before attempting any modification.</p>
-<p>That is unless the desired effect is something akin to the APRIL FOOLS's "All nickels are sticky nickels" effect, which is applied regardless of the afore mentioned restriction.</p>
+<summary>使用方法</summary>
+<p>在内部，游戏总是尝试对生成的拾取物的变体和子类型进行随机化，即使重新进入已经访问过的房间也是如此，但是有一些检查机制确保只有当这些值最初设置为 0 时才会进行随机化。</p>
+<p>因此，任何回调在尝试进行任何修改之前都应该检查 <code>if RequestedVariant == 0 or RequestedSubType == 0</code>。</p>
+<p>除非期望的效果类似于愚人节的“所有镍币都是粘性镍币”效果，该效果无论上述限制如何都会应用。</p>
 </details>
 <details class="info" open="open">
 <summary>Requested Variant == 0</summary>
-<p>When <strong>Requested Variant</strong> is equal to 0 the game will randomize both the Variant and SubType of the pickup. In this case the value of <strong>Requested SubType</strong> is used as a variant blacklist.  </p>
-<p>This blacklist are listed in the <a href="NullPickupSubType.html">NullPickupSubType</a> enum.</p>
+<p>当 <strong>请求的变体</strong> 等于 0 时，游戏将对拾取物的 <code>Variant</code> 和 <code>SubType</code> 进行随机化。在这种情况下，<strong>请求的子类型</strong> 的值将用作变体黑名单。</p>
+<p>这个黑名单列在 <a href="NullPickupSubType.html">NullPickupSubType</a> 枚举中。</p>
 </details>
 <table>
 <thead>
@@ -16215,10 +16215,10 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_player_collision">MC_PRE_PLAYER_COLLISION<a class="headerlink" href="#mc_pre_player_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -16241,10 +16241,10 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_tear_collision">MC_PRE_TEAR_COLLISION<a class="headerlink" href="#mc_pre_tear_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -16267,12 +16267,12 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_familiar_collision">MC_PRE_FAMILIAR_COLLISION<a class="headerlink" href="#mc_pre_familiar_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
-<p>For example, you can return <code>{ Collide=true }</code> to make a familiar to collide physically with something (like an enemy, which they don't normally do) without skipping on-collision code (like you would by returning <code>false</code>).</p>
+<p>例如，你可以返回 <code>{ Collide=true }</code> 以使一个跟班与某物（如敌人，通常跟班不会与敌人进行物理碰撞）进行物理碰撞，而不跳过碰撞代码（如果你返回 <code>false</code> 则会跳过）。</p>
 <table>
 <thead>
 <tr>
@@ -16294,10 +16294,10 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_bomb_collision">MC_PRE_BOMB_COLLISION<a class="headerlink" href="#mc_pre_bomb_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -16320,10 +16320,10 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_pickup_collision">MC_PRE_PICKUP_COLLISION<a class="headerlink" href="#mc_pre_pickup_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -16346,10 +16346,10 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_knife_collision">MC_PRE_KNIFE_COLLISION<a class="headerlink" href="#mc_pre_knife_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -16372,10 +16372,10 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_projectile_collision">MC_PRE_PROJECTILE_COLLISION<a class="headerlink" href="#mc_pre_projectile_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -16398,10 +16398,10 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_pre_npc_collision">MC_PRE_NPC_COLLISION<a class="headerlink" href="#mc_pre_npc_collision" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity, such as dealing collision damage. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li><code>Collide</code>：设置为 <code>true</code> 以强制实体进行物理碰撞（相互推开），除非“碰撞者”忽略碰撞。设置为 <code>false</code> 以忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li><code>SkipCollisionEffects</code>：设置为 <code>true</code> 以跳过此实体的碰撞代码，例如造成碰撞伤害。不影响物理碰撞。不会跳过“碰撞者”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -16424,13 +16424,13 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 id="mc_entity_take_dmg">MC_ENTITY_TAKE_DMG<a class="headerlink" href="#mc_entity_take_dmg" title="Permanent link">⚓︎</a></h3>
-<p>Now optionally accepts returning a table, with any combination of the following fields, to override the corresponding argument:</p>
+<p>现在可以选择返回一个表，该表可以包含以下任意组合的字段，以覆盖相应的参数：</p>
 <ul>
-<li>Damage</li>
-<li>DamageFlags</li>
-<li>DamageCountdown</li>
+<li><code>Damage</code></li>
+<li><code>DamageFlags</code></li>
+<li><code>DamageCountdown</code></li>
 </ul>
-<p>Modified values are passed along to the remaining callbacks. Returning false to cancel the damage still skips the remaining callbacks.</p>
+<p>修改后的值将传递给其余的回调。返回 <code>false</code> 以取消伤害仍然会跳过其余的回调。</p>
 <table>
 <thead>
 <tr>
@@ -16451,26 +16451,31 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tr>
 </tbody>
 </table>
-<h2 id="new-callbacks">New Callbacks<a class="headerlink" href="#new-callbacks" title="Permanent link">⚓︎</a></h2>
+<h2 id="modified-new-callbacks">Modified New Callbacks<a class="headerlink" href="#modified-new-callbacks" title="Permanent link">⚓︎</a></h2>
 <h3 class="copyable" id="mc_pre_add_collectible">MC_PRE_ADD_COLLECTIBLE<a class="headerlink" href="#mc_pre_add_collectible" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a table of parameters: <code>{Type, Charge, FirstTime, Slot, VarData}</code></p>
-<p>Alternatively accepts a <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> to change the type without changing any other parameters or a boolean to cancel the addition altogether (false) or force it to happen skipping the following callbacks (true).</p>
+<p>接受一个参数表：<code>{Type, Charge, FirstTime, Slot, VarData}</code></p>
+<p>或者接受一个 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> 以在不更改任何其他参数的情况下更改类型，或者接受一个布尔值以完全取消添加（<code>false</code>）或强制添加发生并跳过后续回调（<code>true</code>）。</p>
 <details class="- example">
-<summary>Example Code</summary>
-<p>This code will transform every collectible into Money = Power once the player picks it up.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">mod</span><span class="p">:</span><span class="nf">myFunction</span><span class="p">(</span><span class="nv">Type</span><span class="p">,</span><span class="w"> </span><span class="nv">Charge</span><span class="p">,</span><span class="w"> </span><span class="nv">FirstTime</span><span class="p">,</span><span class="w"> </span><span class="nv">Slot</span><span class="p">,</span><span class="w"> </span><span class="nv">VarData</span><span class="p">,</span><span class="w"> </span><span class="nv">Player</span><span class="p">)</span>
+<summary>示例代码</summary>
+<p>这段代码将在玩家拾取任何道具时将其转换为“金钱即力量”。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">mod</span><span class="p">:</span><span class="nf">myFunction</span><span class="p">(</span><span class="nv">Type</span><span class="p">,</span><span class="w"> </span><span class="nv">Charge</span><span class="p">,</span><span class="w"> </span><span class="nv">FirstTime</span><span class="p">,</span><span class="w"> </span><span class="nv">Slot</span><span class="p">,</span><span class="w"> </span><span class="nv">VarData</span><span class="p">,</span><span class="w"> </span><span class="nv">Player</span><span class="p">)</span>
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">CollectibleType</span><span class="p">.</span><span class="py">COLLECTIBLE_MONEY_EQUALS_POWER</span>
 <span class="kr">end</span>
 <span class="nv">mod</span><span class="p">:</span><span class="nf">AddCallback</span><span class="p">(</span><span class="nv">ModCallbacks</span><span class="p">.</span><span class="py">MC_PRE_ADD_COLLECTIBLE</span><span class="p">,</span><span class="w"> </span><span class="nv">mod</span><span class="p">.</span><span class="py">myFunction</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div></p>
-<p>This code will force active items to be uncharged on pickup.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nc">mod</span><span class="p">:</span><span class="nf">myFunction</span><span class="p">(</span><span class="nv">Type</span><span class="p">,</span><span class="w"> </span><span class="nv">Charge</span><span class="p">,</span><span class="w"> </span><span class="nv">FirstTime</span><span class="p">,</span><span class="w"> </span><span class="nv">Slot</span><span class="p">,</span><span class="w"> </span><span class="nv">VarData</span><span class="p">,</span><span class="w"> </span><span class="nv">Player</span><span class="p">)</span>
+
+<span class="err">这段代码将强制主动道具在拾取时不充能。</span>
+<span class="err">```</span><span class="nv">lua</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">mod</span><span class="p">:</span><span class="nf">myFunction</span><span class="p">(</span><span class="nv">Type</span><span class="p">,</span><span class="w"> </span><span class="nv">Charge</span><span class="p">,</span><span class="w"> </span><span class="nv">FirstTime</span><span class="p">,</span><span class="w"> </span><span class="nv">Slot</span><span class="p">,</span><span class="w"> </span><span class="nv">VarData</span><span class="p">,</span><span class="w"> </span><span class="nv">Player</span><span class="p">)</span>
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="p">{</span><span class="nv">Type</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nv">FirstTime</span><span class="p">,</span><span class="w"> </span><span class="nv">Slot</span><span class="p">,</span><span class="w"> </span><span class="nv">VarData</span><span class="p">}</span>
 <span class="kr">end</span>
 <span class="nv">mod</span><span class="p">:</span><span class="nf">AddCallback</span><span class="p">(</span><span class="nv">ModCallbacks</span><span class="p">.</span><span class="py">MC_PRE_ADD_COLLECTIBLE</span><span class="p">,</span><span class="w"> </span><span class="nv">mod</span><span class="p">.</span><span class="py">myFunction</span><span class="p">)</span>
@@ -16497,7 +16502,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_add_collectible">MC_POST_ADD_COLLECTIBLE<a class="headerlink" href="#mc_post_add_collectible" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -16540,7 +16545,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_backdrop_change">MC_PRE_BACKDROP_CHANGE<a class="headerlink" href="#mc_pre_backdrop_change" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an <code>integer</code> to change <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/BackdropType.html">BackdropType</a>.</p>
+<p>接受一个 <code>整数</code> 来更改 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/BackdropType.html">BackdropType</a>。</p>
 <table>
 <thead>
 <tr>
@@ -16625,7 +16630,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_bomb_collision">MC_POST_BOMB_COLLISION<a class="headerlink" href="#mc_post_bomb_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设实体的碰撞后代码未被跳过，则在该代码运行后触发。</p>
 <table>
 <thead>
 <tr>
@@ -16647,11 +16652,11 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_bomb_render">MC_PRE_BOMB_RENDER<a class="headerlink" href="#mc_pre_bomb_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移</p>
+<p>或者接受 <code>false</code> 以取消渲染</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在 <code>MC_POST_UPDATE</code> 中对实体调用 <code>SetShadowSize(0)</code>。</p>
 </details>
 <table>
 <thead>
@@ -16674,8 +16679,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_challenge_done">MC_PRE_CHALLENGE_DONE<a class="headerlink" href="#mc_pre_challenge_done" title="Permanent link">⚓︎</a></h3>
-<p>Called before a challenge is marked as completed.</p>
-<p>Returning <code>false</code> will prevent further execution of the challenge completion-tracking function.</p>
+<p>在挑战被标记为完成之前调用。</p>
+<p>返回 <code>false</code> 将阻止挑战完成跟踪函数的进一步执行。</p>
 <table>
 <thead>
 <tr>
@@ -16697,7 +16702,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_challenge_done">MC_POST_CHALLENGE_DONE<a class="headerlink" href="#mc_post_challenge_done" title="Permanent link">⚓︎</a></h3>
-<p>Called after a challenge is marked as completed.</p>
+<p>在挑战被标记为完成之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -16719,7 +16724,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_change_room">MC_PRE_CHANGE_ROOM<a class="headerlink" href="#mc_pre_change_room" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a table of parameters: <code>{TargetRoomIdx, Dimension}</code></p>
+<p>接受一个参数表：<code>{TargetRoomIdx, Dimension}</code></p>
 <table>
 <thead>
 <tr>
@@ -16741,7 +16746,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_achievement_unlock">MC_POST_ACHIEVEMENT_UNLOCK<a class="headerlink" href="#mc_post_achievement_unlock" title="Permanent link">⚓︎</a></h3>
-<p>Called after an achievement is unlocked.</p>
+<p>在成就解锁后调用。</p>
 <table>
 <thead>
 <tr>
@@ -16763,7 +16768,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_completion_event">MC_PRE_COMPLETION_EVENT<a class="headerlink" href="#mc_pre_completion_event" title="Permanent link">⚓︎</a></h3>
-<p>Can return a new <a href="CompletionType.html">CompletionType</a> or <code>false</code> to cancel the completion event. Canceling it will prevent all marks and completion event related stuff to trigger for all players.</p>
+<p>可以返回一个新的 <a href="CompletionType.html">CompletionType</a> 或 <code>false</code> 以取消完成事件。取消该事件将阻止所有标记和与完成事件相关的内容为所有玩家触发。</p>
 <table>
 <thead>
 <tr>
@@ -16785,7 +16790,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_completion_event">MC_POST_COMPLETION_EVENT<a class="headerlink" href="#mc_post_completion_event" title="Permanent link">⚓︎</a></h3>
-<p>Called when a completion event is recorded, such as when defeating an end boss or unlocking a tainted character.</p>
+<p>在记录完成事件时调用，例如击败最终boss或解锁受污染角色时。</p>
 <table>
 <thead>
 <tr>
@@ -16807,7 +16812,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_completion_marks_render">MC_PRE_COMPLETION_MARKS_RENDER<a class="headerlink" href="#mc_pre_completion_marks_render" title="Permanent link">⚓︎</a></h3>
-<p>Can return <code>false</code> to prevent the completion marks from rendering.</p>
+<p>可以返回 <code>false</code> 以阻止完成标记的渲染。</p>
 <table>
 <thead>
 <tr>
@@ -16829,7 +16834,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_completion_marks_render">MC_POST_COMPLETION_MARKS_RENDER<a class="headerlink" href="#mc_post_completion_marks_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -16851,8 +16856,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_completion_mark_get">MC_COMPLETION_MARK_GET<a class="headerlink" href="#mc_completion_mark_get" title="Permanent link">⚓︎</a></h3>
-<p>Can return <code>false</code> to cancel the completion mark.</p>
-<p>Called when the player gets a completion mark, getting as a parameter the code for the mark in question and the playertype.</p>
+<p>可以返回 <code>false</code> 以取消完成标记。</p>
+<p>在玩家获得完成标记时调用，将标记的代码和玩家类型作为参数传入。</p>
 <table>
 <thead>
 <tr>
@@ -16874,7 +16879,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_completion_mark_get">MC_POST_COMPLETION_MARK_GET<a class="headerlink" href="#mc_post_completion_mark_get" title="Permanent link">⚓︎</a></h3>
-<p>Called after the player gets a completion mark, getting as a parameter the code for the mark in question and the playertype.</p>
+<p>在玩家获得完成标记之后调用，将标记的代码和玩家类型作为参数传入。</p>
 <table>
 <thead>
 <tr>
@@ -16896,9 +16901,9 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_console_autocomplete">MC_CONSOLE_AUTOCOMPLETE<a class="headerlink" href="#mc_console_autocomplete" title="Permanent link">⚓︎</a></h3>
-<p>This is called whenever a function with the CUSTOM <a href="AutocompleteType.html">AutocompleteType</a> enum is being entered into the console. Called every time the console input changes.</p>
-<p>Accepts a table. The table can hold both string values, which will just add the string as a parameter in autocomplete for the command, and a table of two strings which will add the first string as the parameter, and second as a description. Description can be used in autocomplete as well, however pressing TAB will properly autocomplete using the ID, not description (Think the <code>giveitem</code> command, as an example- <code>c1</code> would be The Sad Onion's "parameter" and <code>The Sad Onion</code> would be the "description", and both work. Pressing TAB will turn the command into <code>give c1</code>.)</p>
-<p>REPENTOGON handles only showing options relevant for the given input- simply return a table of options, and REPENTOGON will take care of the rest.</p>
+<p>每当在控制台中输入具有 CUSTOM <a href="AutocompleteType.html">AutocompleteType</a> 枚举的函数时调用。每次控制台输入更改时都会调用。</p>
+<p>接受一个表。该表可以包含字符串值，这些值将作为命令自动补全的参数添加，也可以包含一个由两个字符串组成的表，该表将第一个字符串作为参数添加，第二个字符串作为描述添加。描述也可以在自动补全中使用，但是按下 TAB 键将使用 ID 进行正确的自动补全，而不是描述（例如 <code>giveitem</code> 命令，<code>c1</code> 是 “悲伤洋葱” 的 “参数”，“悲伤洋葱” 是 “描述”，两者都可以使用。按下 TAB 键将把命令转换为 <code>give c1</code>）。</p>
+<p>REPENTOGON 会处理仅显示与给定输入相关的选项 - 只需返回一个选项表，REPENTOGON 将处理其余部分。</p>
 <table>
 <thead>
 <tr>
@@ -16920,9 +16925,9 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_devil_apply_items">MC_PRE_DEVIL_APPLY_ITEMS<a class="headerlink" href="#mc_pre_devil_apply_items" title="Permanent link">⚓︎</a></h3>
-<p>This callback is run when the game starts to tally up traditional items for devil deal calculation. This is called before the stage penalty.</p>
-<p>Most items that affect devil deal chance perform their changes here.</p>
-<p>Accepts a <code>float</code> to modify the chance in this step of the calculation.</p>
+<p>当游戏开始计算传统物品以进行恶魔交易计算时，会运行此回调。这在阶段惩罚之前调用。</p>
+<p>大多数影响恶魔交易几率的物品会在此处进行更改。</p>
+<p>接受一个 <code>浮点数</code> 来修改此计算步骤中的几率。</p>
 <table>
 <thead>
 <tr>
@@ -16944,8 +16949,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_devil_apply_special_items">MC_PRE_DEVIL_APPLY_SPECIAL_ITEMS<a class="headerlink" href="#mc_pre_devil_apply_special_items" title="Permanent link">⚓︎</a></h3>
-<p>Next, the game applies "special" items which bypass the stage penalty like Goat Head and Eucharist.</p>
-<p>Accepts a <code>float</code> to modify the chance in this step of the calculation.</p>
+<p>接下来，游戏会应用 “特殊” 物品，这些物品可以绕过阶段惩罚，如山羊头和圣餐。</p>
+<p>接受一个 <code>浮点数</code> 来修改此计算步骤中的几率。</p>
 <table>
 <thead>
 <tr>
@@ -16967,9 +16972,9 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_devil_apply_stage_penalty">MC_PRE_DEVIL_APPLY_STAGE_PENALTY<a class="headerlink" href="#mc_pre_devil_apply_stage_penalty" title="Permanent link">⚓︎</a></h3>
-<p>Next, the game calculates stage penalty. If a deal spawned anywhere on the previous two floors, the game decays the resulting chance by either 50% or 25% depending on how many deals have been taken.</p>
-<p>Important to note that even though the game displays a value of ~66% or ~33% for the 50% and 25% values, respectively, this is because devil chance is <em>not</em> clamped to a value between 0 and 1, and "100%" without items generally means a value of ~133%.</p>
-<p>Accepts a <code>boolean</code>. Return <code>false</code> to bypass the stage penalty.</p>
+<p>接下来，游戏会计算阶段惩罚。如果在前两层的任何地方生成了一笔交易，游戏会根据已接受的交易数量将最终几率衰减 50% 或 25%。</p>
+<p>需要注意的是，即使游戏显示 50% 和 25% 的值分别约为 66% 或 33%，这是因为恶魔几率 <em>没有</em> 被限制在 0 到 1 之间，并且没有物品时 “100%” 通常意味着约 133% 的值。</p>
+<p>接受一个 <code>布尔值</code>。返回 <code>false</code> 以绕过阶段惩罚。</p>
 <table>
 <thead>
 <tr>
@@ -16991,8 +16996,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_devil_calculate">MC_POST_DEVIL_CALCULATE<a class="headerlink" href="#mc_post_devil_calculate" title="Permanent link">⚓︎</a></h3>
-<p>This will override <em>all</em> previous calculation values, ultimately dictating the devil chance.</p>
-<p>Accepts a <code>float</code> to modify the chance.</p>
+<p>这将覆盖 <em>所有</em> 之前的计算值，最终决定恶魔几率。</p>
+<p>接受一个 <code>浮点数</code> 来修改几率。</p>
 <table>
 <thead>
 <tr>
@@ -17014,11 +17019,11 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_effect_render">MC_PRE_EFFECT_RENDER<a class="headerlink" href="#mc_pre_effect_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移</p>
+<p>或者接受 <code>false</code> 以取消渲染</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在 <code>MC_POST_UPDATE</code> 中对实体调用 <code>SetShadowSize(0)</code>。</p>
 </details>
 <table>
 <thead>
@@ -17041,7 +17046,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_entity_take_dmg">MC_POST_ENTITY_TAKE_DMG<a class="headerlink" href="#mc_post_entity_take_dmg" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17063,7 +17068,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_entity_throw">MC_PRE_ENTITY_THROW<a class="headerlink" href="#mc_pre_entity_throw" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> which will modify the velocity of the thrown entity.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a>，它将修改被投掷实体的速度。</p>
 <table>
 <thead>
 <tr>
@@ -17085,7 +17090,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_entity_throw">MC_POST_ENTITY_THROW<a class="headerlink" href="#mc_post_entity_throw" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17107,7 +17112,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_familiar_collision">MC_POST_FAMILIAR_COLLISION<a class="headerlink" href="#mc_post_familiar_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设实体的碰撞后代码未被跳过，则在该代码运行后触发。</p>
 <table>
 <thead>
 <tr>
@@ -17129,8 +17134,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_familiar_fire_brimstone">MC_POST_FAMILIAR_FIRE_BRIMSTONE<a class="headerlink" href="#mc_post_familiar_fire_brimstone" title="Permanent link">⚓︎</a></h3>
-<p>Called when a familiar fires a brimstone laser.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当跟班发射硫磺激光时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17152,8 +17157,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_familiar_fire_projectile">MC_POST_FAMILIAR_FIRE_PROJECTILE<a class="headerlink" href="#mc_post_familiar_fire_projectile" title="Permanent link">⚓︎</a></h3>
-<p>Called when a familiar fires a tear.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当跟班发射眼泪时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17175,8 +17180,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_familiar_fire_tech_laser">MC_POST_FAMILIAR_FIRE_TECH_LASER<a class="headerlink" href="#mc_post_familiar_fire_tech_laser" title="Permanent link">⚓︎</a></h3>
-<p>Called when a familiar fires a Tech laser.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当跟班发射科技激光时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17198,11 +17203,11 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_familiar_render">MC_PRE_FAMILIAR_RENDER<a class="headerlink" href="#mc_pre_familiar_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移</p>
+<p>或者接受 <code>false</code> 以取消渲染</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在 <code>MC_POST_UPDATE</code> 中对实体调用 <code>SetShadowSize(0)</code>。</p>
 </details>
 <table>
 <thead>
@@ -17225,8 +17230,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_bomb">MC_POST_FIRE_BOMB<a class="headerlink" href="#mc_post_fire_bomb" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player fires a Dr. Fetus bomb.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家发射胎儿博士炸弹时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17248,9 +17253,9 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_bone_club">MC_POST_FIRE_BONE_CLUB<a class="headerlink" href="#mc_post_fire_bone_club" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player fired The Forgotten's bone club.</p>
-<p>This is only called when the club is initially spawned, not when swung or charged and shot.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家发射遗忘者的骨棒时调用。</p>
+<p>仅在骨棒最初生成时调用，而不是在挥舞或蓄力发射时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17272,8 +17277,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_brimstone_ball">MC_POST_FIRE_BRIMSTONE_BALL<a class="headerlink" href="#mc_post_fire_brimstone_ball" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player fires a brimstone ball.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家发射硫磺球时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17295,9 +17300,9 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_brimstone">MC_POST_FIRE_BRIMSTONE<a class="headerlink" href="#mc_post_fire_brimstone" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player fires a brimstone laser.</p>
-<p>This is also called for delayed brimstone.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家发射硫磺激光时调用。</p>
+<p>这也适用于延迟硫磺激光。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17319,9 +17324,9 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_knife">MC_POST_FIRE_KNIFE<a class="headerlink" href="#mc_post_fire_knife" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player fires the knife from Mom's Knife.</p>
-<p>This is only called when the club is initially spawned, not when charged and shot.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家从妈妈的刀发射刀时调用。</p>
+<p>仅在刀最初生成时调用，而不是在蓄力发射时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17343,8 +17348,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_sword">MC_POST_FIRE_SWORD<a class="headerlink" href="#mc_post_fire_sword" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player swings the sword from Spirit Sword.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家挥舞灵剑时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17366,8 +17371,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_tech_laser">MC_POST_FIRE_TECH_LASER<a class="headerlink" href="#mc_post_fire_tech_laser" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player fires a Tech laser.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家发射科技激光时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17389,8 +17394,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_fire_tech_x_laser">MC_POST_FIRE_TECH_X_LASER<a class="headerlink" href="#mc_post_fire_tech_x_laser" title="Permanent link">⚓︎</a></h3>
-<p>Called when the player fires a Tech X laser.</p>
-<p>Returning any value will have no effect on later callback executions.</p>
+<p>当玩家发射科技X激光时调用。</p>
+<p>返回任何值都不会影响后续回调的执行。</p>
 <table>
 <thead>
 <tr>
@@ -17412,7 +17417,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_get_follower_priority">MC_GET_FOLLOWER_PRIORITY<a class="headerlink" href="#mc_get_follower_priority" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <a href="FollowerPriority.html">FollowerPriority</a> to give familiar priority. Can accept any int.</p>
+<p>接受 <a href="FollowerPriority.html">FollowerPriority</a> 来赋予跟班优先级。可以接受任何整数。</p>
 <table>
 <thead>
 <tr>
@@ -17434,7 +17439,7 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_get_lighting_alpha">MC_PRE_GET_LIGHTING_ALPHA<a class="headerlink" href="#mc_pre_get_lighting_alpha" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <code>float</code> to modify the lighting alpha. Generally this is between 0 and 1 but you can technically go higher than this.</p>
+<p>接受一个 <code>浮点数</code> 来修改光照透明度。通常这个值在 0 到 1 之间，但实际上你可以设置更高的值。</p>
 <table>
 <thead>
 <tr>
@@ -17456,8 +17461,8 @@ If set to <code>true</code> the callback will instead replace the <code>Variant<
 </tbody>
 </table>
 <h3 class="copyable" id="mc_get_shop_item_price">MC_GET_SHOP_ITEM_PRICE<a class="headerlink" href="#mc_get_shop_item_price" title="Permanent link">⚓︎</a></h3>
-<p>Called after the price for a shop item was calculated.
-Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PickupPrice.html">PickupPrice</a> to change the price of the item.</p>
+<p>在计算商店物品的价格后调用。
+返回一个整数或 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PickupPrice.html">PickupPrice</a> 来更改物品的价格。</p>
 <table>
 <thead>
 <tr>
@@ -17479,7 +17484,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_decoration_render">MC_PRE_GRID_ENTITY_DECORATION_RENDER<a class="headerlink" href="#mc_pre_grid_entity_decoration_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -17501,7 +17506,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_decoration_render">MC_POST_GRID_ENTITY_DECORATION_RENDER<a class="headerlink" href="#mc_post_grid_entity_decoration_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17523,7 +17528,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_decoration_update">MC_PRE_GRID_ENTITY_DECORATION_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_decoration_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -17545,7 +17550,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_decoration_update">MC_POST_GRID_ENTITY_DECORATION_UPDATE<a class="headerlink" href="#mc_post_grid_entity_decoration_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17567,7 +17572,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_door_render">MC_PRE_GRID_ENTITY_DOOR_RENDER<a class="headerlink" href="#mc_pre_grid_entity_door_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -17589,7 +17594,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_door_render">MC_POST_GRID_ENTITY_DOOR_RENDER<a class="headerlink" href="#mc_post_grid_entity_door_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17611,7 +17616,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_door_update">MC_PRE_GRID_ENTITY_DOOR_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_door_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -17633,7 +17638,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_door_update">MC_POST_GRID_ENTITY_DOOR_UPDATE<a class="headerlink" href="#mc_post_grid_entity_door_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17655,10 +17660,10 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_fire_render">MC_PRE_GRID_ENTITY_FIRE_RENDER<a class="headerlink" href="#mc_pre_grid_entity_fire_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p>Fire grid entities are largely unused, and in most cases you'll want to target the <a href="../EntityNPC.html">EntityNPC</a> fireplaces.</p>
+<summary>警告</summary>
+<p>火焰网格实体在很大程度上未被使用，在大多数情况下，你可能想针对 <a href="../EntityNPC.html">EntityNPC</a> 壁炉。</p>
 </details>
 <table>
 <thead>
@@ -17681,7 +17686,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_fire_render">MC_POST_GRID_ENTITY_FIRE_RENDER<a class="headerlink" href="#mc_post_grid_entity_fire_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17703,10 +17708,10 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_fire_update">MC_PRE_GRID_ENTITY_FIRE_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_fire_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p>Fire grid entities are largely unused, and in most cases you'll want to target the <a href="../EntityNPC.html">EntityNPC</a> fireplaces.</p>
+<summary>警告</summary>
+<p>火焰网格实体在很大程度上未被使用，在大多数情况下，你可能想针对 <a href="../EntityNPC.html">EntityNPC</a> 壁炉。</p>
 </details>
 <table>
 <thead>
@@ -17729,7 +17734,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_fire_update">MC_POST_GRID_ENTITY_FIRE_UPDATE<a class="headerlink" href="#mc_post_grid_entity_fire_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17751,7 +17756,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_gravity_update">MC_PRE_GRID_ENTITY_GRAVITY_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_gravity_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -17773,7 +17778,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_gravity_update">MC_POST_GRID_ENTITY_GRAVITY_UPDATE<a class="headerlink" href="#mc_post_grid_entity_gravity_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17795,7 +17800,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_lock_render">MC_PRE_GRID_ENTITY_LOCK_RENDER<a class="headerlink" href="#mc_pre_grid_entity_lock_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -17817,7 +17822,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_lock_render">MC_POST_GRID_ENTITY_LOCK_RENDER<a class="headerlink" href="#mc_post_grid_entity_lock_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17839,7 +17844,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_lock_update">MC_PRE_GRID_ENTITY_LOCK_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_lock_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -17861,7 +17866,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_lock_update">MC_POST_GRID_ENTITY_LOCK_UPDATE<a class="headerlink" href="#mc_post_grid_entity_lock_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17883,7 +17888,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_pit_render">MC_PRE_GRID_ENTITY_PIT_RENDER<a class="headerlink" href="#mc_pre_grid_entity_pit_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -17905,7 +17910,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_pit_render">MC_POST_GRID_ENTITY_PIT_RENDER<a class="headerlink" href="#mc_post_grid_entity_pit_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17927,7 +17932,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_pit_update">MC_PRE_GRID_ENTITY_PIT_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_pit_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -17949,7 +17954,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_pit_update">MC_POST_GRID_ENTITY_PIT_UPDATE<a class="headerlink" href="#mc_post_grid_entity_pit_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -17971,10 +17976,10 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_poop_render">MC_PRE_GRID_ENTITY_POOP_RENDER<a class="headerlink" href="#mc_pre_grid_entity_poop_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <details class="- warning">
-<summary>Warning</summary>
-<p>This callback does not include the <a href="../EntityNPC.html">EntityNPC</a> poops used by Tainted ???.</p>
+<summary>警告</summary>
+<p>此回调不包括受污染的 ??? 使用的 <a href="../EntityNPC.html">EntityNPC</a> 便便。</p>
 </details>
 <table>
 <thead>
@@ -17997,7 +18002,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_poop_render">MC_POST_GRID_ENTITY_POOP_RENDER<a class="headerlink" href="#mc_post_grid_entity_poop_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18019,7 +18024,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_poop_update">MC_PRE_GRID_ENTITY_POOP_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_poop_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18041,7 +18046,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_poop_update">MC_POST_GRID_ENTITY_POOP_UPDATE<a class="headerlink" href="#mc_post_grid_entity_poop_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18063,7 +18068,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_pressureplate_render">MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER<a class="headerlink" href="#mc_pre_grid_entity_pressureplate_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18085,7 +18090,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_pressureplate_render">MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER<a class="headerlink" href="#mc_post_grid_entity_pressureplate_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18107,7 +18112,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_pressureplate_update">MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_pressureplate_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18129,7 +18134,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_pressureplate_update">MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE<a class="headerlink" href="#mc_post_grid_entity_pressureplate_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18151,7 +18156,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_rock_render">MC_PRE_GRID_ENTITY_ROCK_RENDER<a class="headerlink" href="#mc_pre_grid_entity_rock_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18173,7 +18178,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_rock_render">MC_POST_GRID_ENTITY_ROCK_RENDER<a class="headerlink" href="#mc_post_grid_entity_rock_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18195,7 +18200,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_rock_update">MC_PRE_GRID_ENTITY_ROCK_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_rock_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18217,7 +18222,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_rock_update">MC_POST_GRID_ENTITY_ROCK_UPDATE<a class="headerlink" href="#mc_post_grid_entity_rock_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18239,11 +18244,11 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_spawn">MC_PRE_GRID_ENTITY_SPAWN<a class="headerlink" href="#mc_pre_grid_entity_spawn" title="Permanent link">⚓︎</a></h3>
-<p>This is called when a <a href="../GridEntity.html">GridEntity</a> is spawned outside of Room initialization.</p>
-<p>Accepts <code>false</code> to cancel spawning the grid, a table of <code>{Type, Variant, Vardata, SpawnSeed}</code> to modify it, or a <a href="https://wofsauge.github.io/IsaacDocs/rep/GridEntityDesc.html">GridEntityDesc</a> to override it entirely.</p>
+<p>当 <a href="../GridEntity.html">GridEntity</a> 在房间初始化之外生成时调用。</p>
+<p>接受 <code>false</code> 以取消生成网格，接受一个 <code>{Type, Variant, Vardata, SpawnSeed}</code> 表来修改它，或接受一个 <a href="https://wofsauge.github.io/IsaacDocs/rep/GridEntityDesc.html">GridEntityDesc</a> 来完全覆盖它。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>Desc</code> will in most cases be <code>nil</code>. The exceptions to this are the poops spawned by Mole npcs, grids spawned by <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#void-turngold">TurnGold</a>, or lua-made spawns called with the new <code>SpawnGridEntity(int GridIndex, GridEntityDesc Descriptor)</code> override.</p>
+<summary>警告</summary>
+<p><code>Desc</code> 在大多数情况下将为 <code>nil</code>。例外情况是鼹鼠NPC生成的便便、<a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#void-turngold">TurnGold</a> 生成的网格，或使用新的 <code>SpawnGridEntity(int GridIndex, GridEntityDesc Descriptor)</code> 重载调用的Lua生成。</p>
 </details>
 <table>
 <thead>
@@ -18266,7 +18271,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_spawn">MC_POST_GRID_ENTITY_SPAWN<a class="headerlink" href="#mc_post_grid_entity_spawn" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18288,7 +18293,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_spikes_render">MC_PRE_GRID_ENTITY_SPIKES_RENDER<a class="headerlink" href="#mc_pre_grid_entity_spikes_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18310,7 +18315,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_spikes_render">MC_POST_GRID_ENTITY_SPIKES_RENDER<a class="headerlink" href="#mc_post_grid_entity_spikes_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18332,7 +18337,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_spikes_update">MC_PRE_GRID_ENTITY_SPIKES_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_spikes_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18354,7 +18359,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_spikes_update">MC_POST_GRID_ENTITY_SPIKES_UPDATE<a class="headerlink" href="#mc_post_grid_entity_spikes_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18376,7 +18381,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_staircase_render">MC_PRE_GRID_ENTITY_STAIRCASE_RENDER<a class="headerlink" href="#mc_pre_grid_entity_staircase_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18398,7 +18403,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_staircase_render">MC_POST_GRID_ENTITY_STAIRCASE_RENDER<a class="headerlink" href="#mc_post_grid_entity_staircase_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18420,7 +18425,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_staircase_update">MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_staircase_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18442,7 +18447,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_staircase_update">MC_POST_GRID_ENTITY_STAIRCASE_UPDATE<a class="headerlink" href="#mc_post_grid_entity_staircase_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18464,7 +18469,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_statue_update">MC_PRE_GRID_ENTITY_STATUE_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_statue_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18486,7 +18491,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_statue_update">MC_POST_GRID_ENTITY_STATUE_UPDATE<a class="headerlink" href="#mc_post_grid_entity_statue_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18508,7 +18513,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_teleporter_render">MC_PRE_GRID_ENTITY_TELEPORTER_RENDER<a class="headerlink" href="#mc_pre_grid_entity_teleporter_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18530,7 +18535,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_teleporter_render">MC_POST_GRID_ENTITY_TELEPORTER_RENDER<a class="headerlink" href="#mc_post_grid_entity_teleporter_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18552,7 +18557,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_teleporter_update">MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_teleporter_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18574,7 +18579,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_teleporter_update">MC_POST_GRID_ENTITY_TELEPORTER_UPDATE<a class="headerlink" href="#mc_post_grid_entity_teleporter_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18596,7 +18601,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_tnt_render">MC_PRE_GRID_ENTITY_TNT_RENDER<a class="headerlink" href="#mc_pre_grid_entity_tnt_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18618,7 +18623,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_tnt_render">MC_POST_GRID_ENTITY_TNT_RENDER<a class="headerlink" href="#mc_post_grid_entity_tnt_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18640,7 +18645,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_tnt_update">MC_PRE_GRID_ENTITY_TNT_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_tnt_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18662,7 +18667,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_tnt_update">MC_POST_GRID_ENTITY_TNT_UPDATE<a class="headerlink" href="#mc_post_grid_entity_tnt_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18684,7 +18689,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_trapdoor_render">MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER<a class="headerlink" href="#mc_pre_grid_entity_trapdoor_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18706,7 +18711,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_trapdoor_render">MC_POST_GRID_ENTITY_TRAPDOOR_RENDER<a class="headerlink" href="#mc_post_grid_entity_trapdoor_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18728,7 +18733,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_trapdoor_update">MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_trapdoor_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18750,7 +18755,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_trapdoor_update">MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE<a class="headerlink" href="#mc_post_grid_entity_trapdoor_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18772,7 +18777,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_wall_render">MC_PRE_GRID_ENTITY_WALL_RENDER<a class="headerlink" href="#mc_pre_grid_entity_wall_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18794,7 +18799,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_wall_render">MC_POST_GRID_ENTITY_WALL_RENDER<a class="headerlink" href="#mc_post_grid_entity_wall_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18816,7 +18821,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_web_render">MC_PRE_GRID_ENTITY_WEB_RENDER<a class="headerlink" href="#mc_pre_grid_entity_web_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset or <code>false</code> to cancel rendering.</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移或 <code>false</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -18838,7 +18843,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_web_render">MC_POST_GRID_ENTITY_WEB_RENDER<a class="headerlink" href="#mc_post_grid_entity_web_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18860,7 +18865,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_grid_entity_web_update">MC_PRE_GRID_ENTITY_WEB_UPDATE<a class="headerlink" href="#mc_pre_grid_entity_web_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the update.</p>
+<p>接受 <code>false</code> 以取消更新。</p>
 <table>
 <thead>
 <tr>
@@ -18882,7 +18887,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_entity_web_update">MC_POST_GRID_ENTITY_WEB_UPDATE<a class="headerlink" href="#mc_post_grid_entity_web_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18904,12 +18909,12 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_grid_hurt_damage">MC_GRID_HURT_DAMAGE<a class="headerlink" href="#mc_grid_hurt_damage" title="Permanent link">⚓︎</a></h3>
-<p>Called before a GridEntity attempts to inflict damage on an entity.</p>
-<p>Return false if the entity or player should ignore the damage.</p>
+<p>在网格实体试图对一个实体造成伤害之前调用。</p>
+<p>如果实体或玩家应该忽略该伤害，则返回 <code>false</code>。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-<p>The float DamageAmount (the intended damage amount to non-player entities) is currently bugged and always appears to be 0 - will be fixed in a future update.</p>
 </details>
+<p>浮点型的 <code>DamageAmount</code>（对非玩家实体的预期伤害量）目前存在错误，始终显示为 0 - 将在未来的更新中修复。</p>
 <table>
 <thead>
 <tr>
@@ -18931,12 +18936,12 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_hurt_damage">MC_POST_GRID_HURT_DAMAGE<a class="headerlink" href="#mc_post_grid_hurt_damage" title="Permanent link">⚓︎</a></h3>
-<p>Called after a GridEntity attempts to inflict damage on an entity. Note that this does not guarantee that the entity actually took the damage (for example, if a player is currently invincible).</p>
-<p>Accepts no return parameters.</p>
+<p>在网格实体试图对一个实体造成伤害之后调用。请注意，这并不保证实体实际受到了伤害（例如，如果玩家当前处于无敌状态）。</p>
+<p>不接受返回参数。</p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-<p>The float DamageAmount (the intended damage amount to non-player entities) is currently bugged and always appears to be 0 - will be fixed in a future update.</p>
 </details>
+<p>浮点型的 <code>DamageAmount</code>（对非玩家实体的预期伤害量）目前存在错误，始终显示为 0 - 将在未来的更新中修复。</p>
 <table>
 <thead>
 <tr>
@@ -18958,7 +18963,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_grid_rock_destroy">MC_POST_GRID_ROCK_DESTROY<a class="headerlink" href="#mc_post_grid_rock_destroy" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -18980,7 +18985,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_hud_render">MC_HUD_RENDER<a class="headerlink" href="#mc_hud_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19002,7 +19007,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_hud_render">MC_POST_HUD_RENDER<a class="headerlink" href="#mc_post_hud_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19024,7 +19029,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_hud_update">MC_HUD_UPDATE<a class="headerlink" href="#mc_hud_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19046,7 +19051,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_hud_update">MC_POST_HUD_UPDATE<a class="headerlink" href="#mc_post_hud_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19068,7 +19073,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_is_persistent_room_entity">MC_IS_PERSISTENT_ROOM_ENTITY<a class="headerlink" href="#mc_is_persistent_room_entity" title="Permanent link">⚓︎</a></h3>
-<p>Returning <code>true</code> allows entity to respawn.</p>
+<p>返回 <code>true</code> 允许实体重生。</p>
 <table>
 <thead>
 <tr>
@@ -19090,8 +19095,8 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_item_overlay_show">MC_PRE_ITEM_OVERLAY_SHOW<a class="headerlink" href="#mc_pre_item_overlay_show" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an integer to change <a href="Giantbook.html">Giantbook</a></p>
-<p>Alternatively accepts <code>true</code> to cancel item overlay show</p>
+<p>接受一个整数来更改 <a href="Giantbook.html">Giantbook</a></p>
+<p>或者接受 <code>true</code> 以取消物品叠加显示</p>
 <table>
 <thead>
 <tr>
@@ -19113,7 +19118,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_item_overlay_show">MC_POST_ITEM_OVERLAY_SHOW<a class="headerlink" href="#mc_post_item_overlay_show" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19135,7 +19140,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_item_overlay_update">MC_POST_ITEM_OVERLAY_UPDATE<a class="headerlink" href="#mc_post_item_overlay_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19157,7 +19162,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_knife_collision">MC_POST_KNIFE_COLLISION<a class="headerlink" href="#mc_post_knife_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设实体的碰撞后代码未被跳过，则在该代码运行后触发。</p>
 <table>
 <thead>
 <tr>
@@ -19179,11 +19184,11 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_knife_render">MC_PRE_KNIFE_RENDER<a class="headerlink" href="#mc_pre_knife_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移</p>
+<p>或者接受 <code>false</code> 以取消渲染</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在 <code>MC_POST_UPDATE</code> 中对实体调用 <code>SetShadowSize(0)</code>。</p>
 </details>
 <table>
 <thead>
@@ -19206,7 +19211,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_laser_collision">MC_PRE_LASER_COLLISION<a class="headerlink" href="#mc_pre_laser_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs right before a laser hits an entity. Return true to ignore the collision.</p>
+<p>在激光击中实体之前立即触发。返回 <code>true</code> 以忽略碰撞。</p>
 <table>
 <thead>
 <tr>
@@ -19228,7 +19233,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_laser_collision">MC_POST_LASER_COLLISION<a class="headerlink" href="#mc_post_laser_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after a laser hits an entity.</p>
+<p>在激光击中实体之后触发。</p>
 <table>
 <thead>
 <tr>
@@ -19250,7 +19255,7 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_level_init">MC_PRE_LEVEL_INIT<a class="headerlink" href="#mc_pre_level_init" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19293,10 +19298,10 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_level_place_room">MC_PRE_LEVEL_PLACE_ROOM<a class="headerlink" href="#mc_pre_level_place_room" title="Permanent link">⚓︎</a></h3>
-<p>Return a room config to replace the room that will be placed</p>
+<p>返回一个房间配置以替换将要放置的房间</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p>The new room shape must be the same, and the new available door slots must be compatible with the original room doors.</p>
+<summary>警告</summary>
+<p>新房间的形状必须相同，并且新的可用门插槽必须与原始房间的门兼容。</p>
 </details>
 <table>
 <thead>
@@ -19319,22 +19324,22 @@ Return an integer or <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Pic
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_level_select">MC_PRE_LEVEL_SELECT<a class="headerlink" href="#mc_pre_level_select" title="Permanent link">⚓︎</a></h3>
-<p>This callback is fired when the game selects which level (also known as stage) to load, usually when the player enters a trapdoor.
-The callback accepts two parameters:</p>
+<p>当游戏选择要加载的关卡（也称为阶段）时，通常是当玩家进入活板门时，会触发此回调。
+该回调接受两个参数：</p>
 <ul>
-<li>Level: the level selected by the game, as defined in the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> enumeration.</li>
-<li>Type: the type of the level selected by the game, as defined in the <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/StageType.html">StageType</a> enumeration.</li>
+<li><code>Level</code>：游戏选择的关卡，如 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/LevelStage.html">LevelStage</a> 枚举中所定义。</li>
+<li><code>Type</code>：游戏选择的关卡类型，如 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/StageType.html">StageType</a> 枚举中所定义。</li>
 </ul>
-<p>This callback can return either nothing or a table. </p>
+<p>此回调可以返回 <code>nil</code> 或一个表。</p>
 <ul>
-<li>Nothing: let the game continue with the level stage / stage type pair it selected;</li>
-<li>Table: must contain two fields (anonymous). The first field is the desired level stage, second field is the desired stage type.</li>
+<li><code>nil</code>：让游戏继续使用它选择的关卡阶段 / 阶段类型对；</li>
+<li>表：必须包含两个字段（匿名）。第一个字段是所需的关卡阶段，第二个字段是所需的阶段类型。</li>
 </ul>
-<p>If you return a table, Repentogon will check that the values fall in the allowed ranges for the level stage and the stage type.</p>
+<p>如果你返回一个表，REPENTOGON 将检查这些值是否落在关卡阶段和阶段类型的允许范围内。</p>
 <details class="warn" open="open">
-<summary>Value ranges</summary>
-<p>Remember that the range of level types is not the same between normal / hard on one side and greed / greedier on the other. </p>
-<p>Also remember that since Repentance the stage type value 3 is deprecated.</p>
+<summary>值范围</summary>
+<p>请记住，普通 / 困难模式和贪婪 / 更贪婪模式的关卡类型范围是不同的。</p>
+<p>还要记住，自《以撒的结合：忏悔》以来，阶段类型值 3 已被弃用。</p>
 </details>
 <table>
 <thead>
@@ -19357,7 +19362,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_main_menu_render">MC_MAIN_MENU_RENDER<a class="headerlink" href="#mc_main_menu_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19379,10 +19384,10 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_mega_satan_ending">MC_PRE_MEGA_SATAN_ENDING<a class="headerlink" href="#mc_pre_mega_satan_ending" title="Permanent link">⚓︎</a></h3>
-<p>Called right before Mega Satan forcibly ends the game. </p>
+<p>在超级撒旦强制结束游戏之前立即调用。</p>
 <ul>
-<li>Accepts <code>true</code> to suppress the ending, guaranteeing a portal to the Void while retaining the completion mark for this character. </li>
-<li><code>false</code> or <code>nil</code> will have no effect. I might look into making <code>false</code> guarantee an ending?</li>
+<li>接受 <code>true</code> 以抑制结束画面，保证出现通往虚空的传送门，同时保留该角色的完成标记。</li>
+<li><code>false</code> 或 <code>nil</code> 将没有效果。我可能会考虑让 <code>false</code> 保证一个结束画面？</li>
 </ul>
 <table>
 <thead>
@@ -19405,7 +19410,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_menu_input_action">MC_MENU_INPUT_ACTION<a class="headerlink" href="#mc_menu_input_action" title="Permanent link">⚓︎</a></h3>
-<p>Same as MC_INPUT_ACTION, but only works in the main menu.</p>
+<p>与 <code>MC_INPUT_ACTION</code> 相同，但仅在主菜单中有效。</p>
 <table>
 <thead>
 <tr>
@@ -19427,8 +19432,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_mods_loaded">MC_POST_MODS_LOADED<a class="headerlink" href="#mc_post_mods_loaded" title="Permanent link">⚓︎</a></h3>
-<p>Called after all Lua scripts have been loaded. Ideal for running code that is expected to run after all mods are initialized, but without the need for load order idiocy!</p>
-<p>Accepts no return parameters.</p>
+<p>在所有Lua脚本加载完成后调用。非常适合运行那些期望在所有模组初始化后运行的代码，而无需考虑加载顺序的问题！</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19450,8 +19455,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_music_layer_toggle">MC_PRE_MUSIC_LAYER_TOGGLE<a class="headerlink" href="#mc_pre_music_layer_toggle" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a music layer ID (enum pending) to change the layer, or a boolean to change the state of the layer: <code>true</code> to keep it running, <code>false</code> to stop it.</p>
-<p><code>CurrentState</code> returns <code>true</code> if the layer is going to be <strong>enabled</strong>, and <code>false</code> if it is going to be <strong>disabled.</strong></p>
+<p>接受一个音乐层ID（枚举待定）来更改层，或接受一个布尔值来更改层的状态：<code>true</code> 以保持其运行，<code>false</code> 以停止它。</p>
+<p><code>CurrentState</code> 在层即将 <strong>启用</strong> 时返回 <code>true</code>，在层即将 <strong>禁用</strong> 时返回 <code>false</code>。</p>
 <table>
 <thead>
 <tr>
@@ -19473,8 +19478,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_music_play_jingle">MC_PRE_MUSIC_PLAY_JINGLE<a class="headerlink" href="#mc_pre_music_play_jingle" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Music.html">Music</a> to change the track</p>
-<p>Alternatively accepts <code>false</code> to cancel the track</p>
+<p>接受一个 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Music.html">Music</a> 来更改曲目</p>
+<p>或者接受 <code>false</code> 以取消曲目</p>
 <table>
 <thead>
 <tr>
@@ -19496,16 +19501,16 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_music_play">MC_PRE_MUSIC_PLAY<a class="headerlink" href="#mc_pre_music_play" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a table of parameters: <code>{ID, Volume OR FadeRate}</code></p>
-<p>Alternatively accepts a <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Music.html">Music</a> to change the track without changing volume or fade rate</p>
-<p>Alternatively accepts <code>false</code> to cancel the track</p>
+<p>接受一个参数表：<code>{ID, Volume OR FadeRate}</code></p>
+<p>或者接受一个 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Music.html">Music</a> 来更改曲目而不更改音量或淡入淡出速率</p>
+<p>或者接受 <code>false</code> 以取消曲目</p>
 <details class="- info">
-<summary>Volume vs. FadeRate</summary>
-<p>This callback is called for <em>both</em> MusicManager::Play <em>and</em> MusicManager::Crossfade! <code>IsFade</code> is provided to distinguish the two.</p>
+<summary>音量与淡入淡出速率</summary>
+<p>此回调在 <code>MusicManager::Play</code> 和 <code>MusicManager::Crossfade</code> 时都会被调用！提供 <code>IsFade</code> 以区分两者。</p>
 </details>
 <details class="- example">
-<summary>Example Code</summary>
-<p>This code will replace all music track with the flooded caves theme (for better or for worse).
+<summary>示例代码</summary>
+<p>此代码将把所有音乐曲目替换为水淹洞穴主题（不管好坏）。
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -19536,9 +19541,9 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_m_morph_active">MC_PRE_M_MORPH_ACTIVE<a class="headerlink" href="#mc_pre_m_morph_active" title="Permanent link">⚓︎</a></h3>
-<p>This callback triggers when an active gets rerolled by 'M (trinket id 138) and allows for overriding its behavior.</p>
+<p>当主动道具被 “M”（饰品ID 138）重铸时，此回调会触发，并允许覆盖其默认行为。</p>
 <ul>
-<li>Accepts a <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> to override the rerolled item id or <code>false</code> to prevent the active from rerolling entirely.</li>
+<li>接受一个 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> 类型的值，以覆盖重铸后的道具ID；或者接受 <code>false</code>，以完全阻止主动道具重铸。</li>
 </ul>
 <table>
 <thead>
@@ -19561,10 +19566,10 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_new_room">MC_PRE_NEW_ROOM<a class="headerlink" href="#mc_pre_new_room" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p>While this provides a Room object, and the room object is perfectly fine, the callback fires BEFORE THE ROOM IS FULLY INITIALIZED, so operations surrounding the Room object stuff should be considered unstable and unreliable, used at your own discretion, some seemindly friendly functions like GetCenterPos are already known to cause problems when used within this callback, so, again, try to move Room object stuff to other callbacks that happen after this one.</p>
+<summary>警告</summary>
+<p>虽然此回调提供了一个房间对象，且该房间对象本身没有问题，但此回调会在 <strong>房间完全初始化之前</strong> 触发。因此，围绕房间对象的操作应被视为不稳定且不可靠的，使用时需自行斟酌。一些看似友好的函数（如 GetCenterPos）在这个回调中使用时已知会引发问题。所以，请尽量将与房间对象相关的操作移至在此回调之后触发的其他回调中。</p>
 </details>
 <table>
 <thead>
@@ -19587,7 +19592,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_nightmare_scene_render">MC_POST_NIGHTMARE_SCENE_RENDER<a class="headerlink" href="#mc_post_nightmare_scene_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19609,7 +19614,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_nightmare_scene_show">MC_POST_NIGHTMARE_SCENE_SHOW<a class="headerlink" href="#mc_post_nightmare_scene_show" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19631,7 +19636,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_npc_collision">MC_POST_NPC_COLLISION<a class="headerlink" href="#mc_post_npc_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设实体的碰撞后代码未被跳过，则在该代码运行之后执行。</p>
 <table>
 <thead>
 <tr>
@@ -19653,8 +19658,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_npc_morph">MC_PRE_NPC_MORPH<a class="headerlink" href="#mc_pre_npc_morph" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a table of parameters: <code>{EntityType, Variant, SubType, Championid}</code> or just <code>{EntityType, Variant, SubType}</code>. </p>
-<p>Returning <code>false</code> cancels the morph.</p>
+<p>接受一个参数表：<code>{EntityType, Variant, SubType, Championid}</code> 或者仅 <code>{EntityType, Variant, SubType}</code>。</p>
+<p>返回 <code>false</code> 可取消变形。</p>
 <table>
 <thead>
 <tr>
@@ -19676,7 +19681,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_npc_morph">MC_POST_NPC_MORPH<a class="headerlink" href="#mc_post_npc_morph" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the Morph already happened.</p>
+<p>在变形已经发生之后运行。</p>
 <table>
 <thead>
 <tr>
@@ -19698,8 +19703,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_npc_pick_target">MC_NPC_PICK_TARGET<a class="headerlink" href="#mc_npc_pick_target" title="Permanent link">⚓︎</a></h3>
-<p>Called whenever an EntityNPC selects its target, such as when EntityNPC:GetPlayerTarget() is called.</p>
-<p>Return an entity to make the NPC target that entity instead.</p>
+<p>每当一个 EntityNPC 选择其目标时调用，例如当调用 EntityNPC:GetPlayerTarget() 时。</p>
+<p>返回一个实体，可使 NPC 改为以该实体为目标。</p>
 <table>
 <thead>
 <tr>
@@ -19721,7 +19726,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_npc_dark_red_champion_regen">MC_POST_NPC_DARK_RED_CHAMPION_REGEN<a class="headerlink" href="#mc_post_npc_dark_red_champion_regen" title="Permanent link">⚓︎</a></h3>
-<p>Runs right after a dark red champion regenerates out of the goo form.</p>
+<p>在暗红色冠军怪从黏液形态重生后立即运行。</p>
 <table>
 <thead>
 <tr>
@@ -19743,8 +19748,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_evaluate_custom_cache">MC_EVALUATE_CUSTOM_CACHE<a class="headerlink" href="#mc_evaluate_custom_cache" title="Permanent link">⚓︎</a></h3>
-<p>Called when a custom cache is evaluated (see <a href="../xml/items.html">items.xml</a>). Return a number to modify the value. Modified values are passed onto the next callback.</p>
-<p>The initial value is always 0. The most recent result can be obtained at any time using <code>player:GetCustomCacheValue("mycustomcache")</code></p>
+<p>当评估自定义缓存时调用（参见 <a href="../xml/items.html">items.xml</a>）。返回一个数字以修改该值。修改后的值会传递给下一个回调。</p>
+<p>初始值始终为 0。可以随时使用 <code>player:GetCustomCacheValue("mycustomcache")</code> 获取最新结果。</p>
 <table>
 <thead>
 <tr>
@@ -19766,9 +19771,9 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_evaluate_familiar_multiplier">MC_EVALUATE_FAMILIAR_MULTIPLIER<a class="headerlink" href="#mc_evaluate_familiar_multiplier" title="Permanent link">⚓︎</a></h3>
-<p>Called when a familiar's cached multiplier needs to be re-evaluated. Return a number to modify the multiplier. Modified values are passed to the next callback.</p>
-<p>Effects such as BFFs or Hive Mind have already been applied at this point.</p>
-<p>Note that the result of this callback is cached, so the callback only runs when needed. It will be triggered if an item with the <code>familiarmultiplier</code> "customcache" is added/removed (see <a href="../xml/items.html">items.xml</a>) or if <code>familiar:InvalidateCachedMultiplier()</code> is called.</p>
+<p>当需要重新评估跟班的缓存乘数时调用。返回一个数字以修改乘数。修改后的值会传递给下一个回调。</p>
+<p>像 BFFs 或蜂巢思维等效果在此时已经应用。</p>
+<p>请注意，此回调的结果会被缓存，因此仅在需要时运行。如果添加/移除了带有 <code>familiarmultiplier</code> “自定义缓存” 的道具（参见 <a href="../xml/items.html">items.xml</a>），或者调用了 <code>familiar:InvalidateCachedMultiplier()</code>，则会触发此回调。</p>
 <table>
 <thead>
 <tr>
@@ -19790,11 +19795,11 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_npc_render">MC_PRE_NPC_RENDER<a class="headerlink" href="#mc_pre_npc_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 类型的值以修改渲染偏移。</p>
+<p>或者接受 <code>false</code> 以取消渲染。</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。此问题正在调查中，在此期间，请在 MC_POST_UPDATE 中调用 SetShadowSize(0) 来处理实体阴影。</p>
 </details>
 <table>
 <thead>
@@ -19817,8 +19822,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_npc_split">MC_PRE_NPC_SPLIT<a class="headerlink" href="#mc_pre_npc_split" title="Permanent link">⚓︎</a></h3>
-<p>Called when the game is about to decide whether or not an <a href="../EntityNPC.html">EntityNPC</a> can be split, ie the Meat Cleaver effect.</p>
-<p>Return <code>true</code> to prevent the split, <code>false</code> to allow it even if blacklisted, or <code>nil</code> to continue default behavior.</p>
+<p>当游戏即将决定一个 <a href="../EntityNPC.html">EntityNPC</a> 是否可以分裂时调用，例如肉刀效果。</p>
+<p>返回 <code>true</code> 可阻止分裂，返回 <code>false</code> 可允许分裂（即使该 NPC 在黑名单中），返回 <code>nil</code> 则继续默认行为。</p>
 <table>
 <thead>
 <tr>
@@ -19840,7 +19845,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_opengl_render">MC_PRE_OPENGL_RENDER<a class="headerlink" href="#mc_pre_opengl_render" title="Permanent link">⚓︎</a></h3>
-<p>Gets called right before the Manager::Render() function gets called.</p>
+<p>在 Manager::Render() 函数调用之前立即调用。</p>
 <table>
 <thead>
 <tr>
@@ -19862,7 +19867,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pause_screen_render">MC_PRE_PAUSE_SCREEN_RENDER<a class="headerlink" href="#mc_pre_pause_screen_render" title="Permanent link">⚓︎</a></h3>
-<p>Can return <code>false</code> to prevent the pause screen from rendering. Doing so will also prevent the screen from darkening.</p>
+<p>可以返回 <code>false</code> 以阻止暂停屏幕的渲染。这样做也会阻止屏幕变暗。</p>
 <table>
 <thead>
 <tr>
@@ -19884,7 +19889,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_pause_screen_render">MC_POST_PAUSE_SCREEN_RENDER<a class="headerlink" href="#mc_post_pause_screen_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -19906,7 +19911,7 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_pickup_collision">MC_POST_PICKUP_COLLISION<a class="headerlink" href="#mc_post_pickup_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设实体的碰撞后代码未被跳过，则在该代码运行之后执行。</p>
 <table>
 <thead>
 <tr>
@@ -19928,8 +19933,8 @@ The callback accepts two parameters:</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_composted">MC_PRE_PICKUP_COMPOSTED<a class="headerlink" href="#mc_pre_pickup_composted" title="Permanent link">⚓︎</a></h3>
-<p>This callback is called when a pickup is consumed with the compost active. 
-Accepts <code>false</code> to cancel the pickup getting consumed.</p>
+<p>当拾取物被堆肥效果消耗时调用此回调。
+接受 <code>false</code> 以取消拾取物被消耗。</p>
 <table>
 <thead>
 <tr>
@@ -19951,7 +19956,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pickup_get_coin_value">MC_PICKUP_GET_COIN_VALUE<a class="headerlink" href="#mc_pickup_get_coin_value" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>int</code> CoinValue to modify the amount of coins a coin can give you on pickup.</p>
+<p>接受 <code>int</code> 类型的 CoinValue，以修改拾取硬币时可获得的硬币数量。</p>
 <table>
 <thead>
 <tr>
@@ -19973,8 +19978,8 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_morph">MC_PRE_PICKUP_MORPH<a class="headerlink" href="#mc_pre_pickup_morph" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a table of parameters: <code>{EntityType, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers}</code> or just <code>{EntityType, Variant, SubType}</code>. </p>
-<p>Returning <code>false</code> cancels the morph.</p>
+<p>接受一个参数表：<code>{EntityType, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers}</code> 或者仅 <code>{EntityType, Variant, SubType}</code>。</p>
+<p>返回 <code>false</code> 可取消变形。</p>
 <table>
 <thead>
 <tr>
@@ -19996,7 +20001,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_pickup_morph">MC_POST_PICKUP_MORPH<a class="headerlink" href="#mc_post_pickup_morph" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the morph already happened.</p>
+<p>在变形已经发生之后运行。</p>
 <table>
 <thead>
 <tr>
@@ -20018,11 +20023,11 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_render">MC_PRE_PICKUP_RENDER<a class="headerlink" href="#mc_pre_pickup_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 类型的值以修改渲染偏移。</p>
+<p>或者接受 <code>false</code> 以取消渲染。</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。此问题正在调查中，在此期间，请在 MC_POST_UPDATE 中调用 SetShadowSize(0) 来处理实体阴影。</p>
 </details>
 <table>
 <thead>
@@ -20045,7 +20050,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_pickup_shop_purchase">MC_POST_PICKUP_SHOP_PURCHASE<a class="headerlink" href="#mc_post_pickup_shop_purchase" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -20067,8 +20072,8 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_voided_abyss">MC_PRE_PICKUP_VOIDED_ABYSS<a class="headerlink" href="#mc_pre_pickup_voided_abyss" title="Permanent link">⚓︎</a></h3>
-<p>This callback is called when a pickup is consumed with the abyss active. 
-Accepts <code>false</code> to cancel the pickup getting consumed.</p>
+<p>当拾取物被深渊效果消耗时调用此回调。
+接受 <code>false</code> 以取消拾取物被消耗。</p>
 <table>
 <thead>
 <tr>
@@ -20090,9 +20095,9 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_voided">MC_PRE_PICKUP_VOIDED<a class="headerlink" href="#mc_pre_pickup_voided" title="Permanent link">⚓︎</a></h3>
-<p>This callback is called when a pickup is consumed with the void active or black rune. The <code>IsBlackRune</code> parameter indicates the source.
-If black rune is used, the callback gets fired both for pedestal items and for small pickups that turn into flies.
-Accepts <code>false</code> to cancel the pickup getting consumed.</p>
+<p>当拾取物被虚空效果或黑符文消耗时调用此回调。<code>IsBlackRune</code> 参数表示消耗源。
+如果使用了黑符文，此回调会针对基座道具和变成苍蝇的小拾取物都触发。
+接受 <code>false</code> 以取消拾取物被消耗。</p>
 <table>
 <thead>
 <tr>
@@ -20114,9 +20119,9 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_planetarium_apply_items">MC_PRE_PLANETARIUM_APPLY_ITEMS<a class="headerlink" href="#mc_pre_planetarium_apply_items" title="Permanent link">⚓︎</a></h3>
-<p>After checking the amount of treasure rooms entered, the game applies flat item chances. This is where Crystal Ball, Magic 8 Ball and Sausage's chances get added, as well as Telescope Lens's additional 15% chance.</p>
-<p>If you're looking to add an item like Telescope Lens which modifies the <em>base</em> chance, have a look at MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS instead.</p>
-<p>Accepts a <code>float</code> to modify the chance in this step of the calculation.</p>
+<p>在检查进入的宝藏房间数量后，游戏会应用固定的道具出现几率。这是水晶球、魔法 8 球和香肠的几率增加的地方，以及望远镜镜片额外 15% 几率的应用处。</p>
+<p>如果你想添加像望远镜镜片这样修改 <em>基础</em> 几率的道具，请查看 MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS。</p>
+<p>接受一个 <code>float</code> 类型的值，以修改此计算步骤中的几率。</p>
 <table>
 <thead>
 <tr>
@@ -20138,9 +20143,9 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_planetarium_apply_planetarium_penalty">MC_PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY<a class="headerlink" href="#mc_pre_planetarium_apply_planetarium_penalty" title="Permanent link">⚓︎</a></h3>
-<p>After ensuring the stage is valid, the game then checks if a planetarium has been entered before. If so, the chance will be locked at 1% (10% with Telescope Lens).</p>
-<p>If you're looking to add an item like Telescope Lens which modifies the <em>base</em> chance, have a look at MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS instead.</p>
-<p>Accepts a <code>boolean</code>. Return <code>false</code> to bypass the planetarium enter penalty.</p>
+<p>在确保当前楼层有效后，游戏会检查之前是否进入过天象馆。如果是，则几率将锁定为 1%（使用望远镜镜片时为 10%）。</p>
+<p>如果你想添加像望远镜镜片这样修改 <em>基础</em> 几率的道具，请查看 MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS。</p>
+<p>接受一个 <code>boolean</code> 类型的值。返回 <code>false</code> 可绕过天象馆进入惩罚。</p>
 <table>
 <thead>
 <tr>
@@ -20162,10 +20167,10 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_planetarium_apply_stage_penalty">MC_PRE_PLANETARIUM_APPLY_STAGE_PENALTY<a class="headerlink" href="#mc_pre_planetarium_apply_stage_penalty" title="Permanent link">⚓︎</a></h3>
-<p>This callback is run at the start of planetarium calculation. Before running calculation, the game first checks if the current floor is valid to spawn a planetarium. If the current floor is invalid, all further calculation (and thus, all further callbacks) will be canceled.</p>
-<p>By default, planetariums cannot spawn past Depths II (Womb II with Telescope Lens).</p>
-<p>This callback can be used, for example, to add custom planetarium spawn rules on custom floors, or to add new items like Telescope Lens which can augment the rules.</p>
-<p>Accepts a <code>boolean</code>. Return <code>false</code> to bypass the planetarium stage penalty.</p>
+<p>此回调在天象馆计算开始时运行。在进行计算之前，游戏首先会检查当前楼层是否可以生成天象馆。如果当前楼层无效，则所有后续计算（以及因此所有后续回调）将被取消。</p>
+<p>默认情况下，天象馆不能在深牢二层之后生成（使用望远镜镜片时为子宫二层）。</p>
+<p>此回调可用于，例如，在自定义楼层上添加自定义的天象馆生成规则，或者添加像望远镜镜片这样可以增强规则的新道具。</p>
+<p>接受一个 <code>boolean</code> 类型的值。返回 <code>false</code> 可绕过天象馆楼层惩罚。</p>
 <table>
 <thead>
 <tr>
@@ -20187,8 +20192,8 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_planetarium_apply_telescope_lens">MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS<a class="headerlink" href="#mc_pre_planetarium_apply_telescope_lens" title="Permanent link">⚓︎</a></h3>
-<p>Finally, after checking all of the above, Telescope Lens adds an additional 9% chance to the base chance, bringing the base generation chance to 10%.</p>
-<p>Accepts a <code>float</code> to modify the chance in this step of the calculation.</p>
+<p>最后，在检查完上述所有条件后，望远镜镜片会在基础概率上额外增加 9% 的概率，使基础生成概率达到 10%。</p>
+<p>接受一个 <code>float</code> 类型的值，用于修改此计算步骤中的概率。</p>
 <table>
 <thead>
 <tr>
@@ -20210,10 +20215,10 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_planetarium_apply_treasure_penalty">MC_PRE_PLANETARIUM_APPLY_TREASURE_PENALTY<a class="headerlink" href="#mc_pre_planetarium_apply_treasure_penalty" title="Permanent link">⚓︎</a></h3>
-<p>After ensuring planetariums haven't been entered before, the game then checks how many treasure rooms have been entered. If the amount of treasure rooms entered is greater than or equal to the current stage number, the chance will be locked at 1% (10% with Telescope Lens).</p>
-<p>If you're looking to add an item like Telescope Lens which modifies the <em>base</em> chance, have a look at MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS instead.</p>
-<p>Accepts a <code>boolean</code>. Return <code>false</code> to bypass the planetarium treasure room penalty entirely, meaning the game will act as if no treasure rooms have been entered.</p>
-<p>Alternatively accepts an <code>int</code> to modify how many treasure rooms the game will believe has been entered.</p>
+<p>在确保之前没有进入过天象馆后，游戏会检查已经进入过多少个宝藏房。如果进入的宝藏房数量大于或等于当前关卡编号，概率将被锁定为 1%（使用望远镜镜片时为 10%）。</p>
+<p>如果你想添加一个像望远镜镜片这样修改 <em>基础</em> 概率的物品，请查看 <code>MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS</code>。</p>
+<p>接受一个 <code>boolean</code> 类型的值。返回 <code>false</code> 可以完全绕过天象馆宝藏房惩罚，即游戏会认为没有进入过任何宝藏房。</p>
+<p>或者接受一个 <code>int</code> 类型的值，用于修改游戏认为已经进入过的宝藏房数量。</p>
 <table>
 <thead>
 <tr>
@@ -20235,8 +20240,8 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_planetarium_calculate">MC_POST_PLANETARIUM_CALCULATE<a class="headerlink" href="#mc_post_planetarium_calculate" title="Permanent link">⚓︎</a></h3>
-<p>This will override <em>all</em> previous calculation values, ultimately dictating the planetarium chance.</p>
-<p>Accepts a <code>float</code> to modify the chance.</p>
+<p>这将覆盖 <em>所有</em> 之前的计算值，最终决定天象馆的生成概率。</p>
+<p>接受一个 <code>float</code> 类型的值，用于修改概率。</p>
 <table>
 <thead>
 <tr>
@@ -20258,7 +20263,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_playerhud_render_active_item">MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM<a class="headerlink" href="#mc_pre_playerhud_render_active_item" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>true</code> to cancel rendering.</p>
+<p>接受 <code>true</code> 以取消渲染。</p>
 <table>
 <thead>
 <tr>
@@ -20301,7 +20306,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_playerhud_render_hearts">MC_PRE_PLAYERHUD_RENDER_HEARTS<a class="headerlink" href="#mc_pre_playerhud_render_hearts" title="Permanent link">⚓︎</a></h3>
-<p>Return <code>true</code> to cancel hearts HUD rendering.</p>
+<p>返回 <code>true</code> 以取消红心 HUD 的渲染。</p>
 <table>
 <thead>
 <tr>
@@ -20344,13 +20349,13 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_playerhud_trinket_render">MC_PRE_PLAYERHUD_TRINKET_RENDER<a class="headerlink" href="#mc_pre_playerhud_trinket_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts returning a table, with any combination of the following fields:</p>
+<p>接受返回一个表，该表可以包含以下任意组合的字段：</p>
 <ul>
-<li>Position - Alters trinket position.</li>
-<li>Scale - Alters trinket scale.</li>
-<li>CropOffset - Alters the crop on the sprite on its spritesheet. Allows alternate sprites for the same trinket rendered this way, such as Monkey Paw.</li>
+<li>Position - 改变饰品的位置。</li>
+<li>Scale - 改变饰品的缩放比例。</li>
+<li>CropOffset - 改变精灵图在其精灵表上的裁剪位置。通过这种方式可以为同一个饰品渲染不同的精灵图，例如猴爪。</li>
 </ul>
-<p>Alternative accepts <code>true</code>, which cancels trinket rendering.</p>
+<p>或者接受 <code>true</code>，这将取消饰品的渲染。</p>
 <table>
 <thead>
 <tr>
@@ -20393,7 +20398,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_collision">MC_POST_PLAYER_COLLISION<a class="headerlink" href="#mc_post_player_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设该实体的碰撞代码没有被跳过，则在其碰撞代码运行后执行。</p>
 <table>
 <thead>
 <tr>
@@ -20415,7 +20420,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_player_get_active_max_charge">MC_PLAYER_GET_ACTIVE_MAX_CHARGE<a class="headerlink" href="#mc_player_get_active_max_charge" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an integer to change chargebar for the active item.</p>
+<p>接受一个整数，用于更改主动物品的能量条。</p>
 <table>
 <thead>
 <tr>
@@ -20437,7 +20442,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_player_get_active_min_usable_charge">MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE<a class="headerlink" href="#mc_player_get_active_min_usable_charge" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an integer to change the minimum charge to use the active item. If the item currently has the minimum amount of charge, it'll also show the white outline.</p>
+<p>接受一个整数，用于更改使用主动物品所需的最小能量。如果物品当前拥有最小能量，它还会显示白色轮廓。</p>
 <table>
 <thead>
 <tr>
@@ -20459,7 +20464,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_player_get_health_type">MC_PLAYER_GET_HEALTH_TYPE<a class="headerlink" href="#mc_player_get_health_type" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an <a href="HealthType.html">HealthType</a> to change health type for the character.</p>
+<p>接受一个 <a href="HealthType.html">HealthType</a> 类型的值，用于更改角色的生命值类型。</p>
 <table>
 <thead>
 <tr>
@@ -20481,10 +20486,10 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_player_get_heart_limit">MC_PLAYER_GET_HEART_LIMIT<a class="headerlink" href="#mc_player_get_heart_limit" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an override <code>integer</code> for heart limit.</p>
+<p>接受一个覆盖值 <code>integer</code>，用于设置红心上限。</p>
 <details class="- info">
 <summary>-</summary>
-<p>You can set the limit to any arbitrary amount but the game can only render up to 4 lines of hearts in the HUD. However, even if they're not visible, the hearts still work properly.</p>
+<p>你可以将上限设置为任意值，但游戏在 HUD 中最多只能渲染 4 行红心。不过，即使它们不可见，红心仍然能正常工作。</p>
 </details>
 <table>
 <thead>
@@ -20507,7 +20512,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_get_multi_shot_params">MC_POST_PLAYER_GET_MULTI_SHOT_PARAMS<a class="headerlink" href="#mc_post_player_get_multi_shot_params" title="Permanent link">⚓︎</a></h3>
-<p>Return a <a href="../MultiShotParams.html">MultiShotParams</a> object to change the properties of the players shooting behavior in regards to the MultiShotParams object properties.</p>
+<p>返回一个 <a href="../MultiShotParams.html">MultiShotParams</a> 对象，用于更改玩家射击行为中与 <code>MultiShotParams</code> 对象属性相关的属性。</p>
 <table>
 <thead>
 <tr>
@@ -20529,7 +20534,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_player_init_post_level_init_stats">MC_PLAYER_INIT_POST_LEVEL_INIT_STATS<a class="headerlink" href="#mc_player_init_post_level_init_stats" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -20551,7 +20556,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_player_init_pre_level_init_stats">MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS<a class="headerlink" href="#mc_player_init_pre_level_init_stats" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -20573,7 +20578,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_force_add_pill_effect">MC_POST_FORCE_ADD_PILL_EFFECT<a class="headerlink" href="#mc_post_force_add_pill_effect" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -20637,11 +20642,11 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_render">MC_PRE_PLAYER_RENDER<a class="headerlink" href="#mc_pre_player_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 类型的值，用于修改渲染偏移量。</p>
+<p>或者接受 <code>false</code> 以取消渲染。</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在 <code>MC_POST_UPDATE</code> 中对实体调用 <code>SetShadowSize(0)</code>。</p>
 </details>
 <table>
 <thead>
@@ -20664,8 +20669,8 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_take_dmg">MC_PRE_PLAYER_TAKE_DMG<a class="headerlink" href="#mc_pre_player_take_dmg" title="Permanent link">⚓︎</a></h3>
-<p>Runs earlier than MC_ENTITY_TAKE_DMG, and even if the player is considered invincible or has Holy Mantles.</p>
-<p>Only accepts returning false to cancel the damage. Good for giving the player invincibility that takes precedence over other damage negation effects, such as Holy Mantle.</p>
+<p>比 <code>MC_ENTITY_TAKE_DMG</code> 更早运行，即使玩家被认为是无敌的或拥有神圣披风也会触发。</p>
+<p>仅接受返回 <code>false</code> 以取消伤害。这适用于让玩家获得比其他伤害抵消效果（如神圣披风）更优先的无敌效果。</p>
 <table>
 <thead>
 <tr>
@@ -20687,7 +20692,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_add_hearts">MC_PRE_PLAYER_ADD_HEARTS<a class="headerlink" href="#mc_pre_player_add_hearts" title="Permanent link">⚓︎</a></h3>
-<p>Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg.</p>
+<p>在 <code>Add(...)Hearts</code> 函数之前运行，允许返回一个值来更改给予的生命值数量。包含参数的函数（例如 <code>AddMaxHearts</code> 中的 <code>ignoreKeeper</code>）会使用 <code>OptionalArg</code> 提供该值。</p>
 <table>
 <thead>
 <tr>
@@ -20709,7 +20714,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_add_hearts">MC_POST_PLAYER_ADD_HEARTS<a class="headerlink" href="#mc_post_player_add_hearts" title="Permanent link">⚓︎</a></h3>
-<p>Runs after Add(...)Hearts functions and MC_PRE_PLAYER_ADD_HEARTS callback. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg.</p>
+<p>在 <code>Add(...)Hearts</code> 函数和 <code>MC_PRE_PLAYER_ADD_HEARTS</code> 回调之后运行。包含参数的函数（例如 <code>AddMaxHearts</code> 中的 <code>ignoreKeeper</code>）会使用 <code>OptionalArg</code> 提供该值。</p>
 <table>
 <thead>
 <tr>
@@ -20731,7 +20736,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_trigger_room_clear">MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR<a class="headerlink" href="#mc_pre_player_trigger_room_clear" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel trigger effects.</p>
+<p>接受 <code>false</code> 以取消触发效果。</p>
 <table>
 <thead>
 <tr>
@@ -20753,7 +20758,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_use_bomb">MC_PRE_PLAYER_USE_BOMB<a class="headerlink" href="#mc_pre_player_use_bomb" title="Permanent link">⚓︎</a></h3>
-<p>Return <code>false</code> to stop the player from using a bomb.</p>
+<p>返回 <code>false</code> 以阻止玩家使用炸弹。</p>
 <table>
 <thead>
 <tr>
@@ -20796,7 +20801,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_projectile_collision">MC_POST_PROJECTILE_COLLISION<a class="headerlink" href="#mc_post_projectile_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设该实体的碰撞代码没有被跳过，则在其碰撞代码运行后执行。</p>
 <table>
 <thead>
 <tr>
@@ -20818,11 +20823,11 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_projectile_render">MC_PRE_PROJECTILE_RENDER<a class="headerlink" href="#mc_pre_projectile_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 类型的值，用于修改渲染偏移量。</p>
+<p>或者接受 <code>false</code> 以取消渲染。</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在 <code>MC_POST_UPDATE</code> 中对实体调用 <code>SetShadowSize(0)</code>。</p>
 </details>
 <table>
 <thead>
@@ -20845,10 +20850,10 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_render_custom_character_menu">MC_PRE_RENDER_CUSTOM_CHARACTER_MENU<a class="headerlink" href="#mc_pre_render_custom_character_menu" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <details class="- info">
-<summary>Execution informations</summary>
-<p>This callback only triggers when a custom character is selected, it doesn't trigger on regular characters.</p>
+<summary>执行信息</summary>
+<p>此回调仅在选择自定义角色时触发，在常规角色上不会触发。</p>
 </details>
 <table>
 <thead>
@@ -20871,31 +20876,13 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_render_entity_lighting">MC_PRE_RENDER_ENTITY_LIGHTING<a class="headerlink" href="#mc_pre_render_entity_lighting" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an override <a href="../Vector.html">Vector</a> for Offset.</p>
-<p>Alternatively accepts <code>false</code> to stop the rendering.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">ID</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Function Args</th>
-<th style="text-align: left;">Optional Args</th>
-<th style="text-align: left;">Return Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">1152</td>
-<td class="copyable" style="text-align: left;">MC_PRE_RENDER_ENTITY_LIGHTING</td>
-<td style="text-align: left;">(<a href="../Entity.html">Entity</a> Entity, <br><a href="../Vector.html">Vector</a> Offset)</td>
-<td style="text-align: left;"><a href="https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html">EntityType</a></td>
-<td style="text-align: left;"><a href="../Vector.html">Vector</a> or boolean</td>
-</tr>
-</tbody>
-</table>
+<p>接受一个覆盖值 <a href="../Vector.html">Vector</a>，用于设置偏移量。</p>
+<p>或者接受 <code>false</code> 以停止渲染。</p>
+<p>|:--|:--|:--|:--|:--|
+|1152 |MC_PRE_RENDER_ENTITY_LIGHTING {: .copyable } | (<a href="../Entity.html">Entity</a> Entity, <br><a href="../Vector.html">Vector</a> Offset) | <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html">EntityType</a> | <a href="../Vector.html">Vector</a> or boolean |</p>
 <h3 class="copyable" id="mc_pre_render_grid_lighting">MC_PRE_RENDER_GRID_LIGHTING<a class="headerlink" href="#mc_pre_render_grid_lighting" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an override <a href="../Vector.html">Vector</a> for Offset.</p>
-<p>Alternatively accepts <code>false</code> to stop the rendering.</p>
+<p>接受一个覆盖值 <a href="../Vector.html">Vector</a>，用于设置偏移量。</p>
+<p>或者接受 <code>false</code> 以停止渲染。</p>
 <table>
 <thead>
 <tr>
@@ -20917,8 +20904,8 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_render_player_body">MC_PRE_RENDER_PLAYER_BODY<a class="headerlink" href="#mc_pre_render_player_body" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an override <code>vector</code> for RenderPos.</p>
-<p>Alternatively accepts a <code>false</code> to stop the rendering.</p>
+<p>接受一个覆盖值 <code>vector</code>，用于设置渲染位置。</p>
+<p>或者接受 <code>false</code> 以停止渲染。</p>
 <table>
 <thead>
 <tr>
@@ -20940,8 +20927,8 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_render_player_head">MC_PRE_RENDER_PLAYER_HEAD<a class="headerlink" href="#mc_pre_render_player_head" title="Permanent link">⚓︎</a></h3>
-<p>Accepts an override <a href="../Vector.html">Vector</a> for RenderPos.</p>
-<p>Alternatively accepts a <code>false</code> to stop the rendering.</p>
+<p>接受一个覆盖值 <a href="../Vector.html">Vector</a>，用于设置渲染位置。</p>
+<p>或者接受 <code>false</code> 以停止渲染。</p>
 <table>
 <thead>
 <tr>
@@ -20963,7 +20950,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_render">MC_PRE_RENDER<a class="headerlink" href="#mc_pre_render" title="Permanent link">⚓︎</a></h3>
-<p>Gets called right before the Manager::Render() function gets called.</p>
+<p>在 <code>Manager::Render()</code> 函数调用之前调用。</p>
 <table>
 <thead>
 <tr>
@@ -20985,7 +20972,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_replace_spritesheet">MC_PRE_REPLACE_SPRITESHEET<a class="headerlink" href="#mc_pre_replace_spritesheet" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a table of parameters: <code>{int LayerID, string PNGFilename}</code></p>
+<p>接受一个参数表：<code>{int LayerID, string PNGFilename}</code></p>
 <table>
 <thead>
 <tr>
@@ -21007,7 +20994,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_replace_spritesheet">MC_POST_REPLACE_SPRITESHEET<a class="headerlink" href="#mc_post_replace_spritesheet" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21029,10 +21016,10 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_restock_shop">MC_PRE_RESTOCK_SHOP<a class="headerlink" href="#mc_pre_restock_shop" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>false</code> to cancel the restock, blocking shop rerolls from restock machines or restocks from Restock altogether.</p>
+<p>接受 <code>false</code> 以取消补货，阻止商店通过补货机重新补货或完全阻止 <code>Restock</code> 补货。</p>
 <details class="- info">
-<summary>Partial</summary>
-<p>This callback is called for <em>both</em> Room::ShopRestockFull <em>and</em> Room::ShopRestockPartial! <code>Partial</code> is provided to distinguish the two.</p>
+<summary>部分补货</summary>
+<p>此回调在 <code>Room::ShopRestockFull</code> 和 <code>Room::ShopRestockPartial</code> 时都会被调用！<code>Partial</code> 用于区分这两种情况。</p>
 </details>
 <table>
 <thead>
@@ -21055,10 +21042,10 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_restock_shop">MC_POST_RESTOCK_SHOP<a class="headerlink" href="#mc_post_restock_shop" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <details class="- info">
-<summary>Partial</summary>
-<p>This callback is called for <em>both</em> Room::ShopRestockFull <em>and</em> Room::ShopRestockPartial! <code>Partial</code> is provided to distinguish the two.</p>
+<summary>部分补货</summary>
+<p>此回调在 <code>Room::ShopRestockFull</code> 和 <code>Room::ShopRestockPartial</code> 时都会被调用！<code>Partial</code> 用于区分这两种情况。</p>
 </details>
 <table>
 <thead>
@@ -21081,10 +21068,10 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_room_exit">MC_PRE_ROOM_EXIT<a class="headerlink" href="#mc_pre_room_exit" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <details class="- info">
-<summary>NewLevel</summary>
-<p>NewLevel returns <code>true</code> when entering a new level or when exiting a run.</p>
+<summary>新关卡</summary>
+<p>当进入新关卡或结束一次游戏时，<code>NewLevel</code> 返回 <code>true</code>。</p>
 </details>
 <table>
 <thead>
@@ -21107,11 +21094,11 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_room_grid_entity_spawn">MC_PRE_ROOM_GRID_ENTITY_SPAWN<a class="headerlink" href="#mc_pre_room_grid_entity_spawn" title="Permanent link">⚓︎</a></h3>
-<p>This is called during Room initiization when <a href="../GridEntity.html">GridEntities</a> from the layout are being spawned.</p>
-<p>Accepts <code>false</code> to cancel spawning the grid or a table of <code>{Type, Variant, Vardata, SpawnSeed}</code> to modify it.</p>
+<p>在房间初始化期间，当布局中的 <a href="../GridEntity.html">GridEntities</a> 正在生成时调用。</p>
+<p>接受 <code>false</code> 以取消生成网格，或接受一个表 <code>{Type, Variant, Vardata, SpawnSeed}</code> 以修改它。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p>This does <em>not</em> fire for random decorations spawned by the game! Use <code>MC_PRE_GRID_ENTITY_SPAWN</code> for these.</p>
+<summary>警告</summary>
+<p>此回调 <em>不会</em> 为游戏随机生成的装饰触发！对于这些情况，请使用 <code>MC_PRE_GRID_ENTITY_SPAWN</code>。</p>
 </details>
 <table>
 <thead>
@@ -21134,7 +21121,7 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_room_trigger_clear">MC_PRE_ROOM_TRIGGER_CLEAR<a class="headerlink" href="#mc_pre_room_trigger_clear" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21156,13 +21143,13 @@ Accepts <code>false</code> to cancel the pickup getting consumed.</p>
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_saveslot_load">MC_POST_SAVESLOT_LOAD<a class="headerlink" href="#mc_post_saveslot_load" title="Permanent link">⚓︎</a></h3>
-<p>This is called wheenver a saveslot is loaded by the game.</p>
-<p>This is the callback you should use to handle savedata loads, ideally, from normal Mod::LoadData to Repentogon Marks/Achievement checks, since it's the callback that triggers when those are loaded.</p>
-<p>The first parameter is the slot you should care about, the 2nd parameter (isslotselected) indicates if the slot that is being loaded has actually been selected from the save menu screen (you can limit your save handling to when this is true if you want to get fancy), and the 3rd parameter(rawslot) is the actual saveslot the game uses (not the one the api uses since it can be 0!).</p>
+<p>每当游戏加载存档槽时调用。</p>
+<p>这是你应该用来处理存档数据加载的回调，理想情况下，从正常的 <code>Mod::LoadData</code> 到忏悔者标记/成就检查，因为它是在加载这些内容时触发的回调。</p>
+<p>第一个参数是你应该关注的存档槽，第二个参数（<code>isslotselected</code>）表示正在加载的存档槽是否实际上是从存档菜单屏幕中选择的（如果你想更精细地处理，可以将存档处理限制在此为 <code>true</code> 时），第三个参数（<code>rawslot</code>）是游戏实际使用的存档槽（不是 API 使用的那个，因为它可能是 0！）。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p>This callback is called many times before a run is started, either from changing saveslots naturally or because the game doesnt give a damn, so code accounting for that, clearing previous data when necessary.
-The 3rd param is actually only useful to check for the 0 slot state, which is the one the game defaults to before the actual slot is loaded by the player. When on this state, the moddata and the gamedata WONT BE IN SYNC (moddata is slot 1, while vanilla game data is 3)</p>
+<summary>警告</summary>
+<p>在开始一次游戏之前，此回调会被多次调用，可能是因为自然地切换存档槽，也可能是因为游戏没有正确处理，所以代码需要考虑到这一点，必要时清除之前的数据。
+第三个参数实际上仅用于检查 0 存档槽状态，这是游戏在玩家实际加载存档槽之前默认的状态。在此状态下，模组数据和游戏数据 <em>不会同步</em>（模组数据是存档槽 1，而原版游戏数据是存档槽 3）。</p>
 </details>
 <table>
 <thead>
@@ -21185,11 +21172,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_sfx_play">MC_PRE_SFX_PLAY<a class="headerlink" href="#mc_pre_sfx_play" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a table of parameters: <code>{ID, Volume, FrameDelay, Loop, Pitch, Pan}</code></p>
-<p>Alternatively accepts <code>false</code> to cancel the sound.</p>
+<p>接受一个参数表：<code>{ID, Volume, FrameDelay, Loop, Pitch, Pan}</code></p>
+<p>或者接受 <code>false</code> 以取消声音播放。</p>
 <details class="- example">
-<summary>Example Code</summary>
-<p>This code will forcibly loop every sound (for better or worse).
+<summary>示例代码</summary>
+<p>此代码将强制循环每个声音（无论好坏）。
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -21220,7 +21207,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_sfx_play">MC_POST_SFX_PLAY<a class="headerlink" href="#mc_post_sfx_play" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21242,12 +21229,12 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_slot_collision">MC_PRE_SLOT_COLLISION<a class="headerlink" href="#mc_pre_slot_collision" title="Permanent link">⚓︎</a></h3>
-<p>Just like the collision callbacks in the vanilla API, the Low value is true if the entity collided with the collider first, and false if the opposite is true.</p>
-<p>Return <code>true</code> to ignore collision, <code>false</code> to collide but not execute internal code.</p>
-<p>Also accepts returning a table, with any combination of the following fields:</p>
+<p>就像原版API中的碰撞回调一样，如果实体先与碰撞器发生碰撞，则低值为true；反之则为false。</p>
+<p>返回 <code>true</code> 以忽略碰撞，返回 <code>false</code> 以发生碰撞但不执行内部代码。</p>
+<p>也接受返回一个表，该表可以包含以下任意字段组合：</p>
 <ul>
-<li>Collide: Set to true to force the entities to physically collide (push each other away), unless the "Collider" ignores the collision. Set to false to ignore the physical collision without necessarily skipping on-collision effects.</li>
-<li>SkipCollisionEffects: Set to true to skip the on-collision code of this entity. Does not affect the physical collision. Won't skip the on-collision code of the "Collider".</li>
+<li>Collide: 设置为true可强制实体发生物理碰撞（相互推开），除非“碰撞器”忽略碰撞。设置为false可忽略物理碰撞，但不一定跳过碰撞效果。</li>
+<li>SkipCollisionEffects: 设置为true可跳过此实体的碰撞代码。不影响物理碰撞。不会跳过“碰撞器”的碰撞代码。</li>
 </ul>
 <table>
 <thead>
@@ -21270,7 +21257,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_slot_collision">MC_POST_SLOT_COLLISION<a class="headerlink" href="#mc_post_slot_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设此实体的碰撞代码未被跳过，则在其执行后运行。</p>
 <table>
 <thead>
 <tr>
@@ -21292,7 +21279,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_slot_create_explosion_drops">MC_PRE_SLOT_CREATE_EXPLOSION_DROPS<a class="headerlink" href="#mc_pre_slot_create_explosion_drops" title="Permanent link">⚓︎</a></h3>
-<p>Return <code>false</code> to stop explosions from dropping the standard consumables. This is useful, for example, to allow custom slots to drop their own loot on explosion.</p>
+<p>返回 <code>false</code> 可阻止爆炸掉落标准消耗品。例如，这对于允许自定义插槽在爆炸时掉落自己的战利品很有用。</p>
 <table>
 <thead>
 <tr>
@@ -21314,7 +21301,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_slot_create_explosion_drops">MC_POST_SLOT_CREATE_EXPLOSION_DROPS<a class="headerlink" href="#mc_post_slot_create_explosion_drops" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21336,7 +21323,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_slot_init">MC_POST_SLOT_INIT<a class="headerlink" href="#mc_post_slot_init" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21358,11 +21345,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_slot_render">MC_PRE_SLOT_RENDER<a class="headerlink" href="#mc_pre_slot_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移。</p>
+<p>或者接受 <code>false</code> 以取消渲染。</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在MC_POST_UPDATE中对实体调用SetShadowSize(0)。</p>
 </details>
 <table>
 <thead>
@@ -21385,7 +21372,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_slot_render">MC_POST_SLOT_RENDER<a class="headerlink" href="#mc_post_slot_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21407,8 +21394,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_slot_set_prize_collectible">MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE<a class="headerlink" href="#mc_pre_slot_set_prize_collectible" title="Permanent link">⚓︎</a></h3>
-<p>Used by Shell Game, Hell Game, and Crane Game.</p>
-<p>Accepts a <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> to override what the game will pay out with.</p>
+<p>由贝壳游戏、地狱游戏和起重机游戏使用。</p>
+<p>接受一个 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html">CollectibleType</a> 来覆盖游戏将支付的物品。</p>
 <table>
 <thead>
 <tr>
@@ -21430,7 +21417,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_slot_set_prize_collectible">MC_POST_SLOT_SET_PRIZE_COLLECTIBLE<a class="headerlink" href="#mc_post_slot_set_prize_collectible" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21452,8 +21439,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_slot_update">MC_PRE_SLOT_UPDATE<a class="headerlink" href="#mc_pre_slot_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -21475,7 +21462,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_slot_update">MC_POST_SLOT_UPDATE<a class="headerlink" href="#mc_post_slot_update" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21497,7 +21484,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_tear_collision">MC_POST_TEAR_COLLISION<a class="headerlink" href="#mc_post_tear_collision" title="Permanent link">⚓︎</a></h3>
-<p>Runs after the on-collision code of this entity, assuming it wasn't skipped.</p>
+<p>假设此实体的碰撞代码未被跳过，则在其执行后运行。</p>
 <table>
 <thead>
 <tr>
@@ -21519,11 +21506,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_tear_render">MC_PRE_TEAR_RENDER<a class="headerlink" href="#mc_pre_tear_render" title="Permanent link">⚓︎</a></h3>
-<p>Accepts a <a href="../Vector.html">Vector</a> to modify render offset</p>
-<p>Alternatively accepts <code>false</code> to cancel rendering</p>
+<p>接受一个 <a href="../Vector.html">Vector</a> 来修改渲染偏移。</p>
+<p>或者接受 <code>false</code> 以取消渲染。</p>
 <details class="- info">
-<summary>Shadows</summary>
-<p>Canceling this callback will not stop rendering of entity shadows. This is being investigated, but in the meantime call SetShadowSize(0) on the entity in MC_POST_UPDATE.</p>
+<summary>阴影</summary>
+<p>取消此回调不会停止实体阴影的渲染。目前正在对此进行调查，在此期间，请在MC_POST_UPDATE中对实体调用SetShadowSize(0)。</p>
 </details>
 <table>
 <thead>
@@ -21546,7 +21533,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_trigger_collectible_removed">MC_POST_TRIGGER_COLLECTIBLE_REMOVED<a class="headerlink" href="#mc_post_trigger_collectible_removed" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21568,12 +21555,12 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_trigger_player_death">MC_PRE_TRIGGER_PLAYER_DEATH<a class="headerlink" href="#mc_pre_trigger_player_death" title="Permanent link">⚓︎</a></h3>
-<p>Fires right before the game over screen, but BEFORE the game checks for vanilla revive effects like 1UP.</p>
-<p>Return <code>false</code> or call <code>player:Revive()</code> to cancel the death, reviving the player in-place with half a heart. This will also prevent later callbacks from running.</p>
+<p>在游戏结束屏幕出现之前触发，但在游戏检查像1UP这样的原版复活效果之前。</p>
+<p>返回 <code>false</code> 或调用 <code>player:Revive()</code> 可取消死亡，使玩家在原地以半颗心复活。这也将阻止后续回调运行。</p>
 <details class="- warning">
-<summary>Warning</summary>
-<p>Returning false or calling <code>player:Revive()</code> may remove the current run's ability to save. This occurs because the game immediately deletes the save file during the death animation if there's no pending revives, and this callback doesn't fire fast enough to register a revive on death as it occurs right before the game over screen.</p>
-<p>In order to prevent this, only attempt to revive the player if they have an item or effect with REPENTOGON's "revive" customtag, which allows the item/effect to count as an extra life on the HUD and prevents the game from deleting the run save upon player death. See the page on <a href="../xml/items.html">items.xml</a> for more information and some example XML/code.</p>
+<summary>警告</summary>
+<p>返回false或调用 <code>player:Revive()</code> 可能会使当前游戏无法保存。这是因为如果没有待处理的复活，游戏会在死亡动画期间立即删除保存文件，而此回调触发的速度不够快，无法在死亡时注册复活，因为它是在游戏结束屏幕出现之前触发的。</p>
+<p>为了防止这种情况，只有在玩家拥有带有REPENTOGON的“revive”自定义标签的物品或效果时，才尝试让玩家复活，该标签允许物品/效果在HUD上计为额外生命，并防止游戏在玩家死亡时删除游戏保存。有关更多信息和一些示例XML/代码，请参阅 <a href="../xml/items.html">items.xml</a> 页面。</p>
 </details>
 <table>
 <thead>
@@ -21596,12 +21583,12 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_trigger_player_death_post_check_revives">MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES<a class="headerlink" href="#mc_trigger_player_death_post_check_revives" title="Permanent link">⚓︎</a></h3>
-<p>Fires right before the game over screen, but AFTER the game checks for vanilla revive effects like 1UP.</p>
-<p>Return <code>false</code> or call <code>player:Revive()</code> to cancel the death, reviving the player in-place with half a heart. This will also prevent later callbacks from running.</p>
+<p>在游戏结束屏幕出现之前触发，但在游戏检查像1UP这样的原版复活效果之后。</p>
+<p>返回 <code>false</code> 或调用 <code>player:Revive()</code> 可取消死亡，使玩家在原地以半颗心复活。这也将阻止后续回调运行。</p>
 <details class="- warning">
-<summary>Warning</summary>
-<p>Returning false or calling <code>player:Revive()</code> may remove the current run's ability to save. This occurs because the game immediately deletes the save file during the death animation if there's no pending revives, and this callback doesn't fire fast enough to register a revive on death as it occurs right before the game over screen.</p>
-<p>In order to prevent this, only attempt to revive the player if they have an item or effect with REPENTOGON's "revive" customtag, which allows the item/effect to count as an extra life on the HUD and prevents the game from deleting the run save upon player death. See the page on <a href="../xml/items.html">items.xml</a> for more information and some example XML/code.</p>
+<summary>警告</summary>
+<p>返回false或调用 <code>player:Revive()</code> 可能会使当前游戏无法保存。这是因为如果没有待处理的复活，游戏会在死亡动画期间立即删除保存文件，而此回调触发的速度不够快，无法在死亡时注册复活，因为它是在游戏结束屏幕出现之前触发的。</p>
+<p>为了防止这种情况，只有在玩家拥有带有REPENTOGON的“revive”自定义标签的物品或效果时，才尝试让玩家复活，该标签允许物品/效果在HUD上计为额外生命，并防止游戏在玩家死亡时删除游戏保存。有关更多信息和一些示例XML/代码，请参阅 <a href="../xml/items.html">items.xml</a> 页面。</p>
 </details>
 <table>
 <thead>
@@ -21624,8 +21611,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_revive">MC_PRE_PLAYER_REVIVE<a class="headerlink" href="#mc_pre_player_revive" title="Permanent link">⚓︎</a></h3>
-<p>Called before the player revives.</p>
-<p>Return <code>false</code> to cancel it."</p>
+<p>在玩家复活之前调用。</p>
+<p>返回 <code>false</code> 以取消复活。</p>
 <table>
 <thead>
 <tr>
@@ -21647,7 +21634,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_revive">MC_POST_PLAYER_REVIVE<a class="headerlink" href="#mc_post_player_revive" title="Permanent link">⚓︎</a></h3>
-<p>Called after the player revives, assuming it wasn't cancelled.</p>
+<p>假设复活未被取消，则在玩家复活后调用。</p>
 <table>
 <thead>
 <tr>
@@ -21669,7 +21656,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_trigger_trinket_added">MC_POST_TRIGGER_TRINKET_ADDED<a class="headerlink" href="#mc_post_trigger_trinket_added" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21691,7 +21678,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_trigger_trinket_removed">MC_POST_TRIGGER_TRINKET_REMOVED<a class="headerlink" href="#mc_post_trigger_trinket_removed" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21713,7 +21700,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_trigger_weapon_fired">MC_POST_TRIGGER_WEAPON_FIRED<a class="headerlink" href="#mc_post_trigger_weapon_fired" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21735,7 +21722,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_use_card">MC_PRE_USE_CARD<a class="headerlink" href="#mc_pre_use_card" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>true</code> to cancel card use.</p>
+<p>接受 <code>true</code> 以取消卡片使用。</p>
 <table>
 <thead>
 <tr>
@@ -21757,7 +21744,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_use_pill">MC_PRE_USE_PILL<a class="headerlink" href="#mc_pre_use_pill" title="Permanent link">⚓︎</a></h3>
-<p>Accepts <code>true</code> to cancel pill use.</p>
+<p>接受 <code>true</code> 以取消药丸使用。</p>
 <table>
 <thead>
 <tr>
@@ -21779,7 +21766,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_weapon_fire">MC_POST_WEAPON_FIRE<a class="headerlink" href="#mc_post_weapon_fire" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
+<p>不接受返回参数。</p>
 <table>
 <thead>
 <tr>
@@ -21801,7 +21788,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_get_loot_list">MC_PRE_PICKUP_GET_LOOT_LIST<a class="headerlink" href="#mc_pre_pickup_get_loot_list" title="Permanent link">⚓︎</a></h3>
-<p>Called before the pickup determines its loot content. Accepts a <a href="../LootList.html">LootList</a> to change loot content.</p>
+<p>在拾取物确定其战利品内容之前调用。接受一个 <a href="../LootList.html">LootList</a> 来更改战利品内容。</p>
 <table>
 <thead>
 <tr>
@@ -21823,7 +21810,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_update_ghost_pickups">MC_PRE_PICKUP_UPDATE_GHOST_PICKUPS<a class="headerlink" href="#mc_pre_pickup_update_ghost_pickups" title="Permanent link">⚓︎</a></h3>
-<p>Called before a ghost pickup of the loot content is applied to the pickup. Return <code>true</code> to apply pickup ghost to your pickup entity, <code>false</code> to cancel it.</p>
+<p>在将战利品内容的幽灵拾取物应用到拾取物之前调用。返回 <code>true</code> 以将拾取物幽灵应用到你的拾取物实体，返回 <code>false</code> 以取消它。</p>
 <table>
 <thead>
 <tr>
@@ -21845,7 +21832,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_trigger_effect_removed">MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED<a class="headerlink" href="#mc_post_player_trigger_effect_removed" title="Permanent link">⚓︎</a></h3>
-<p>Called after the player's <code>ItemConfigItem</code> TemporaryEffect is removed.</p>
+<p>在玩家的 <code>ItemConfigItem</code> 临时效果被移除后调用。</p>
 <table>
 <thead>
 <tr>
@@ -21867,8 +21854,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_room_trigger_effect_removed">MC_POST_ROOM_TRIGGER_EFFECT_REMOVED<a class="headerlink" href="#mc_post_room_trigger_effect_removed" title="Permanent link">⚓︎</a></h3>
-<p>Called after the room's <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillEffect.md">TemporaryEffects</a> is removed.</p>
-<p><a href="../Room.html">Room</a> has its own <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillEffect.md">TemporaryEffects</a> that are accessed through <a href="../Room.html#geteffects">Room::GetEffects()</a></p>
+<p>在房间的 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillEffect.md">TemporaryEffects</a> 被移除后调用。</p>
+<p><a href="../Room.html">Room</a> 有自己的 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillEffect.md">TemporaryEffects</a>，可通过 <a href="../Room.html#geteffects">Room::GetEffects()</a> 访问。</p>
 <table>
 <thead>
 <tr>
@@ -21890,11 +21877,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_grid_collision">MC_PRE_PLAYER_GRID_COLLISION<a class="headerlink" href="#mc_pre_player_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity collides with a <a href="../GridEntity.html">GridEntity</a> or other solid grid tile.</p>
-<p>Return <code>true</code> to ignore collision.</p>
+<p>在该实体与 <a href="../GridEntity.html">GridEntity</a> 或其他实心网格方块碰撞之前调用。</p>
+<p>返回 <code>true</code> 以忽略碰撞。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -21917,10 +21904,10 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_player_grid_collision">MC_PLAYER_GRID_COLLISION<a class="headerlink" href="#mc_player_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called when this entity collides with the grid, assuming it wasn't skipped.</p>
+<p>假设碰撞未被跳过，则在该实体与网格碰撞时调用。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -21943,11 +21930,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_tear_grid_collision">MC_PRE_TEAR_GRID_COLLISION<a class="headerlink" href="#mc_pre_tear_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity collides with a <a href="../GridEntity.html">GridEntity</a> or other solid grid tile.</p>
-<p>Return <code>true</code> to ignore collision.</p>
+<p>在该实体与 <a href="../GridEntity.html">GridEntity</a> 或其他实心网格方块碰撞之前调用。</p>
+<p>返回 <code>true</code> 以忽略碰撞。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -21970,10 +21957,10 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_tear_grid_collision">MC_TEAR_GRID_COLLISION<a class="headerlink" href="#mc_tear_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called when this entity collides with the grid, assuming it wasn't skipped.</p>
+<p>假设碰撞未被跳过，则在该实体与网格碰撞时调用。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -21996,11 +21983,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_familiar_grid_collision">MC_PRE_FAMILIAR_GRID_COLLISION<a class="headerlink" href="#mc_pre_familiar_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity collides with a <a href="../GridEntity.html">GridEntity</a> or other solid grid tile.</p>
-<p>Return <code>true</code> to ignore collision.</p>
+<p>在该实体与 <a href="../GridEntity.html">GridEntity</a> 或其他实心网格方块碰撞之前调用。</p>
+<p>返回 <code>true</code> 以忽略碰撞。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22023,10 +22010,10 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_familiar_grid_collision">MC_FAMILIAR_GRID_COLLISION<a class="headerlink" href="#mc_familiar_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called when this entity collides with the grid, assuming it wasn't skipped.</p>
+<p>假设碰撞未被跳过，则在该实体与网格碰撞时调用。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22049,11 +22036,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_bomb_grid_collision">MC_PRE_BOMB_GRID_COLLISION<a class="headerlink" href="#mc_pre_bomb_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity collides with a <a href="../GridEntity.html">GridEntity</a> or other solid grid tile.</p>
-<p>Return <code>true</code> to ignore collision.</p>
+<p>在该实体与 <a href="../GridEntity.html">GridEntity</a> 或其他实心网格方块碰撞之前调用。</p>
+<p>返回 <code>true</code> 以忽略碰撞。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22076,10 +22063,10 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_bomb_grid_collision">MC_BOMB_GRID_COLLISION<a class="headerlink" href="#mc_bomb_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called when this entity collides with the grid, assuming it wasn't skipped.</p>
+<p>假设碰撞未被跳过，则在该实体与网格碰撞时调用。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22102,11 +22089,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_grid_collision">MC_PRE_PICKUP_GRID_COLLISION<a class="headerlink" href="#mc_pre_pickup_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity collides with a <a href="../GridEntity.html">GridEntity</a> or other solid grid tile.</p>
-<p>Return <code>true</code> to ignore collision.</p>
+<p>在该实体与 <a href="../GridEntity.html">GridEntity</a> 或其他实心网格方块碰撞之前调用。</p>
+<p>返回 <code>true</code> 以忽略碰撞。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22129,10 +22116,10 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pickup_grid_collision">MC_PICKUP_GRID_COLLISION<a class="headerlink" href="#mc_pickup_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called when this entity collides with the grid, assuming it wasn't skipped.</p>
+<p>假设碰撞未被跳过，则在该实体与网格碰撞时调用。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22155,11 +22142,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_projectile_grid_collision">MC_PRE_PROJECTILE_GRID_COLLISION<a class="headerlink" href="#mc_pre_projectile_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity collides with a <a href="../GridEntity.html">GridEntity</a> or other solid grid tile.</p>
-<p>Return <code>true</code> to ignore collision.</p>
+<p>在该实体与 <a href="../GridEntity.html">GridEntity</a> 或其他实心网格方块碰撞之前调用。</p>
+<p>返回 <code>true</code> 以忽略碰撞。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22182,10 +22169,10 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_projectile_grid_collision">MC_PROJECTILE_GRID_COLLISION<a class="headerlink" href="#mc_projectile_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called when this entity collides with the grid, assuming it wasn't skipped.</p>
+<p>假设碰撞未被跳过，则在该实体与网格碰撞时调用。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22208,11 +22195,11 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_npc_grid_collision">MC_PRE_NPC_GRID_COLLISION<a class="headerlink" href="#mc_pre_npc_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity collides with a <a href="../GridEntity.html">GridEntity</a> or other solid grid tile.</p>
-<p>Return <code>true</code> to ignore collision.</p>
+<p>在该实体与 <a href="../GridEntity.html">GridEntity</a> 或其他实心网格方块碰撞之前调用。</p>
+<p>返回 <code>true</code> 以忽略碰撞。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22235,10 +22222,10 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_npc_grid_collision">MC_NPC_GRID_COLLISION<a class="headerlink" href="#mc_npc_grid_collision" title="Permanent link">⚓︎</a></h3>
-<p>Called when this entity collides with the grid, assuming it wasn't skipped.</p>
+<p>假设碰撞未被跳过，则在该实体与网格碰撞时调用。</p>
 <details class="warning" open="open">
-<summary>Warning</summary>
-<p><code>GridEntity</code> can be nil, as entities may collide with "empty" grid indexes if the <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> value is &gt;= 1000.</p>
+<summary>警告</summary>
+<p><code>GridEntity</code> 可能为nil，因为如果 <a href="https://wofsauge.github.io/IsaacDocs/rep/Room.html#getgridpath">GridPath</a> 值 &gt;= 1000，实体可能会与“空”网格索引发生碰撞。</p>
 </details>
 <table>
 <thead>
@@ -22303,8 +22290,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_boss_intro_show">MC_POST_BOSS_INTRO_SHOW<a class="headerlink" href="#mc_post_boss_intro_show" title="Permanent link">⚓︎</a></h3>
-<p>Accepts no return parameters.</p>
-<p>Called right after the boss intro is initialized. <code>BossID2</code> is for Double Trouble.</p>
+<p>不接受返回参数。</p>
+<p>在BOSS介绍初始化后立即调用。<code>BossID2</code> 用于双人组合BOSS。</p>
 <table>
 <thead>
 <tr>
@@ -22368,7 +22355,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_add_costume">MC_PRE_PLAYER_ADD_COSTUME<a class="headerlink" href="#mc_pre_player_add_costume" title="Permanent link">⚓︎</a></h3>
-<p>Called before the costume is added to the player. Return <a href="../ItemConfig_Item.html">ItemConfigItem</a> to replace the costume or <code>true</code> to cancel adding it entirely.</p>
+<p>在将服装添加到玩家之前调用。返回 <a href="../ItemConfig_Item.html">ItemConfigItem</a> 以替换服装，或返回 <code>true</code> 以完全取消添加。</p>
 <table>
 <thead>
 <tr>
@@ -22390,7 +22377,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_remove_costume">MC_PRE_PLAYER_REMOVE_COSTUME<a class="headerlink" href="#mc_pre_player_remove_costume" title="Permanent link">⚓︎</a></h3>
-<p>Called before the costume is added to the player. Return <code>true</code> to cancel the removal.</p>
+<p>在从玩家移除服装之前调用。返回 <code>true</code> 以取消移除。</p>
 <table>
 <thead>
 <tr>
@@ -22412,7 +22399,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_add_costume">MC_POST_PLAYER_ADD_COSTUME<a class="headerlink" href="#mc_post_player_add_costume" title="Permanent link">⚓︎</a></h3>
-<p>Called after the costume is added to the player, assuming it wasn't skipped.</p>
+<p>假设添加未被跳过，则在将服装添加到玩家之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22434,7 +22421,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_remove_costume">MC_POST_PLAYER_REMOVE_COSTUME<a class="headerlink" href="#mc_post_player_remove_costume" title="Permanent link">⚓︎</a></h3>
-<p>Called after the costume is added to the player, assuming it wasn't skipped.</p>
+<p>假设移除未被跳过，则在从玩家移除服装之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22456,8 +22443,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_update">MC_PRE_PLAYER_UPDATE<a class="headerlink" href="#mc_pre_player_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22479,8 +22466,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_tear_update">MC_PRE_TEAR_UPDATE<a class="headerlink" href="#mc_pre_tear_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22502,8 +22489,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_familiar_update">MC_PRE_FAMILIAR_UPDATE<a class="headerlink" href="#mc_pre_familiar_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22525,8 +22512,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_bomb_update">MC_PRE_BOMB_UPDATE<a class="headerlink" href="#mc_pre_bomb_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22548,8 +22535,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_pickup_update">MC_PRE_PICKUP_UPDATE<a class="headerlink" href="#mc_pre_pickup_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22571,8 +22558,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_knife_update">MC_PRE_KNIFE_UPDATE<a class="headerlink" href="#mc_pre_knife_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22594,8 +22581,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_projectile_update">MC_PRE_PROJECTILE_UPDATE<a class="headerlink" href="#mc_pre_projectile_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22617,8 +22604,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_laser_update">MC_PRE_LASER_UPDATE<a class="headerlink" href="#mc_pre_laser_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22640,8 +22627,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_effect_update">MC_PRE_EFFECT_UPDATE<a class="headerlink" href="#mc_pre_effect_update" title="Permanent link">⚓︎</a></h3>
-<p>Called before this entity is updated.</p>
-<p>Return <code>true</code> if the internal AI should be ignored, <code>false</code> or <code>nil</code>/nothing otherwise.</p>
+<p>在更新此实体之前调用。</p>
+<p>如果应忽略内部AI，则返回 <code>true</code>；否则返回 <code>false</code> 或 <code>nil</code>/不返回任何内容。</p>
 <table>
 <thead>
 <tr>
@@ -22663,8 +22650,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_fortune_display">MC_PRE_FORTUNE_DISPLAY<a class="headerlink" href="#mc_pre_fortune_display" title="Permanent link">⚓︎</a></h3>
-<p>Called before a fortune is displayed.</p>
-<p>Return <code>false</code> to cancel showing the fortune.</p>
+<p>在显示运势之前调用。</p>
+<p>返回 <code>false</code> 以取消显示运势。</p>
 <table>
 <thead>
 <tr>
@@ -22686,9 +22673,9 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_item_text_display">MC_PRE_ITEM_TEXT_DISPLAY<a class="headerlink" href="#mc_pre_item_text_display" title="Permanent link">⚓︎</a></h3>
-<p>Called before an item text is displayed.</p>
-<p><code>IsSticky</code> is <code>true</code> is if the item text stays on screen for an indefinite amount of time, namely when holding down the map key. <code>IsCurseDisplay</code> is <code>true</code> if the text is for displaying a curse.</p>
-<p>Return <code>false</code> to cancel showing the item text.</p>
+<p>在显示物品文本之前调用。</p>
+<p><code>IsSticky</code> 为 <code>true</code> 表示物品文本会在屏幕上无限期停留，即按住地图键时。<code>IsCurseDisplay</code> 为 <code>true</code> 表示文本用于显示诅咒。</p>
+<p>返回 <code>false</code> 以取消显示物品文本。</p>
 <table>
 <thead>
 <tr>
@@ -22710,8 +22697,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_get_random_room_index">MC_PRE_GET_RANDOM_ROOM_INDEX<a class="headerlink" href="#mc_pre_get_random_room_index" title="Permanent link">⚓︎</a></h3>
-<p>Called when the game wishes to get a random available room index on the floor.</p>
-<p>Return an integer to override the target room index.</p>
+<p>当游戏希望在楼层上获取一个随机可用房间索引时调用。</p>
+<p>返回一个整数以覆盖目标房间索引。</p>
 <table>
 <thead>
 <tr>
@@ -22733,7 +22720,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_glowing_hourglass_save">MC_PRE_GLOWING_HOURGLASS_SAVE<a class="headerlink" href="#mc_pre_glowing_hourglass_save" title="Permanent link">⚓︎</a></h3>
-<p>Called after the Glowing Hourglass state is saved.</p>
+<p>在保存发光沙漏状态后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22755,7 +22742,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_glowing_hourglass_save">MC_POST_GLOWING_HOURGLASS_SAVE<a class="headerlink" href="#mc_post_glowing_hourglass_save" title="Permanent link">⚓︎</a></h3>
-<p>Called after the Glowing Hourglass state is saved.</p>
+<p>在保存发光沙漏状态后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22777,7 +22764,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_glowing_hourglass_load">MC_PRE_GLOWING_HOURGLASS_LOAD<a class="headerlink" href="#mc_pre_glowing_hourglass_load" title="Permanent link">⚓︎</a></h3>
-<p>Called after the Glowing Hourglass state is loaded.</p>
+<p>在加载发光沙漏状态后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22799,7 +22786,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_glowing_hourglass_load">MC_POST_GLOWING_HOURGLASS_LOAD<a class="headerlink" href="#mc_post_glowing_hourglass_load" title="Permanent link">⚓︎</a></h3>
-<p>Called after the Glowing Hourglass state is loaded.</p>
+<p>在加载发光沙漏状态后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22821,8 +22808,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_add_card">MC_PRE_PLAYER_ADD_CARD<a class="headerlink" href="#mc_pre_player_add_card" title="Permanent link">⚓︎</a></h3>
-<p>Called before a card gets added to the player's inventory.</p>
-<p>Return <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Card.html">Card</a> to change the card being added or <code>false</code> to cancel adding it entirely.</p>
+<p>在将卡片添加到玩家库存之前调用。</p>
+<p>返回 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/Card.html">Card</a> 以更改要添加的卡片，或返回 <code>false</code> 以完全取消添加。</p>
 <table>
 <thead>
 <tr>
@@ -22844,7 +22831,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_add_card">MC_POST_PLAYER_ADD_CARD<a class="headerlink" href="#mc_post_player_add_card" title="Permanent link">⚓︎</a></h3>
-<p>Called after a card gets added to the player's inventory.</p>
+<p>在将卡片添加到玩家库存之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22866,8 +22853,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_add_pill">MC_PRE_PLAYER_ADD_PILL<a class="headerlink" href="#mc_pre_player_add_pill" title="Permanent link">⚓︎</a></h3>
-<p>Called before a pill gets added to the player's inventory.</p>
-<p>Return <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillColor.html">PillColor</a> to change the pill being added or <code>false</code> to cancel adding it entirely.</p>
+<p>在将药丸添加到玩家库存之前调用。</p>
+<p>返回 <a href="https://wofsauge.github.io/IsaacDocs/rep/enums/PillColor.html">PillColor</a> 以更改要添加的药丸，或返回 <code>false</code> 以完全取消添加。</p>
 <table>
 <thead>
 <tr>
@@ -22889,7 +22876,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_add_pill">MC_POST_PLAYER_ADD_PILL<a class="headerlink" href="#mc_post_player_add_pill" title="Permanent link">⚓︎</a></h3>
-<p>Called after a pill gets added to the player's inventory.</p>
+<p>在将药丸添加到玩家库存之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22911,7 +22898,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_remove_card">MC_POST_PLAYER_REMOVE_CARD<a class="headerlink" href="#mc_post_player_remove_card" title="Permanent link">⚓︎</a></h3>
-<p>Called after a card gets removed from the player's inventory by any means (dropped, direct removal, use, etc).</p>
+<p>在通过任何方式（丢弃、直接移除、使用等）从玩家库存中移除卡片后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22933,7 +22920,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_remove_pill">MC_POST_PLAYER_REMOVE_PILL<a class="headerlink" href="#mc_post_player_remove_pill" title="Permanent link">⚓︎</a></h3>
-<p>Called after a pill gets removed from the player's inventory by any means (dropped, direct removal, use, etc).</p>
+<p>在通过任何方式（丢弃、直接移除、使用等）从玩家库存中移除药丸后调用。</p>
 <table>
 <thead>
 <tr>
@@ -22955,8 +22942,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_collect_card">MC_PRE_PLAYER_COLLECT_CARD<a class="headerlink" href="#mc_pre_player_collect_card" title="Permanent link">⚓︎</a></h3>
-<p>Called before a player picks up a card off the ground.</p>
-<p>Return <code>false</code> to prevent the card from being picked up.</p>
+<p>在玩家从地上捡起卡片之前调用。</p>
+<p>返回 <code>false</code> 以阻止捡起卡片。</p>
 <table>
 <thead>
 <tr>
@@ -22978,7 +22965,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_collect_card">MC_POST_PLAYER_COLLECT_CARD<a class="headerlink" href="#mc_post_player_collect_card" title="Permanent link">⚓︎</a></h3>
-<p>Called after a player picks up a card off the ground.</p>
+<p>在玩家从地上捡起卡片之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -23000,8 +22987,8 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_collect_pill">MC_PRE_PLAYER_COLLECT_PILL<a class="headerlink" href="#mc_pre_player_collect_pill" title="Permanent link">⚓︎</a></h3>
-<p>Called before a player picks up a pill off the ground.</p>
-<p>Return <code>false</code> to prevent the pill from being picked up.</p>
+<p>在玩家从地上捡起药丸之前调用。</p>
+<p>返回 <code>false</code> 以阻止捡起药丸。</p>
 <table>
 <thead>
 <tr>
@@ -23023,7 +23010,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_collect_pill">MC_POST_PLAYER_COLLECT_PILL<a class="headerlink" href="#mc_post_player_collect_pill" title="Permanent link">⚓︎</a></h3>
-<p>Called after a player picks up a pill off the ground.</p>
+<p>在玩家从地上捡起药丸之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -23045,7 +23032,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_drop_card">MC_POST_PLAYER_DROP_CARD<a class="headerlink" href="#mc_post_player_drop_card" title="Permanent link">⚓︎</a></h3>
-<p>Called after a player drops a card onto the ground from their inventory.</p>
+<p>在玩家从库存中丢弃卡片到地上之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -23067,7 +23054,7 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_post_player_drop_pill">MC_POST_PLAYER_DROP_PILL<a class="headerlink" href="#mc_post_player_drop_pill" title="Permanent link">⚓︎</a></h3>
-<p>Called after a player drops a pill onto the ground from their inventory.</p>
+<p>在玩家从库存中丢弃药丸到地上之后调用。</p>
 <table>
 <thead>
 <tr>
@@ -23089,9 +23076,9 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_give_birth_cambion">MC_PRE_PLAYER_GIVE_BIRTH_CAMBION<a class="headerlink" href="#mc_pre_player_give_birth_cambion" title="Permanent link">⚓︎</a></h3>
-<p>Called before Cambion Conception spawns a familiar after the player takes damage.</p>
-<p>Return <code>false</code> to prevent the familiar from being added.</p>
-<p>Note that if you cancel this, the game will not attempt to spawn another familiar until the next requisite amount of damage, and canceling the spawning here still counts towards Cambion Conception's usual limit of 4 familiar spawns.</p>
+<p>在玩家受到伤害后，该回调在Cambion Conception（该物品效果为受伤后概率生成一个跟班）生成跟班之前调用。</p>
+<p>返回 <code>false</code> 以阻止添加跟班。</p>
+<p>请注意，如果取消此操作，游戏在达到下一次所需的伤害量之前不会尝试生成另一个跟班，并且在此处取消生成仍会计入Cambion Conception通常的4次跟班生成限制。</p>
 <table>
 <thead>
 <tr>
@@ -23113,9 +23100,9 @@ The 3rd param is actually only useful to check for the 0 slot state, which is th
 </tbody>
 </table>
 <h3 class="copyable" id="mc_pre_player_give_birth_immaculate">MC_PRE_PLAYER_GIVE_BIRTH_IMMACULATE<a class="headerlink" href="#mc_pre_player_give_birth_immaculate" title="Permanent link">⚓︎</a></h3>
-<p>Called before Immaculate Conception spawns a familiar after the player takes damage.</p>
-<p>Return <code>false</code> to prevent the familiar from being added.</p>
-<p>Note that if you cancel this, the game will not attempt to spawn another familiar until another 15 hearts are collected. Unlike Cambion Conception, Immaculate Conception will not stop attempting to spawn familiars until all available vanilla familiars have been granted.</p>
+<p>在玩家受到伤害后，该回调在Immaculate Conception（该物品效果为收集一定数量的心后生成一个跟班）生成跟班之前调用。</p>
+<p>返回 <code>false</code> 以阻止添加跟班。</p>
+<p>请注意，如果取消此操作，游戏在再收集15颗心之前不会尝试生成另一个跟班。与Cambion Conception不同，Immaculate Conception在所有可用的原版跟班都已获得之前不会停止尝试生成跟班。</p>
 <table>
 <thead>
 <tr>
