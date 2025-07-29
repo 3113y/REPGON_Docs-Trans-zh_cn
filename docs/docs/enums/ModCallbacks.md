@@ -252,6 +252,17 @@ This is a list of all new callbacks added by REPENTOGON.
 
 接受一个参数表：`{TargetRoomIdx, Dimension}`
 
+???+ bug
+
+    当 `TargetRoomIdx` 为当前房间的索引时：
+        当进入下一个未进入过的房间时：
+            - 会传送回当前房间
+        当进入下一个已进入过的房间时：
+            - 如果该方向上，此房间后面还有第二个房间，就传送到那个房间（无论是否进去过，即隔一个房间传送）
+            - 如果没有第二个房间，就传送回当前房间
+
+    注：以上规则仅在小房间场景下测试验证过
+
 |ID|Name|Function Args|Optional Args|Return Type|
 |:--|:--|:--|:--|:--|
 |1061 |MC_PRE_CHANGE_ROOM {: .copyable } | (int TargetRoomIdx, <br>int Dimension) | - | table |
