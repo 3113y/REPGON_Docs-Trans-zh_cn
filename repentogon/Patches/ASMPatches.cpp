@@ -2,11 +2,14 @@
 #include "ASMPatches.h"
 
 #include "../LuaInterfaces/LuaRender.h"
+#include "../SaveSyncing/SaveSyncing.h"
+
 #include "NullItemsAndCostumes.h"
 #include "CustomCache.h"
 #include "FamiliarTags.h"
 #include "PlayerTags.h"
 #include "GetCoinValue.h"
+#include "PlayerFeatures.h"
 #include "PocketItems.h"
 #include "Anm2Extras.h"
 #include "ExtraLives.h"
@@ -83,6 +86,7 @@ void ASMPatchConsoleRunCommand() {
 }
 
 void PerformASMPatches() {
+	SaveSyncing::ASMPatchesForSaveSyncing();
 	ASMPatchLogMessage();
 	ASMPatchConsoleRunCommand();
 
@@ -161,6 +165,8 @@ void PerformASMPatches() {
 	ASMPatchMarsDoubleTapWindow();
 	ASMPatchAddActiveCharge();
 	EvaluateStats::ApplyASMPatches();
+	PatchGetGreedDonationBreakChanceForModdedCharacters();
+	PatchIncreaseGreedDonationCoinCountForModdedCharacters();
 
 	// Status Effects
 	PatchInlinedGetStatusEffectTarget();

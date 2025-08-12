@@ -161,6 +161,28 @@ Additions:
 * Isaac:
 	- GetAllowedDoorsMaskForRoomShape: Returns a DoorMask representing all DoorSlots that are allowed for the given RoomShape.
 	- UnClearChallenge(challenge id): sets the target challenge id as not cleared. Not recommended with vanilla ones, it should still work tho!
+	- SpawnBoss(Type,Variant,SubType,Position,Velocity,Spawner,Seed = ?) Spawns an NPC forcing it to be a Boss, giving it a boss bar and boss-lile qualities.
+* Options:
+	- AimLockEnabled
+	- AscentVoiceOver
+	- BossHPOnBottom
+	- Brightness
+	- Contrast
+	- Exposure
+	- OnlineChatEnabled (read-only)
+	- OnlineChatFilterEnabled (read-only)
+	- OnlineColorSet (read-only)
+	- OnlineHUD (read-only)
+	- OnlineInputDelay (read-only)
+	- OnlinePlayerOpacity (read-only)
+	- OnlinePlayerVolume (read-only)
+	- PreventModUpdates (now read-only)
+	- StreamerMode (read-only)
+	- TouchMode
+	- WindowHeight
+	- WindowPosX
+	- WindowPosY
+	- WindowWidth
 * Added the following customtag for items.xml:
 	* "noexpansionpack" - Prevents the active item (with 1 or 2 max charges) from being picked by Expansion Pack trinket.
 * Added the following customcache for items.xml:
@@ -222,6 +244,10 @@ Fixes:
 Modified:
 * EntityFamiliar:
 	- GetPathFinder -> GetPathfinder
+	- bool, table TryAimAtMarkedTarget(Vector AimDirection = nil, Direction Direction = Direction.NO_DIRECTION, Vector TargetPos = nil)
+		Return true if player's mark from Marked or Eye of the Occult/Gello target exists, false otherwise.
+		Return a table containing the changed AimDirection, Direction, and TargetPos.
+		The legacy function signature has been kept and should now properly return the changed TargetPos.
 * EntityPlayer:
 	- DropCollectible now returns the spawned pedestal if one was spawned, as intended 
 	- SwapForgottenForm returns boolean, depending if Forgotten/Soul form was switched or not.
