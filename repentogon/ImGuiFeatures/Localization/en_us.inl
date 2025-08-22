@@ -444,6 +444,25 @@ I(OPT_REPENTOGON_DEBUG_FIND_IN_RADIUS_MARK, u8"While the DebugFlag.HITSPHERES fl
 I(OPT_REPENTOGON_DISABLE_EXIT_PROMPT, u8"Disable exit prompt")
 I(OPT_REPENTOGON_DISABLE_EXIT_PROMPT_MARK, u8"Disables the exit prompt when you try to quit the game, restoring original behavior.")
 
+I(OPT_SAVE_MANAGEMENT, u8"Save Management")
+I(OPT_SAVE_MANAGEMENT_DISABLED_REASON, u8"Some options/utilities are disabled since a save file is currently opened.")
+I(OPT_SAVE_MANAGEMENT_ENABLE_SAVE_SYNCING, u8"Automatically sync progress between vanilla and REPENTOGON")
+I(OPT_SAVE_MANAGEMENT_ENABLE_SAVE_SYNCING_MARK, u8"While enabled, all achievements/progress earned while playing on REPENTOGON will be reflected in vanilla as well, and vice versa.")
+I(OPT_SAVE_MANAGEMENT_SYNC, u8"Sync REPENTOGON with Vanilla saves")
+I(OPT_SAVE_MANAGEMENT_SYNC_MARK, u8"Performs a synchronization between your REPENTOGON saves and your vanilla Repentance+ saves so that they are up to date with each other.")
+I(OPT_SAVE_MANAGEMENT_SYNC_PROMPT, u8"This will synchronize the achievements & progress of your REPENTOGON and vanilla Repentance+ save files.\n\nWould you like to continue?")
+I(OPT_SAVE_MANAGEMENT_IMPORT_EXPORT, u8"Import/Export Achievements & Progress")
+I(OPT_SAVE_MANAGEMENT_SAVE_SLOT, u8"Slot")
+I(OPT_SAVE_MANAGEMENT_ALL_SLOTS, u8"ALL")
+I(OPT_SAVE_MANAGEMENT_IMPORT_FROM_REPENTANCE, u8"Import from Repentance")
+I(OPT_SAVE_MANAGEMENT_IMPORT_FROM_REPENTANCE_MARK, u8"Import any missing achievements/progress from Repentance to Repentance+.")
+I(OPT_SAVE_MANAGEMENT_IMPORT_FROM_REPENTANCE_PROMPT, u8"This will import any missing achievements/progress you've earned in your base Repentance save file into your REPENTOGON/Repentance+ save file.\n\nWould you like to continue?")
+I(OPT_SAVE_MANAGEMENT_EXPORT_TO_REPENTANCE, u8"Export to Repentance")
+I(OPT_SAVE_MANAGEMENT_EXPORT_TO_REPENTANCE_MARK, u8"Unlocks any achievements you have earned on Repentance+ on your Repentance save file.")
+I(OPT_SAVE_MANAGEMENT_EXPORT_TO_REPENTANCE_PROMPT, u8"This will export any new achievements/progress you've earned in your REPENTOGON/Repentance+ save file back to your base Repentance save file.\n\nWould you like to continue?")
+I(OPT_SAVE_MANAGEMENT_SUCCESS, u8"Success!")
+I(OPT_SAVE_MANAGEMENT_FAILED, u8"Failed. See 'repentogon.log' for details.")
+
 I(OPT_EXTRA_HUD_MODES_OFF, u8"Off")
 I(OPT_EXTRA_HUD_MODES_NORMAL, u8"Normal")
 I(OPT_EXTRA_HUD_MODES_MINI, u8"Mini")
@@ -646,3 +665,7 @@ I(TRANS_REPORT_WIN_NAME, u8"Translate Report")
 I(TRANS_LANGUAGE_HINT, u8"Translate info for language: %s")
 I(TRANS_UNTRANS_ITEMS, u8"Untranslated items:")
 I(TRANS_COUNT_HINT, u8"total count: %d translated: %d")
+
+// =========== Errors/Warnings ============
+
+I(ERROR_SAVE_SYNC_FAILED, u8"REPENTOGON save file synchronization failed.\n\nYour progress will not be lost. However, progress while playing on REPENTOGON may temporarily not be reflected when playing in vanilla, and vice versa.\n")
