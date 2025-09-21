@@ -1,4 +1,5 @@
 #include "HookSystem.h"
+#include "Log.h"
 #include "IsaacRepentance.h"
 #include "ASMPatcher.hpp"
 #include "ASMDefinition.h"
@@ -28,7 +29,7 @@ void ASMPatchNightmareSceneNoShake() {
 	signature.Scan();
 
 	void* addr = signature.GetAddress();
-	printf("[REPENTOGON] Patching NightmareScene::Show for noshake tag patch at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching NightmareScene::Show for noshake tag patch at %p\n", addr);
 
 	patch.PreserveRegisters(savedRegisters)
 		.Push(ASMPatch::Registers::EDI) // playerType
@@ -48,7 +49,7 @@ void ASMPatchBossIntroNoShake() {
 	signature.Scan();
 
 	void* addr = signature.GetAddress();
-	printf("[REPENTOGON] Patching UnnamedPlayerPortraitsHandler? for noshake tag patch at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching RoomTransition:StartBossIntro for noshake tag patch at %p\n", addr);
 
 	patch.PreserveRegisters(savedRegisters)
 		.Push(ASMPatch::Registers::EAX) // playerType
@@ -82,7 +83,7 @@ void ASMPatchPlayerItemNoMetronome() {
 	patchSignature.Scan();
 
 	void* patchAddr = patchSignature.GetAddress();
-	printf("[REPENTOGON] Patching Player::UseActiveItem for nometronome tag at %p\n", patchAddr);
+	ZHL::Log("[REPENTOGON] Patching Player::UseActiveItem for nometronome tag at %p\n", patchAddr);
 
 	SigScan exitSignature("8bbd????????85ff0f8f");
 	exitSignature.Scan();
@@ -111,7 +112,7 @@ void ASMPatchPlayerItemNoExpansionPack() {
 	ASMPatch patch;
 
 	void* patchAddr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::PlayerItemNoMetronome);
-	printf("[REPENTOGON] Patching Player::TriggerActiveItemUsed for noexpansionpack tag at %p\n", patchAddr);
+	ZHL::Log("[REPENTOGON] Patching Player::TriggerActiveItemUsed for noexpansionpack tag at %p\n", patchAddr);
 
 	SigScan exitSignature("8b45??ff45??8b55??8b88????????8b80????????2bc1c1f8023bd00f82????????8b8b????????81c1500b0000");
 	exitSignature.Scan();
@@ -127,8 +128,93 @@ void ASMPatchPlayerItemNoExpansionPack() {
 	sASMPatcher.PatchAt(patchAddr, &patch);
 }
 
+//stageportrait attribute
+
+std::string* __stdcall GetPlayerStagePortraitFilename(int playerType) {
+	static std::string result;
+
+	XMLAttributes playerXML = XMLStuff.PlayerData->GetNodeById(playerType);
+
+	std::string portraitRoot = playerXML["bigportraitroot"];
+
+	auto stagePortraitIt = playerXML.find("stageportrait");
+	if (stagePortraitIt != playerXML.end() && !stagePortraitIt->second.empty()) {
+		result = portraitRoot + stagePortraitIt->second;
+		return &result;
+	}
+
+	return nullptr;
+}
+
+void ASMPatchNightmareSceneStagePortrait() {
+	ASMPatch patch;
+
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS & ~ASMPatch::SavedRegisters::Registers::EAX, true);
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::StagePortrait_PortraitOverride);
+
+	printf("[REPENTOGON] Patching NightmareScene::Show for stageportrait set at %p\n", addr);
+
+
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EDI)   // playerType
+		.AddInternalCall(GetPlayerStagePortraitFilename)
+		.AddBytes("\x85\xC0")  // test eax, eax
+		.RestoreRegisters(savedRegisters)
+		.AddBytes(ByteBuffer().AddAny((char*)addr, 0x6)) //restoring original command here
+		.AddConditionalRelativeJump(ASMPatcher::CondJumps::JE, (char*)addr + 0x6) // Jump to sprite loading from playerConfig portrait  
+		.CopyRegister(ASMPatch::Registers::ESI, ASMPatch::Registers::EAX) //copy string with our stage portrait to ESI
+		.AddRelativeJump((char*)addr + 0x9);  // Skipping playerConfig portrait push
+
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
+std::string* __stdcall GetPlayerExtraStagePortraitFilename(EntityConfig_Player* playerConfig, NightmareScene* scene) {
+	static std::string result;
+
+	XMLAttributes playerXML = XMLStuff.PlayerData->GetNodeById(playerConfig->_id);
+
+	std::string portraitRoot = playerXML["bigportraitroot"];
+
+	auto stagePortraitIt = playerXML.find("extrastageportrait");
+	if (stagePortraitIt != playerXML.end() && !stagePortraitIt->second.empty()) {
+		result = portraitRoot + stagePortraitIt->second;
+
+		scene->_playerExtraPortraitANM2.Load(result, true);
+		scene->_playerExtraPortraitANM2.Play(scene->_playerExtraPortraitANM2._animDefaultName.c_str(), false);
+
+		return &result;
+	}
+
+	return nullptr;
+}
+
+void ASMPatchNightmareSceneExtraStagePortrait() {
+	ASMPatch patch;
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS, true);
+
+	const int nightmareSceneOffset = *(int*)((char*)sASMDefinitionHolder->GetDefinition(&AsmDefinitions::StagePortrait_ExtraPortraitOverrideCheckNightmareOffset) + 0x2);
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::StagePortrait_ExtraPortraitOverrideCheck);
+	const int jumpoffset = 0x9 + *(int8_t*)((char*)addr + 0x8);  // Read from JZ
+
+	printf("[REPENTOGON] Patching NightmareScene::Show for extrastageportrait set at %p\n", addr);
+
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EBP, nightmareSceneOffset)
+		.Push(ASMPatch::Registers::ESI)
+		.AddInternalCall(GetPlayerExtraStagePortraitFilename)
+		.AddBytes("\x85\xC0")  // test eax, eax
+		.RestoreRegisters(savedRegisters)
+		.AddConditionalRelativeJump(ASMPatcher::CondJumps::JNE, (char*)addr + jumpoffset)  // Skipping playerConfig portrait push
+		.AddBytes(ByteBuffer().AddAny((char*)addr, 0x7)) //restoring original command here
+		.AddRelativeJump((char*)addr + 0x7);  // Jump to sprite loading from playerConfig portrait
+
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
 void ASMPatchesForPlayerCustomTags() {
 	ASMPatchPlayerNoShake();
 	ASMPatchPlayerItemNoMetronome();
 	ASMPatchPlayerItemNoExpansionPack();
+	ASMPatchNightmareSceneStagePortrait();
+	ASMPatchNightmareSceneExtraStagePortrait();
 }

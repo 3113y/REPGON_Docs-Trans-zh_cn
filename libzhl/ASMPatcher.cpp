@@ -73,10 +73,14 @@ void* ASMPatcher::PatchAt(const char* signature, const char* name, const char* w
 	return PatchAt(addr, with, len);
 }
 
-void* ASMPatcher::PatchAt(void* at, ASMPatch* with) {
+void* ASMPatcher::PatchAt(void* at, ASMPatch* with, size_t* len) {
 	void* targetPage = GetAllocPage(with->Length(), true);
 	std::unique_ptr<char[]> text = with->ToASM(targetPage);
-	return Patch(at, targetPage, text.get(), with->Length());
+	size_t patchLen = with->Length();
+	if (len) {
+		*len = patchLen;
+	}
+	return Patch(at, targetPage, text.get(), patchLen);
 }
 
 void* ASMPatcher::PatchAt(void* at, const char* with, size_t len) {
@@ -155,7 +159,10 @@ void ASMPatcher::FlatPatch(void* at, const char* with, size_t len, bool nopRest)
 		throw std::runtime_error("Parallel patching is not allowed");
 	}
 
-	FlushInstructionCache(GetModuleHandle(NULL), NULL, 0);
+	BOOL flushOk = FlushInstructionCache(GetCurrentProcess(), NULL, 0);
+	if (!flushOk) {
+		logger.Log("[CRITICAL] ASMPatcher::FlatPatch: FlushInstructionCache failed (%d)\n", GetLastError());
+	}
 }
 
 void* ASMPatcher::Patch(void* at, void* targetPage, const char* with, size_t len) {
@@ -215,11 +222,14 @@ void* ASMPatcher::Patch(void* at, void* targetPage, const char* with, size_t len
 		memset((char*)at + 5, 0x90, count - 5);
 	}
 
+	logger.Log("ASMPatcher::Patch: Encoding and writing jump...\n");
 	EncodeAndWriteJump(at, targetPage);
 	size_t textLen = len;
 	if (textLen == 0) {
 		textLen = strlen(with);
 	}
+
+	logger.Log("ASMPatcher::Patch: copying content of the patch to the new page (writing %u bytes at %p)\n", textLen, targetPage);
 	memcpy(targetPage, with, textLen);
 	_firstAvailable = (char*)_firstAvailable + textLen;
 	_bytesRemaining -= textLen;
@@ -230,7 +240,11 @@ void* ASMPatcher::Patch(void* at, void* targetPage, const char* with, size_t len
 		return nullptr;
 	}
 
-	FlushInstructionCache(GetModuleHandle(NULL), NULL, 0);
+	logger.Log("ASMPatcher::Patch: flushing instruction pipeline\n");
+	BOOL flushOk = FlushInstructionCache(GetCurrentProcess(), NULL, 0);
+	if (!flushOk) {
+		logger.Log("[CRITICAL] ASMPatcher::Patch: FlushInstructionCache failed (%d)\n", GetLastError());
+	}
 
 	return targetPage;
 }

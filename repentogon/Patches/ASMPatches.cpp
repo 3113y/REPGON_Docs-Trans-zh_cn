@@ -1,5 +1,6 @@
 
 #include "ASMPatches.h"
+#include "Log.h"
 
 #include "../LuaInterfaces/LuaRender.h"
 #include "../SaveSyncing/SaveSyncing.h"
@@ -35,6 +36,7 @@
 #include "ASMPatches/ASMTweaks.h"
 #include "ASMPatches/ASMFixes.h"
 #include "ASMPatches/ASMSplitTears.h"
+#include "ASMPatches/ASMCamera.h"
 
 #include "ASMPatcher.hpp"
 
@@ -49,7 +51,7 @@ void ASMPatchLogMessage() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 
-	printf("[REPENTOGON] Adding LogMessage callback for ImGui at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Adding LogMessage callback for ImGui at %p\n", addr);
 
 	ASMPatch patch;
 	patch.AddBytes("\x51") // Push ECX to the stack, so we can restore it as the function expects later
@@ -78,11 +80,76 @@ void ASMPatchConsoleRunCommand() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 
-	printf("[REPENTOGON] Patching Console::RunCommand Player requirement at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching Console::RunCommand Player requirement at %p\n", addr);
 
 	ASMPatch patch;
 	patch.AddBytes("\xEB");
 	sASMPatcher.FlatPatch(addr, &patch);
+}
+
+
+
+void goUpTogon(char* str) {
+	const char* variants[] = {
+		"/Repentogon/",
+		"\\Repentogon/",
+		"\\Repentogon\\"
+	};
+
+	for (const char* variant : variants) {
+		size_t len = std::strlen(variant);
+		char* pos;
+		while ((pos = std::strstr(str, variant)) != nullptr) {
+			std::memmove(pos+1, pos + len, std::strlen(pos + len) + 1);
+		}
+	}
+
+	//Normalize backslashes with forward slash...easier than to go and change everything else, lol
+	for (char* p = str; *p != '\0'; ++p) {
+		if (*p == '\\') {
+			*p = '/';
+		}
+	}
+}
+
+void ModReReoute() {
+	goUpTogon(&g_ModsDirectory);
+}
+void ModSavesReReoute() {
+	goUpTogon(&g_ModSaveDataPath);
+}
+
+void ASMPatchModReRoute() {
+	SigScan scanner("83c4446a0068????????ffd7");
+	scanner.Scan();
+	void* addr = scanner.GetAddress();
+
+	printf("[REPENTOGON] Patching Mod Dir::Point to original mods dir %p\n", addr);
+
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::GP_REGISTERS, true);
+	ASMPatch patch;
+	patch.PreserveRegisters(savedRegisters)
+		.AddInternalCall(ModReReoute)
+		.RestoreRegisters(savedRegisters);
+	sASMPatcher.FlatPatch(addr, &patch);
+
+	//Mod save data
+
+	SigScan scanner2("83c4246a0068????????ffd7803d????????00");
+	scanner2.Scan();
+	void* addr2 = scanner2.GetAddress();
+
+	printf("[REPENTOGON] Patching Mod SaveData Dir::Point to original data dir %p\n", addr);
+
+	ASMPatch::SavedRegisters savedRegisters2(ASMPatch::SavedRegisters::GP_REGISTERS, true);
+	ASMPatch patch2;
+	patch2.PreserveRegisters(savedRegisters2)
+		.AddInternalCall(ModSavesReReoute)
+		.RestoreRegisters(savedRegisters2);
+	sASMPatcher.FlatPatch(addr2, &patch2);
+	printf("%s \n", &g_ModSaveDataPath);
+
+
 }
 
 void PerformASMPatches() {
@@ -167,6 +234,11 @@ void PerformASMPatches() {
 	EvaluateStats::ApplyASMPatches();
 	PatchGetGreedDonationBreakChanceForModdedCharacters();
 	PatchIncreaseGreedDonationCoinCountForModdedCharacters();
+	ASMPatchPlayerHurtSound();
+	ASMPatchPlayerDeathSound();
+	ASMPatchPlayerDeathSoundSoulOfLazarus();
+	ASMPatchPlayerDeathSoundLost();
+	ASMPatchPlayerDeathSoundAstralProjection();
 
 	// Status Effects
 	PatchInlinedGetStatusEffectTarget();
@@ -180,6 +252,10 @@ void PerformASMPatches() {
 	ASMPatchSpawnSelectedBaby();
 	ASMPatchCoopWheelRespectModdedAchievements();
 
+	// Camera
+	ASMPatchCameraBoundClampOverride();
+	ASMPatchCameraBoundSlowStopOverride();
+
 	// External
 	ASMPatchesForFamiliarCustomTags();
 	PatchNullItemAndNullCostumeSupport();
@@ -187,6 +263,7 @@ void PerformASMPatches() {
 	ASMPatchesForAddRemovePocketItemCallbacks();
 	ASMPatchesForEntityPlus();
 	ASMPatchesForCustomCache();
+	ASMPatchesForCustomActiveGFX();
 	ASMPatches::__ItemPoolManager();
 	ASMPatches::__ItemPoolManagerExtra();
 	ASMPatchesForCardsExtras();
@@ -195,6 +272,9 @@ void PerformASMPatches() {
 
 	// Sprite
 	ASMPatchesForANM2Extras();
+
+	//Mod folder redirect
+	ASMPatchModReRoute();
 
 	// Tweaks (bug crashes)
 	if (!ASMPatches::FixGodheadEntityPartition()) {

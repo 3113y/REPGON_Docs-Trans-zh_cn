@@ -10,15 +10,89 @@
 #include "HookSystem_private.h"
 #include "IsaacRepentance.h"
 #include "Log.h"
+#include "SigScan.h"
 
 #include <fstream>
 #include <filesystem>
 #include <sstream>
+#include <emmintrin.h>  
+
+void (__stdcall*loaderFinish)() = NULL;
+
+void __stdcall SanityCheckInitZHL() {
+	ZHL::Log("SanityCheckInitZHL: patch should be okay\n");
+}
+
+/* Because ZHL is not initialized inside libzhl, we cannot use HOOK_GLOBAL here,
+ * because the static constructor would be invoked before ZHL is ready.
+ */
+void HookMain(void** poisonPtr, char* poisonValue) {
+	FunctionDefinition* definition = FunctionDefinition::Find("IsaacMain", typeid(int (*)(int, char**)));
+	if (!definition) {
+		ZHL::Log("[CRITICAL][HookMain] main was not found in the executable\n");
+		return;
+	}
+
+	if (!loaderFinish) {
+		ZHL::Log("[CRITICAL][HookMain] No termination hook given\n");
+	}
+
+	void* addr = definition->GetAddress();
+	{
+		ZHL::Log("[INFO][HookMain] Flat patching main at %p to heal a single byte\n");
+		ASMPatch patch;
+		patch.AddBytes("\x55"); // push ebp, this restores the poison byte
+		sASMPatcher.FlatPatch(addr, &patch);
+	}
+
+	char* patchAddr = (char*)addr + 0x3; /* Patch immediately after ebp and esp are setup. */
+	char brokenBytes[7]; /* Backup all bytes that will be broken by the patch. */
+	static_assert (sizeof(char) == 1);
+	memcpy(brokenBytes, patchAddr, sizeof(brokenBytes));
+
+	ZHL::Log("[INFO][HookMain] Found main at address %p\n", addr);
+	ZHL::Log("[INFO][HookMain] Dumping 32 bytes of ASM for log sanity: ");
+	ZHL::DumpMemory(addr, 0x20, false, true);
+	ASMPatch patch;
+	ASMPatch::SavedRegisters registers(ASMPatch::SavedRegisters::GP_REGISTERS_STACKLESS, true);
+	patch.PreserveRegisters(registers);
+	patch.AddInternalCall(SanityCheckInitZHL);
+	patch.AddInternalCall(loaderFinish);
+	patch.RestoreRegisters(registers);
+
+	/* At the end of the patch, add the instructions that are broken by the
+	 * jump towards the patch, then jump to the next instruction that should
+	 * have been executed originally.
+	 */
+	ByteBuffer buffer;
+	buffer.AddAny(brokenBytes, sizeof(brokenBytes));
+	patch.AddBytes(buffer);
+	patch.AddRelativeJump((char*)patchAddr + 0x7);
+
+	{
+		ZHL::Log("[INFO][HookMain] Flat patching main to poison the return byte of LoadMods\n");
+		void* target = (char*)patchAddr + 0x7;
+		*poisonPtr = target;
+		*poisonValue = *(char*)target;
+
+		_mm_sfence(); // Store fence to enforce the above writes to complete
+
+		ASMPatch patch;
+		patch.AddBytes("\xcc"); // int3, poison the first byte after the return
+		sASMPatcher.FlatPatch((char*)patchAddr + 0x7, &patch);
+	}
+
+	size_t patchLen = 0;
+	void* patchedAddr = sASMPatcher.PatchAt(patchAddr, &patch, &patchLen);
+
+	ZHL::Log("[INFO][HookMain] Dumping 32 bytes of ASM for log sanity: ");
+	ZHL::DumpMemory(addr, 0x20, false, true);
+}
 
 extern "C" {
-	__declspec(dllexport) int InitZHL() {
-		InitializeSymbolHandler();
-
+	__declspec(dllexport) int InitZHL(void (__stdcall*loaderFinishPtr)(),
+		void** poisonPtr, char* poisonValue)
+	{
 #ifdef ZHL_LOG_FILE
 		std::ofstream f(ZHL_LOG_FILE, std::ios_base::app);
 		f.close();
@@ -31,15 +105,16 @@ extern "C" {
 			ExitProcess(1);
 		}
 #endif
-		bool clearLog = true;
-		if (!FunctionDefinition::Init()) {
+		InitializeSymbolHandler();
+		bool clearLog = false;
+		if (!FunctionDefinition::Init())
+		{
 			auto const& missing = Definition::GetMissing();
 			if (missing.size() == 1) {
 				MessageBox(0, FunctionDefinition::GetLastError(), "Error", MB_ICONERROR);
 			}
 			else {
-				std::ofstream out("libzhl.log");
-				clearLog = false;
+				std::ofstream out("repentogon.log");
 				for (auto const& [isFunction, name] : missing) {
 					out << name << " (";
 					if (isFunction) {
@@ -65,7 +140,7 @@ extern "C" {
 			if (misses.size() == 1) {
 				MessageBox(0, stream.str().c_str(), "Error", MB_ICONERROR);
 			} else {
-				std::ofstream stream("libzhl.log", clearLog ? std::ios_base::out : std::ios_base::app);
+				std::ofstream stream("repentogon.log", clearLog ? std::ios_base::out : std::ios_base::app);
 				for (const char* miss : misses) {
 					stream << "Unable to find address for " << miss << std::endl;
 				}
@@ -78,6 +153,10 @@ extern "C" {
 		FunctionDefinition::UpdateHooksStateFromJSON("hooks.json");
 		ASMPatch::_Init();
 		ASMPatch::SavedRegisters::_Init();
+
+		loaderFinish = loaderFinishPtr;
+
+		HookMain(poisonPtr, poisonValue);
 
 		return 0;
 	}

@@ -18,8 +18,6 @@
 #include <Windows.h>
 #include <gl/gl.h>
 #include "glext.h"
-#include <sstream>
-#include <algorithm>
 
 #include "imgui.h"
 #include "imgui_freetype.h"
@@ -32,7 +30,6 @@
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-HWND window;
 WNDPROC windowProc;
 bool menuShown = false;
 bool disableCloseWithESC = false;
@@ -59,15 +56,13 @@ int handleWindowFlags(int flags)
 	return flags;
 }
 
-std::list<ImGuiKey>* GetPressedKeys()
+void GetPressedKeys(std::list<ImGuiKey>* keyList)
 {
-	std::list<ImGuiKey>* keys = new std::list<ImGuiKey>();
 	for (ImGuiKey key = ImGuiKey_Tab; key < ImGuiKey_NamedKey_END; key = (ImGuiKey)(key + 1)) {
 		if (!ImGui::IsKeyDown(key))
 			continue;
-		keys->push_back(key);
+		keyList->push_back(key);
 	}
-	return keys;
 }
 
 float GetAvailableMenuSpace() {
@@ -125,16 +120,18 @@ ImGuiKey AddChangeKeyButton(bool isController, bool& wasPressed)
 		}
 		ImGui::Text(LANG.IMGUI_CHANGE_KEY_BTN_PRESS_ESC);
 
-		std::list<ImGuiKey>* keys = GetPressedKeys();
-		for (auto key = keys->begin(); key != keys->end(); ++key) {
-			if (*key == static_cast<int>(ImGuiKey_Escape)) {
+		std::list<ImGuiKey> keys{};
+		GetPressedKeys(&keys);
+
+		for (auto key : keys) {
+			if (key == ImGuiKey_Escape) {
 				wasPressed = false;
 				disableCloseWithESC = false;
 			}
-			else if (*key >= firstKey && *key <= lastKey) {
+			else if (key >= firstKey && key <= lastKey) {
 				wasPressed = false;
 				disableCloseWithESC = false;
-				returnValue = *key;
+				returnValue = key;
 			}
 		}
 		ImGui::EndTooltip();
@@ -161,7 +158,7 @@ bool WindowBeginEx(const char* name, bool* p_open, ImGuiWindowFlags flags = 0) {
 }
 
 void SaveSettings() {
-	ImGuiContext& g = *GImGui;
+	const ImGuiContext& g = *GImGui;
 	console.SaveSettings(FindWindowSettingsByIDEx(ImHashStr(console.windowName.c_str())));
 		logViewer.SaveSettings(FindWindowSettingsByIDEx(ImHashStr(logViewer.windowName.c_str())));
 		performanceWindow.SaveSettings(FindWindowSettingsByIDEx(ImHashStr(performanceWindow.windowName.c_str())));
@@ -594,7 +591,7 @@ void __stdcall RunImGui(HDC hdc) {
 	
 		imguiInitialized = true;
 		logViewer.AddLog("[REPENTOGON]", "Initialized Dear ImGui v%s\n", IMGUI_VERSION);
-		printf("[REPENTOGON] Dear ImGui v%s initialized! Any further logs can be seen in the in-game log viewer.\n", IMGUI_VERSION);
+		ZHL::Log("[REPENTOGON] Dear ImGui v%s initialized! Any further logs can be seen in the in-game log viewer.\n", IMGUI_VERSION);
 	}
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplWin32_NewFrame();
@@ -687,7 +684,7 @@ void HookImGui() {
 	SigScan scanner("ffb0????????ffd75f");
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
-	printf("[REPENTOGON] Injecting Dear ImGui at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Injecting Dear ImGui at %p\n", addr);
 	void* imguiAddr = &RunImGui;
 	ASMPatch::SavedRegisters registers(ASMPatch::SavedRegisters::GP_REGISTERS_STACKLESS, true);
 	ASMPatch patch;

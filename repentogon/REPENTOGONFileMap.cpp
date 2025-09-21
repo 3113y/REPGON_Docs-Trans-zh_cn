@@ -125,7 +125,7 @@ namespace REPENTOGONFileMap {
 			return;
 		};
 		map_init = true;
-		auto basepath = fs::current_path() / L"mods";
+		auto basepath = std::filesystem::path(&g_ModsDirectory);
 		_modsPath = basepath.wstring();
 		auto start_time = std::chrono::high_resolution_clock::now();
 		if (g_Manager && g_Manager->GetModManager()) {
@@ -156,7 +156,7 @@ namespace REPENTOGONFileMap {
 
 //HOOK_METHOD(KAGE_Filesys_FileManager, GetExpandedPath, (char* path)->char*) {
 //	char* out = super(path);
-//	//	printf("[FileMan::GetExpandedPath] Input is %s\nOut is   %s\n",path,out);
+//	//	ZHL::Log("[FileMan::GetExpandedPath] Input is %s\nOut is   %s\n",path,out);
 //	return out;
 //};
 //HOOK_METHOD(ModManager, LoadConfigs, (void)->void) {

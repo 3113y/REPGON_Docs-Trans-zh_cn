@@ -465,7 +465,7 @@ void ASMPatchPreMMorphActiveCallback() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 
-	printf("[REPENTOGON] Patching Entity_Player::TriggerActiveItemUsed at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching Entity_Player::TriggerActiveItemUsed at %p\n", addr);
 
 	ASMPatch::SavedRegisters registers(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS - ASMPatch::SavedRegisters::Registers::ESI, true);
 	ASMPatch patch;
@@ -526,7 +526,7 @@ void ASMPatchTrySplit() {
 	SigScan scanner("f30f100d????????0f2f8f");
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
-	printf("[REPENTOGON] Patching Entity_NPC::TrySplit at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching Entity_NPC::TrySplit at %p\n", addr);
 	void* ptr = &resSplit;
 	const int numOverriddenBytes = 8;
 	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS + ASMPatch::SavedRegisters::Registers::XMM0 + ASMPatch::SavedRegisters::Registers::XMM1, true);
@@ -596,7 +596,7 @@ void ASMPatchPostNightmareSceneCallback() {
 	SigScan scanner_transition("f30f108f????????0f57d20f2fca0f86");
 	scanner_transition.Scan();
 	void* addr = scanner_transition.GetAddress();
-	printf("[REPENTOGON] Patching NightmareScene::Render at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching NightmareScene::Render at %p\n", addr);
 
 	patch.PreserveRegisters(savedRegisters)
 		.Push(ASMPatch::Registers::EDI) // NightmareScene
@@ -963,7 +963,7 @@ void ASMPatchTrinketRender() {
 
 	void* addr = signature.GetAddress();
 
-	printf("[REPENTOGON] Patching PlayerHUDTrinket::Render at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching PlayerHUD::RenderTrinket at %p\n", addr);
 
 	ASMPatch patch;
 	ASMPatch::SavedRegisters savedRegisters((ASMPatch::SavedRegisters::GP_REGISTERS_STACKLESS | ASMPatch::SavedRegisters::XMM_REGISTERS) & ~(ASMPatch::SavedRegisters::XMM1 | ASMPatch::SavedRegisters::XMM2), true);
@@ -1012,7 +1012,7 @@ void ASMPatchPickupUpdatePickupGhosts() {
 
     void* addr = signature.GetAddress();
 
-    printf("[REPENTOGON] Patching Pickup::UpdatePickupGhosts at %p\n", addr);
+    ZHL::Log("[REPENTOGON] Patching Pickup::UpdatePickupGhosts at %p\n", addr);
 
     patch.Pop(ASMPatch::Registers::EAX)
         .Pop(ASMPatch::Registers::EAX)
@@ -1052,7 +1052,7 @@ void ASMPatchProjectileDeath() {
 	signature.Scan();
 	void* addr = signature.GetAddress();
 
-	printf("[REPENTOGON] Patching Entity_Projectile::Update at %p for MC_POST_PROJECTILE_DEATH\n", addr);
+	ZHL::Log("[REPENTOGON] Patching Entity_Projectile::Update at %p for MC_POST_PROJECTILE_DEATH\n", addr);
 
 	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS, true);
 	ASMPatch patch;
@@ -1090,7 +1090,7 @@ void ASMPatchTearDeath() {
 	signature.Scan();
 	void* addr = signature.GetAddress();
 
-	printf("[REPENTOGON] Patching Entity_Tear::Update at %p for MC_POST_TEAR_DEATH\n", addr);
+	ZHL::Log("[REPENTOGON] Patching Entity_Tear::Update at %p for MC_POST_TEAR_DEATH\n", addr);
 
 	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS, true);
 	ASMPatch patch;
@@ -1148,13 +1148,13 @@ void ASMPatchPrePlayerGiveBirth() {
 	SigScan cambionSig("818f????????000200000bc2");
 	cambionSig.Scan();
 	void* cambionAddr = cambionSig.GetAddress();
-	printf("[REPENTOGON] Patching Entity_Player::TakeDamage at %p for MC_PRE_PLAYER_GIVE_BIRTH_CAMBION\n", cambionAddr);
+	ZHL::Log("[REPENTOGON] Patching Entity_Player::TakeDamage at %p for MC_PRE_PLAYER_GIVE_BIRTH_CAMBION\n", cambionAddr);
 	PreBirthPatch(cambionAddr, true);  // Cambion
 
 	SigScan immaculateSig("818f????????000200000bc6");
 	immaculateSig.Scan();
 	void* immaculateAddr = immaculateSig.GetAddress();
-	printf("[REPENTOGON] Patching Entity_Player::TriggerHeartPickedUp at %p for MC_PRE_PLAYER_GIVE_BIRTH_IMMACULATE\n", immaculateAddr);
+	ZHL::Log("[REPENTOGON] Patching Entity_Player::TriggerHeartPickedUp at %p for MC_PRE_PLAYER_GIVE_BIRTH_IMMACULATE\n", immaculateAddr);
 	PreBirthPatch(immaculateAddr, false);  // Immaculate
 
 }
@@ -1190,7 +1190,7 @@ void ASMPatchPreTriggerBedSleepEffect() {
 	SigScan scanner_transition("8b0883b9????????28");
 	scanner_transition.Scan();
 	void* addr = scanner_transition.GetAddress();
-	printf("[REPENTOGON] Patching ItemOverlay::Update at %p for PreTriggerBedSleepEffect callback\n", addr);
+	ZHL::Log("[REPENTOGON] Patching ItemOverlay::Update at %p for PreTriggerBedSleepEffect callback\n", addr);
 
 	patch.PreserveRegisters(savedRegisters)
 		.Push(ASMPatch::Registers::EAX) // Player
@@ -1226,7 +1226,7 @@ void ASMPatchPostTriggerBedSleepEffect() {
 	SigScan scanner_transition("8b35????????4381c6a8ba01008b46??2b06c1f8023bd80f82????????8b0d");
 	scanner_transition.Scan();
 	void* addr = scanner_transition.GetAddress();
-	printf("[REPENTOGON] Patching ItemOverlay::Update at %p for PostBedSleep callback\n", addr);
+	ZHL::Log("[REPENTOGON] Patching ItemOverlay::Update at %p for PostBedSleep callback\n", addr);
 
 	patch.PreserveRegisters(savedRegisters)
 		.Push(ASMPatch::Registers::EDX) // Player
@@ -1270,7 +1270,7 @@ void ASMPatchPreBedSleep() {
 	SigScan scanner_transition("8bcae8????????83f80174??83f80274??8b8a????????8b82????????8d04");
 	scanner_transition.Scan();
 	void* addr = scanner_transition.GetAddress();
-	printf("[REPENTOGON] Patching Entity_Pickup::handle_collision at %p for PreBedSleep callback\n", addr);
+	ZHL::Log("[REPENTOGON] Patching Entity_Pickup::handle_collision at %p for PreBedSleep callback\n", addr);
 
 	patch.PreserveRegisters(savedRegisters)
 		.Push(ASMPatch::Registers::ESI) // Bed
@@ -1323,7 +1323,7 @@ void ASMPatchPrePlayerPocketItemSwap() {
 	SigScan scanner_transition("8d9f????????833b00");
 	scanner_transition.Scan();
 	void* addr = scanner_transition.GetAddress();
-	printf("[REPENTOGON] Patching Entity_Player::control_drop_pocket_items at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching Entity_Player::control_drop_pocket_items at %p\n", addr);
 
 	patch.PreserveRegisters(savedRegisters)
 		.Push(ASMPatch::Registers::EDI) // Player
@@ -1539,6 +1539,8 @@ static bool _hideActiveItemChargeBar = false;
 
 static const ColorMod activeItemOutlineColor(0, 0, 0, 1, 1, 1, 1);
 
+std::unordered_map<short, Vector[4]> activeRenderCropOffsetCache;
+
 HOOK_METHOD(PlayerHUDActiveItem, RenderGfx, (SourceQuad* source, DestinationQuad* dest, const ColorMod& color) -> void) {
 	if (_hideActiveItemImage) return;
 	if (_hideActiveItemOutline && color == activeItemOutlineColor) {
@@ -1585,7 +1587,30 @@ HOOK_METHOD(PlayerHUD, RenderActiveItem, (unsigned int activeSlot, const Vector&
 		chargeBarPos.y += 3;
 	}
 
+	Vector cropOffset(.0f, .0f);
+
 	const int activeItemID = this->GetPlayer()->GetActiveItem(activeSlot);
+
+	/* for now we only support modded items
+	if (activeItemID < CollectibleType::NUM_COLLECTIBLES) {
+		switch ((CollectibleType)activeItemID) {
+		case COLLECTIBLE_MOVING_BOX:
+			cropOffset.x += !_player->_movingBoxContents.empty() ? 32.0f : .0f;
+			break;
+		case COLLECTIBLE_EVERYTHING_JAR:
+			const int charges = std::max(_player->GetBatteryCharge(activeSlot), 12);
+			cropOffset.x += (float)(charges + 1) * 32.0f;
+			break;
+			
+		case COLLECTIBLE_FLIP:
+			cropOffset.x += _player->GetPlayerType() == ePlayerType::PLAYER_LAZARUS2_B ? 32.0f : .0f; //is dead Tainted Lazarus
+			break;
+		default:
+			break;
+		}
+
+	*/
+	
 
 	const int precallbackid = 1119;
 	if (CallbackState.test(precallbackid - 1000)) {
@@ -1617,6 +1642,8 @@ HOOK_METHOD(PlayerHUD, RenderActiveItem, (unsigned int activeSlot, const Vector&
 							_hideActiveItemOutline = (bool)lua_toboolean(L, -1);
 						} else if (key == "HideChargeBar" && lua_isboolean(L, -1)) {
 							_hideActiveItemChargeBar = (bool)lua_toboolean(L, -1);
+						} else if (key == "CropOffset" && lua_isuserdata(L, -1)) {
+							cropOffset = *lua::GetLuabridgeUserdata<Vector*>(L, -1, lua::Metatables::VECTOR, "Vector");
 						}
 					}
 					lua_pop(L, 1);
@@ -1625,6 +1652,11 @@ HOOK_METHOD(PlayerHUD, RenderActiveItem, (unsigned int activeSlot, const Vector&
 		}
 	}
 
+
+	if (!(activeSlot < 0 || activeSlot > 3)) {
+		activeRenderCropOffsetCache[_playerHudIndex][activeSlot] = cropOffset;
+	}
+	
 	super(activeSlot, pos, playerHudLayout, size, alpha, unused);
 
 	_hideActiveItemImage = false;
@@ -1668,6 +1700,86 @@ void ASMPatchHideChargeBar() {
 		.AddBytes("\x85\xD2")  // test edx, edx
 		.AddRelativeJump((char*)addr + 0x5);
 	sASMPatcher.PatchAt(addr, &patch);
+}
+
+const char* __stdcall ReplaceGFXPath(const char* gfxPath, PlayerHUD* hud, int slot) {
+
+	const int collectibleID = hud->_activeItem[slot].id;
+
+	const char* customGfxPath = XMLStuff.ItemData->GetCustomActiveGFX(collectibleID);
+
+	if (customGfxPath[0] != '\0') {
+		return customGfxPath;
+	}
+
+	return gfxPath;
+}
+
+void PatchGFXPath() {
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::SetActiveItemGFXPath);
+
+	printf("[REPENTOGON] Patching HUD::PlayerHUD::Update for active item gfx path at %p\n", addr);
+
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS & ~ASMPatch::SavedRegisters::Registers::EAX, true);
+	ASMPatch patch;
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EBP, -0x1024) //push activeSlot idx
+		.Push(ASMPatch::Registers::EBP, -0x1028) //push PlayerHUD
+		.Push(ASMPatch::Registers::EAX) //push original filepath to Active item sprite
+		.AddInternalCall(ReplaceGFXPath)
+		.RestoreRegisters(savedRegisters)
+		.AddBytes(ByteBuffer().AddAny((char*)addr, 0x7))  // Restore the commands we overwrote
+		.AddRelativeJump((char*)addr + 0x7);
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
+void __stdcall GetPlayerHUDActiveItemCropOffset(int activeSlot, PlayerHUD* playerHUD, float origCropX, float origCropY) {
+
+	float x = origCropX;
+	float y = origCropY;
+
+	//currently modify crop offset only for modded items
+	if (!(activeSlot < 0 || activeSlot > 3) && playerHUD->_activeItem[activeSlot].id >= CollectibleType::NUM_COLLECTIBLES) {
+		const short playerIDX = playerHUD->_playerHudIndex;
+		const Vector& cropOffset = activeRenderCropOffsetCache[playerIDX][activeSlot];
+
+		x = cropOffset.x;
+		y = cropOffset.y;
+	}
+	
+	__asm {
+		movd xmm1, x
+		movd xmm2, y
+	}
+}
+
+void ASMPatchActiveItemRender() {
+	
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::SetActiveItemCropOffset);
+
+	printf("[REPENTOGON] Patching PlayerHUD:RenderActiveItem for capturing something at %p\n", addr);
+
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::GP_REGISTERS_STACKLESS | ASMPatch::SavedRegisters::XMM_REGISTERS, true);
+	ASMPatch patch;
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EBP, -0x2c)
+		.Push(ASMPatch::Registers::EBP, -0x30)
+		.Push(ASMPatch::Registers::EBP, -0x38) //push PlayerHUD
+		.Push(ASMPatch::Registers::EBX, 0x8) //push activeSlot
+		.AddInternalCall(GetPlayerHUDActiveItemCropOffset)
+		.AddBytes("\xF3\x0F\x11\x55\xD4") // movss [ebp-0x2c], xmm2
+		.AddBytes("\xF3\x0F\x11\x4d\xD0") // movvs [ebp-0x30], xmm1
+		.RestoreRegisters(savedRegisters)
+		.AddBytes(ByteBuffer().AddAny((char*)addr, 0x5))
+		.AddRelativeJump((char*)addr + 0x5);
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
+
+
+void ASMPatchesForCustomActiveGFX() {
+	PatchGFXPath();
+	ASMPatchActiveItemRender();
 }
 
 // MC_POST_BACKWARDS_ROOM_RESTORE (1308)

@@ -133,10 +133,9 @@ struct ColorHandler {
     ImGuiCol_ type;
     ImVec4 color;
 
-    ColorHandler(ImGuiCol_ t, ImVec4 c)
+    ColorHandler(ImGuiCol_ t, const ImVec4& c)
+			: type(t), color(c)
     {
-        type = t;
-        color = c;
     }
 };
 
@@ -267,15 +266,15 @@ struct Element {
         }
     }
 
-    void AddData(Data dataObj)
+    void AddData(const Data& dataObj)
     {
         data = dataObj;
     }
-    void AddData(ColorData dataObj)
+    void AddData(const ColorData& dataObj)
     {
         colorData = dataObj;
     }
-    void AddData(ElementData dataObj)
+    void AddData(const ElementData& dataObj)
     {
         elementData = dataObj;
     }
@@ -334,7 +333,7 @@ struct Element {
         }
     }
 
-    std::size_t GetHash()
+    std::size_t GetHash() const
     {
         std::size_t h1 = std::hash<std::string> {}(name);
         std::size_t h2 = std::hash<std::string> {}(id);
@@ -414,10 +413,10 @@ struct CustomImGui {
 
         if (element->parent != NULL) {
             Element* daddy = element->parent;
-            if ((daddy != NULL) && (daddy->children != NULL) && (daddy->children->size() > 0)) {
+            if ((daddy != NULL) && (daddy->children != NULL) && (!daddy->children->empty())) {
                 std::list<Element>* siblings = daddy->children;
                 for (auto elem = siblings->begin(); elem != siblings->end(); ++elem) {
-                    if (strcmp(elem->id.c_str(), elementId) == 0) {
+                  if (elem->id.compare(elementId) == 0) {
                         siblings->erase(elem);
                         return true;
                     }
@@ -437,7 +436,7 @@ struct CustomImGui {
     void RemoveMenu(const char* menuId) IM_FMTARGS(2)
     {
         for (auto menu = menuElements->begin(); menu != menuElements->end(); ++menu) {
-            if (strcmp(menu->id.c_str(), menuId) == 0) {
+            if (menu->id.compare(menuId) == 0) {
                 menuElements->erase(menu);
             }
         }
@@ -462,7 +461,7 @@ struct CustomImGui {
     void RemoveWindow(const char* windowId) IM_FMTARGS(2)
     {
         for (auto window = windows->begin(); window != windows->end(); ++window) {
-            if (strcmp(window->id.c_str(), windowId) == 0) {
+            if (window->id.compare(windowId) == 0) {
                 windows->erase(window);
                 return;
             }
@@ -560,7 +559,7 @@ struct CustomImGui {
 
     bool GetVisible(const char* elementId) IM_FMTARGS(2)
     {
-        Element* element = GetElementById(elementId);
+        const Element* element = GetElementById(elementId);
         if (element == NULL)
             return false;
 
@@ -621,7 +620,7 @@ struct CustomImGui {
         return false;
     }
 
-    bool SetColor(const char* elementId, ImGuiCol_ type, ImVec4 newColor) IM_FMTARGS(2)
+    bool SetColor(const char* elementId, ImGuiCol_ type, const ImVec4& newColor) IM_FMTARGS(2)
     {
         Element* element = GetElementById(elementId);
         if (element != NULL) {
@@ -807,7 +806,7 @@ struct CustomImGui {
     bool UpdateElementData(Element* element, lua_State* L)
     {
         IMGUI_DATA dataType = static_cast<IMGUI_DATA>(luaL_checkinteger(L, 2));
-        std::list<float>* newColorValues = new std::list<float>();
+        std::list<float> newColorValues{};
 
         float floatVal = 0.0;
         switch (dataType) {
@@ -890,17 +889,17 @@ struct CustomImGui {
                 lua_gettable(L, 3);
                 if (lua_type(L, -1) == LUA_TNIL)
                     break;
-                newColorValues->push_back((float)luaL_checknumber(L, -1));
+                newColorValues.push_back((float)luaL_checknumber(L, -1));
                 lua_pop(L, 1);
             }
-            element->colorData.useAlpha = newColorValues->size() > 3;
-            element->colorData.r = newColorValues->front();
-            newColorValues->pop_front();
-            element->colorData.g = newColorValues->front();
-            newColorValues->pop_front();
-            element->colorData.b = newColorValues->front();
-            newColorValues->pop_front();
-            element->colorData.a = newColorValues->front();
+            element->colorData.useAlpha = newColorValues.size() > 3;
+            element->colorData.r = newColorValues.front();
+            newColorValues.pop_front();
+            element->colorData.g = newColorValues.front();
+            newColorValues.pop_front();
+            element->colorData.b = newColorValues.front();
+            newColorValues.pop_front();
+            element->colorData.a = newColorValues.front();
             element->colorData.init();
             return true;
 
@@ -925,7 +924,7 @@ struct CustomImGui {
     Element* GetElementByList(const char* id, std::list<Element>* list)
     {
         for (auto element = list->begin(); element != list->end(); ++element) {
-            if (strcmp(element->id.c_str(), id) == 0 && !(strcmp(element->id.c_str(), IGNORE_ID) == 0)) {
+            if (element->id.compare(id) == 0 && !(element->id.compare(IGNORE_ID) == 0)) {
                 return &(*element);
             }
             Element* childResult = GetElementByList(id, element->children);
@@ -1001,7 +1000,7 @@ struct CustomImGui {
     void DrawMenu()
     {
         std::list<Element> overflowElements {};
-        DrawMenuElements(menuElements, &overflowElements);
+        DrawElements(menuElements, &overflowElements);
 
         if (overflowElements.empty())
         {
@@ -1011,7 +1010,7 @@ struct CustomImGui {
         // Sort menu elements that exceed the menu bar size into a "..." Menu entry
 				ImGui::SetCursorPosX(ImGui::GetCursorPosX() + GetAvailableMenuSpace());
         if (ImGui::BeginMenu(ICON_U8_FA_ELLIPSIS)) {
-          DrawMenuElements(&overflowElements, nullptr);
+          DrawElements(&overflowElements, nullptr);
           ImGui::EndMenu();
         }
     }
@@ -1036,7 +1035,7 @@ struct CustomImGui {
                         window->data.newSizeRequested = false;
                     }
                     AddWindowContextMenu(&window->data.windowPinned);
-                    DrawElements(window->children);
+                    DrawElements(window->children, nullptr);
                 }
                 ImGui::End(); // close window element
             }
@@ -1045,7 +1044,7 @@ struct CustomImGui {
         }
     }
 
-    void HandleElementExtras(Element* element)
+    void HandleElementExtras(const Element* element)
     {
         if (!element->data.tooltipText.empty()) {
             if (ImGui::IsItemHovered())
@@ -1066,7 +1065,7 @@ struct CustomImGui {
             ImGui::PopStyleColor(data->colors->size());
     }
 
-    void HandleElementSize(Element* element, bool isPush)
+    void HandleElementSize(const Element* element, bool isPush)
     {
         switch (element->type) {
         // ignore elements with special size handling
@@ -1085,49 +1084,11 @@ struct CustomImGui {
         }
     }
 
-    void DrawMenuElements(std::list<Element>* elements, std::list<Element>* overflowElements)
+    void DrawElements(std::list<Element>* elements, std::list<Element>* overflowElements)
     {
         for (auto element = elements->begin(); element != elements->end(); ++element) {
             const char* name = element->name.c_str();
 
-            // check if new menu entry can be displayed in the main menu. if not, add to overflow list to handle later
-            if (overflowElements != nullptr && element->type == IMGUI_ELEMENT::Menu && element->parent == nullptr) {
-                const float menuWidth = ImGui::CalcTextSize(name).x + ImGui::GetStyle().FramePadding.x * 2.0f;
-                if (GetAvailableMenuSpace() - menuWidth <= 0) {
-                    overflowElements->push_back(*element);
-                    continue;
-                }
-            }
-            // Display Menu element
-            RunPreRenderCallbacks(&(*element));
-            ImGui::PushID(element->GetHash());
-            HandleElementSize(&(*element), true);
-            HandleElementColors(element->GetElementData(), true);
-            switch (element->type) {
-            case IMGUI_ELEMENT::Menu:
-                if (ImGui::BeginMenu(name)) {
-                    RunCallbacks(&(*element));
-                    DrawMenuElements(element->children, nullptr);
-                    ImGui::EndMenu();
-                }
-                break;
-            case IMGUI_ELEMENT::MenuItem:
-                ImGui::MenuItem(name, NULL, &element->isActive);
-                RunCallbacks(&(*element));
-                break;
-            default:
-                break;
-            }
-            HandleElementColors(element->GetElementData(), false);
-            HandleElementSize(&(*element), false);
-            ImGui::PopID();
-        }
-    }
-
-    void DrawElements(std::list<Element>* elements)
-    {
-        for (auto element = elements->begin(); element != elements->end(); ++element) {
-            const char* name = element->name.c_str();
             RunPreRenderCallbacks(&(*element));
 
             ImGui::PushID(element->GetHash());
@@ -1139,13 +1100,13 @@ struct CustomImGui {
             case IMGUI_ELEMENT::CollapsingHeader:
                 if (ImGui::CollapsingHeader(name)) {
                     RunCallbacks(&(*element));
-                    DrawElements(element->children);
+                    DrawElements(element->children, overflowElements);
                 }
                 break;
             case IMGUI_ELEMENT::TreeNode:
                 if (ImGui::TreeNode(name)) {
                     RunCallbacks(&(*element));
-                    DrawElements(element->children);
+                    DrawElements(element->children, overflowElements);
                     ImGui::TreePop();
                 }
                 break;
@@ -1156,32 +1117,52 @@ struct CustomImGui {
                     element->useroverride_isVisible = false;
                 }
                 if (ImGui::BeginPopup(element->id.c_str())) {
-                    DrawElements(element->children);
+                    DrawElements(element->children, overflowElements);
                     ImGui::EndPopup();
                 }
                 break;
             case IMGUI_ELEMENT::TabBar:
                 if (ImGui::BeginTabBar(element->id.c_str(), ImGuiTabBarFlags_None)) {
                     RunCallbacks(&(*element));
-                    DrawElements(element->children);
+                    DrawElements(element->children, overflowElements);
                     ImGui::EndTabBar();
                 }
                 break;
             case IMGUI_ELEMENT::Tab:
                 if (ImGui::BeginTabItem(name)) {
                     RunCallbacks(&(*element));
-                    DrawElements(element->children);
+                    DrawElements(element->children, overflowElements);
                     ImGui::EndTabItem();
                 }
                 break;
             case IMGUI_ELEMENT::Window: {
                 if (ImGui::BeginChild(element->name.c_str(), element->data.size, element->data.childFlags, element->data.windowFlags)) {
                     RunCallbacks(&(*element));
-                    DrawElements(element->children);
+                    DrawElements(element->children, overflowElements);
                     ImGui::EndChild();
                 }
                 break;
             }
+            case IMGUI_ELEMENT::Menu:
+                // check if new menu entry can be displayed in the main menu. if not, add to overflow list to handle later
+                if (overflowElements != nullptr && element->parent == nullptr) {
+                  const float menuWidth = ImGui::CalcTextSize(name).x + ImGui::GetStyle().FramePadding.x * 2.0f;
+                  if (GetAvailableMenuSpace() - menuWidth <= 0) {
+                    overflowElements->push_back(*element);
+                    continue;
+                  }
+                }
+
+                if (ImGui::BeginMenu(name)) {
+                    RunCallbacks(&(*element));
+                    DrawElements(element->children, overflowElements);
+                    ImGui::EndMenu();
+                }
+                break;
+            case IMGUI_ELEMENT::MenuItem:
+                ImGui::MenuItem(name, nullptr, &element->isActive);
+                RunCallbacks(&(*element));
+                break;
             case IMGUI_ELEMENT::Text:
                 ImGui::Text(name);
                 RunCallbacks(&(*element));

@@ -20,3 +20,8 @@ void ASMPatchPlayerNoShake();
 void ASMPatchPlayerItemNoMetronome();
 void ASMPatchMarsDoubleTapWindow();
 void ASMPatchAddActiveCharge();
+void ASMPatchPlayerHurtSound();
+void ASMPatchPlayerDeathSound();
+void ASMPatchPlayerDeathSoundSoulOfLazarus();
+void ASMPatchPlayerDeathSoundLost();
+void ASMPatchPlayerDeathSoundAstralProjection();

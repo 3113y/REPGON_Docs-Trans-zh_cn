@@ -51,7 +51,7 @@ template <size_t Size> static const char *ConvertToUniqueName(char (&dst)[Size],
 {
 	char tmp[128];
 	strcpy_s(tmp, type);
-	
+
 	const char *p = tmp;
 	if(p[0] == '.')
 	{
@@ -213,9 +213,9 @@ int VariableDefinition::Load()
 	const SigScan::Match &m = sig.GetMatch();
 	memcpy(_outVar, m.address, m.length);
 
-	Log("Found value for %s:", _name);
-	for(int i=0 ; i<m.length ; ++i) Log(" %02x", ((unsigned char*)_outVar)[i]);
-	Log("\n");
+	ZHL::Log("[HOOKSYS] Found value for %s:", _name);
+	for(int i=0 ; i<m.length ; ++i) ZHL::Log(" %02x", ((unsigned char*)_outVar)[i]);
+	ZHL::Log("\n");
 
 	return 1;
 }
@@ -231,7 +231,7 @@ bool VariableDefinition::IsFunction() const {
 //================================================================================
 // FunctionDefinition
 
-FunctionDefinition::FunctionDefinition(const char *name, 
+FunctionDefinition::FunctionDefinition(const char *name,
 	char internalName[HookSystem::FUNCTION_INTERNAL_NAME_MAX_LEN], const type_info &type,
 	const char *sig, const HookSystem::ArgData *argdata, int nArgs,
 	unsigned int flags, void **outfunc, bool canHook) :
@@ -243,11 +243,11 @@ FunctionDefinition::FunctionDefinition(const char *name,
 	_canHook(canHook)
 {
 	SetName(name, type.raw_name());
-	Log("Adding function %s\n", _name);
+	ZHL::Log("[HOOKSYS] Adding function %s\n", _name);
 	Add(_name, internalName, this);
 }
 
-FunctionDefinition::FunctionDefinition(const char* name, 
+FunctionDefinition::FunctionDefinition(const char* name,
 	char internalName[HookSystem::FUNCTION_INTERNAL_NAME_MAX_LEN], const type_info& type,
 	void* addr, const HookSystem::ArgData* argdata, int nArgs,
 	unsigned int flags, void** outfunc, bool canHook) :
@@ -261,6 +261,18 @@ FunctionDefinition::FunctionDefinition(const char* name,
 {
 	SetName(name, type.raw_name());
 	Add(_name, internalName, this);
+}
+
+FunctionDefinition* FunctionDefinition::Find(const char* name, const type_info& type) {
+	char uniqueName[256] = { '\0' };
+	ConvertToUniqueName(uniqueName, name, type.raw_name());
+
+	auto iter = DefsByName().find(uniqueName);
+	if (iter == DefsByName().end()) {
+		return nullptr;
+	} else {
+		return static_cast<FunctionDefinition*>(iter->second);
+	}
 }
 
 FunctionDefinition* FunctionDefinition::FindByInternalName(const char* name) {
@@ -287,7 +299,7 @@ int FunctionDefinition::Load()
 
 			_address = sig.GetAddress<void*>();
 			*_outFunc = _address;
-			Log("Found address for %s: %08x, dist %d\n", _name, (unsigned int)_address, sig.GetDistance());
+			ZHL::Log("[HOOKSYS] Found address for %s: %08x, dist %d\n", _name, (unsigned int)_address, sig.GetDistance());
 		}
 		else {
 			sprintf_s(g_defLastError, "No signature or addresss defined for function %s", _name);
@@ -296,7 +308,7 @@ int FunctionDefinition::Load()
 	}
 	else {
 		*_outFunc = _address;
-		Log("Address for %s already defined or manually specified: %08x\n", _name, (unsigned int)_address);
+		ZHL::Log("[HOOKSYS] Address for %s already defined or manually specified: %08x\n", _name, (unsigned int)_address);
 	}
 
 	return 1;
@@ -492,7 +504,7 @@ unsigned char* FunctionHook_private::EmitPrologue(FunctionDefinition const* def,
 	ptr = Push(EBP, ptr);
 	ptr = Mov(EBP, ESP, ptr);
 
-	/// Preserve registers 
+	/// Preserve registers
 
 	// If the function doesn't return a value, eax must be preserved
 	if (def->IsVoid()) {
@@ -546,7 +558,7 @@ unsigned char* FunctionHook_private::EmitEpilogue(FunctionDefinition const* def,
 int FunctionHook_private::Install()
 {
 	using namespace HookSystem;
-	Log("Installing hook for function %s\n", _name);
+	ZHL::Log("[HOOKSYS] Installing hook for function %s\n", _name);
 
 	FunctionDefinition* def = dynamic_cast<FunctionDefinition*>(Definition::Find(_name));
 	if (!def)
@@ -590,10 +602,10 @@ int FunctionHook_private::Install()
 
 	// Position of the next stack argument
 	uint8_t k = stackPos;
-	
+
 	// Number of bytes pushed on the stack to call the hook
-	// This may be different than the amount pushed on the stack to call 
-	// the original function as function parameters are also pushed on 
+	// This may be different than the amount pushed on the stack to call
+	// the original function as function parameters are also pushed on
 	// the stack when calling the hook.
 	uint32_t pushed = 0;
 
@@ -620,7 +632,7 @@ int FunctionHook_private::Install()
 
 				ptr = DecrESP(4, ptr);
 				// movd [esp], xmmX
-				P(0x66); P(0x0F); P(0x7E); P(reg << 3 | GPRegisters::ESP); P(0x24); 
+				P(0x66); P(0x0F); P(0x7E); P(reg << 3 | GPRegisters::ESP); P(0x24);
 			}
 
 			pushed += 4;
@@ -652,7 +664,7 @@ int FunctionHook_private::Install()
 	/// Clean after the hook has been called
 	// Use stackPos - 8 because the calling convention may not have passed all arguments on the stack
 	ptr = EmitEpilogue(def, stackPos - 8, ptr);
-	
+
 	DWORD oldProtect = 0;
 	_hSize = ptr - _internalHook;
 	VirtualProtect(_internalHook, _hSize, PAGE_EXECUTE_READWRITE, &oldProtect);
@@ -723,7 +735,7 @@ int FunctionHook_private::Install()
 			for (size_t j = 0; j < data._size; ++j) {
 				// push [ebp + k]
 				k -= 4;
-				P(0xFF); P(0x75); P(k); 
+				P(0xFF); P(0x75); P(k);
 				pushed += 4;
 			}
 		}
@@ -748,7 +760,7 @@ int FunctionHook_private::Install()
 
 	*_outInternalSuper = _internalSuper;
 
-	Log("Successfully hooked function %s\n", _name);
+	ZHL::Log("[HOOKSYS] Successfully hooked function %s\n", _name);
 
 	return 1;
 }
@@ -774,7 +786,7 @@ int FunctionHook_private::Install()
 	int stackPos;
 	int k;
 	DWORD oldProtect;
-	
+
 	//==================================================
 	// Internal hook
 	// Converts userpurge to thiscall to call the user
@@ -963,10 +975,10 @@ int FunctionHook_private::Install()
 			k += 4 * argd[i].s;
 		}
 	}
-	
+
 	// Call the original function
 	P(0xE8); PL((unsigned int)original - (unsigned int)ptr - 4);	// call original
-	
+
 	// If the function requires caller cleanup, increment the stack pointer here
 	if(def->NeedsCallerCleanup())
 	{
@@ -993,15 +1005,15 @@ int FunctionHook_private::Install()
 	}
 	else
 		P(0xc3);					// ret
-	
+
 	_sSize = ptr - _internalSuper;
 	VirtualProtect(_internalSuper, _sSize, PAGE_EXECUTE_READWRITE, &oldProtect);
 
 	// Set the external reference to internalSuper so it can be used inside the user defined hook
 	*_outInternalSuper = _internalSuper;
-	
+
 	Log("Successfully hooked function %s\n", _name);
-	
+
 #ifdef HOOK_LOG
 	if(!g_hookLog) g_hookLog = fopen("hooks.log", "w");
 
@@ -1010,10 +1022,10 @@ int FunctionHook_private::Install()
 		Log("%02x ", _internalHook[i]);
 
 	Log("\ninternalSuper:\n", _name);
-	
+
 	for(unsigned int i=0 ; i<_sSize ; ++i)
 		Log("%02x ", _internalSuper[i]);
-	
+
 	Log("\n\n");
 #endif
 
@@ -1167,7 +1179,7 @@ int FunctionHookCustom_private::Install() {
 	P(0x57);	// push edi
 
 	// In the original version, this would perform a check for thiscall
-	// In this version it is not necessary because thiscall functions don't 
+	// In this version it is not necessary because thiscall functions don't
 	// suffer from the same problem.
 	stackPos = 8;
 	for (int i = 0; i < argc; ++i)
@@ -1239,7 +1251,7 @@ int FunctionHookCustom_private::Install() {
 	// Set the external reference to internalSuper so it can be used inside the user defined hook
 	*_outInternalSuper = _internalSuper;
 
-	Log("Successfully hooked function %s\n", _name);
+	ZHL::Log("[HOOKSYS] Successfully hooked function %s\n", _name);
 
 #ifdef HOOK_LOG
 	if (!g_hookLog) g_hookLog = fopen("hooks.log", "w");

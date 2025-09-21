@@ -78,7 +78,7 @@ HOOK_STATIC(KAGE_Filesys_FileManager, LoadArchiveFile, (char* path, int unk1, un
 			char* arg = __argv[i];
 			if (strcmp("-unpacked", arg) == 0) {
 				logViewer.AddLog("[REPENTOGON]", "Ignoring archives because of the -unpacked flag! Be careful!\n");
-				printf("[REPENTOGON] Ignoring archives because of the -unpacked flag! Be careful!\n");
+				ZHL::Log("[REPENTOGON] Ignoring archives because of the -unpacked flag! Be careful!\n");
 				unpacked_flag_set = true;
 			};
 		};
@@ -100,7 +100,7 @@ HOOK_METHOD(Entity_NPC, Hornfel_UpdateAI, () -> void) {
 	case 6:
 	case 7:
 		if (!GetMinecart()) {
-			printf("Warning! Hornfel is about to blow this game! (I hate this red thing, I spit on you)\n");
+			ZHL::Log("Warning! Hornfel is about to blow this game! (I hate this red thing, I spit on you)\n");
 			//restoring summon state while Hornfel is out of the room
 			_state = 13, _entityGridCollisionClass = 5, _entityCollisionClass = 4, _visible = true;
 			break;
@@ -111,7 +111,7 @@ HOOK_METHOD(Entity_NPC, Hornfel_UpdateAI, () -> void) {
 
 HOOK_METHOD(Entity_NPC, Hornfel_UpdateFrame, () -> void) {
 	if (_state == 4 || _state == 13) {
-		//printf("Trying to switch states, mm?\n");
+		//ZHL::Log("Trying to switch states, mm?\n");
 		return;
 	}
 	super();
@@ -170,24 +170,3 @@ HOOK_METHOD(Manager, Render, (void)->void) {
 };
 
 // eco mode stuff end
-
-//prevents joining lobbies
-HOOK_METHOD(Menu_Game, UnknownJoinLobby, (int unk1, int unk2, int unk3) -> void) {
-
-}
-
-//Prints log message about redirected configs
-HOOK_METHOD(ModManager, TryRedirectPath, (std_string* result, std_string* filePath) -> void) {
-	super(result, filePath);
-
-	auto suffixRes = [](std::string s) {
-		if (s.rfind(".xml") != std::string::npos)
-			return true;
-		else
-			return false;
-	};
-
-	if (!result->empty() && result->compare(*filePath) != 0 && suffixRes(*result)) {
-		KAGE::_LogMessage(0, "[warn] Redirected .xml config %s\n", result->c_str());
-	}
-}

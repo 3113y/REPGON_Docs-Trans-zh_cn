@@ -124,6 +124,8 @@ ModCallbacks.MC_PRE_RENDER = 1135
 ModCallbacks.MC_PRE_OPENGL_RENDER = 1136
 ModCallbacks.MC_PRE_LEVEL_PLACE_ROOM = 1137
 
+ModCallbacks.MC_POST_ITEM_OVERLAY_RENDER = 1139
+
 ModCallbacks.MC_PRE_BACKDROP_CHANGE = 1141
 ModCallbacks.MC_POST_BACKDROP_CHANGE = 1142
 
@@ -355,6 +357,8 @@ ModCallbacks.MC_POST_ENTITY_SET_COLOR = 1487
 ModCallbacks.MC_POST_START_AMBUSH_WAVE = 1488
 ModCallbacks.MC_POST_START_GREED_WAVE = 1489
 ModCallbacks.MC_EVALUATE_TEAR_HIT_PARAMS = 1490
+ModCallbacks.MC_PRE_OPEN_CHEST = 1491
+ModCallbacks.MC_POST_OPEN_CHEST = 1492
 
 --Repentance+ Enums (🐱 catin: https://github.com/epfly6/RepentanceAPIIssueTracker/issues/597)
 EffectVariant.MEGA_BEAN_EXPLOSION = 202
@@ -678,7 +682,9 @@ KnifeVariant = {
 }
 
 KnifeSubType = {
+	DEFAULT = 0,
 	PROJECTILE = 1,
+	YES_MOTHER = 3,
 	CLUB_HITBOX = 4,
 }
 

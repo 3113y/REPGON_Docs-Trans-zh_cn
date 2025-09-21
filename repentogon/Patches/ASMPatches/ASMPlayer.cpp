@@ -4,6 +4,8 @@
 #include "ASMPlayer.h"
 #include "../XMLData.h"
 
+#include "ASMDefinition.h"
+
 thread_local CheckFamiliarStorage familiarsStorage;
 
 void __stdcall CheckFamiliar_Internal(Entity_Familiar* familiar) {
@@ -41,7 +43,7 @@ void ASMPatchFireDelay() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 	void* fireDelayPtr = &PlayerStats::modCharacterFireDelay;
-	printf("[REPENTOGON] Patching EvaluateCache FireDelay at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching EvaluateCache FireDelay at %p\n", addr);
 	ASMPatch patch;
 
 	// Override Eden's calculation.
@@ -59,7 +61,7 @@ void ASMPatchSpeed() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 	void* speedPtr = &PlayerStats::modCharacterSpeed;
-	printf("[REPENTOGON] Patching EvaluateCache Speed at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching EvaluateCache Speed at %p\n", addr);
 	ASMPatch patch;
 
 	patch.AddBytes("\xF3\x0F\x58\x05").AddBytes(ByteBuffer().AddAny((char*)&speedPtr, 4)) // addss xmm0, dword ptr ds:[0xXXXXXXXX]
@@ -73,7 +75,7 @@ void ASMPatchDamage() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 	void* damagePtr = &PlayerStats::modCharacterDamage;
-	printf("[REPENTOGON] Patching EvaluateCache Damage at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching EvaluateCache Damage at %p\n", addr);
 	ASMPatch patch;
 
 	patch.AddBytes("\xF3\x0F\x10\x05").AddBytes(ByteBuffer().AddAny((char*)&damagePtr, 4)) // movss xmm0, dword ptr ds:[0xXXXXXXXX]
@@ -92,7 +94,8 @@ void ASMPatchRange() {
 	SigScan scanner("83f80974??83f81e74");
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
-	printf("[REPENTOGON] Patching EvaluateCache Range at %p\n", addr);
+	void* rangePtr = &PlayerStats::modCharacterRange;
+	ZHL::Log("[REPENTOGON] Patching EvaluateCache Range at %p\n", addr);
 
 	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS | ASMPatch::SavedRegisters::Registers::XMM_REGISTERS, true);
 	ASMPatch patch;
@@ -111,7 +114,7 @@ void ASMPatchShotSpeed() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 	void* shotSpeedPtr = &PlayerStats::modCharacterShotSpeed;
-	printf("[REPENTOGON] Patching EvaluateCache Shot Speed at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching EvaluateCache Shot Speed at %p\n", addr);
 	ASMPatch patch;
 
 	patch.AddBytes("\xF3\x0F\x10\x05").AddBytes(ByteBuffer().AddAny((char*)&shotSpeedPtr, 4)) // movss xmm0, dword ptr ds:[0xXXXXXXXX]
@@ -128,7 +131,7 @@ void ASMPatchLuck() {
 	scanner.Scan();
 	void* addr = scanner.GetAddress();
 	void* luckPtr = &PlayerStats::modCharacterLuck;
-	printf("[REPENTOGON] Patching EvaluateCache Luck at %p\n", addr);
+	ZHL::Log("[REPENTOGON] Patching EvaluateCache Luck at %p\n", addr);
 	ASMPatch patch;
 
 	patch.AddBytes("\xF3\x0F\x58\x15").AddBytes(ByteBuffer().AddAny((char*)&luckPtr, 4)) // addss xmm2, dword ptr ds:[0xXXXXXXXX]
@@ -189,3 +192,117 @@ void ASMPatchAddActiveCharge() {
 	sASMPatcher.FlatPatch((char*)addr + 0x7, "\x14", 1);
 	sASMPatcher.FlatPatch((char*)addr + 0xA, "\x10", 1);
 }
+
+unsigned int __stdcall GetPlayerHurtSound(Entity_Player* player) {
+	int playerType = player->GetPlayerType();
+	XMLAttributes playerData = XMLStuff.PlayerData->GetNodeById(playerType);
+
+	const unsigned int defaultHurtSound = 55; // Default hurt grunt sound. Nicalis won't ever change it... right?
+
+	if (playerData.count("hurtsound") == 0) {
+		return defaultHurtSound; 
+	}
+
+	XMLAttributes soundData = XMLStuff.SoundData->GetNodeById(playerData["hurtsound"]);
+
+	if (soundData.count("id") == 0) {
+		return defaultHurtSound;
+	}
+	else {
+		return stoi(soundData["id"]);
+	}
+}
+
+void ASMPatchPlayerHurtSound() {
+	ASMPatch patch;
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::Player_HurtSoundOverride);
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::ALL & ~ASMPatch::SavedRegisters::Registers::EAX, true);
+
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EDI) // EntityPlayer*
+		.AddInternalCall(GetPlayerHurtSound)
+		.RestoreRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EAX)
+		.AddRelativeJump((char*)addr + 0x5); // Jump to next instruction (play sound)
+
+	sASMPatcher.PatchAt(addr, &patch);
+
+	RegisterCustomXMLAttr(XMLStuff.PlayerData, "hurtsound", XMLStuff.SoundData); //this is so the parsing for all of the attribute nes is done only once and by the xmldata structure itself in a single place
+}
+
+unsigned int __stdcall GetPlayerDeathSound(Entity_Player* player) {
+	int playerType = player->GetPlayerType();
+	XMLAttributes playerData = XMLStuff.PlayerData->GetNodeById(playerType);
+
+	const unsigned int defaultDeathSound = 217; // Default death grunt sound.
+
+	if (playerData.count("deathsound") == 0) {
+		return defaultDeathSound;
+	}
+
+	XMLAttributes soundData = XMLStuff.SoundData->GetNodeById(playerData["deathsound"]); 
+
+	if (soundData.count("id") == 0) {
+		return defaultDeathSound;
+	}
+	else {
+		return stoi(soundData["id"]);
+	}
+}
+
+void ASMPatchPlayerDeathSound() {
+	ASMPatch patch;
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::Player_DeathSoundOverride);
+
+	patch.Push(ASMPatch::Registers::EDI) // EntityPlayer*
+		.AddInternalCall(GetPlayerDeathSound)
+		.Push(ASMPatch::Registers::EAX)
+		.AddRelativeJump((char*)addr + 0x5); // Jump to next instruction (play sound)
+
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
+void ASMPatchPlayerDeathSoundSoulOfLazarus() {
+	ASMPatch patch;
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::Player_SoulOfLazarusDeathSoundOverride);
+
+	patch.Push(ASMPatch::Registers::EBX) // EntityPlayer*
+		.AddInternalCall(GetPlayerDeathSound)
+		.Push(ASMPatch::Registers::EAX)
+		.AddRelativeJump((char*)addr + 0x5); // Jump to next instruction (play sound)
+
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
+void ASMPatchPlayerDeathSoundLost() {
+	ASMPatch patch;
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::Player_SoulDeathSoundOverride);
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::ALL & ~ASMPatch::SavedRegisters::Registers::EAX, true);
+
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::ECX) // EntityPlayer*
+		.AddInternalCall(GetPlayerDeathSound)
+		.RestoreRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EAX)
+		.AddRelativeJump((char*)addr + 0x5);
+
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
+void ASMPatchPlayerDeathSoundAstralProjection() {
+	ASMPatch patch;
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::Player_AstralProjectionDeathSoundOverride);
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::ALL & ~ASMPatch::SavedRegisters::Registers::EAX, true);
+
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EDI) // EntityPlayer*
+		.AddInternalCall(GetPlayerDeathSound)
+		.RestoreRegisters(savedRegisters)
+		.MoveToMemory(ASMPatch::Registers::EAX, 0, ASMPatch::Registers::ECX)
+		.AddRelativeJump((char*)addr + 0x8); 
+
+	sASMPatcher.PatchAt(addr, &patch);
+
+	RegisterCustomXMLAttr(XMLStuff.PlayerData, "deathsound", XMLStuff.SoundData); //this is so the parsing for all of the attribute nes is done only once and by the xmldata structure itself in a single place
+}
+

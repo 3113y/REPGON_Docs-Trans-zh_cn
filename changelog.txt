@@ -4,8 +4,12 @@ v1.0.x -
 Additions:
 * Camera:
 	- Update(bool Interpolated = false)
+	- SetClampEnabled(bool clamped)
+	- IsClampEnabled
 * ChallengeParam:
 	- IsBeastPath
+* Game:
+	- ChainLightning(Vector Position, float BaseDamage = 3.5, TearFlags TearFlags = TearFlags.TEAR_NORMAL, Entity Spanwer = nil)
 * GridEntity
 	- [Get/Set/Reset]WaterClipFlags
 * Entity
@@ -40,6 +44,7 @@ Additions:
 	- GetTearsCap
 	- GetStatMultiplier
 	- GetSmeltedTrinketDesc
+	- [Get/Set]CharmOfTheVampireKills
 * EntityFamiliar:
 	- IsLilDelirium
 	- SetLilDelirium
@@ -49,6 +54,13 @@ Additions:
 * EntityTear:
 	- GetHitList
 	- ClearHitList
+	- FireSplitTear
+* EntityLaser:
+	- FireSplitTear
+* EntityKnife:
+	- FireSplitTear
+* EntitySlot:
+	- GetPrizeSprite
 * EntityConfigEntity:
 	- GetDevolvedEntity
 * Level:
@@ -89,10 +101,18 @@ Additions:
 * CharacterMenu
 	- GetPlayerTypeFromCharacterMenuID(int CharacterMenuID, bool Tainted)
 		Tainted boolean defaults to current menu if unspecified.
+	- GetCharacterMenuIDFromPlayerType(int PlayerType)
+		Note that the normal/tainted versions of a character have the same CharacterMenuID.
+	- GetSelectedCharacterPlayerType()
+		Returns the PlayerType for the character currently selected in the menu.
 * Players.xml
 	- Added support for modded/text trinkets on the "trinket" param (I forgot trinkets existed tbh, lol)
 	- Added "hideachievement" attribute, which hides the character from the character select menu until the corresponding achievement is obtained
 		(Doesn't do anything for tainted characters, since whether or not they appear on the menu is entirely dependant on the non-tainted character)
+	- Added "hurtsound" attribute, which overrides the player's damage sound.
+	- Added "deathsound" attribute, which overrides the player's death sound.
+* Items.xml
+	- Added "activegfx" attribute, which sets separate active item image for rendering in active slot.
 * ModCallbacks:
 	- MC_PRE_PLAYER_POCKET_ITEMS_SWAP(EntityPlayer player)
 		Triggers when the player swaps their pocket items using the action drop button (even if they are empty).
@@ -142,6 +162,9 @@ Additions:
 	- MC_EVALUATE_TEAR_HIT_PARAMS(EntityPlayer, TearParams, WeaponType, float DamageScale, integer TearDisplacement, Entity Source)
 		Optional param: PlayerType
 		Used to modify mutable TearParams object.
+	- MC_POST_FIRE_SPLIT_TEAR(EntityTear tear, Entity source, SplitTearType|string)
+		Optional param: SplitTearType|string
+		Fires for stuff like cricket's body, parasite, etc
 	- MC_POST_ROOM_SAVE_STATE(Room, RoomDescriptor)
 		Fires after the room saves all entities and grid entities.
 	- MC_PRE_ROOM_RESTORE_STATE(Room, RoomDescriptor)
@@ -156,6 +179,13 @@ Additions:
 		The string key (e.g. "boss_0", "treasure_0") identifies which slot the room was saved into.
 	- MC_PRE_ADD_TRINKET(player, TrinketType, firstTime)
 		Return false to cancel, or a different TrinketType to change the trinket being added.
+	- MC_POST_ITEM_OVERLAY_RENDER
+	- MC_PRE_OPEN_CHEST(EntityPickup, EntityPlayer?)
+		Optional param: PickupVariant
+		Fires before a chest is opened. Return false to prevent it from opening.
+	- MC_POST_OPEN_CHEST(EntityPickup, EntityPlayer?)
+		Optional param: PickupVariant
+		Fires after a chest opened.
 * New Enums:
 	- DoorMask
 	- WaterClipFlag
@@ -163,6 +193,7 @@ Additions:
 	- RoomEventOutput
 	- CustomCacheTag
 	- EvaluateStatStage
+	- SplitTearType
 * Room:
 	- GetWallColor()
 * Isaac:
@@ -213,6 +244,8 @@ Fixes:
 * Players can no longer get stuck with buggy heart containers when changed to soul/bone heart health types (they get converted by default).
 * Fixed player:Revive reviving The Forgotten with a bugged half soul heart that cannot be removed.
 * Fixed a possible error when a lua error occurs during a custom callback that uses a table as its callback ID.
+* Entity:
+	- Fixed GetPredictedTargetPosition returning unusable data.
 * EntityPlayer:
 	- SetBagOfCraftingSlot / SetBagOfCraftingContent now automatically recalculate the crafting output & shift bag contents if empty spaces are added in the middle.
 	- Fixed SetFootprintColor crashing
@@ -259,6 +292,8 @@ Modified:
 	- DropCollectible now returns the spawned pedestal if one was spawned, as intended 
 	- SwapForgottenForm returns boolean, depending if Forgotten/Soul form was switched or not.
 	- GetSmeltedTrinkets now accepts an optional table parameter, a list of trinket IDs, to use as a filter for better performance
+* EntityNPC:
+	- boolean ReplaceSpritesheet
 * Level:
 	- TryPlaceRoom(AtDoor) no longer plays the key unlock sound if a room is created that connects to the player's current room.
 * ImGui:
@@ -274,6 +309,8 @@ Modified:
 		Returning a value will now pass the modified curse mask along to the next callback instead of ending the callback early.
 	- MC_PRE_ADD_COLLECTIBLE
 		Returning a value to modify the collectible being added will now pass that ID along to other callbacks instead of stopping.
+	- MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM
+		Added CropOffset field (Vector, defines rectangle area of the active item image that will rendered in active slot)
 * reloadshaders command will now reload custom anm2 shaders
 * Daily goal path icon will now be displayed on Mega Satan daily runs.
 /newline/

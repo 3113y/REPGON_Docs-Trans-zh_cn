@@ -12,6 +12,8 @@
 #include "REPENTOGONOptions.h"
 #include "Patches/ASMPatches.h"
 #include "LuaInterfaces/LuaRender.h"
+#include <UserEnv.h>
+#pragma comment(lib, "userenv.lib")
 
 /********************************************************************************
 HOOKING
@@ -113,6 +115,25 @@ static int __cdecl OverrideGetInfo(lua_State* L, const char* what, override_lua_
 	return result;
 }
 
+std::string GetUserPath() {
+	HANDLE token = nullptr;
+	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &token)) {
+		return {};
+	}
+
+	DWORD size = MAX_PATH;
+	std::string path(size, '\0'); // Reserve space
+	if (!GetUserProfileDirectoryA(token, &path[0], &size)) {
+		CloseHandle(token);
+		return {};
+	}
+
+	CloseHandle(token);
+	path.resize(strlen(path.c_str())); // Trim nulls
+
+	return path;
+}
+
 static void FixLuaDump()
 {
 	// Signature to start of Lua write minidump function ("catch_exception" in ghidra)
@@ -161,14 +182,13 @@ static void FixLuaDump()
 		fprintf(stderr, "VirtualProtect error %d\n", GetLastError());
 	}
 
-	FlushInstructionCache(GetModuleHandle(NULL), NULL, 0);
+	FlushInstructionCache(GetCurrentProcess(), NULL, 0);
 }
 char REPENTOGON::stocktitle[256]="";
 char REPENTOGON::moddedtitle[256] = "";
-// This small function loads all the hooks and must be present in every mod
-MOD_EXPORT int ModInit(int argc, char** argv)
+
+MOD_EXPORT int InitRepentogon(void* poisonAddr, char poisonedValue)
 {
-	ZHL::ClearLogFile();
 	ZHL::Logger logger(true);
 	logger.Log("REPENTOGON: ModInit\n");
 
@@ -193,14 +213,17 @@ MOD_EXPORT int ModInit(int argc, char** argv)
 	FixLuaDump();	//moved to before hooks are added, allows hooking onto exception handler
 	logger.Log("REPENTOGON: Fixed LuaDump for Lua 5.4\n");
 
-	logger.Log("REPENTOGON: Installing ZHL hooks\n");
-	ZHL::Init();
-	logger.Log("REPENTOGON: Installed ZHL hooks\n");
-
-	printf(":REPENTOGON:\n");
+	ZHL::Log(":REPENTOGON:\n");
 
 	REPENTOGON::UpdateProgressDisplay("ModInit done");
 	SigScan::FlushCache();
+
+	ASMPatch patch;
+	ByteBuffer buffer;
+	buffer.AddByte(poisonedValue);
+	patch.AddBytes(buffer);
+	sASMPatcher.FlatPatch(poisonAddr, &patch);
+
 	return 0;
 }
 

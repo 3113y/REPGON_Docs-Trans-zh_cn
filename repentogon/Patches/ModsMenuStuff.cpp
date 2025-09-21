@@ -74,7 +74,7 @@ void RestoreEnabledStates() {
 	for each (ModEntry * mod in modman->_mods) {
 		if (mod->IsEnabled() != enabledtstates[i]) {
 			mod->SetEnabled(enabledtstates[i]);
-			string disablepath = std::filesystem::current_path().string() + "\\mods\\" + mod->GetDir().c_str() + "\\disable.it";
+			string disablepath = string(&g_ModsDirectory) + mod->GetDir() + "\\disable.it";
 			if (mod->IsEnabled()) {
 				std::remove(disablepath.c_str());
 			}
@@ -104,7 +104,7 @@ HOOK_METHOD(Menu_Mods, Update, () -> void) {
 	if (g_InputManagerBase.IsActionTriggered(14,-1,0)) {
 		if ((lastvalid > -1) && (!issearching) && (this->SelectedElement <= lastvalid) && (this->SelectedElement >= 0) && (!(IsKeytriggered(opensearchkey)))) {
 			this->_pointerToSelectedMod->SetEnabled(!this->_pointerToSelectedMod->IsEnabled());
-			string disablepath = std::filesystem::current_path().string() + "\\mods\\" + this->_pointerToSelectedMod->GetDir().c_str() + "\\disable.it";
+			string disablepath = string(&g_ModsDirectory) + this->_pointerToSelectedMod->GetDir().c_str() + "\\disable.it";
 			if (this->_pointerToSelectedMod->IsEnabled()) {
 				std::remove(disablepath.c_str());
 			}
@@ -160,7 +160,7 @@ HOOK_METHOD(Menu_Mods, Render, () -> void) {
 	offset = Vector(menu_ref.x - 1440, menu_ref.y + 216);
 	initialpos = Vector(70 + offset.x, offset.y + 35);
 	undopos = Vector(310 + offset.x, offset.y + 63);
-	//printf("%f %f (%f %f)\n", (frame_widgettext->_pos.x) , frame_widgettext->_pos.y,undopos->x,undopos->y);
+	//ZHL::Log("%f %f (%f %f)\n", (frame_widgettext->_pos.x) , frame_widgettext->_pos.y,undopos->x,undopos->y);
 	tabbtnpos = Vector(307 + offset.x, offset.y + 18);
 	pos = Vector(70 + offset.x, offset.y + 35);
 	barpos = Vector(pos.x + 90, (g_HEIGHT- 30));

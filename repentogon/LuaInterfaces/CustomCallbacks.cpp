@@ -2298,7 +2298,7 @@ HOOK_METHOD(Entity_Player, GetActiveMinUsableCharge, (int slot) -> int) {
 }
 
 //MC_PRE_REPLACE_SPRITESHEET (id: 1116)
-HOOK_METHOD(ANM2, ReplaceSpritesheet, (int LayerID, std::string& PngFilename) -> void) {
+HOOK_METHOD(ANM2, ReplaceSpritesheet, (int LayerID, std::string& PngFilename) -> bool) {
 	const int callbackid1 = 1116;
 	lua_State* L = g_LuaEngine->_state;
 	if (CallbackState.test(callbackid1 - 1000)) {
@@ -2321,7 +2321,9 @@ HOOK_METHOD(ANM2, ReplaceSpritesheet, (int LayerID, std::string& PngFilename) ->
 			}
 		}
 	}
-	super(LayerID, PngFilename);
+
+	bool successful = super(LayerID, PngFilename);
+
 	const int callbackid2 = 1117;
 	if (CallbackState.test(callbackid2 - 1000)) {
 		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
@@ -2332,6 +2334,8 @@ HOOK_METHOD(ANM2, ReplaceSpritesheet, (int LayerID, std::string& PngFilename) ->
 			.push(PngFilename.c_str())
 			.call(1);
 	}
+
+	return successful;
 }
 
 //PLAYER_GET_HEART_LIMIT (id: 1074)
@@ -5287,4 +5291,67 @@ HOOK_METHOD(Entity_Player, GetTearHitParams, (TearParams* params, int weaponType
 	
 
 	return params;
+}
+
+// MC_POST_ITEM_OVERLAY_RENDER (1139)
+HOOK_METHOD(ItemOverlay, Render, () -> void) {
+	super();
+
+	constexpr int callbackId = 1139;
+	if (_state == eItemOverlayState::INACTIVE ||
+		_state == eItemOverlayState::WAITING ||
+		(!_sprite._loaded && _overlayID != 45 ) ||
+		!CallbackState.test(callbackId - 1000)) {
+		return;
+	}
+
+	lua_State* L = g_LuaEngine->_state;
+	lua::LuaStackProtector protector(L);
+
+	lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+	lua::LuaResults result = lua::LuaCaller(L).push(callbackId)
+		.push(_overlayID)
+		.push(_overlayID)
+		.call(1);
+
+}
+
+// MC_PRE_OPEN_CHEST/MC_POST_OPEN_CHEST (1491, 1491)
+HOOK_METHOD(Entity_Pickup, TryOpenChest, (Entity_Player* player) -> bool) {
+	const int preCallbackId = 1491;
+	const int postCallbackId = 1492;
+
+	if (CallbackState.test(preCallbackId - 1000)) {
+		lua_State* L = g_LuaEngine->_state;
+		lua::LuaStackProtector protector(L);
+
+		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+
+		lua::LuaResults results = lua::LuaCaller(L).push(preCallbackId)
+			.push(this->_variant)
+			.push(this, lua::Metatables::ENTITY_PICKUP)
+			.push(player, lua::Metatables::ENTITY_PLAYER)
+			.call(1);
+
+		if (!results && lua_isboolean(L, -1) && !(bool)lua_toboolean(L, -1)) {
+			return false;
+		}
+	}
+
+	bool opened = super(player);
+
+	if (CallbackState.test(postCallbackId - 1000)) {
+		lua_State* L = g_LuaEngine->_state;
+		lua::LuaStackProtector protector(L);
+
+		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+
+		lua::LuaResults results = lua::LuaCaller(L).push(postCallbackId)
+			.push(this->_variant)
+			.push(this, lua::Metatables::ENTITY_PICKUP)
+			.push(player, lua::Metatables::ENTITY_PLAYER)
+			.call(1);
+	}
+
+	return opened;
 }
