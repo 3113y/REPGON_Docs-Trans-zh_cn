@@ -16727,12 +16727,25 @@
 <p>接受一个参数表：<code>{TargetRoomIdx, Dimension}</code></p>
 <details class="bug" open="open">
 <summary>Bug</summary>
-<p>当 <code>TargetRoomIdx</code> 为当前房间的索引时：
-    当进入下一个未进入过的房间时：
-        - 会传送回当前房间
-    当进入下一个已进入过的房间时：
-        - 如果该方向上，此房间后面还有第二个房间，就传送到那个房间（无论是否进去过，即隔一个房间传送）
-        - 如果没有第二个房间，就传送回当前房间</p>
+<p>当 <code>TargetRoomIdx</code> 为当前房间的索引时：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>当进入下一个未进入过的房间时：
+
+    - 会传送回当前房间
+
+当进入下一个已进入过的房间时：
+
+    - 如果该方向上，此房间后面还有第二个房间，就传送到那个房间（无论是否进去过，即隔一个房间传送）
+
+    - 如果没有第二个房间，就传送回当前房间
+</code></pre></div></td></tr></table></div>
 <p>注：以上规则仅在小房间场景下测试验证过</p>
 </details>
 <table>
