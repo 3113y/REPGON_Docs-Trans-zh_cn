@@ -7,6 +7,7 @@
 
 #include "NullItemsAndCostumes.h"
 #include "CustomCache.h"
+#include "CustomModManager.h"
 #include "FamiliarTags.h"
 #include "PlayerTags.h"
 #include "GetCoinValue.h"
@@ -20,8 +21,10 @@
 #include "EvaluateStats.h"
 #include "XMLPlayerExtras.h"
 
+#include "ASMPatches/ASMBagOfCrafting.h"
 #include "ASMPatches/ASMCallbacks.h"
 #include "ASMPatches/ASMDelirium.h"
+#include "ASMPatches/ASMEntityKnife.h"
 #include "ASMPatches/ASMEntityNPC.h"
 #include "ASMPatches/ASMGridEntityCollision.h"
 #include "ASMPatches/ASMGridEntitySpawn.h"
@@ -187,6 +190,8 @@ void PerformASMPatches() {
 	ASMPatchHideChargeBar();
 	ASMPatchPostBackwardsRoomRestore();
 	SplitTears::ASMPatchesForSplitTearCallback();
+	ASMPatchesForBagOfCrafting();
+	ASMPatchBombPreApplyTearflagEffects();
 
 	// Delirium
 	delirium::AddTransformationCallback();
@@ -197,6 +202,9 @@ void PerformASMPatches() {
 	ASMPatchFireProjectiles();
 	ASMPatchFireBossProjectiles();
 	//ASMPatchApplyFrozenEnemyDeathEffects();  // This was disabled prior to rep+, ignore it!
+
+	// EntityKnife
+	PatchMeleeHitboxInit();
 
 	// GridEntity
 	PatchGridCollisionCallback();
@@ -267,6 +275,7 @@ void PerformASMPatches() {
 	ASMPatches::__ItemPoolManager();
 	ASMPatches::__ItemPoolManagerExtra();
 	ASMPatchesForCardsExtras();
+	ASMPatchesForCustomModManager();
 	ASMFixes();
 	HookImGui();
 
@@ -314,4 +323,5 @@ void PerformASMPatches() {
 
 	ASMPatches::DisableExitPrompt();
 	ASMPatches::PatchLeaderboardGoalSprite();
+	ASMPatches::PatchOptionsSetMusicBound();
 }

@@ -231,7 +231,7 @@ __thiscall void Entity_Player::IncrementPlayerFormCounter(int ePlayerForm, int n
 __thiscall void Entity_Player::TriggerNewRoom_TemporaryEffects();
 
 "538bdc83ec0883e4f883c404558b6b??896c24??8bec6aff68????????64a1????????505381ecd00000005657a1????????33c5508d45??64a3????????8bf9897d??8a43":
-__thiscall void Entity_Player::TriggerNewStage(bool unk);
+__thiscall void Entity_Player::TriggerNewStage(bool FromPlayerUpdate);
 
 "558bec83e4f851568bf18b86????????0386":
 __thiscall bool Entity_Player::TryPreventDeath();
@@ -516,7 +516,7 @@ __thiscall void Entity_Player::SyncConsumableCounts(Entity_Player* player, int b
 __thiscall void Entity_Player::ConsumableCountChanged(int bitflags);
 
 "558bec83e4f881ecc4000000a1????????33c4898424????????53568b75":
-__thiscall void Entity_Player::TryAddToBagOfCrafting(Entity_Pickup* pickup);
+__thiscall bool Entity_Player::TryAddToBagOfCrafting(Entity_Pickup* pickup);
 
 "538bdc83ec0883e4f883c404558b6b??896c24??8bec6aff68????????64a1????????505381ec88000000a1????????33c58945??5657508d45??64a3????????8b4b":
 __thiscall void Entity_Player::CalculateBagOfCraftingOutput(BagOfCraftingOutput* out, BagOfCraftingPickup* bagContent);
@@ -560,6 +560,9 @@ __thiscall bool Entity_Player::CanRerollCollectible(int id, bool unk);
 
 "558bec5356578bf98b4d":
 __thiscall bool Entity_Player::HasInvincibility(uint64_t damageFlags, EntityRef* source);
+
+"558bec6aff68????????64a1????????50b8dc190000":
+__thiscall void Entity_Player::UseActiveItem(short* resultFlags, CollectibleType collectible, unsigned int useFlags, int activeSlot, int varData);
 
 struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, TemporaryEffects, ConsumableData, History, BagOfCraftingOutput) : public Entity { {{
     inline int* GetMaxHearts() {return &this->_maxHearts; }
@@ -726,6 +729,7 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	std_vector_int _voidedCollectibles : 0x1744;
 	uint32_t _actionHoldDrop : 0x17b0;
 	int _playerForms[15] : 0x17cc;
+	bool _postLevelInitFinished : 0x1810;
 	bool _canShoot : 0x1811;
 	ColorMod _footprintColor1 : 0x1814;
 	ColorMod _footprintColor2 : 0x1840;
@@ -768,6 +772,7 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	int _redStewBonusDuration : 0x1e58;
 	float _rockBottomMoveSpeed : 0x1e94, _rockBottomMaxFireDelay : 0x1e98, _rockBottomDamage : 0x1e9c, _rockBottomTearRange : 0x1ea0, _rockBottomShotSpeed : 0x1ea4, _rockBottomLuck : 0x1ea8;
 	int _revelationChargeTimer : 0x1ec0;
+	uint32_t _maggyHealthDrainCooldown: 0x1ed0;
 	int _maggySwingCooldown : 0x1ed4;
 	int _suplexState : 0x1f08;
 	int _suplexAimCountdown : 0x1f0c;

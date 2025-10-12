@@ -12,6 +12,8 @@ ModCallbacks.MC_POST_GRID_ROCK_DESTROY = 1011
 ModCallbacks.MC_GRID_HURT_DAMAGE = 1012
 ModCallbacks.MC_POST_GRID_HURT_DAMAGE = 1013
 ModCallbacks.MC_PRE_ADD_TRINKET = 1014
+ModCallbacks.MC_TRY_ADD_TO_BAG_OF_CRAFTING = 1015
+ModCallbacks.MC_POST_ADD_TO_BAG_OF_CRAFTING = 1016
 
 ModCallbacks.MC_HUD_UPDATE = 1020
 ModCallbacks.MC_HUD_POST_UPDATE = 1021 -- deprecated but still in here for backwards compatibility
@@ -227,6 +229,12 @@ ModCallbacks.MC_POST_ROOM_TRIGGER_EFFECT_REMOVED = 1269
 ModCallbacks.MC_POST_BOSS_INTRO_SHOW = 1270
 ModCallbacks.MC_POST_ROOM_TRANSITION_UPDATE = 1271
 ModCallbacks.MC_POST_ROOM_TRANSITION_RENDER = 1272
+ModCallbacks.MC_POST_PLAYER_ADD_EFFECT = 1273
+ModCallbacks.MC_POST_ROOM_ADD_EFFECT = 1274
+ModCallbacks.MC_POST_BOMB_DAMAGE = 1275
+ModCallbacks.MC_POST_BOMB_TEARFLAG_EFFECTS = 1276
+ModCallbacks.MC_PRE_APPLY_TEARFLAG_EFFECTS = 1277
+ModCallbacks.MC_POST_APPLY_TEARFLAG_EFFECTS = 1278
 
 ModCallbacks.MC_PRE_BOSS_SELECT = 1280
 ModCallbacks.MC_PRE_PLAYER_ADD_COSTUME = 1281
@@ -2871,11 +2879,20 @@ BlendFactor = {
 	ONE_MINUS_SRC_ALPHA = 7,
 	DST_ALPHA = 8,
 	ONE_MINUS_DST_ALPHA = 9,
+	-- the following are currently not supported
 	CONSTANT_COLOR = 10,
 	ONE_MINUS_CONSTANT_COLOR = 11,
 	CONSTANT_ALPHA = 12,
 	ONE_MINUS_CONSTANT_ALPHA = 13,
 	SRC_ALPHA_SATURATE = 14,
+}
+
+BlendEquation = {
+	FUNC_ADD = 0,
+	FUNC_SUBTRACT = 1,
+	FUNC_REVERSE_SUBTRACT = 2,
+	MIN = 3,
+	MAX = 4,
 }
 
 BlendType = {
@@ -3053,6 +3070,11 @@ SplitTearType = {
 	POP = 8,  -- Pop! + Lasers
 	MULTIDIMENSIONAL = 9,
 	ANGELIC_PRISM = 10,
+}
+
+UseActiveItemResultFlag = {
+	DISCHARGE = 1 << 0,
+	REMOVE = 1 << 8,
 }
 
 
