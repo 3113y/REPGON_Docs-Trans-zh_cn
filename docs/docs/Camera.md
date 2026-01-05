@@ -40,7 +40,10 @@ ___
 此函数必须在诸如 `ModCallbacks.MC_POST_RENDER` 之类的渲染回调中调用，否则游戏将覆盖相机的位置。
 
 ???+ bug "Bug"
+    此函数似乎仅在"主动相机"关闭时有效。
 
-    此函数似乎仅在“主动相机”关闭时有效。
+___
+### Update () {: aria-label='Functions' }
+#### void Update ( boolean flag = false ) {: .copyable aria-label='Functions' }
 
 ___

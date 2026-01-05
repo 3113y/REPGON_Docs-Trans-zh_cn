@@ -7,7 +7,7 @@ REPENTOGON = {
 
 collectgarbage("generational")
 
-
+local RaiseModError = _CBindings.RaiseModError
 
 local function MeetsVersion(targetVersion)
 	if (REPENTOGON.Version == "dev build") then return true end
@@ -651,6 +651,15 @@ end)
 ---- ERROR LOGGING / DISPLAY
 ----------------------------------------------------------------------------------------------------
 
+-- Whether or not a lua error has been displayed in the ErrorDisplayWindow.
+local err_shown = false
+
+-- Tracks how many times the same error has appeared consecutively.
+local err_dupecount = 1
+
+-- Tracks printed warnings to avoid them reappearing in the same session.
+---@type string[]
+local printedWarnings = {}
 
 local function cleanTraceback(level) -- similar to debug.traceback but breaks at xpcall, uses spaces instead of tabs, and doesn't call local functions upvalues
 	level = level + 1
@@ -681,37 +690,6 @@ local function cleanTraceback(level) -- similar to debug.traceback but breaks at
 	return msg
 end
 
-local err_input = 1
-local err_decay = 1500
-local err_hud_opacity = 1
-local err_shader_opacity = 1
-local err_color = 0
-local err_shown = false
-local err_bounding_x = nil
-
-local ERR_INPUT_TARGET = 484
-local INT_MIN = -2147483647
-
-local err_main_font = Font()
-local err_min_font = Font()
-
-
-local function RenderErrText(name, opacity)
-	local main_str = name .. " is causing errors!"
-	local detail_str = "Click this message for more info."
-
-	if not err_bounding_x then
-		err_bounding_x = (Isaac.GetScreenWidth() / 2) -
-		(math.max(err_main_font:GetStringWidth(main_str), err_main_font:GetStringWidth(detail_str)) / 2)
-	end
-
-	err_main_font:DrawString(main_str, (Isaac.GetScreenWidth() / 2) - (err_main_font:GetStringWidth(main_str) / 2), 0,
-		KColor(1, err_color, err_color, opacity), 0, false)
-	err_min_font:DrawString(detail_str, (Isaac.GetScreenWidth() / 2) - (err_min_font:GetStringWidth(detail_str) / 2), 7,
-		KColor(1, err_color, err_color, opacity), 0, false)
-end
-
-local printedWarnings = {}
 
 local function logWarning(callbackID, modName, warn)
 	local cbName = callbackIDToName[callbackID] or callbackID
@@ -728,54 +706,6 @@ local function logWarning(callbackID, modName, warn)
 	cbName ..
 	'" call from "' .. modName .. '": ' .. warn .. "(This warning will not reappear until the next Lua reload.)")
 end
-
-local err_modName = nil
-local mouse = Sprite()
-local mousecontrol_off = nil
-local errdisp = nil
-
-local UnlinkCallbacks -- Forward declaration
-
-local function RenderErrHudCB() 
-	if err_input < ERR_INPUT_TARGET then
-		err_color = math.sin((err_input * 200) / err_decay) / 2 + .5
-		err_input = err_input + 1
-		err_decay = err_decay + 1
-	else
-		err_color = 0
-	end
-
-	if err_hud_opacity > 0.3 then err_hud_opacity = err_hud_opacity - (0.7 / ERR_INPUT_TARGET) end
-	RenderErrText(err_modName, err_hud_opacity)
-
-
-	mouse.Color = Color(1, 1, 1, err_hud_opacity)
-	local mouse_pos = Isaac.WorldToScreen(Input.GetMousePosition(true))
-
-	if mouse_pos.X > err_bounding_x and mouse_pos.X < Isaac.GetScreenWidth() - err_bounding_x and mouse_pos.Y < 18 then
-		mouse.Color = Color(1, 0.5, 0.5, err_hud_opacity)
-		if Input.IsMouseBtnPressed(Mouse.MOUSE_BUTTON_1) then
-			ImGui.Show()
-		end
-	end
-
-	if mousecontrol_off then
-		mouse:Render(mouse_pos)
-	end
-
-	if ImGui.IsVisible() then UnlinkCallbacks() end
-end
-
-local function RenderErrTextCB()
-	if err_shader_opacity > 0 then err_shader_opacity = err_shader_opacity - (1 / ERR_INPUT_TARGET) end
-	RenderErrText(err_modName, err_shader_opacity)
-end
-
-UnlinkCallbacks = function()
-	errdisp:RemoveCallback(ModCallbacks.MC_HUD_RENDER, RenderErrHudCB)
-	errdisp:RemoveCallback(ModCallbacks.MC_GET_SHADER_PARAMS, RenderErrTextCB)
-end
-
 
 local function imGuiError(errortext)
 	local windowId = "ErrorDisplayWindow"
@@ -795,9 +725,6 @@ local function imGuiError(errortext)
 	end
 	ImGui.SetVisible(windowId, true)
 end
-
-local err_dupecount = 1
-
 
 local function logError(callbackID, modName, err)
 	--[[ In order to squash multiple instances of an error into one line,
@@ -847,21 +774,8 @@ local function logError(callbackID, modName, err)
 	Isaac.DebugString('Error in "' .. cbName .. '" call from "' .. modName .. '": ' .. err) -- this should be replaced with a proper log function so it can have the [INFO] header
 
 	if not err_shown then
-		errdisp = RegisterMod("REPENTOGON Error Display", 1)
-		err_modName = modName;
-		err_main_font:Load("font/pftempestasevencondensed.fnt")
-		err_min_font:Load("font/luaminioutlined.fnt")
-
-		mouse:Load("gfx/ui/cursor.anm2", true)
-		mouse:Play("Idle")
-		mousecontrol_off = not Options.MouseControl --i bet its expensive to straight up call this every frame
-
 		imGuiError(consoleLog)
-
-		errdisp:AddPriorityCallback(ModCallbacks.MC_HUD_RENDER, INT_MIN, RenderErrHudCB)
-
-		errdisp:AddPriorityCallback(ModCallbacks.MC_GET_SHADER_PARAMS, INT_MIN, RenderErrTextCB)
-
+		RaiseModError(modName)
 		err_shown = true
 	end
 end
@@ -1239,11 +1153,17 @@ local function RemoveAllCallbacksIf(callbackID, removeConditionFunc)
 	if callbackData and RemoveCallbacksIf(callbackData.ALL, removeConditionFunc, true) then
 		RemoveCallbacksIf(callbackData.COMMON, removeConditionFunc, false)
 		for param, paramCallbacks in pairs(callbackData.PARAM) do
-			RemoveCallbacksIf(paramCallbacks, removeConditionFunc, false)
+			if RemoveCallbacksIf(paramCallbacks, removeConditionFunc, false) and #paramCallbacks == 0 then
+				callbackData.PARAM[param] = nil
+			end
 		end
-		if #callbackData.ALL == 0 and type(callbackID) == "number" then
-			-- No more functions left, disable this callback
-			Isaac.SetBuiltInCallbackState(callbackID, false)
+		if #callbackData.ALL == 0 then
+			if type(callbackID) == "number" then
+				-- No more functions left, disable this callback
+				Isaac.SetBuiltInCallbackState(callbackID, false)
+			else
+				Callbacks[callbackID] = nil
+			end
 		end
 		return true
 	end
@@ -1726,6 +1646,8 @@ local CustomRunCallbackLogic = {
 	[ModCallbacks.MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM] = RunAccumulateReturnTableCallback,
 	[ModCallbacks.MC_PRE_ADD_COLLECTIBLE] = RunPreAddCollectibleCallback,
 	[ModCallbacks.MC_PRE_ADD_TRINKET] = RunPreAddTrinketCallback,
+	[ModCallbacks.MC_POST_ADD_COLLECTIBLE] = RunNoReturnCallback,
+	[ModCallbacks.MC_PLAYER_GET_HEART_LIMIT] = RunAdditiveSecondArgCallback,
 }
 
 for _, callback in ipairs({
@@ -1944,9 +1866,69 @@ end
 LuaWrappersToRemove = nil
 
 
-pcall(require("repentogon_extras/changelog"))
-pcall(require("repentogon_extras/daily_stats"))
-pcall(require("repentogon_extras/stats_menu"))
-pcall(require("repentogon_extras/bestiary_menu"))
--- pcall(require("repentogon_extras/onlinestub")) let's not load it
-pcall(require("repentogon_extras/mods_menu_tweaks"))
+pcall(require, "repentogon_extras/changelog")
+pcall(require, "repentogon_extras/daily_stats")
+pcall(require, "repentogon_extras/stats_menu")
+pcall(require, "repentogon_extras/bestiary_menu")
+-- pcall(require, "repentogon_extras/onlinestub") let's not load it
+pcall(require, "repentogon_extras/mods_menu_tweaks")
+
+---@type boolean, REPENTOGON._Internals.ESSM
+local essmSuccess, ESSM = pcall(include, "repentogon_extras.entity_save_state_manager")
+if not essmSuccess then
+	error(string.format("[ERROR] Failed to load ESSM script: %s", ESSM))
+end
+
+local ESSM_OnNewEntity = ESSM._OnNewEntity
+local ESSM_OnDeleteEntity = ESSM._OnDeleteEntity
+
+---@class REPENTOGON._LuaBindings
+---@field ESSM REPENTOGON._LuaBindings.ESSM
+---@field EntityLifecycle REPENTOGON._LuaBindings.EntityLifecycle
+
+---@class REPENTOGON._LuaBindings.ESSM
+---@field StoreEntity fun(entityId: integer, saveStateId: integer)
+---@field RestoreEntity fun(entityId: integer, saveStateId: integer)
+---@field ClearStates fun(saveStateIds: integer[])
+---@field CopyStates fun(sourceIds: integer[], destIds: integer[]) -- sourceIds and destIds must have the same size
+---@field Serialize fun(idMap: table<integer, integer>, fileName: string, checksum: integer) -- first integer is the serializationId, second integer is the actualId
+---@field PreDeserialize fun(mods: ModReference[], modIds: string[]) -- list mods that have data that could be deserialized
+---@field Deserialize fun(serializedIds: integer[], destIds: integer[], fileName: string, checksum: integer) -- serializedIds and destIds must have the same size
+
+---@class REPENTOGON._LuaBindings.EntityLifecycle
+---@field NewEntity fun(entityId: integer)
+---@field DeleteEntity fun(entityId: integer)
+
+---@type REPENTOGON._LuaBindings.EntityLifecycle
+local _EntityLifecycle = {
+	NewEntity = function (entityId)
+		ESSM_OnNewEntity(entityId)
+	end,
+	DeleteEntity = function (entityId)
+		ESSM_OnDeleteEntity(entityId)
+	end,
+}
+
+---@type REPENTOGON._LuaBindings.ESSM
+local _ESSM = {
+	StoreEntity = ESSM._OnStoreEntity,
+	RestoreEntity = ESSM._OnRestoreEntity,
+	ClearStates = ESSM._OnClearSaveStates,
+	CopyStates = ESSM._OnCopySaveStates,
+	Serialize = ESSM._Serialize,
+	PreDeserialize = ESSM._PreDeserialize,
+	Deserialize = ESSM._Deserialize,
+}
+
+---@type REPENTOGON._LuaBindings
+_LuaBindings = {
+	EntityLifecycle = _EntityLifecycle,
+	ESSM = _ESSM,
+}
+
+EntitySaveStateManager = {
+	GetEntityData = ESSM.GetEntityData,
+	GetEntitySaveStateData = ESSM.GetEntitySaveStateData,
+	TryGetEntityData = ESSM.TryGetEntityData,
+	TryGetEntitySaveStateData = ESSM.TryGetEntitySaveStateData,
+}

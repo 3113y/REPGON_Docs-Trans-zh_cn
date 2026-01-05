@@ -7,8 +7,11 @@ tags:
 ## Modified Constructors
 
 ### Sprite () {: aria-label='Modified Constructors' }
-#### [Sprite](Sprite.md),bool Sprite ( string ANM2Path, bool LoadGraphics = true ) {: .copyable aria-label='Modified Constructors' }
-添加了两个可选参数，该函数现在返回两个值：[Sprite](Sprite.md) 对象和一个布尔值，用于表示精灵是否成功加载。
+#### [Sprite](Sprite.md),boolean Sprite ( string ANM2Path, boolean LoadGraphics = true ) {: .copyable aria-label='Modified Constructors' }
+
+Added two optional arguments, the function now returns two values: [Sprite](Sprite.md) object and the boolean signifying whether the sprite was loaded successfully or not.
+___
+## Modified Functions
 
 ### ReplaceSpritesheet () {: aria-label='Modified Functions' }
 #### void ReplaceSpritesheet ( int LayerId, string PngFilename, boolean LoadGraphics = false ) {: .copyable aria-label='Modified Functions' }

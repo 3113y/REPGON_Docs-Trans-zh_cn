@@ -16,16 +16,17 @@ ___
 #### int GetExplosionCountdown ( ) {: .copyable aria-label='Functions' }
 
 ___
-### GetFallingSpeed () {: aria-label='Functions' }
-#### float GetFallingSpeed ( ) {: .copyable aria-label='Functions' }
+### GetFallAcceleration () {: aria-label='Functions' }
+#### float GetFallAcceleration ( ) {: .copyable aria-label='Functions' }
 
 ___
-### GetHeight () {: aria-label='Functions' }
-#### float GetHeight ( ) {: .copyable aria-label='Functions' }
+### GetFallSpeed () {: aria-label='Functions' }
+#### float GetFallSpeed ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetHitList () {: aria-label='Functions' }
 #### int[] GetHitList ( ) {: .copyable aria-label='Functions' }
+Returns an array of hit entities using their [Index](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#index) field.
 
 ___
 ### GetRocketAngle () {: aria-label='Functions' }
@@ -52,12 +53,12 @@ ___
 返回该炸弹是否是通过天使棱镜效果创建的。
 
 ___
-### SetFallingSpeed () {: aria-label='Functions' }
-#### void SetFallingSpeed ( float Speed ) {: .copyable aria-label='Functions' }
+### SetFallAcceleration () {: aria-label='Functions' }
+#### void SetFallAcceleration ( float Acceleration ) {: .copyable aria-label='Functions' }
 
 ___
-### SetHeight () {: aria-label='Functions' }
-#### void SetHeight ( float Height ) {: .copyable aria-label='Functions' }
+### SetFallSpeed () {: aria-label='Functions' }
+#### void SetFallSpeed ( float Speed ) {: .copyable aria-label='Functions' }
 
 ___
 ### SetLoadCostumes () {: aria-label='Functions' }

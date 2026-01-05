@@ -248,6 +248,20 @@ LUA_FUNCTION(Lua_GetNeighboringRooms) {
 	return 1;
 }
 
+LUA_FUNCTION(Lua_GetTaintedKeeperCoinSpawns) {
+	RoomDescriptor* roomDesc = lua::GetLuabridgeUserdata<RoomDescriptor*>(L, 1, lua::Metatables::ROOM_DESCRIPTOR, "RoomDescriptor");
+
+	lua_pushinteger(L, roomDesc->TKeeperCoinSpawns);
+	return 1;
+}
+
+LUA_FUNCTION(Lua_SetTaintedKeeperCoinSpawns) {
+	RoomDescriptor* roomDesc = lua::GetLuabridgeUserdata<RoomDescriptor*>(L, 1, lua::Metatables::ROOM_DESCRIPTOR, "RoomDescriptor");
+
+	roomDesc->TKeeperCoinSpawns = (short)luaL_checkinteger(L, 2);
+	return 0;
+}
+
 static void RegisterRoomDescriptorMethods(lua_State* L) {
 	luaL_Reg functions[] = {
 		{ "GetEntitiesSaveState", Lua_GetEntitiesSaveState },
@@ -258,6 +272,8 @@ static void RegisterRoomDescriptorMethods(lua_State* L) {
 		{ "InitSeeds", Lua_InitSeeds },
 		{ "GetDimension", Lua_GetDimension },
 		{ "GetNeighboringRooms", Lua_GetNeighboringRooms },
+		{ "GetTaintedKeeperCoinSpawns", Lua_GetTaintedKeeperCoinSpawns },
+		{ "SetTaintedKeeperCoinSpawns", Lua_SetTaintedKeeperCoinSpawns },
 		{ NULL, NULL }
 	};
 	lua::RegisterFunctions(L, lua::Metatables::ROOM_DESCRIPTOR, functions);

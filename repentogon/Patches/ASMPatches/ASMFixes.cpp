@@ -104,6 +104,7 @@ static void fix_handle_collisions_playeronly_entity_class(const char* signature,
 static void fix_try_remove_smelted_trinket()
 {
     void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::TryRemoveSmeltedTrinketIdCheck);
+    ZHL::Log("[REPENTOGON] Patching TryRemoveSmeltedTrinket TrinketType check @ %p\n", addr);
     ASMPatch patch;
     ByteBuffer buffer;
     buffer.AddByte('\x90', 8);
@@ -117,11 +118,93 @@ static void fix_try_remove_smelted_trinket()
 static void fix_force_add_pill_effect()
 {
     void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::ForceAddPillEffectIdCheck);
+    ZHL::Log("[REPENTOGON] Patching ForceAddPillEffect PillEffect check @ %p\n", addr);
     ASMPatch patch;
     ByteBuffer buffer;
     buffer.AddByte('\x90', 9);
     patch.AddBytes(buffer);
     sASMPatcher.FlatPatch(addr, &patch, true);
+}
+
+// Fix handling of invalid PillColors in a few places (the game sometimes treats them as a Gold Pill instead of just skipping/ignoring them).
+static void fix_render_pocket_item_pill_identified_check()
+{
+    void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::RenderPocketItemPillIdentifiedCheck);
+    ZHL::Log("[REPENTOGON] Patching RenderPocketItem identified PillColor check @ %p\n", addr);
+    ASMPatch patch;
+    patch.AddBytes("\x3B\xC1")  // CMP EAX,ECX
+        .CopyRegister(ASMPatch::Registers::ECX, ASMPatch::Registers::EAX)
+        .AddConditionalRelativeJump(ASMPatcher::CondJumps::JA, (char*)addr + 0x13)  // Skip
+        .AddRelativeJump((char*)addr + 0x5);
+    sASMPatcher.PatchAt(addr, &patch);
+}
+static void fix_use_pill_identify_pill()
+{
+    void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::UsePillIdentifyPill);
+    ZHL::Log("[REPENTOGON] Patching UsePill PillColor identification @ %p\n", addr);
+    ASMPatch patch;
+    patch.AddBytes("\x3B\xC8")  // CMP ECX,EAX
+        .CopyRegister(ASMPatch::Registers::EAX, ASMPatch::Registers::ECX)
+        .AddConditionalRelativeJump(ASMPatcher::CondJumps::JA, (char*)addr + 0xD)  // Skip
+        .AddRelativeJump((char*)addr + 0x5);
+    sASMPatcher.PatchAt(addr, &patch);
+}
+static void fix_itempool_getpilleffect()
+{
+    void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::ItemPoolGetPillEffect);
+
+    ZHL::Log("[REPENTOGON] Patching ItemPool::GetPillEffect @ %p\n", addr);
+
+    ASMPatch patch;
+    patch.Push(ASMPatch::Registers::EAX)
+        .MoveImmediate(ASMPatch::Registers::EAX, PILLEFFECT_NULL, true)
+        .AddBytes("\x83\xFE").AddBytes(ASMPatch::ToHexString((int8_t)NUM_PILLS))  // CMP ESI,NUM_PILLS
+        .AddBytes("\x0F\x43\xF0")  // CMOVAE ESI,EAX
+        .Pop(ASMPatch::Registers::EAX)
+        .AddConditionalRelativeJump(ASMPatcher::CondJumps::JAE, (char*)addr + 0x7)  // Jump for invalid PillColor
+        .AddBytes(ByteBuffer().AddAny((char*)addr, 0x7))  // Place corresponding PillEffect in ESI
+        .AddRelativeJump((char*)addr + 0x7);
+    sASMPatcher.PatchAt(addr, &patch);
+}
+
+static void __stdcall asm_log_failed_item_pool_read()
+{
+    KAGE::_LogMessage(2, "Failed to read item pool data from gamestate \n");
+}
+
+/**
+ * 
+ */
+
+/** This patch aims to fix a problem when reading the game state caused by a missing check.
+ *  Currently if the method that reads ItemPool data fails, parsing continues as if it succeeded
+ *  causing the parser to misinterpret the rest of the data.
+ * 
+ *  In practice, this problem only seems to occur when disabling mods that registered trinkets.
+ */
+static void fix_game_state_read_missing_item_pool_fail_check()
+{
+    intptr_t addr = (intptr_t)sASMDefinitionHolder->GetDefinition(&AsmDefinitions::GameState_Read_ItemPoolRead);
+    ZHL::Log("[REPENTOGON] Patching GameState::read @ %p\n", addr);
+
+    intptr_t return_addr = (intptr_t)sASMDefinitionHolder->GetDefinition(&AsmDefinitions::GameState_Read_Return);
+    ASMPatch patch;
+
+    intptr_t resumeAddr = addr + 5;
+    constexpr size_t RESTORED_BYTES = 5;
+
+    intptr_t callAddr = addr;
+    int32_t call_rel32 = *(int32_t*)(callAddr + 1);
+    intptr_t calleeAddress = callAddr + 5 + call_rel32;
+
+    patch.AddInternalCall((void*)calleeAddress) // restore call to assign
+        .AddBytes("\x84\xC0") // TEST AL, AL
+        .AddConditionalRelativeJump(ASMPatcher::CondJumps::JNZ, (void*)resumeAddr)
+        .AddInternalCall(asm_log_failed_item_pool_read)
+        .AddBytes("\x32\xC0") // XOR AL, AL
+        .AddRelativeJump((void*)return_addr);
+
+    sASMPatcher.PatchAt((void*)addr, &patch);
 }
 
 void ASMFixes()
@@ -131,4 +214,8 @@ void ASMFixes()
     fix_handle_collisions_playeronly_entity_class("83f80174??83f901", "Entity::handle_collisions");
     fix_try_remove_smelted_trinket();
     fix_force_add_pill_effect();
+    fix_render_pocket_item_pill_identified_check();
+    fix_use_pill_identify_pill();
+    fix_itempool_getpilleffect();
+    fix_game_state_read_missing_item_pool_fail_check();
 }

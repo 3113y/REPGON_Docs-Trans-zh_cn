@@ -9,8 +9,8 @@
 // By default, the void path is "rooms/01.Basement.xml" which is not ideal!
 // Redirect to "rooms/26.The Void_ex.xml" since the game already has a "rooms/26.The Void.xml" that hasn't been tested.
 HOOK_METHOD(RoomConfig, LoadStageBinary, (unsigned int Stage, unsigned int Mode) -> void) {
-	if (Stage == 26 && g_Game->GetRoomConfig()->_stages[26]._rooms[Mode]._filepath == "rooms/01.Basement.xml")
-		g_Game->GetRoomConfig()->_stages[26]._rooms[Mode]._filepath = "rooms/26.The Void_ex.xml";
+	if (Stage == STB_THE_VOID && g_Game->GetRoomConfig()->_stages[STB_THE_VOID]._rooms[Mode]._filepath == "rooms/01.Basement.xml")
+		g_Game->GetRoomConfig()->_stages[STB_THE_VOID]._rooms[Mode]._filepath = "rooms/26.The Void_ex.xml";
 	super(Stage, Mode);
 }
 
@@ -153,7 +153,7 @@ void EcoMode_toggle_qos(bool eco_state) {
 bool EcoMode_old_state = 0;
 HOOK_METHOD(Manager, Render, (void)->void) {
 	if (repentogonOptions.ecoMode) {
-		HWND hwnd = (HWND)__ptr_g_KAGE_Graphics_Manager->_unk_HWND->HWND;
+		HWND hwnd = (HWND)__ptr_g_KAGE_Graphics_Manager->_window->HWND;
 		bool EcoMode_new_state = IsIconic(hwnd);
 //		EcoMode_new_state = GetForegroundWindow() != hwnd;
 		if ((EcoMode_new_state ^ EcoMode_old_state) == 1) {

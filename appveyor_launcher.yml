@@ -1,0 +1,48 @@
+version: 1.0.{build}
+only_commits:
+  message: "chore: release"
+image: Visual Studio 2019
+build_script:
+- ps: |
+    echo "> git --version"
+    git --version
+    echo "> git submodule update --init --recursive"
+    git submodule update --init --recursive
+    echo "> dir"
+    dir
+    echo "> cd Launcher"
+    cd Launcher
+    echo "> $version = Get-Content version.txt -Raw"
+    $version = Get-Content version.txt -Raw
+    echo "> cmake -G \"Visual Studio 16 2019\" -A \"Win32\" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_LAUNCHER_VERSION=\"$version\""
+    cmake -G "Visual Studio 16 2019" -A "Win32" -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_LAUNCHER_VERSION="$version"
+    echo "> cmake --build build --config Release"
+    cmake --build build --config Release
+    echo "> cd build/Release"
+    cd build/Release
+    echo "> dir"
+    dir
+    echo "> mkdir artifact"
+    mkdir artifact
+    echo "> mv *.dll REPENTOGONLauncher.exe artifact"
+    mv *.dll,REPENTOGONLauncher.exe,steam_appid.txt,REPENTOGONLauncherUpdater.exe artifact
+    echo "> mv patch artifact"
+    mv patch artifact
+    echo "> cd artifact"
+    cd artifact
+    echo "> dir"
+    dir
+    echo "> & \"C:\Program Files\7-Zip\7z.exe\" a -tzip -o\"..\" \"REPENTOGONLauncher.zip\" \".\" -aoa"
+    & "C:\Program Files\7-Zip\7z.exe" a -tzip -o".." "REPENTOGONLauncher.zip" "." -aoa
+    echo "> Push-AppveyorArtifact REPENTOGONLauncher.zip"
+    Push-AppveyorArtifact REPENTOGONLauncher.zip
+
+deploy:
+- provider: Webhook
+  url: https://app.signpath.io/API/v1/b3b61b76-b26e-4cfd-9b51-bb56d66476fa/Integrations/AppVeyor?ProjectSlug=REPENTOGON&SigningPolicySlug=release-signing&ArtifactConfigurationSlug=Launcher
+  authorization:
+     secure: 9Q8HEL1yf+Yo/1rmKdb7kZLMb7xDvWOmnOH2GjF5vYdHDj0w9Xfdu0xtQ3h/q9TR02ImSrIoyiYj/CsZPXUaoQ==
+
+
+
+

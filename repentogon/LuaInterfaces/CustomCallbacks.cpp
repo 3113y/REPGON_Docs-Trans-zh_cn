@@ -15,17 +15,27 @@
 #include "../Patches/MainMenuBlock.h"
 #include "../Patches/XMLData.h"
 #include "../Patches/EntityPlus.h"
+#include "ASMPatcher.hpp"
+#include "ASMDefinition.h"
+#include "CustomCallbacks.h"
 
 //Callback tracking for optimizations
 std::bitset<500> CallbackState;  // For new REPENTOGON callbacks. I dont think we will add 500 callbacks but lets set it there for now
 std::bitset<75> VanillaCallbackState;  // For vanilla callbacks & reimplementations of them.
 HOOK_STATIC(Isaac,SetBuiltInCallbackState, (const int callbackid, bool enable)-> void, __cdecl){
-	if (callbackid > 1000) {
-		CallbackState.set(callbackid - 1000, enable);
+	size_t id = static_cast<size_t>(callbackid);
+
+	if (id < VanillaCallbackState.size())
+	{
+		VanillaCallbackState.set(id, enable);
+		super(id, enable);
+		return;
 	}
-	else {
-		VanillaCallbackState.set(callbackid, enable);
-		super(callbackid, enable);
+
+	id = id - 1000;
+	if (id < CallbackState.size())
+	{
+		CallbackState.set(id, enable);
 	}
 }
 
@@ -2140,8 +2150,23 @@ HOOK_METHOD(Entity_Player, RenderBody, (Vector* x) -> void) {
 	postrenderbodyhead(1046, this, x);
 }
 
-//PRE_ROOM_TRIGGER_CLEAR (id: 1068)
-HOOK_METHOD(Room, TriggerClear, (bool playSound) -> void) {
+void ProcessPostTriggerRoomClear(bool silent) {
+	const int callbackid = 1143;
+	if (CallbackState.test(callbackid - 1000)) {
+		lua_State* L = g_LuaEngine->_state;
+		lua::LuaStackProtector protector(L);
+
+		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+
+		lua::LuaResults result = lua::LuaCaller(L).push(callbackid)
+			.pushnil()
+			.push(silent)
+			.call(1);
+	}
+}
+
+//PRE/POST_ROOM_TRIGGER_CLEAR (id: 1068 / 1143)
+HOOK_METHOD(Room, TriggerClear, (bool silent) -> void) {
 	const int callbackid = 1068;
 	if (CallbackState.test(callbackid - 1000)) {
 		lua_State* L = g_LuaEngine->_state;
@@ -2151,13 +2176,14 @@ HOOK_METHOD(Room, TriggerClear, (bool playSound) -> void) {
 
 		lua::LuaResults result = lua::LuaCaller(L).push(callbackid)
 			.pushnil()
-			.push(playSound)
+			.push(silent)
 			.call(1);
 	}
-	super(playSound);
+	super(silent);
+	ProcessPostTriggerRoomClear(silent);
 }
 
-//PRE_PLAYER_TRIGGER_ROOM_CLEAR (id: 1069)
+//PRE/POST_PLAYER_TRIGGER_ROOM_CLEAR (id: 1069 / 1138)
 HOOK_METHOD(Entity_Player, TriggerRoomClear, () -> void) {
 	const int callbackid = 1069;
 	if (CallbackState.test(callbackid - 1000)) {
@@ -2765,8 +2791,8 @@ HOOK_METHOD(Room, RenderGridLight, (GridEntity* grid, Vector& offset) -> void) {
 	super(grid, offset);
 }
 
-//MC_PRE_ENTITY_LIGHTING_RENDER
-HOOK_METHOD(Room, RenderEntityLight, (Entity* ent, Vector& offset) -> void) {
+static bool MC_PRE_ENTITY_LIGHT_RENDER(Entity* ent, Vector& offset)
+{
 	const int callbackid = 1152;
 	if (CallbackState.test(callbackid - 1000)) {
 		lua_State* L = g_LuaEngine->_state;
@@ -2783,7 +2809,7 @@ HOOK_METHOD(Room, RenderEntityLight, (Entity* ent, Vector& offset) -> void) {
 		if (!result) {
 			if (lua_isboolean(L, -1)) {
 				if (!lua_toboolean(L, -1)) {
-					return;
+					return true;
 				}
 			}
 			else if (lua_isuserdata(L, -1)) {
@@ -2791,6 +2817,22 @@ HOOK_METHOD(Room, RenderEntityLight, (Entity* ent, Vector& offset) -> void) {
 			}
 		}
 	}
+
+	return false;
+}
+
+//MC_PRE_ENTITY_LIGHTING_RENDER
+HOOK_METHOD(Room, RenderEntityLight, (Entity* ent, Vector& offset) -> void) {
+	
+	ANM2::StartLightRendering();
+	bool skip = MC_PRE_ENTITY_LIGHT_RENDER(ent, offset);
+	ANM2::EndLightRendering();
+
+	if (skip)
+	{
+		return;
+	}
+
 	super(ent, offset);
 }
 
@@ -2877,8 +2919,26 @@ HOOK_METHOD(Music, PlayJingle, (int musicId, int unusedInt, bool unusedBool) -> 
 	super(musicId, unusedInt, unusedBool);
 }
 
+enum class eTriggerCollectibleRemovedFlags
+{
+	FLAG_REMOVE_FROM_PLAYER_FORM = 0,
+	FLAG_WISP = 1,
+
+	NUM_FLAGS
+};
+
+static constexpr uint32_t MC_TCR_FLAG_REMOVE_FROM_PLAYER_FORM = (uint32_t)eTriggerCollectibleRemovedFlags::FLAG_REMOVE_FROM_PLAYER_FORM;
+static constexpr uint32_t MC_TCR_FLAG_WISP = (uint32_t)eTriggerCollectibleRemovedFlags::FLAG_WISP;
+static constexpr uint32_t MC_TCR_NUM_FLAGS = (uint32_t)eTriggerCollectibleRemovedFlags::NUM_FLAGS;
+
+static constexpr std::bitset<MC_TCR_NUM_FLAGS> DEFAULT_TRIGGER_COLLECTIBLE_REMOVED_CONTEXT = 1 << MC_TCR_FLAG_REMOVE_FROM_PLAYER_FORM;
+static auto s_TriggerCollectibleRemovedContext = DEFAULT_TRIGGER_COLLECTIBLE_REMOVED_CONTEXT;
+
 //POST_TRIGGER_COLLECTIBLE_REMOVED (1095) 
 HOOK_METHOD(Entity_Player, TriggerCollectibleRemoved, (unsigned int collectibleID) -> void) {
+	const auto flags = s_TriggerCollectibleRemovedContext;
+	s_TriggerCollectibleRemovedContext = DEFAULT_TRIGGER_COLLECTIBLE_REMOVED_CONTEXT;
+
 	super(collectibleID);
 	const int callbackid = 1095;
 	if (CallbackState.test(callbackid - 1000)) {
@@ -2891,8 +2951,55 @@ HOOK_METHOD(Entity_Player, TriggerCollectibleRemoved, (unsigned int collectibleI
 			.push(collectibleID)
 			.push(this, lua::Metatables::ENTITY_PLAYER)
 			.push(collectibleID)
+			.push(flags.test(MC_TCR_FLAG_REMOVE_FROM_PLAYER_FORM))
+			.push(flags.test(MC_TCR_FLAG_WISP))
 			.call(1);
 	}
+}
+
+// __fastcall to simulate __thiscall
+static void __fastcall asm_add_remove_collectible_context(Entity_Player& player, bool removeFromPlayerForm, uint32_t collectibleID)
+{
+	s_TriggerCollectibleRemovedContext.reset();
+	s_TriggerCollectibleRemovedContext.set(MC_TCR_FLAG_REMOVE_FROM_PLAYER_FORM, removeFromPlayerForm);
+	player.TriggerCollectibleRemoved(collectibleID);
+}
+
+static void Patch_PlayerRemoveCollectible_TriggerCollectibleRemoved()
+{
+	intptr_t addr = (intptr_t)sASMDefinitionHolder->GetDefinition(&AsmDefinitions::EntityPlayer_RemoveCollectible_TriggerCollectibleRemoved);
+	ZHL::Log("[REPENTOGON] Patching Entity_Player::RemoveCollectible for MC_POST_TRIGGER_COLLECTIBLE_REMOVED at %p\n", addr);
+
+	ASMPatch patch;
+
+	intptr_t resumeAddr = addr + 5;
+	constexpr size_t REMOVE_FROM_PLAYER_FORM_PARAM_NUMBER = 4;
+	constexpr size_t REMOVE_FROM_PLAYER_FORM_EBP_OFFSET = REMOVE_FROM_PLAYER_FORM_PARAM_NUMBER * 4 + 4; // stack offset + function prologue
+
+	patch.MoveFromMemory(ASMPatch::Registers::EBP, REMOVE_FROM_PLAYER_FORM_EBP_OFFSET, ASMPatch::Registers::EDX)
+		.AddInternalCall(asm_add_remove_collectible_context)
+		.AddRelativeJump((void*)resumeAddr);
+
+	sASMPatcher.PatchAt((void*)addr, &patch);
+}
+
+// __fastcall to simulate __thiscall
+static void __fastcall asm_add_remove_wisp_collectible_context(Entity_Player& player, void* unused_EDX, uint32_t collectibleID)
+{
+	s_TriggerCollectibleRemovedContext.reset();
+	s_TriggerCollectibleRemovedContext.set(MC_TCR_FLAG_WISP, true);
+	player.TriggerCollectibleRemoved(collectibleID);
+}
+
+static void Patch_PlayerRecomputeWispCollectibles_TriggerCollectibleRemoved()
+{
+	intptr_t addr = (intptr_t)sASMDefinitionHolder->GetDefinition(&AsmDefinitions::EntityPlayer_RecomputeWispCollectibles_TriggerCollectibleRemoved);
+	ZHL::Log("[REPENTOGON] Patching Entity_Player::RecomputeWispCollectibles for MC_POST_TRIGGER_COLLECTIBLE_REMOVED at %p\n", addr);
+
+	ASMPatch patch;
+	patch.AddInternalCall(asm_add_remove_wisp_collectible_context);
+
+	sASMPatcher.FlatPatch((void*)addr, &patch);
 }
 
 //POST_TRIGGER_TRINKET_ADDED (1096) 
@@ -4478,7 +4585,7 @@ static int get_glowing_hourglass_slot(GameState* gameState) { //g_Game->_current
 }
 
 //PRE/POST_GLOWING_HOURGLASS_SAVE (1300 - 1302)
-HOOK_METHOD(Game, SaveState, (GameState* gameState) -> void) {
+HOOK_METHOD_PRIORITY(Game, SaveState, -100, (GameState* gameState) -> void) {
 	int currentSlot = get_glowing_hourglass_slot(gameState);
 
 	const int preCallbackId = 1302;
@@ -4516,7 +4623,7 @@ HOOK_METHOD(Game, SaveState, (GameState* gameState) -> void) {
 }
 
 //PRE/POST_GLOWING_HOURGLASS_LOAD (1301 - 1303)
-HOOK_METHOD(Game, RestoreState, (GameState* gameState, bool startGame) -> void) {
+HOOK_METHOD_PRIORITY(Game, RestoreState, -100, (GameState* gameState, bool startGame) -> void) {
 	int currentSlot = get_glowing_hourglass_slot(gameState);
 
 	if (currentSlot != -1)
@@ -4723,7 +4830,7 @@ HOOK_METHOD(Entity, SetColor, (ColorMod* color, int duration, int priority, bool
 		lua::LuaResults result = lua::LuaCaller(L).push(postCallbackId)
 			.push(this->_type)
 			.push(this, lua::Metatables::ENTITY)
-			.push(color)
+			.push(color, lua::Metatables::COLOR)
 			.push(duration)
 			.push(priority)
 			.push(fadeOut)
@@ -5350,7 +5457,7 @@ HOOK_METHOD(ItemOverlay, Render, () -> void) {
 
 }
 
-// MC_PRE_OPEN_CHEST/MC_POST_OPEN_CHEST (1491, 1491)
+// MC_PRE_OPEN_CHEST/MC_POST_OPEN_CHEST (1491, 1492)
 HOOK_METHOD(Entity_Pickup, TryOpenChest, (Entity_Player* player) -> bool) {
 	const int preCallbackId = 1491;
 	const int postCallbackId = 1492;
@@ -5551,4 +5658,119 @@ HOOK_STATIC(Entity_Tear, ApplyTearFlagEffects, (Entity* entity, Vector* pos, Bit
 		}
 		caller.push(damage).call(1);
 	}
+}
+
+//MC_POST_DISCHARGE_ACTIVE_ITEM (1140)
+HOOK_METHOD(Entity_Player, DischargeActiveItem, (unsigned int slot, bool collectilbeRemoved) -> void) {
+	super(slot, collectilbeRemoved);
+
+	const int callbackid = 1140;
+
+	if (CallbackState.test(callbackid - 1000)) {
+		lua_State* L = g_LuaEngine->_state;
+		lua::LuaStackProtector protector(L);
+
+		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+
+		lua::LuaResults results = lua::LuaCaller(L).push(callbackid)
+			.push(_activeDesc[slot]._item)
+			.push(_activeDesc[slot]._item)
+			.push(collectilbeRemoved)
+			.push(this, lua::Metatables::ENTITY_PLAYER)
+			.push(slot)
+			.call(1);
+	}
+}
+
+//GET_PILL_EFFECT reimplementation (id: 65)
+HOOK_METHOD(ItemPool, GetPillEffect, (unsigned int pillColor, Entity_Player* player) -> int) {
+	int selectedPillEffect = super(pillColor, player);
+	const int callbackid = 65;
+	if (VanillaCallbackState.test(callbackid)) {
+		lua_State* L = g_LuaEngine->_state;
+		lua::LuaStackProtector protector(L);
+
+		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+
+		lua::LuaResults result = lua::LuaCaller(L).push(callbackid)
+			.push(selectedPillEffect)
+			.push(selectedPillEffect)
+			.push(pillColor & PILL_COLOR_MASK)
+			.push(player, lua::Metatables::ENTITY_PLAYER)
+			.call(1);
+
+		if (!result) {
+			if (lua_isinteger(L, -1)) {
+				const int resultEffect = (int)lua_tointeger(L, -1);
+				if (resultEffect != -1) {
+					selectedPillEffect = resultEffect;
+				}
+			}
+		}
+	}
+	return selectedPillEffect;
+}
+
+//nuke GET_PILL_EFFECT original implementation
+HOOK_STATIC(LuaEngine, GetPillEffect, (int pillEffect, int pillColor) -> int, __stdcall) { return -1; }
+
+EntityRef* lastSource = nullptr;
+
+HOOK_METHOD(Entity, Kill, (EntityRef* source) -> void) {
+	lastSource = source;
+	super(source);
+	lastSource = nullptr;
+}
+
+//POST_ENTITY_KILL reimplementation (id: 68)
+HOOK_STATIC(LuaEngine, PostEntityKill, (Entity* ent) -> void, __stdcall) {
+	const int callbackid = 68;
+	if (VanillaCallbackState.test(callbackid)) {
+		lua_State* L = g_LuaEngine->_state;
+		lua::LuaStackProtector protector(L);
+
+		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+
+		lua::LuaResults result = lua::LuaCaller(L).push(callbackid)
+			.push(ent->_type)
+			.push(ent, lua::Metatables::ENTITY)
+			.push(lastSource, lua::Metatables::ENTITY_REF)
+			.call(1);
+	}
+}
+
+//MC_POST_PLAYER_DROP_TRINKET (id : 1144)
+HOOK_METHOD(Entity_Player, DropTrinket, (Vector* DropPos, bool ReplaceTick) -> Entity_Pickup*) {
+	Entity_Pickup* retTrinket = super(DropPos, ReplaceTick);
+
+	const int callbackid = 1144;
+
+	if (retTrinket && CallbackState.test(callbackid - 1000)) {
+		lua_State* L = g_LuaEngine->_state;
+		lua::LuaStackProtector protector(L);
+
+		lua_rawgeti(L, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
+
+		const int trinketID = retTrinket->_subtype;
+
+		bool isGoldenTrinket = (trinketID & TrinketType::TRINKET_GOLDEN_FLAG) > 0;
+		const int maskedTrinket = trinketID & TrinketType::TRINKET_ID_MASK;
+
+		lua::LuaResults results = lua::LuaCaller(L).push(callbackid)
+			.push(maskedTrinket)
+			.push(maskedTrinket)
+			.pushUserdataValue(*DropPos, lua::Metatables::VECTOR)
+			.push(this, lua::Metatables::ENTITY_PLAYER)
+			.push(isGoldenTrinket)
+			.push(ReplaceTick)
+			.call(1);
+	}
+
+	return retTrinket;
+}
+
+void CustomCallbacks::ApplyPatches()
+{
+	Patch_PlayerRemoveCollectible_TriggerCollectibleRemoved();
+	Patch_PlayerRecomputeWispCollectibles_TriggerCollectibleRemoved();
 }

@@ -69,8 +69,7 @@ ___
 ### GetWrapSMode () {: aria-label='Functions' }
 #### int GetWrapSMode ( ) {: .copyable aria-label='Functions' }
 ???+ info "Info"
-Returns the wrap mode for the `x` coordinate. See [this website](https://open.gl/textures) for a general overview.
-Enums for these are pending.
+    Enums for these are pending.
 
 ### GetWrapTMode () {: aria-label='Functions' }
 #### int GetWrapTMode ( ) {: .copyable aria-label='Functions' }
@@ -78,74 +77,11 @@ Enums for these are pending.
 Enums for these are pending.
 Returns the wrap mode for the `y` coordinate. See [this website](https://open.gl/textures) for a general overview.
 
-### HasCustomChampionShader () {: aria-label='Functions' }
-#### boolean HasCustomChampionShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-Returns true if the specified custom champion shader is currently loaded (see `SetCustomChampionShader` below). If no string is provided, returns true if ANY custom champion shader is applied.
-
-### HasCustomShader () {: aria-label='Functions' }
-#### boolean HasCustomShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-Returns true if the specified custom shader is currently loaded (see `SetCustomShader` below). If no string is provided, returns true if ANY custom shader is applied.
-
-### IsVisible () {: aria-label='Functions' }
-#### boolean IsVisible ( ) {: .copyable aria-label='Functions' }
-
-___
-### SetColor () {: aria-label='Functions' }
-#### void SetColor ( [Color](Color.md) Color ) {: .copyable aria-label='Functions' }
-
-___
-### SetCropOffset () {: aria-label='Functions' }
-#### void SetCropOffset ( [Vector](Vector.md) Offset ) {: .copyable aria-label='Functions' }
-
-___
-### SetCustomChampionShader () {: aria-label='Functions' }
-#### void SetCustomChampionShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-The custom champion shader will only be used by the game if the entity is actually a champion.
-Note that the custom shader must take the exact same inputs as the default `coloroffset_champion` shader the game uses (it has one additional input compared to `coloroffset`).
-Specify a custom champion shader file for this layer to use instead of the usual `coloroffset_champion` shader. Provided path is expected to start at `.../resources/` and to find both a .vs and .fs file at that location. For example: `layer:SetCustomChampionShader("shaders/my_shader")` will load `.../resources/shaders/my_shader.vs` and `.../resources/shaders/my_shader.fs`.
-
-### SetCustomShader () {: aria-label='Functions' }
-#### void SetCustomShader ( string ShaderPath ) {: .copyable aria-label='Functions' }
-Note that the custom shader must take the exact same inputs as the default `coloroffset` shader the game uses. The gold and dogma shaders also use the same inputs, and can be a good reference.
-Specify a custom shader file for this layer to use instead of the default `coloroffset` shader. Provided path is expected to start at `.../resources/` and to find both a .vs and .fs file at that location. For example: `layer:SetCustomShader("shaders/my_shader")` will load `.../resources/shaders/my_shader.vs` and `.../resources/shaders/my_shader.fs`.
-This custom shader will not be used by the game if the entity is a champion, or if it has the gold/dogma shader applied.
-
-### SetFlipX () {: aria-label='Functions' }
-#### void SetFlipX ( boolean Value ) {: .copyable aria-label='Functions' }
-
-___
-### SetFlipY () {: aria-label='Functions' }
-#### void SetFlipY ( boolean Value ) {: .copyable aria-label='Functions' }
-
-___
-### SetPos () {: aria-label='Functions' }
-#### void SetPos ( [Vector](Vector.md) Pos ) {: .copyable aria-label='Functions' }
-
-___
-### SetRenderFlags () {: aria-label='Functions' }
-#### void SetRenderFlags ( [AnimRenderFlags](enums/AnimRenderFlags.md) Flags ) {: .copyable aria-label='Functions' }
-
-___
-### SetRotation () {: aria-label='Functions' }
-#### void SetRotation ( float Rotation ) {: .copyable aria-label='Functions' }
-
-___
-### SetSize () {: aria-label='Functions' }
-#### void SetSize ( [Vector](Vector.md) Size ) {: .copyable aria-label='Functions' }
-
-___
-### SetVisible () {: aria-label='Functions' }
-#### void SetVisible ( boolean Visible ) {: .copyable aria-label='Functions' }
-
-___
-### SetWrapSMode () {: aria-label='Functions' }
-#### void SetWrapSMode ( int Mode ) {: .copyable aria-label='Functions' }
-???+ info "Info"
-Sets the wrap mode for the `x` coordinate. See [this website](https://open.gl/textures) for a general overview.
-Enums for these are pending.
+    Enums for these are pending.
 
 ### SetWrapTMode () {: aria-label='Functions' }
 #### void SetWrapTMode ( int Mode ) {: .copyable aria-label='Functions' }
 ???+ info "Info"
-Enums for these are pending.
-Sets the wrap mode for the `y` coordinate. See [this website](https://open.gl/textures) for a general overview.
+    Enums for these are pending.
+
+___

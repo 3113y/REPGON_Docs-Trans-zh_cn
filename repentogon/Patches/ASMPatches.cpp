@@ -4,6 +4,7 @@
 
 #include "../LuaInterfaces/LuaRender.h"
 #include "../SaveSyncing/SaveSyncing.h"
+#include "../LuaInterfaces/CustomCallbacks.h"
 
 #include "NullItemsAndCostumes.h"
 #include "CustomCache.h"
@@ -20,6 +21,11 @@
 #include "CardsExtras.h"
 #include "EvaluateStats.h"
 #include "XMLPlayerExtras.h"
+#include "ImagePatches.h"
+#include "MinimapPatches.h"
+#include "ExtraRenderSteps.h"
+#include "EntityLifecycle.h"
+#include "../SaveStateManagement/EntitySaveStateManagement.h"
 
 #include "ASMPatches/ASMBagOfCrafting.h"
 #include "ASMPatches/ASMCallbacks.h"
@@ -37,6 +43,7 @@
 #include "ASMPatches/ASMStatusEffects.h"
 #include "ASMPatches/ASMTweaks.h"
 #include "ASMPatches/ASMTweaks.h"
+#include "ASMPatches/ASMLocalization.h"
 #include "ASMPatches/ASMFixes.h"
 #include "ASMPatches/ASMSplitTears.h"
 #include "ASMPatches/ASMCamera.h"
@@ -161,6 +168,7 @@ void PerformASMPatches() {
 	ASMPatchConsoleRunCommand();
 
 	// Callbacks
+	CustomCallbacks::ApplyPatches();
 	PatchPreSampleLaserCollision();
 	PatchPreLaserCollision();
 	PatchPreEntityTakeDamageCallbacks();
@@ -213,6 +221,7 @@ void PerformASMPatches() {
 	// Level
 	ASMPatchBlueWombCurse();
 	ASMPatchVoidGeneration();
+	ASMPatchesForVoidExSubtype();
 	PatchSpecialQuest();
 	ASMPatchDealRoomVariants();
 	//PatchOverrideDataHandling();  // This was disabled prior to rep+, ignore it!
@@ -247,6 +256,7 @@ void PerformASMPatches() {
 	ASMPatchPlayerDeathSoundSoulOfLazarus();
 	ASMPatchPlayerDeathSoundLost();
 	ASMPatchPlayerDeathSoundAstralProjection();
+	ASMPatchPlayerLostSoulSkipPeePuddle();
 
 	// Status Effects
 	PatchInlinedGetStatusEffectTarget();
@@ -264,6 +274,11 @@ void PerformASMPatches() {
 	ASMPatchCameraBoundClampOverride();
 	ASMPatchCameraBoundSlowStopOverride();
 
+	ImagePatches::ApplyPatches();
+	MinimapPatches::ApplyPatches();
+	EntitySaveStateManagement::detail::Patches::ApplyPatches();
+	EntityLifecycle::detail::Patches::ApplyPatches();
+
 	// External
 	ASMPatchesForFamiliarCustomTags();
 	PatchNullItemAndNullCostumeSupport();
@@ -274,13 +289,12 @@ void PerformASMPatches() {
 	ASMPatchesForCustomActiveGFX();
 	ASMPatches::__ItemPoolManager();
 	ASMPatches::__ItemPoolManagerExtra();
+	ExtraRenderSteps::detail::ApplyPatches();
 	ASMPatchesForCardsExtras();
 	ASMPatchesForCustomModManager();
+	ASMPatchRedirectToLocalizationFolders();
 	ASMFixes();
 	HookImGui();
-
-	// Sprite
-	ASMPatchesForANM2Extras();
 
 	//Mod folder redirect
 	ASMPatchModReRoute();

@@ -177,6 +177,11 @@ ___
 
 ___
 
+### GetAllowedDoorsMaskForRoomShape () {: aria-label='Functions' }
+#### [DoorMask](enums/DoorMask.md) GetAllowedDoorsMaskForRoomShape ( [RoomShape](https://wofsauge.github.io/IsaacDocs/rep/enums/RoomShape.html) RoomShape ) {: .copyable aria-label='Functions' }
+Returns a [DoorMask](enums/DoorMask.md) representing all [DoorSlots](https://wofsauge.github.io/IsaacDocs/rep/enums/DoorSlot.html) allowed for the given [RoomShape](https://wofsauge.github.io/IsaacDocs/rep/enums/RoomShape.html).
+
+___
 ### GetAxisAlignedUnitVectorFromDir () {: aria-label='Functions' }
 
 #### [Vector](Vector.md) GetAxisAlignedUnitVectorFromDir ( [Direction](https://wofsauge.github.io/IsaacDocs/rep/enums/Direction.html) Direction = -1 ) {: .copyable aria-label='Functions' }
@@ -197,6 +202,11 @@ ___
 
 ___
 
+### GetButtonsSprite () {: aria-label='Modified Functions' }
+#### [Sprite](Sprite.md) GetButtonsSprite ( ) {: .copyable aria-label='Functions' }
+Controllers buttons sprite
+
+___
 ### GetClipboard () {: aria-label='Functions' }
 
 #### string GetClipboard ( ) {: .copyable aria-label='Functions' }
@@ -328,7 +338,14 @@ ___
 返回自定义挑战被通关的次数。如果该挑战被设置为未完成，则该次数将重置。
 
 ___
+### GetNanoTime () {: aria-label='Functions'}
+#### int GetNanoTime ( ) {: .copyable aria-label='Functions' }
+Returns a high-resolution timestamp in nanoseconds. Useful for evaluating the performance cost of functions in a non-test environment or for high-precision clocks.
 
+???- info "Note"
+	The clock is precise enough to detect the time that passed between two subsequent calls of `Isaac.GetNanoTime()`
+
+___
 ### GetNullItemIdByName () {: aria-label='Functions' }
 
 #### int GetNullItemIdByName ( string NullItemName ) {: .copyable aria-label='Functions' }
@@ -410,7 +427,29 @@ ___
 播放提供的 ID 对应的过场动画。使用 Isaac.GetCutsceneIdByName 来获取 ID，或者如果您愿意，也可以使用原版的枚举。
 
 ___
+### RenderCollectionItem () {: aria-label='Functions' }
+#### void RenderCollectionItem ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, [Vector](Vector.md) Position, [Vector](Vector.md) Scale = Vector.One, [Color](Color.md) Color = Color.Default ) {: .copyable aria-label='Functions' }
+Renders item collection sprite from collection menu/death screen. 
+___
+### ReworkBirthright () {: aria-label='Functions' }
+#### void ReworkBirthright ( [PlayerType](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html) playerType ) {: .copyable aria-label='Functions' }
+Marks the player's birthright as reworked, making the game not execute the item's original passive logic.
+Can only be set during mod load.
 
+___
+### ReworkCollectible () {: aria-label='Functions' }
+#### void ReworkCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) collectible ) {: .copyable aria-label='Functions' }
+Marks the collectible as reworked, making the game not execute the item's original passive logic.
+Can only be set during mod load.
+**NOTE** Does not prevent the UseActiveItem logic from running.
+
+___
+### ReworkTrinket () {: aria-label='Functions' }
+#### void ReworkTrinket ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) trinket ) {: .copyable aria-label='Functions' }
+Marks the trinket as reworked, making the game not execute the trinket's original passive logic.
+Can only be set during mod load.
+
+___
 ### SetClipboard () {: aria-label='Functions' }
 
 #### boolean SetClipboard ( string ClipboardData ) {: .copyable aria-label='Functions' }
@@ -523,8 +562,11 @@ ___
     请记住，游戏手柄对此弹出窗口不起作用，您需要使用鼠标/键盘或触摸屏，并且在某些环境（如 Steam Deck）中窗口标题可能不会显示，因此不要过于依赖它。
 
 ___
+### SpawnBoss () {: aria-label='Functions' }
+#### [EntityNPC](EntityNPC.md) SpawnBoss ( int Type, int Variant, int SubType, [Vector](Vector.md) Position, [Vector](Vector.md) Velocity, [Entity](Entity.md) Spawner, int Seed = ? ) {: .copyable aria-label='Functions' }
+Spawns an NPC forcing it to be a Boss, returning true for IsBoss(), giving it a boss bar, playing the boss end single on kill in appropiate rooms and other qualities that you may expect from a boss entity, even if the entity is normally not a Boss.
 
-
+___
 ### StartNewGame () {: aria-label='Functions' }
 
 #### void StartNewGame ( [PlayerType](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html) Character, [Challenge](https://wofsauge.github.io/IsaacDocs/rep/enums/Challenge.html) Challenge = ChallengeType.CHALLENGE_NULL, [Difficulty](https://wofsauge.github.io/IsaacDocs/rep/enums/Difficulty.html) Mode = Difficulty.DIFFICULTY_NORMAL, int Seed = Random ) {: .copyable aria-label='Functions' }
@@ -540,7 +582,11 @@ ___
 模拟窗口大小调整，对于刷新一些选项更改（如 `MaxRenderScale`）很有用。
 
 ___
+### UnClearChallenge () {: aria-label='Functions' }
+#### void UnClearChallenge ( int challengeid) {: .copyable aria-label='Functions' }
+Sets the challenge of the corresponding `challengeid` to not completed. While it does work with vanilla challenges, it is not recommended to use it on those, as there are no instances of challenges being uncompleted in vanilla, so it could lead to unexpected behaviour in specific scenarios. 
 
+___
 ### WorldToMenuPosition () {: aria-label='Functions' }
 
 #### [Vector](Vector.md) WorldToMenuPosition ( [MainMenu](enums/MainMenuType.md) MenuId, [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }

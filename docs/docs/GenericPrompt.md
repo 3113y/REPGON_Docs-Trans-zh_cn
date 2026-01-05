@@ -94,6 +94,10 @@ ___
 在屏幕上渲染提示框。将此函数放置在任何非实体特定的渲染回调中。
 
 ___
+### SetImageToVictoryRun () {: aria-label='Functions' }
+#### void SetImageToVictoryRun ( ) {: .copyable aria-label='Functions' }
+
+___
 ### SetText () {: aria-label='Functions' }
 #### void SetText ( string Text1 = "", string Text2 = "", string Text3 = "", string Text4 = "", string Text5 = "", ) {: .copyable aria-label='Functions' }
 文本字符串与它们在提示框上从上到下的位置相关联。前两个字符串应用作标题文本，会加粗并使用较大的字体大小，其余的用作描述文本。

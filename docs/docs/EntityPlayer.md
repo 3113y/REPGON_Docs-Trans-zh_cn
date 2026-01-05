@@ -14,14 +14,21 @@ tags:
 #### void AddCacheFlags ( [CacheFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/CacheFlag.html) CacheFlag, boolean EvaluateItems = false ) {: .copyable aria-label='Modified Functions' }
 现在接受一个可选的布尔值，用于确定在添加缓存标志后是否应自动调用 [EntityPlayer](EntityPlayer.md):EvaluateItems()。在大多数情况下，你可能希望这样做。
 
-### AddCollectibleEffect, () {: aria-label='Modified Functions' }
-#### void AddCollectibleEffect ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) ctype, bool applycostume, int cooldown = vanillacd, bool additive = true ) {: .copyable aria-label='Modified Functions' }
-这是 `TemporaryEffects:AddCollectibleEffect` 的快捷方式，附带额外参数来处理冷却时间。`additive` 参数决定冷却时间是应添加到已有的冷却值上，还是应设置为该值。你可以结合 `additive` 使用负的冷却时间值，以减少已有的冷却时间.
+___
+### AddCollectibleEffect () {: aria-label='Modified Functions' }
+#### void AddCollectibleEffect ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) CollectibleType, bool ApplyCostume = false, int Cooldown = VanillaCooldown, bool Additive = true ) {: .copyable aria-label='Modified Functions' }
+Shortcut of TemporaryEffects:AddCollectibleEffect with extra arguments to handle cooldown. The additive parameter determines if the cooldown should be added to the preexistent cooldown value or if it should be set for that value. You can use negative cooldown values with additive to reduce preexistent cooldown.
 
 ___
-### AddNullItemEffect, () {: aria-label='Modified Functions' }
-#### void AddNullItemEffect ( int nullItemid, bool applycostume, int cooldown = vanillacd, bool additive = true ) {: .copyable aria-label='Modified Functions' }
-这是 `TemporaryEffects:AddNullItemEffect` 的快捷方式，附带额外参数来处理冷却时间。`additive` 参数决定冷却时间是应添加到已有的冷却值上，还是应设置为该值。你可以结合 `additive` 使用负的冷却时间值，以减少已有的冷却时间.
+### AddNullItemEffect () {: aria-label='Modified Functions' }
+#### void AddNullItemEffect ( [NullItemID](https://wofsauge.github.io/IsaacDocs/rep/enums/NullItemID.html) NullItemID, bool ApplyCostume = false, int Cooldown = VanillaCooldown, bool Additive = true ) {: .copyable aria-label='Modified Functions' }
+Shortcut of TemporaryEffects:AddNullItemEffect with extra arguments to handle cooldown. The additive parameter determines if the cooldown should be added to the preexistent cooldown value or if it should be set for that value. You can use negative cooldown values with additive to reduce preexistent cooldown.
+
+___
+### AddTrinketEffect () {: aria-label='Modified Functions' }
+#### void AddTrinketEffect ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) TrinketType, bool ApplyCostume = false, int Cooldown = VanillaCooldown, bool Additive = true ) {: .copyable aria-label='Modified Functions' }
+Shortcut of TemporaryEffects:AddTrinketEffect with extra arguments to handle cooldown. The additive parameter determines if the cooldown should be added to the preexistent cooldown value or if it should be set for that value. You can use negative cooldown values with additive to reduce preexistent cooldown.
+
 
 ___
 ### ClearDeadEyeCharge () {: aria-label='Modified Functions' }
@@ -48,17 +55,37 @@ ___
 #### boolean HasCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, boolean IgnoreModifiers = false, boolean IgnoreSpoof = false ) {: .copyable aria-label='Modified Functions' }
 现在接受一个 `IgnoreSpoof` 参数，该参数会忽略固有物品。
 
+___
+### UseActiveItem () {: aria-label=' Modified Functions' }
+#### [UseActiveItemResultFlags](enums/UseActiveItemResultFlag.md) UseActiveItem ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Item, [UseFlags](https://wofsauge.github.io/IsaacDocs/rep/enums/UseFlag.html) UseFlags = 0, [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot = -1, int CustomVarData = 0 ) {: .copyable aria-label='Modified Functions' }
+Now has a return value, a bitmask of [UseActiveItemResultFlags](enums/UseActiveItemResultFlag.md).
+
+???+ note "Return behavior"
+	`UseActiveItemResultFlags.REMOVE` is possible to not be passed even if the item would be removed normally. It will not be passed if any of the following conditions are met:
+	- `UseFlag.USE_OWNED` is not passed for vanilla items.
+	- `UseFlag.USE_VOID` is passed for any items.
+___
+
+## Modified Variables
+___
+
 ### BabySkin {: aria-label='Modified Variables' }
 #### [BabySubType](https://wofsauge.github.io/IsaacDocs/rep/enums/BabySubType.html) BabySkin  {: .copyable aria-label='Modified Variables' }
 与默认行为相同，但现在会返回正确的整数值而非用户数据.
 
 ___
+### FriendBallEnemy {: aria-label='Modified Variables' }
+#### [EntityDesc](EntityDesc.md) FriendBallEnemy  {: .copyable aria-label='Modified Variables' }
+Same as default, but now returns a proper class instead of userdata.
+
+___
+
 
 ## Functions
 
 ### AddActiveCharge () {: aria-label='Functions' }
-#### int AddActiveCharge ( int Charge, [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot, boolean FlashHUD = true, boolean Overcharge = false, boolean Force = false ) {: .copyable aria-label='Functions' }
-返回实际添加的充能数量，该数量可能会受到目标物品的最大充能值限制。
+#### int AddActiveCharge ( int Charge, [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot = ActiveSlot.SLOT_PRIMARY, boolean FlashHUD = true, boolean Overcharge = false, boolean Force = false ) {: .copyable aria-label='Functions' }
+Returns the true amount of charge added, which may have been capped by the targeted item's MaxCharge.
 
 ???- info "Info"
 
@@ -68,9 +95,14 @@ ___
 #### void AddBoneOrbital ( [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
 
 ___
+### AddCandyHeartBonus () {: aria-label='Functions' }
+#### void AddCandyHeartBonus ( [CacheFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/CacheFlag.html) CacheFlag = 0, int Amount = 1 ) {: .copyable aria-label='Functions' }
+Adds a random stat bonus as if the player had collected a heart with Candy Heart. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Candy Heart.
+
+___
 ### AddCustomCacheTag () {: aria-label='Functions' }
-#### void AddCustomCacheTag ( string OR \{string, string, ...\}, bool EvaluateItems = false ) {: .copyable aria-label='Functions' }
-添加自定义缓存标签，以便在下一次运行 EvaluateItems 时进行评估（如果传递了可选布尔值，则立即进行评估）。有关自定义缓存的更多信息，请参阅 [items.xml](xml/items.md)。
+#### void AddCustomCacheTag ( string OR \{string, string, ...\}, boolean EvaluateItems = false ) {: .copyable aria-label='Functions' }
+Add CustomCacheTag(s) to be evaluated next time EvaluateItems runs (which is right now, if the optional boolean is passed).
 
 ### AddInnateCollectible () {: aria-label='Functions' }
 #### void AddInnateCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, int Amount = 1 ) {: .copyable aria-label='Functions' }
@@ -110,6 +142,15 @@ ___
 ### AddSmeltedTrinket () {: aria-label='Functions' }
 #### boolean AddSmeltedTrinket ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) Trinket, boolean FirstTimePickingUp = true ) {: .copyable aria-label='Functions' }
 直接将一个吞下的饰品添加到玩家的库存中。如果饰品成功添加，则返回 `true`，否则返回 `false`。
+
+Returns ``true`` if the trinket was successfully added, otherwise ``false``.
+
+___
+### AddSoulLocketBonus () {: aria-label='Functions' }
+#### void AddSoulLocketBonus ( [CacheFlag](https://wofsauge.github.io/IsaacDocs/rep/enums/CacheFlag.html) CacheFlag = 0, int Amount = 1 ) {: .copyable aria-label='Functions' }
+Adds a random stat bonus as if the player had collected a heart with Soul Locket. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Soul Locket.
+
+___
 
 ### AddUrnSouls () {: aria-label='Functions' }
 #### void AddUrnSouls ( int Count = 0 ) {: .copyable aria-label='Functions' }  
@@ -155,9 +196,13 @@ ___
 #### void ClearQueueItem ( ) {: .copyable aria-label='Functions' }
 
 ___
+### CreateAfterimage () {: aria-label='Functions' }
+#### void CreateAfterimage ( int Duration, [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
+Creates an afterimage of the player that fades over the course of the given duration, similar to those created by items such as A Pony and Mars.
+
+___
 ### DropCollectible () {: aria-label='Functions' }
-#### void DropCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, [EntityPickup](EntityPickup.md) ExistingPedestal = nil, boolean RemoveFromPlayerForm = false ) {: .copyable aria-label='Functions' }
-如果设置了 `ExistingPedestal`，则该基座中包含的收藏品将被替换为掉落的收藏品，而不是生成一个新的基座。
+#### [EntityPickup](EntityPickup.md) DropCollectible ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible, [EntityPickup](EntityPickup.md) ExistingPedestal = nil, boolean RemoveFromPlayerForm = false ) {: .copyable aria-label='Functions' }
 
 ### DropCollectibleByHistoryIndex () {: aria-label='Functions' }
 #### [EntityPickup](EntityPickup.md) DropCollectibleByHistoryIndex ( int Idx, [EntityPickup](EntityPickup.md) ExistingPedestal = nil ) {: .copyable aria-label='Functions' }
@@ -171,8 +216,11 @@ ___
 #### [EntityEffect](EntityEffect.md) FireBrimstoneBall ( [Vector](Vector.md) Position, [Vector](Vector.md) Velocity, [Vector](Vector.md) Offset = Vector.Zero ) {: .copyable aria-label='Functions' }
 ???+ info "Info"
 
-    如果玩家拥有科技 X，此函数还会发射一个 [EntityLaser](EntityLaser.md)。激光将以硫磺火球效果为父对象，但不清楚该效果是否也会链接回激光。
-
+___
+### GetActionHoldDrop () {: aria-label='Functions' }
+#### int GetActionHoldDrop ( ) {: .copyable aria-label='Functions' }
+How long the player holds the drop-button.
+___
 ### GetActiveItemDesc () {: aria-label='Functions' }
 #### [ActiveItemDesc](https://wofsauge.github.io/IsaacDocs/rep/PlayerTypes_ActiveItemDesc.html) GetActiveItemDesc ( [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot = ActiveSlot.SLOT_PRIMARY ) {: .copyable aria-label='Functions' }
 
@@ -209,6 +257,13 @@ ___
 #### int GetBladderCharge ( ) {: .copyable aria-label='Functions' }
 返回玩家停止射击并为肾结石物品充能时的当前充能值。
 
+___
+### GetBlinkLockTime () {: aria-label='Functions' }
+#### int GetBlinkLockTime ( ) {: .copyable aria-label='Functions' }
+How long player's head will play fired frame sprite?
+
+___
+
 ### GetBloodLustCounter () {: aria-label='Functions' }
 #### int GetBloodLustCounter ( ) {: .copyable aria-label='Functions' }
 
@@ -221,13 +276,35 @@ ___
 #### int GetBombPlaceDelay ( ) {: .copyable aria-label='Functions' }
 默认炸弹放置延迟为 `30 帧`。
 
+___
+### GetBodySprite () {: aria-label='Functions' }
+#### [Sprite](Sprite.md) GetBodySprite ( ) {: .copyable aria-label='Functions' }
+Temporary copy of body player sprite while null animation is active.
+
+___
+
 ### GetCambionConceptionState () {: aria-label='Functions' }
 #### int GetCambionConceptionState ( ) {: .copyable aria-label='Functions' }
 返回玩家使用恶魔受胎物品受到伤害的次数。
 
+___
+### GetCandyHeartBonus () {: aria-label='Functions' }
+#### table GetCandyHeartBonus ( ) {: .copyable aria-label='Functions' }
+Returns a table of fields corresponding to each stat that Candy Heart can increase and the active amount of bonuses tied to each stat.
+
+The fields are: `FireDelay`, `Damage`, `TearRange`, `ShotSpeed`, `Luck`, `MoveSpeed`.
+
+___
+
 ### GetCambionPregnancyLevel () {: aria-label='Functions' }
 #### int GetCambionPregnancyLevel ( ) {: .copyable aria-label='Functions' }
 对应恶魔受胎服装的当前可见状态（0 - 2）。
+
+___
+### GetCharmOfTheVampireKills () {: aria-label='Functions' }
+#### int GetCharmOfTheVampireKills ( ) {: .copyable aria-label='Functions' }
+
+___
 
 ### GetCollectiblesList () {: aria-label='Functions' }
 #### table GetCollectiblesList ( ) {: .copyable aria-label='Functions' }
@@ -240,8 +317,8 @@ ___
     ```
 
 ### GetConceptionFamiliarFlags () {: aria-label='Functions' }
-#### int GetConceptionFamiliarFlags ( ) {: .copyable aria-label='Functions' }
-返回一个位掩码，对应由圣灵受胎 / 恶魔受胎生成的跟班。此位掩码提供的额外跟班在跟班缓存评估期间生成，但仅当玩家拥有这两个物品之一时才会生成.
+#### [ConceptionFamiliarFlag](enums/ConceptionFamiliarFlag.md) GetConceptionFamiliarFlags ( ) {: .copyable aria-label='Functions' }
+Returns the bitmask corresponding to which familiars have been spawned by Cambion/Immaculate Conception. The additional familiars provided by this bitmask are spawned during familiar cache evaluation, but only while the player has one of those two items.
 
 ### GetCostumeLayerMap () {: aria-label='Functions' }
 #### table GetCostumeLayerMap ( ) {: .copyable aria-label='Functions' }
@@ -290,19 +367,19 @@ ___
 有关自定义缓存的更多信息，请参阅 [items.xml](xml/items.md)。
 
 ### GetD8DamageModifier () {: aria-label='Functions' }
-#### int GetD8DamageModifier ( ) {: .copyable aria-label='Functions' }
+#### float GetD8DamageModifier ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetD8FireDelayModifier () {: aria-label='Functions' }
-#### int GetD8FireDelayModifier ( ) {: .copyable aria-label='Functions' }
+#### float GetD8FireDelayModifier ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetD8RangeModifier () {: aria-label='Functions' }
-#### int GetD8RangeModifier ( ) {: .copyable aria-label='Functions' }
+#### float GetD8RangeModifier ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetD8SpeedModifier () {: aria-label='Functions' }
-#### int GetD8SpeedModifier ( ) {: .copyable aria-label='Functions' }
+#### float GetD8SpeedModifier ( ) {: .copyable aria-label='Functions' }
 
 ___
 ### GetDamageModifier () {: aria-label='Functions' }
@@ -390,6 +467,10 @@ ___
 #### [KColor](https://wofsauge.github.io/IsaacDocs/rep/KColor.html) GetFootprintColor ( boolean LeftFootprint ) {: .copyable aria-label='Functions' }
 
 ___
+### GetForgottenSwapFormCooldown () {: aria-label='Functions' }
+#### int GetForgottenSwapFormCooldown ( ) {: .copyable aria-label='Functions' }
+
+___
 ### GetGlitchBabySubType () {: aria-label='Functions' }
 #### int GetGlitchBabySubType ( ) {: .copyable aria-label='Functions' }
 
@@ -435,6 +516,12 @@ ___
 #### int GetImmaculateConceptionState ( ) {: .copyable aria-label='Functions' }
 返回玩家使用 “圣灵受胎” 道具收集到的红心数量。在生成跟班/魂心后重置为 0。
 
+___
+### GetItemStateCooldown () {: aria-label='Functions' }
+#### int GetItemStateCooldown ( ) {: .copyable aria-label='Functions' }
+
+___
+
 ### GetKeepersSackBonus () {: aria-label='Functions' }
 #### int GetKeepersSackBonus ( ) {: .copyable aria-label='Functions' }
 获取玩家持有 [“店主的胯袋”](https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack) 时花费的硬币数量。
@@ -450,6 +537,12 @@ ___
 该修饰符直接添加到玩家的幸运属性上。
 
 “实验性治疗” 根据随机生成的幸运值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+
+___
+### GetMaggyHealthDrainCooldown () {: aria-label='Functions' }
+#### int GetMaggyHealthDrainCooldown ( ) {: .copyable aria-label='Functions' }
+
+___
 
 ### GetMaggySwingCooldown () {: aria-label='Functions' }
 #### int GetMaggySwingCooldown ( ) {: .copyable aria-label='Functions' }
@@ -501,13 +594,32 @@ ___
 #### int GetNextUrethraBlockFrame ( ) {: .copyable aria-label='Functions' }
 返回玩家停止射击并开始为 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具充能的帧数。
 
+___
+### GetPlanCKillCountdown () {: aria-label='Functions' }
+#### int GetPlanCKillCountdown ( ) {: .copyable aria-label='Functions' }
+
+___
+
 ### GetPeeBurstCooldown () {: aria-label='Functions' }
 #### int GetPeeBurstCooldown ( ) {: .copyable aria-label='Functions' }
 返回 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具的攻击持续时间。
 
+___
+### GetPotatoPeelerUses () {: aria-label='Functions' }
+#### int GetPotatoPeelerUses ( ) {: .copyable aria-label='Functions' }
+Used to increment [Cube of Meat](https://bindingofisaacrebirth.wiki.gg/wiki/Cube_of_Meat) familiar form.
+
+___
+
 ### GetPlayerFormCounter () {: aria-label='Functions' }
 #### int GetPlayerFormCounter ( [PlayerForm](https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerForm.html) PlayerFormID ) {: .copyable aria-label='Functions' } 
 返回玩家与指定变身相关联的道具数量。
+
+___
+### GetPlayerHUD () {: aria-label='Functions' }
+#### [PlayerHUD](PlayerHUD.md) GetPlayerHUD ( ) {: .copyable aria-label='Functions' }
+
+___
 
 ### GetPlayerIndex () {: aria-label='Functions' }
 #### int GetPlayerIndex ( ) {: .copyable aria-label='Functions' }
@@ -525,6 +637,36 @@ ___
 #### int GetRedStewBonusDuration ( ) {: .copyable aria-label='Functions' }
 返回 “红炖菜” 道具伤害加成效果的剩余帧数。
 
+___
+### GetRevelationCharge () {: aria-label='Functions' }
+#### float GetRevelationCharge ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetRockBottomDamage () {: aria-label='Functions' }
+#### float GetRockBottomDamage ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetRockBottomLuck () {: aria-label='Functions' }
+#### float GetRockBottomLuck ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetRockBottomMaxFireDelay () {: aria-label='Functions' }
+#### float GetRockBottomMaxFireDelay ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetRockBottomMoveSpeed () {: aria-label='Functions' }
+#### float GetRockBottomMoveSpeed ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetRockBottomShotSpeed () {: aria-label='Functions' }
+#### float GetRockBottomShotSpeed ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetRockBottomTearRange () {: aria-label='Functions' }
+#### float GetRockBottomTearRange ( ) {: .copyable aria-label='Functions' }
+
+___
+
 ### GetShotSpeedModifier () {: aria-label='Functions' }
 #### int GetShotSpeedModifier ( ) {: .copyable aria-label='Functions' }
 “实验性治疗” 根据随机生成的射击速度值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
@@ -532,13 +674,34 @@ ___
 用于 “实验性治疗” 和 “虚空” 带来的属性提升。
 
 ### GetSmeltedTrinkets () {: aria-label='Functions' }
-#### table GetSmeltedTrinkets ( ) {: .copyable aria-label='Functions' }
-返回一个包含熔炼饰品及其对应数量的表。返回的表包含以下字段：
+#### table GetSmeltedTrinkets ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html)[] TrinketList = nil ) {: .copyable aria-label='Functions' }
+Returns a table of smelted trinkets and their corresponding amounts. The returned table contains the following fields:
 
 |字段|类型|说明|
 |:--|:--|:--|
 | goldenTrinketAmount | int | |
 | trinketAmount | int | |
+
+The optional TrinketList param can be used as a filter to only return the provided TrinketTypes for better performance.
+
+___
+### GetSmeltedTrinketDesc () {: aria-label='Functions' }
+#### table GetSmeltedTrinketDesc ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) ) {: .copyable aria-label='Functions' }
+Returns a table of the provided smelted trinket and their corresponding amounts. The returned table contains the following fields:
+
+|Field|Type|Comment|
+|:--|:--|:--|
+| trinketAmount | int | |
+| goldenTrinketAmount | int | |
+
+___
+### GetSoulLocketBonus () {: aria-label='Functions' }
+#### table GetSoulLocketBonus ( ) {: .copyable aria-label='Functions' }
+Returns a table of fields corresponding to each stat that Soul Locket can increase and the active amount of bonuses tied to each stat.
+
+The fields are: `FireDelay`, `Damage`, `TearRange`, `ShotSpeed`, `Luck`, `MoveSpeed`.
+
+___
 
 ### GetSpecialGridCollision () {: aria-label='Functions' }
 #### int GetSpecialGridCollision ( [Vector](Vector.md) Position = self.Position ) {: .copyable aria-label='Functions' }      
@@ -561,15 +724,54 @@ ___
 | 追加数量 | int | |
 | 是否被阻挡 | boolean | |
 
+___
+### GetStatMultiplier () {: aria-label='Functions' }
+#### float GetStatMultiplier ( ) {: .copyable aria-label='Functions' }
+Returns the multiplier added to stats gained from any items.
+
+???- info "Multipliers"
+    - **Tainted Bethany**: x0.75
+    - **Cracked Crown**: x1.2
+
+___
+### GetSuplexAimCountdown () {: aria-label='Functions' }
+#### int GetSuplexAimCountdown ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetSuplexLandPosition () {: aria-label='Functions' }
+#### [Vector](Vector.md) GetSuplexLandPosition ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetSuplexState () {: aria-label='Functions' }
+#### int GetSuplexState ( ) {: .copyable aria-label='Functions' }
+
+___
+### GetSuplexTargetPosition () {: aria-label='Functions' }
+#### [Vector](Vector.md) GetSuplexTargetPosition ( ) {: .copyable aria-label='Functions' }
+
+___
+
 ### GetTearDisplacement () {: aria-label='Functions' }
 #### int GetTearDisplacement ( ) {: .copyable aria-label='Functions' }
 返回玩家的眼泪偏移值，用于检查玩家从哪只眼睛射击。
 
 ???+ info "Return info"
 
-    - `1` 右眼
-    - `-1` 左眼
+___
+### GetTearRangeModifier () {: aria-label='Functions' }
+#### int GetTearRangeModifier ( ) {: .copyable aria-label='Functions' }
+Used for Experimental Treatment and for stat boosts from Void.
 
+Adds `2.5 * modifier` to the player's TearRange.
+
+Experimental Treatment adds `-1`, `0` or `1` depending on the range rolled. Void may randomly add `1`.
+
+___
+### GetTearsCap () {: aria-label='Functions' }
+#### int GetTearsCap ( ) {: .copyable aria-label='Functions' }
+Returns the soft tears cap. Default is `5.0`. Not affected by firedelay modifiers.
+
+___
 ### GetTotalActiveCharge () {: aria-label='Functions' }
 #### int GetTotalActiveCharge ( [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot ) {: .copyable aria-label='Functions' }
 
@@ -616,9 +818,21 @@ ___
 #### table GetWispCollectiblesList ( ) {: .copyable aria-label='Functions' }
 返回一个与玩家拥有的道具幽灵对应的 [CollectibleTypes](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) 表。
 
+___
+### HasCamoEffect () {: aria-label='Functions' }
+#### boolean HasCamoEffect ( ) {: .copyable aria-label='Functions' }
+
+___
+
 ### HasChanceRevive () {: aria-label='Functions' }
 #### boolean HasChanceRevive ( ) {: .copyable aria-label='Functions' }
 如果玩家的额外生命计数上会显示 “?”，则返回 true（即玩家拥有 “嗝屁猫的项圈”，或在 REPENTOGON 的 [自定义标签 items.xml 属性](xml/items.md) 中有 `chancerevive` 字符串的模组复活道具）。
+
+___
+### HasForcedCamoEffect () {: aria-label='Functions' }
+#### boolean HasForcedCamoEffect ( ) {: .copyable aria-label='Functions' }
+
+___
 
 ### HasGoldenTrinket () {: aria-label='Functions' }
 #### boolean HasGoldenTrinket ( [TrinketType](https://wofsauge.github.io/IsaacDocs/rep/enums/TrinketType.html) Trinket ) {: .copyable aria-label='Functions' }
@@ -703,6 +917,10 @@ ___
 #### boolean IsPacifist ( ) {: .copyable aria-label='Functions' }
 
 ___
+### IsPostLevelInitFinished () {: aria-label='Functions' }
+#### boolean IsPostLevelInitFinished ( ) {: .copyable aria-label='Functions' }
+
+___
 ### IsUrethraBlocked () {: aria-label='Functions' }
 #### boolean IsUrethraBlocked ( ) {: .copyable aria-label='Functions' }
 当玩家因为 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具充能而无法射击时，返回 true。
@@ -716,9 +934,15 @@ ___
 播放与提供的道具关联的动画。
 
 ### PlayDelayedSFX () {: aria-label='Functions' }
-#### void PlayDelayedSFX ( [SoundEffect](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) ID, int SoundDelay = 0, int FrameDelay = 2, float Volume = 1.0 ) {: .copyable aria-label='Functions' }
-延迟播放音效。
+#### void PlayDelayedSFX ( [SoundEffect](https://wofsauge.github.io/IsaacDocs/rep/enums/SoundEffect.html) ID, int SoundDelay = 0, int FrameDelay = 2, float Volume = 1.0 ) {: .copyable aria-label='Functions' }
+Plays a sound effect after a delay.
 
+___
+### PlayItemNullAnimation () {: aria-label='Functions' }
+#### boolean PlayItemNullAnimation ( string AnimationName ) {: .copyable aria-label='Functions' }
+Returns ``true`` if animation was set successfully, ``false`` otherwise. Useful for item state/hold items.
+
+___
 ### RemoveCollectibleByHistoryIndex () {: aria-label='Functions' }
 #### void RemoveCollectibleByHistoryIndex ( int Index ) {: .copyable aria-label='Functions' }
 从玩家处移除与指定历史索引关联的道具。
@@ -751,8 +975,11 @@ ___
 
 ???+ info "Info"
 
-    此函数将移除提供的 [EntityPickup](EntityPickup.md)。可以使用覆盖参数避免这种情况。
+___
+### SetActionHoldDrop () {: aria-label='Functions' }
+#### void SetActionHoldDrop ( int duration ) {: .copyable aria-label='Functions' }
 
+___
 ### SetActiveVarData () {: aria-label='Functions' }
 #### void SetActiveVarData ( int VarData, [ActiveSlot](https://wofsauge.github.io/IsaacDocs/rep/enums/ActiveSlot.html) Slot ) {: .copyable aria-label='Functions' }
 
@@ -769,6 +996,10 @@ ___
 #### void SetBagOfCraftingSlot ( int SlotID, [BagOfCraftingPickup](enums/BagOfCraftingPickup.md) PickupID ) {: .copyable aria-label='Functions' }
 将玩家合成袋的指定插槽设置为指定拾取物。
 
+If a slot is set to empty (0 - `BagOfCraftingPickup.BOC_NONE`) then all slots after it will automatically be shifted down to fill the empty space.
+
+___
+
 ### SetBlackHeart () {: aria-label='Functions' }
 #### void SetBlackHeart ( int BlackHeart ) {: .copyable aria-label='Functions' }
 
@@ -778,8 +1009,11 @@ ___
 由 [“肾结石”](https://bindingofisaacrebirth.fandom.com/wiki/Kidney_Stone) 道具使用。
 ???+ bug "Bug"
 
-    如果在没有 “肾结石” 道具的情况下使用此函数，玩家的头部会变黑。
+___
+### SetBlinkLockTime () {: aria-label='Functions' }
+#### void SetBlinkLockTime ( int Time ) {: .copyable aria-label='Functions' }
 
+___
 ### SetBloodLustCounter () {: aria-label='Functions' }
 #### void SetBloodLustCounter ( int Counter ) {: .copyable aria-label='Functions' }
 
@@ -798,6 +1032,12 @@ ___
 #### boolean SetCanShoot ( boolean CanShoot ) {: .copyable aria-label='Functions' }
 立即禁用（或启用）玩家的射击能力。基础游戏主要在特殊挑战中使用此功能。
 
+___
+### SetCharmOfTheVampireKills () {: aria-label='Functions' }
+#### void SetCharmOfTheVampireKills ( int KillAmount ) {: .copyable aria-label='Functions' }
+
+___
+
 ### SetConceptionFamiliarFlags () {: aria-label='Functions' }
 #### void SetConceptionFamiliarFlags ( [ConceptionFamiliarFlag](enums/ConceptionFamiliarFlag.md) Flags ) {: .copyable aria-label='Functions' }
 设置与 “恶魔受胎/圣灵受胎” 生成的跟班对应的位掩码。此位掩码提供的额外跟班在跟班缓存评估期间生成，但仅当玩家拥有这两个道具之一时才会生成。
@@ -805,6 +1045,24 @@ ___
 ### SetControllerIndex () {: aria-label='Functions' }
 #### void SetControllerIndex ( int Idx ) {: .copyable aria-label='Functions' }        
 更改玩家的控制器索引。
+
+___
+### SetD8DamageModifier () {: aria-label='Functions' }
+#### void SetD8DamageModifier ( float Modifier ) {: .copyable aria-label='Functions' }
+
+___
+### SetD8FireDelayModifier () {: aria-label='Functions' }
+#### void SetD8FireDelayModifier ( float Modifier ) {: .copyable aria-label='Functions' }
+
+___
+### SetD8RangeModifier () {: aria-label='Functions' }
+#### void SetD8RangeModifier ( float Modifier ) {: .copyable aria-label='Functions' }
+
+___
+### SetD8SpeedModifier () {: aria-label='Functions' }
+#### void SetD8SpeedModifier ( float Modifier ) {: .copyable aria-label='Functions' }
+
+___
 
 ### SetDamageModifier () {: aria-label='Functions' }
 #### void SetDamageModifier ( int Modifier ) {: .copyable aria-label='Functions' }
@@ -854,7 +1112,13 @@ ___
 #### void SetFootprintColor ( [KColor](https://wofsauge.github.io/IsaacDocs/rep/KColor.html) color, boolean RightFoot = false ) {: .copyable aria-label='Functions' }
 设置玩家的脚印颜色。
 
-???+ bug "Bug"
+___
+### SetForceCamoEffect () {: aria-label='Functions' }
+#### void SetForceCamoEffect ( boolean Force ) {: .copyable aria-label='Functions' }
+
+___
+### SetForgottenSwapFormCooldown () {: aria-label='Functions' }
+#### void SetForgottenSwapFormCooldown ( int Cooldown ) {: .copyable aria-label='Functions' }
 
     此函数目前会导致游戏崩溃 - 将在未来更新中修复。
 
@@ -886,6 +1150,12 @@ ___
 #### void SetItemState ( [CollectibleType](https://wofsauge.github.io/IsaacDocs/rep/enums/CollectibleType.html) Collectible ) {: .copyable aria-label='Functions' }
 将玩家的道具状态更改为指定道具。这通常用于玩家在激活前举在头顶的道具（如 “鲍勃的烂头”、“玻璃大炮”）。
 
+___
+### SetItemStateCooldown  () {: aria-label='Functions' }
+#### void SetItemStateCooldown  ( int Cooldown ) {: .copyable aria-label='Functions' }
+
+___
+
 ### SetKeepersSackBonus () {: aria-label='Functions' }
 #### void SetKeepersSackBonus ( int Bonus ) {: .copyable aria-label='Functions' }
 设置玩家 [“店主的胯袋”](https://bindingofisaacrebirth.fandom.com/wiki/Keeper's_Sack) 道具的当前硬币奖励。
@@ -901,6 +1171,12 @@ ___
 该修饰符直接添加到玩家的幸运属性上。
 
 “实验性治疗” 根据随机生成的幸运值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+
+___
+### SetMaggyHealthDrainCooldown () {: aria-label='Functions' }
+#### void SetMaggyHealthDrainCooldown ( int Cooldown ) {: .copyable aria-label='Functions' }
+
+___
 
 ### SetMaggySwingCooldown () {: aria-label='Functions' }
 #### void SetMaggySwingCooldown ( int Cooldown ) {: .copyable aria-label='Functions' }
@@ -922,6 +1198,12 @@ ___
 #### void SetNextUrethraBlockFrame ( int Frame ) {: .copyable aria-label='Functions' }
 设置玩家停止射击并开始为 “肾结石” 道具充能的帧数。
 
+___
+### SetPlanCKillCountdown () {: aria-label='Functions' }
+#### void SetPlanCKillCountdown ( int Countdown ) {: .copyable aria-label='Functions' }
+
+___
+
 ### SetPonyCharge () {: aria-label='Functions' }
 #### void SetPonyCharge ( int Time ) {: .copyable aria-label='Functions' }
 将 “小黑马” 和 “小白马” 道具的充能效果持续时间设置为指定的帧数。
@@ -930,6 +1212,12 @@ ___
 #### void SetPoopSpell ( int Slot, [PoopSpellType](https://wofsauge.github.io/IsaacDocs/rep/enums/PoopSpellType.html) PoopSpellType ) {: .copyable aria-label='Functions' }
 将便便列表中的指定插槽设置为一种便便类型。这仅由 “堕化？？？” 使用。
 
+___
+### SetPotatoPeelerUses () {: aria-label='Functions' }
+#### void SetPotatoPeelerUses ( int Amount ) {: .copyable aria-label='Functions' }
+
+___
+
 ### SetPurityState () {: aria-label='Functions' }
 #### void SetPurityState ( [PurityState](enums/PurityState.md) State ) {: .copyable aria-label='Functions' }
 设置 [“纯洁”](https://bindingofisaacrebirth.fandom.com/wiki/Purity) 道具效果的当前状态。
@@ -937,6 +1225,36 @@ ___
 ### SetRedStewBonusDuration () {: aria-label='Functions' }
 #### void SetRedStewBonusDuration ( int Duration ) {: .copyable aria-label='Functions' }
 将 `红豆汤` 道具的伤害加成持续时间设置为指定的帧数。将持续时间设置为大于 0 的值将激活该效果（如果尚未激活）。
+
+___
+### SetRevelationCharge () {: aria-label='Functions' }
+#### void SetRevelationCharge ( float Charge ) {: .copyable aria-label='Functions' }
+
+___
+### SetRockBottomDamage () {: aria-label='Functions' }
+#### void SetRockBottomDamage ( float Damage ) {: .copyable aria-label='Functions' }
+
+___
+### SetRockBottomLuck () {: aria-label='Functions' }
+#### void SetRockBottomLuck ( float Luck ) {: .copyable aria-label='Functions' }
+
+___
+### SetRockBottomMaxFireDelay () {: aria-label='Functions' }
+#### void SetRockBottomMaxFireDelay ( float MaxFireDelay ) {: .copyable aria-label='Functions' }
+
+___
+### SetRockBottomMoveSpeed () {: aria-label='Functions' }
+#### void SetRockBottomMoveSpeed ( float MoveSpeed ) {: .copyable aria-label='Functions' }
+
+___
+### SetRockBottomShotSpeed () {: aria-label='Functions' }
+#### void SetRockBottomShotSpeed ( float ShotSpeed ) {: .copyable aria-label='Functions' }
+
+___
+### SetRockBottomTearRange () {: aria-label='Functions' }
+#### void SetRockBottomTearRange ( float TearRange ) {: .copyable aria-label='Functions' }
+
+___
 
 ### SetShotSpeedModifier () {: aria-label='Functions' }
 #### void SetShotSpeedModifier ( int Modifier ) {: .copyable aria-label='Functions' }
@@ -953,6 +1271,24 @@ ___
 为玩家的移动速度增加 `0.2 * 修饰符`。
 
 “实验性治疗” 根据随机生成的移动速度值增加 `-1`、`0` 或 `1`。“虚空” 可能会随机增加 `1`。
+
+___
+### SetSuplexAimCountdown () {: aria-label='Functions' }
+#### void SetSuplexAimCountdown ( int Countdown ) {: .copyable aria-label='Functions' }
+
+___
+### SetSuplexLandPosition () {: aria-label='Functions' }
+#### void SetSuplexLandPosition ( [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
+
+___
+### SetSuplexState () {: aria-label='Functions' }
+#### void SetSuplexState ( int State ) {: .copyable aria-label='Functions' }
+
+___
+### SetSuplexTargetPosition () {: aria-label='Functions' }
+#### void SetSuplexTargetPosition ( [Vector](Vector.md) Position ) {: .copyable aria-label='Functions' }
+
+___
 
 ### SetTearPoisonDamage () {: aria-label='Functions' }
 #### void SetTearPoisonDamage ( float Damage ) {: .copyable aria-label='Functions' }
@@ -1013,10 +1349,14 @@ ___
 生成一圈类似于 “土星” 道具的眼泪，围绕玩家旋转。
 
 ### SwapForgottenForm () {: aria-label='Functions' }
-#### void SwapForgottenForm ( boolean Force = false, boolean NoEffects = false) {: .copyable aria-label='Functions' }
-如果玩家是 “遗忘者/灵魂”，两者将交换形态。否则，此函数不执行任何操作。
-`Force` 参数将强制交换，即使副玩家没有生命值，或者在房间/关卡过渡期间。`NoEffects` 参数将禁用从 “灵魂” 切换到 “遗忘者” 时的灰尘效果和白色渐变效果。
+#### boolean SwapForgottenForm ( boolean Force = false, boolean NoEffects = false) {: .copyable aria-label='Functions' }
+If the player is The Forgotten/The Soul, the two will swap forms. Otherwise, this function does nothing.
 
+`Force` will swap even if the subplayer doesn't have any health, or while a room/stage transition is active. `NoEffects` will disable the dust effect & fade from white when switching from The Soul to The Forgotten.
+
+Returns `true` on success, otherwise `false`.
+
+___
 ### SyncConsumableCounts () {: aria-label='Functions' }
 #### void SyncConsumableCounts ( [EntityPlayer](EntityPlayer.md) Player, int CollectibleFlags ) {: .copyable aria-label='Functions' }      
 
@@ -1031,8 +1371,8 @@ ___
 触发玩家身上类似于房间清理的效果（如为主动道具充能）。
 
 ### TryAddToBagOfCrafting () {: aria-label='Functions' }
-#### void TryAddToBagOfCrafting ( [EntityPickup](EntityPickup.md) Pickup ) {: .copyable aria-label='Functions' }
-尝试将指定的拾取物添加到玩家的合成袋中。
+#### boolean TryAddToBagOfCrafting ( [EntityPickup](EntityPickup.md) Pickup ) {: .copyable aria-label='Functions' }
+Tries to add the specified pickup to the player's Bag of Crafting. Returns true if successful.
 
 ### TryDecreaseGlowingHourglassUses () {: aria-label='Functions' }
 #### void TryDecreaseGlowingHourglassUses ( int Uses, boolean ForceHourglass = false ) {: .copyable aria-label='Functions' }

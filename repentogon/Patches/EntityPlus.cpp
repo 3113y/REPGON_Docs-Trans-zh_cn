@@ -6,6 +6,8 @@
 #include "IsaacRepentance.h"
 #include "SigScan.h"
 #include "ASMPatcher.hpp"
+#include "ASMDefinition.h"
+#include "Log.h"
 
 // ----------------------------------------------------------------------------------------------------
 // -- EntityPlusHolder
@@ -77,6 +79,8 @@ HOOK_METHOD(Entity, Init, (unsigned int type, unsigned int variant, unsigned int
 		holder->data = std::make_unique<EntityPlayerPlus>();
 	} else if (type == ENTITY_FAMILIAR) {
 		holder->data = std::make_unique<EntityFamiliarPlus>();
+	} else if (type == ENTITY_TEAR) {
+		holder->data = std::make_unique<EntityTearPlus>();
 	} else if (type == ENTITY_LASER) {
 		holder->data = std::make_unique<EntityLaserPlus>();
 	} else if (type == ENTITY_KNIFE) {
@@ -117,6 +121,11 @@ EntityPlayerPlus* GetEntityPlayerPlus(Entity_Player* player) {
 
 EntityFamiliarPlus* GetEntityFamiliarPlus(Entity_Familiar* familiar) {
 	return dynamic_cast<EntityFamiliarPlus*>(GetEntityPlusHolder(familiar, true)->data.get());
+}
+
+EntityTearPlus* GetEntityTearPlus(Entity_Tear* tear)
+{
+    return dynamic_cast<EntityTearPlus*>(GetEntityPlusHolder(tear, true)->data.get());
 }
 
 EntityLaserPlus* GetEntityLaserPlus(Entity_Laser* laser) {
@@ -187,9 +196,96 @@ void PatchRecalculateLaserSamples(const char* sig, const int numOverriddenBytes)
 	sASMPatcher.PatchAt(addr, &patch);
 }
 
+bool __stdcall PlayerHasCamoOverride(Entity_Player* player) {
+	EntityPlayerPlus* playerPlus = GetEntityPlayerPlus(player);
+
+	return playerPlus && playerPlus->camoOverride;
+}
+
+void PatchPlayerForceCamo() {
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS, true);
+	ASMPatch patch;
+
+	void* addr = sASMDefinitionHolder->GetDefinition(&AsmDefinitions::EntityPlus_PlayerForceCamo);
+	const int jumpOffset = 0x15 + *(int*)((char*)addr + 0x11);
+
+	printf("[REPENTOGON] Patching Player::UpdateEffect for camo override at %p\n", addr);
+
+	patch.PreserveRegisters(savedRegisters)
+		.Push(ASMPatch::Registers::EDI) // push player
+		.AddInternalCall(PlayerHasCamoOverride)
+		.AddBytes("\x84\xC0") // test al, al
+		.RestoreRegisters(savedRegisters)
+		.AddConditionalRelativeJump(ASMPatcher::CondJumps::JNZ, (char*)addr + jumpOffset) //skipping vanilla curse icons rendering
+		.AddBytes(ByteBuffer().AddAny((char*)addr, 0x6))  // Restore the bytes we overwrote
+		.AddRelativeJump((char*)addr + 0x6);
+	sASMPatcher.PatchAt(addr, &patch);
+}
+
+constexpr uint32_t SOUND_NULL = 0;
+
+HOOK_METHOD(Entity_Laser, PlayInitSound, () -> void) {
+	EntityLaserPlus* laserPlus = GetEntityLaserPlus(this);
+	assert(laserPlus);
+	if (laserPlus && laserPlus->initSound) {
+		const uint32_t customSound = laserPlus->initSound.value();
+		if (customSound != SOUND_NULL) {
+			g_Manager->_sfxManager.Play(customSound, 1.0, 2, false, 1.0, 0);
+		}
+	} else {
+		super();
+	}
+}
+
+static bool __fastcall asm_try_play_custom_init_sound(Entity_Tear* tear)
+{
+	EntityTearPlus* tearPlus = GetEntityTearPlus(tear);
+	assert(tearPlus);
+	
+	std::optional<uint32_t> initSound = tearPlus->initSound;
+	if (!initSound)
+	{
+		return false;
+	}
+
+	int customSound = initSound.value();
+	if (customSound != SOUND_NULL)
+	{
+		g_Manager->_sfxManager.Play(customSound, 1.0, 2, false, 1.0, 0);
+	}
+
+	return true;
+}
+
+static void Patch_InitTear_PlaySound()
+{
+	intptr_t addr = (intptr_t)sASMDefinitionHolder->GetDefinition(&AsmDefinitions::EntityTear_InitTear_PrePlaySound);
+	intptr_t skipAddr = (intptr_t)sASMDefinitionHolder->GetDefinition(&AsmDefinitions::EntityTear_InitTear_PostPlaySound);
+	ZHL::Log("[REPENTOGON] Patching Entity_Tear::init_tear for play custom init sound at %p\n", addr);
+
+	ASMPatch::SavedRegisters savedRegisters(ASMPatch::SavedRegisters::Registers::GP_REGISTERS_STACKLESS, true);
+	ASMPatch patch;
+
+	intptr_t resumeAddr = addr + 7;
+	constexpr size_t RESTORED_BYTES = 7;
+
+	patch.AddBytes(ByteBuffer().AddAny((void*)addr, RESTORED_BYTES))
+		.PreserveRegisters(savedRegisters)
+		.AddBytes("\x89\xF9") // MOV ECX, EDI
+		.AddInternalCall(asm_try_play_custom_init_sound)
+		.AddBytes("\x84\xC0") // TEST AL, AL
+		.RestoreRegisters(savedRegisters)
+		.AddConditionalRelativeJump(ASMPatcher::CondJumps::JNZ, (void*)skipAddr)
+		.AddRelativeJump((void*)resumeAddr);
+
+	sASMPatcher.PatchAt((void*)addr, &patch);
+}
+
 }  // namespace
 
 void ASMPatchesForEntityPlus() {
 	PatchRecalculateLaserSamples("f30f108f????????0f2e8f", 8);  // update_laser
 	PatchRecalculateLaserSamples("8b97????????8d8f????????52", 6);  // update_circle_laser
+	PatchPlayerForceCamo(); // update_effects
+	Patch_InitTear_PlaySound();
 }

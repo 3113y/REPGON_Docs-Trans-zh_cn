@@ -195,6 +195,14 @@ ___
 获取窗口元素是否可见。
 
 ___
+### GetWindowChildFlags () {: aria-label='Functions' }
+#### [ImGuiChildFlags](enums/ImGuiChildFlags.md) GetWindowChildFlags ( ) {: .copyable aria-label='Functions' }
+Get visual setting flags for the window, specific for its usecase as a child.
+___
+### GetWindowFlags () {: aria-label='Functions' }
+#### [ImGuiWindowFlags](enums/ImGuiWindowFlags.md) GetWindowFlags ( ) {: .copyable aria-label='Functions' }
+Get visual setting flags for the window.
+___
 ### GetWindowPinned () {: aria-label='Functions' }
 #### boolean GetWindowPinned ( string WindowId ) {: .copyable aria-label='Functions' }
 获取窗口的固定状态。
@@ -277,6 +285,15 @@ ___
 为指定元素添加一个帮助标记。帮助标记是一个显示在元素右侧的 `(?)` 元素，当鼠标悬停在其上时会显示一个工具提示。
 
 ___
+### SetSize () {: aria-label='Functions' }
+#### void SetSize ( string elementID, float width, float Height ) {: .copyable aria-label='Functions' }
+Sets the width and height of an element in pixels. Most regular form-elements only allow for width changes. Windows, Buttons and Plots do allow for width and height changes.
+
+If the width is equal 0, the element will try to fill all available space in the window (Default behavior). 
+
+If the value is negative, the element will fill the full width of the window, minus the number of pixels defined.
+Example: The window is 500px wide. A width of -75 will make the element 425px wide.
+___
 ### SetTextColor () {: aria-label='Functions' }
 #### void SetTextColor ( string ElementId, float r, float g, float b, float a = 1.0 ) {: .copyable aria-label='Functions' }
 为指定元素的文本添加颜色修饰符的快捷函数。
@@ -291,6 +308,14 @@ ___
 #### void SetVisible ( string ElementId, boolean Visible ) {: .copyable aria-label='Functions' }
 
 ___
+### SetWindowChildFlags () {: aria-label='Functions' }
+#### void SetWindowChildFlags ( [ImGuiChildFlags](enums/ImGuiChildFlags.md) newFlags ) {: .copyable aria-label='Functions' }
+Set visual setting flags for the window, specific for its usecase as a child.
+___
+### SetWindowFlags () {: aria-label='Functions' }
+#### void SetWindowFlags ( [ImGuiWindowFlags](enums/ImGuiWindowFlags.md) newFlags ) {: .copyable aria-label='Functions' }
+Set visual setting flags for the window.
+___
 ### SetWindowPinned () {: aria-label='Functions' }
 #### void SetWindowPinned ( string WindowId, boolean Pinned ) {: .copyable aria-label='Functions' }
 设置窗口的固定状态，使窗口在 ImGui 界面未激活时也保持可见。
@@ -303,8 +328,7 @@ ___
 ___
 ### SetWindowSize () {: aria-label='Functions' }
 #### void SetWindowSize ( string WindowId, float width, float Height ) {: .copyable aria-label='Functions' }
-以像素为单位设置窗口的宽度和高度。
-
+Deprecated. Now does the same as [SetSize()](#setsize).
 ___
 ### Show () {: aria-label='Functions' }
 #### void Show ( ) {: .copyable aria-label='Functions' }

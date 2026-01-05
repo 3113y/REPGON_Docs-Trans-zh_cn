@@ -539,6 +539,7 @@ bool Isaac::IsInGame() {
 	return g_Manager->GetState() == 2 && g_Game;
 }
 
+/*
 void ScoreSheet::AddFinishedStage(int stage, int stageType, unsigned int time) {
 	if ((_runTimeLevel < stage) && g_Game->GetDailyChallenge()._id == 0) {
 		_runTimeLevel = stage;
@@ -547,6 +548,7 @@ void ScoreSheet::AddFinishedStage(int stage, int stageType, unsigned int time) {
 	}
 	return;
 }
+*/
 
 void EntityList_EL::Untie() {
 	if (!_sublist) {
@@ -600,51 +602,7 @@ void Entity_Bomb::UpdateDirtColor() {
     }
 }
 
-void Entity_Pickup::InitFlipState(CollectibleType collectType, bool setupCollectibleGraphics) {
-	 
-	if (_variant == PICKUP_COLLECTIBLE && CanReroll() && !_dead) {
-
-		EntitySaveState* emptySaveState = new EntitySaveState();
-
-		_flipSaveState.SetP(emptySaveState);
-		EntitySaveState* flipState = _flipSaveState.saveState;
-
-		flipState->type = _type, flipState->variant = _variant;
-
-		RNG rng = RNG();
-		rng.SetSeed(_initSeed, 39);
-		unsigned int seed = rng.Next();
-
-		flipState->_initSeed = seed;
-
-		int collectibleID = (collectType != COLLECTIBLE_NULL) ? collectType :  g_Game->_itemPool.GetSeededCollectible(flipState->_initSeed, true, g_Game->_room->_descriptor); //to-do: add valid itemconfig check
-
-		flipState->subtype = collectibleID;
-
-		_altPedestalANM2.Reset();
-		if (setupCollectibleGraphics) {
-			
-
-			ANM2 copySprite = ANM2();
-			copySprite.construct_from_copy(&_sprite);
-
-			Isaac::SwapANM2(&_altPedestalANM2, &copySprite);
-
-			Entity_Pickup::SetupCollectibleGraphics(&_altPedestalANM2, 1, (CollectibleType)flipState->subtype, flipState->_initSeed, false);
-
-			_altPedestalANM2.LoadGraphics(true);
-
-			_altPedestalANM2.Play(_sprite.GetAnimationData(0)->GetName().c_str(), true);
-			_altPedestalANM2.Update();
-		}
-	}
-
-	
-
-	return;
-}
-
-void DestinationQuad::RotateRadians(const Vector& pivot, float radians) noexcept
+void DestinationQuad::RotateRadians(const Vector& pivot, float radians)
 {
 	if (radians == 0.0)
 	{
@@ -661,21 +619,43 @@ void DestinationQuad::RotateRadians(const Vector& pivot, float radians) noexcept
 	_bottomRight -= pivot;
 
 	// apply rotation
-	_topLeft.x = cos * _topLeft.x - sin * _topLeft.y;
-	_topLeft.y = sin * _topLeft.x + cos * _topLeft.y;
+	auto rotate = [](auto& p, float sin, float cos) {
+		float x = p.x;
+		float y = p.y;
+		p.x =  cos * x - sin * y;
+		p.y =  sin * x + cos * y;
+	};
 
-	_topRight.x = cos * _topRight.x - sin * _topRight.y;
-	_topRight.y = sin * _topRight.x + cos * _topRight.y;
-
-	_bottomLeft.x = cos * _bottomLeft.x - sin * _bottomLeft.y;
-	_bottomLeft.y = sin * _bottomLeft.x + cos * _bottomLeft.y;
-
-	_bottomRight.x = cos * _bottomRight.x - sin * _bottomRight.y;
-	_bottomRight.y = sin * _bottomRight.x + cos * _bottomRight.y;
+	rotate(_topLeft, sin, cos);
+	rotate(_topRight, sin, cos);
+	rotate(_bottomLeft, sin, cos);
+	rotate(_bottomRight, sin, cos);
 
 	// undo translation
 	_topLeft += pivot;
 	_topRight += pivot;
 	_bottomLeft += pivot;
 	_bottomRight += pivot;
+}
+
+ModReference* LuaEngine::GetModRefByTable(int tblIdx)
+{
+	lua_State* L = this->_state;
+	int tblAbsIdx = lua_absindex(L, tblIdx);
+	std::list<ModReference>& mods = g_Mods;
+
+	for (ModReference& mod : mods)
+	{
+		int modRefTbl = mod._luaTableRef->_ref;
+		lua_rawgeti(L, LUA_REGISTRYINDEX, modRefTbl);
+		bool eq = lua_rawequal(L, tblAbsIdx, -1);
+		lua_pop(L, 1);
+
+		if (eq)
+		{
+			return &mod;
+		}
+	}
+
+	return nullptr;
 }

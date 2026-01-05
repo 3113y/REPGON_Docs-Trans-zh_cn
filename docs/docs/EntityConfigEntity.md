@@ -86,6 +86,14 @@ ___
 #### table GetCustomTags ( ) {: .copyable aria-label='Functions' }
 返回一个表格，其中包含实体在 [entities2.xml](xml/entities.md) 的 `customtags` 属性中指定的所有字符串。标签始终以全小写形式提供。有关 `customtags` 的更多信息，请参阅 [entities2.xml](xml/entities.md)。
 
+___
+### GetDevolvedEntity () {: aria-label='Functions' }
+#### [EntityConfigEntity](EntityConfigEntity.md) GetDevolvedEntity ( ) {: .copyable aria-label='Functions' }
+Returns the [EntityConfigEntity](EntityConfigEntity.md) that this entity would "devolve" into when D10 is used.
+
+Returns nil if the entity has no devolution and would die instead.
+
+___
 ### GetEntityTags () {: aria-label='Functions' }
 #### int GetEntityTags ( ) {: .copyable aria-label='Functions' }
 返回此实体的 [EntityTag](enums/EntityTag.md) 位掩码。

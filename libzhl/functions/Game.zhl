@@ -13,6 +13,9 @@ __thiscall void Game::RestoreState(GameState* state,bool startGame);
 "558bec6aff68????????64a1????????5083ec78a1????????33c58945??535657508d45??64a3????????8bf1":
 __thiscall void Game::SaveState(GameState* state);
 
+"c781????????00000000c781????????00000000c781????????00000000c781????????00000000c781????????00000000c781????????00000000c781????????00000000c781????????00000000c781????????00000000c681????????00":
+__thiscall void Game::ResetState();
+
 "8bc18b88????????85c979":
 __thiscall GlowingHourglassState* Game::GetGlowingHourglassState();
 
@@ -152,10 +155,13 @@ __stdcall void Game::SaveBackwardsStage(int stage);
 "558bec83e4f883ec14f30f1005":
 static Entity_Effect* Game::ChainLightning(Vector* position, float damage<xmm2>, BitSet128 tearFlags, Entity* spawner);
 
+"558bec83ec0c568bb1":
+__thiscall bool Game::HasSeedEffect(int SeedEffect);
+
 "a1(????????)c3????????????????????558bec6a00":
 reference Game *g_Game;
 
-struct Game depends (Level, RoomDescriptor, RoomConfig, BossPool, PlayerManager, Console, ItemOverlay, Ambush, ProceduralItemManager, RoomTransition, GameState, GlowingHourglassState, Seeds, DebugRenderer, ScoreSheet, ColorModState, GameOver, ItemPool, Leaderboard, GenericPrompt, DailyChallenge, Vector, EntityFactory, StageTransition, Minimap, ColorMod, HUD, PauseScreen, BackwardsStageDesc) { {{
+struct Game depends (Level, RoomDescriptor, RoomConfig, BossPool, PlayerManager, Console, ItemOverlay, Ambush, ProceduralItemManager, RoomTransition, GameState, GlowingHourglassState, Seeds, DebugRenderer, ScoreSheet, ColorModState, GameOver, ItemPool, Leaderboard, GenericPrompt, DailyChallenge, Vector, EntityFactory, StageTransition, Minimap, ColorMod, HUD, PauseScreen, BackwardsStageDesc, RNG) { {{
 	Game()
 	{
 		this->constructor();
@@ -251,6 +257,7 @@ struct Game depends (Level, RoomDescriptor, RoomConfig, BossPool, PlayerManager,
 	uint32_t _roomOffset[507] : 0x17adc;
 	uint32_t _nbRooms : 0x182cc;
 	uint32_t _startingRoomIdx : 0x182d0;
+	RNG _generationRNG : 0x182d4;
 	Room* _room : 0x18300;
 	uint32_t _currentRoomIdx : 0x18304;
 	uint32_t _lastRoomIdx : 0x18308;
@@ -299,6 +306,7 @@ struct Game depends (Level, RoomDescriptor, RoomConfig, BossPool, PlayerManager,
 	int _lastLevelWithoutHalfHp : 0x25f38;
 	uint32_t _difficulty : 0x25f40;
 	int _lastLevelWithDamage : 0x25f44;
+	bool _isStartingFromState : 0x25f61;
 	bool _isStoringGlowingHourglassState : 0x25f62;
 	bool _isRestoringGlowingHourglassState : 0x25f63;
 	GlowingHourglassState _glowingHourglassStates[2] : 0x25f64;

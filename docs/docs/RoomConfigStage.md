@@ -28,23 +28,15 @@ Returns the sprite path for the boss spot used in the boss intro.
 #### string GetDisplayName ( ) {: .copyable aria-label='Functions' }
 Returns the name of the stage.
 
-### GetMusic () {: aria-label='Functions' }
-#### [Music](https://wofsauge.github.io/IsaacDocs/rep/enums/Music.html?h=music) GetMusic ( ) {: .copyable aria-label='Functions' }
-Returns the `Music` used in default rooms on the stage.
+___
+### GetXMLName () {: aria-label='Functions' }
+#### string GetXMLName ( ) {: .copyable aria-label='Functions' }
 
-### GetPlayerSpot () {: aria-label='Functions' }
-#### string GetPlayerSpot ( ) {: .copyable aria-label='Functions' }
-Returns the sprite path for the player spot used in the boss intro and nightmare transition.
+___
+### IsLoaded () {: aria-label='Functions' }
+#### boolean IsLoaded ( int mode = 0 ) {: .copyable aria-label='Functions' }
 
-### GetRoomSet () {: aria-label='Functions' }
-#### [RoomConfigSet](CcpContainer_RoomConfigSet.md) GetRoomSet ( int Mode ) {: .copyable aria-label='Functions' }
-Returns a [RoomConfigSet](CcpContainer_RoomConfigSet.md), which contains every [RoomConfigRoom](https://wofsauge.github.io/IsaacDocs/rep/RoomConfig_Room.html) in the stage.
-`Mode` is `0` for Normal Mode, `1` for Greed Mode
-
-### GetSuffix () {: aria-label='Functions' }
-#### string GetSuffix ( ) {: .copyable aria-label='Functions' }
-Returns the suffix used by the stage for stage-unique sprites, such as the boss/player spot and unique variants for enemies.
-
+___
 ### SetBackdrop () {: aria-label='Functions' }
 #### void SetBackdrop ( [BackdropType](https://wofsauge.github.io/IsaacDocs/rep/enums/BackdropType.html?h=backdrop) Backdrop ) {: .copyable aria-label='Functions' }
 Sets the `BackdropType` used in default rooms on the stage.
@@ -68,3 +60,13 @@ Sets the sprite path for the player spot used in the boss intro and nightmare tr
 ### SetSuffix () {: aria-label='Functions' }
 #### void SetSuffix ( string Suffix ) {: .copyable aria-label='Functions' }
 Sets the suffix used by the stage for stage-unique sprites, such as the boss/player spot and unique variants for enemies.
+
+___
+### SetXMLName () {: aria-label='Functions' }
+#### void SetXMLName ( string name ) {: .copyable aria-label='Functions' }
+
+___
+### Unload () {: aria-label='Functions' }
+#### void Unload ( ) {: .copyable aria-label='Functions' }
+
+___

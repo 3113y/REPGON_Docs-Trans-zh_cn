@@ -55,6 +55,7 @@ ModCallbacks.MC_PRE_USE_PILL = 1065
 ModCallbacks.MC_GET_SHOP_ITEM_PRICE = 1066
 ModCallbacks.MC_PLAYER_GET_HEALTH_TYPE = 1067
 ModCallbacks.MC_PRE_ROOM_TRIGGER_CLEAR = 1068
+ModCallbacks.MC_POST_ROOM_TRIGGER_CLEAR = 1143 --oops
 ModCallbacks.MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR = 1069
 ModCallbacks.MC_POST_PLAYER_TRIGGER_ROOM_CLEAR = 1138 --oops
 ModCallbacks.MC_PRE_RESTOCK_SHOP = 1070
@@ -127,9 +128,12 @@ ModCallbacks.MC_PRE_OPENGL_RENDER = 1136
 ModCallbacks.MC_PRE_LEVEL_PLACE_ROOM = 1137
 
 ModCallbacks.MC_POST_ITEM_OVERLAY_RENDER = 1139
+ModCallbacks.MC_POST_DISCHARGE_ACTIVE_ITEM = 1140
 
 ModCallbacks.MC_PRE_BACKDROP_CHANGE = 1141
 ModCallbacks.MC_POST_BACKDROP_CHANGE = 1142
+
+ModCallbacks.MC_POST_PLAYER_DROP_TRINKET = 1144
 
 ModCallbacks.MC_PRE_GET_LIGHTING_ALPHA = 1150
 ModCallbacks.MC_PRE_RENDER_GRID_LIGHTING = 1151
@@ -468,9 +472,15 @@ SoundEffect.SOUND_VOID_CONSUMED = 913
 SoundEffect.SOUND_YOLISTEN_CHIME = 914
 SoundEffect.NUM_SOUND_EFFECTS = 915
 
-GridRooms.ROOM_DEATHMATCH = -19
-GridRooms.ROOM_LIL_PORTAL = -20
+GridRooms.ROOM_DEATHMATCH_IDX = -19
+GridRooms.ROOM_LIL_PORTAL_IDX = -20
 GridRooms.NUM_OFF_GRID_ROOMS = 20
+
+GameStateFlag.STATE_MEGA_SATAN_DOOR_OPENED = 49
+GameStateFlag.STATE_URIEL_KILLED = 50
+GameStateFlag.STATE_GABRIEL_KILLED = 51
+GameStateFlag.STATE_MOTHER_HEART_DOOR_OPENED = 52
+GameStateFlag.NUM_STATE_FLAGS = 53
 
 AddHealthType = {
 	NONE	=	0,
@@ -648,19 +658,23 @@ ButtonActionBitwise = {
 	ACTION_MAP = 1<<13,
 	ACTION_MENUCONFIRM = 1<<14,
 	ACTION_MENUBACK = 1<<15,
-	ACTION_RESTART = 1<<16,
-	ACTION_FULLSCREEN = 1<<17,
-	ACTION_MUTE = 1<<18,
+	ACTION_FULLSCREEN = 1<<16,
+	ACTION_MUTE = 1<<17,
+	ACTION_RESTART = 1<<18,
 	ACTION_JOINMULTIPLAYER = 1<<19,
 	ACTION_MENULEFT = 1<<20,
 	ACTION_MENURIGHT = 1<<21,
 	ACTION_MENUUP = 1<<22,
 	ACTION_MENUDOWN = 1<<23,
-	ACTION_MENULT = 1<<24,
-	ACTION_MENURT = 1<<25,
-	ACTION_MENUTAB = 1<<26,
+	ACTION_MENULB = 1<<24,
+	ACTION_MENURB = 1<<25,
+	ACTION_MENULT = 1<<26,
+	ACTION_MENURT = 1<<27,
+	ACTION_MENUTAB = 1<<28,
+	ACTION_MENUEX = 1<<29,
+	ACTION_EMOTES = 1<<30,
 	
-	ACTION_CONSOLE = 1<<28
+	ACTION_CONSOLE = 1<<32
 }
 
 NullPickupSubType = {
@@ -737,7 +751,7 @@ RoomSubType = {
 	SHOP_KEEPER_RARE_BAD = 111,
 
 	-- Treasure
-	TREASURE_NORMAL = 1,
+	TREASURE_NORMAL = 0,
 	TREASURE_OPTIONS = 1,
 	TREASURE_PAY_TO_PLAY = 2,
 	TREASURE_PAY_TO_PLAY_OPTIONS = 3,
@@ -2212,7 +2226,7 @@ EventCounter = {
 	UNKNOWN_EVENT_496 = 496, -- TODO: Currently Unknown. Maybe Daily Multiplayer run Streak?
 	ONLINE_CURRENT_STREAK = 497, -- Current Online Mode streak
 	ONLINE_BEST_STREAK = 498, -- Best streak in Online Gameplay
-	UNKNOWN_EVENT_499 = 499, -- TODO: Currently Unknown. Maybe Daily Multiplayer run Streak?
+	ONLINE_NEGATIVE_STREAK = 499,
 	ONLINE_SIN_ETERNAL = 500,
 	ONLINE_SIN_HEARTLESS = 501,
 	ONLINE_SIN_ENVIOUS = 502,
@@ -3033,6 +3047,7 @@ CustomCacheTag = {
 	MAX_BOMBS = "maxbombs",
 	TEARS_CAP = "tearscap",
 	STAT_MULTIPLIER = "statmultiplier",
+	HEALTH_TYPE = "healthtype",
 }
 
 EvaluateStatStage = {
@@ -3077,6 +3092,33 @@ UseActiveItemResultFlag = {
 	REMOVE = 1 << 8,
 }
 
+SlotState = {
+	IDLE = 1,
+	CHOICE = 2, -- Shell Game & Hell Game only, choose a skull
+	REWARD = 2,
+	DESTROYED = 3,
+	PAYOUT = 4,
+	REWARD_SHELL_GAME = 5,
+	REWARD_HELL_GAME = 5,
+}
+
+BloodClotSubtype = {
+	RED = 0,
+	SOUL = 1,
+	BLACK = 2,
+	ETERNAL = 3,
+	GOLD = 4,
+	BONE = 5,
+	ROTTEN = 6,
+	LIL_CLOT = 7,
+}
+
+RoomDisplayFlags = {
+	INVISIBLE = 1 << -1,
+	VISIBLE = 1 << 0,
+	SHOW_LOCK = 1 << 1,
+	SHOW_ICON = 1 << 2,
+}
 
 --deprecated enums
 
@@ -3085,3 +3127,6 @@ Achievement.RESERVED_HEIROPHANT = 529
 Achievement.HAEMOLACHRIA = Achievement.HAEMOLACRIA
 Achievement.CROOKED_CARD = Achievement.CROOKED_PENNY
 MainMenuType.SEED = MainMenuType.ONLINELOBBY
+EventCounter.UNKNOWN_EVENT_499 = EventCounter.ONLINE_NEGATIVE_STREAK
+GridRooms.ROOM_DEATHMATCH = GridRooms.ROOM_DEATHMATCH_IDX
+GridRooms.ROOM_LIL_PORTAL = GridRooms.ROOM_LIL_PORTAL_IDX

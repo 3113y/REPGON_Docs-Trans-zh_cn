@@ -33,6 +33,11 @@ Returns true if the gridentity at the given position can be picked up.
 #### boolean CanSpawnObstacleAtPosition ( int GridIndex, boolean Force ) {: .copyable aria-label='Functions' }
 
 ___
+### ClearBossHazards () {: aria-label='Functions' }
+#### void ClearBossHazards ( boolean IgnoreNPCs = true, [Entity](Entity.md) Source = nil ) {: .copyable aria-label='Functions' }
+Kills all projectiles. Kills all non-friendly NPCs capable of keeping doors closed as well if `IgnoreNPCs` is false.
+
+___
 ### DoLightningStrike () {: aria-label='Functions' }
 #### void DoLightningStrike ( int Seed = RandomSeed ) {: .copyable aria-label='Functions' }
 Creates a lightning effect as seen in Downpour. `Seed` determines [intensity](Room.md#getlightningintensity) (`1.3 + RandomFloat()*.6`) and sound pitch (`0.9 + RandomFloat()*0.2`).
@@ -61,6 +66,10 @@ ___
 #### [Color](Color.md) GetFloorColor ( ) {: .copyable aria-label='Functions' }
 
 ___
+### GetFXLayers () {: aria-label='Functions' }
+#### [FXLayers](FXLayers.md) GetFXLayers ( ) {: .copyable aria-label='Functions' }
+
+___
 ### GetFXParams () {: aria-label='Functions' }
 #### [FXParams](FXParams.md) GetFXParams ( ) {: .copyable aria-label='Functions' }
 
@@ -75,8 +84,7 @@ ___
 
 ___
 ### GetItemPool () {: aria-label='Functions' }
-#### [ItemPoolType](https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html) PoolType GetItemPool ( int Seed, boolean Raw ) {: .copyable aria-label='Functions' }
-If `Raw` is set to `true` and the pool is set to `POOL_NULL` then `POOL_NULL` will be returned, instead of running the game's pool selection code.
+#### [ItemPoolType](https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html) PoolType GetItemPool ( int Seed = Random(), boolean Raw = false ) {: .copyable aria-label='Functions' }
 Retrieves the [ItemPoolType](https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html) the game would use to generate random collectibles in the current room. Unlike [ItemPool.GetPoolForRoom()](https://wofsauge.github.io/IsaacDocs/rep/ItemPool.html#getpoolforroom), this takes into account the pool set using [SetItemPool()](Room.md#setitempool), and runs the game's pool selection code, which handles unique cases (ex. Boss Room + Used Satanic Bible = Devil Pool).
 
 ### GetLightningIntensity () {: aria-label='Functions' }
@@ -110,94 +118,19 @@ ___
 #### int GetShopItemPrice ( int EntityVariant, int EntitySubType, int ShopItemID ) {: .copyable aria-label='Functions' }
 Returns the price of the item.
 
-### GetWaterAmount () {: aria-label='Functions' }
-#### float GetWaterAmount ( ) {: .copyable aria-label='Functions' }
-Returns the "amount" of water currently in the room. Generally this will be `0` for no water and `1` for water, but values in between `0` and `1` (and technically above `1` in modded scenarios) are possible.
-
-### GetWaterColor () {: aria-label='Functions' }
-#### [KColor](https://wofsauge.github.io/IsaacDocs/rep/KColor.html) GetWaterColor ( ) {: .copyable aria-label='Functions' }
-
-___
-### GetWaterColorMultiplier () {: aria-label='Functions' }
-#### [KColor](https://wofsauge.github.io/IsaacDocs/rep/KColor.html) GetWaterColorMultiplier ( ) {: .copyable aria-label='Functions' }
-
-___
-### IsChampionBossSeed () {: aria-label='Functions' }
-#### boolean IsChampionBossSeed ( ) {: .copyable aria-label='Functions' }
-Return whether boss spawns in this room will be champions.
-
-### IsPersistentRoomEntity () {: aria-label='Functions' }
-#### boolean IsPersistentRoomEntity ( [EntityType](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html) Type, int Variant = 0 ) {: .copyable aria-label='Functions' }
-
-___
-### PickupGridEntity () {: aria-label='Functions' }
-#### [EntityEffect](https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html) PickupGridEntity ( int GridIndex ) {: .copyable aria-label='Functions' }
-Tries to pick up the grid entity at the provided index and returns an [EntityEffect](https://wofsauge.github.io/IsaacDocs/rep/EntityEffect.html) of the picked up grid entity.
-
-### RemoveGridEntityImmediate () {: aria-label='Functions' }
-#### void RemoveGridEntityImmediate ( int GridIndex, int PathTrail, boolean KeepDecoration ) {: .copyable aria-label='Functions' }
-*Immediately* removes the GridEntity at the given index. This means grids can be properly removed and immediately replaced, *without* the need to call Room:Update.
-
-### SaveState () {: aria-label='Functions' }
-#### void SaveState ( ) {: .copyable aria-label='Functions' }
-Saves the current state of the room
-
-### SetBackdropType () {: aria-label='Functions' }
-#### void SetBackdropType ( [BackdropType](https://wofsauge.github.io/IsaacDocs/rep/enums/BackdropType.html), int Unknown ) {: .copyable aria-label='Functions' }
-The backdrop variant chosen is seeded based on the room, and does not persist when leaving and re-entering. Calling this function again on re-entry will result in the same backdrop variant as before.
-This function will not work if the Unknown integer is passed as `0`.
-
-### SetGreedWaveTimer () {: aria-label='Functions' }
-#### void SetGreedWaveTimer ( int Time ) {: .copyable aria-label='Functions' }
-
-___
-### SetItemPool () {: aria-label='Functions' }
-#### void SetItemPool ( [ItemPoolType](https://wofsauge.github.io/IsaacDocs/rep/enums/ItemPoolType.html) PoolType ) {: .copyable aria-label='Functions' }
-Sets the pool to use when the game needs to generate random collectibles in the current room. This takes priority over the game's regular pool selection code. Can be set to `ItemPoolType.POOL_NULL` to let the game handle pool selection. This is reset every room transition.
-
-### SetLavaIntensity () {: aria-label='Functions' }
-#### void SetLavaIntensity ( float Intensity ) {: .copyable aria-label='Functions' }
-This primarily affects [UpdateColorModifier](Room.md#updatecolormodifier) (if `Process` is true, an orange glow is added based on the number of pits and lava intensity).
-
-### SetLightningIntensity () {: aria-label='Functions' }
-#### void SetLightningIntensity ( float Intensity ) {: .copyable aria-label='Functions' }
-Sets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.
-This is set by the game in a random range between `1.3` and `2.1`, and decays by `value * .75` per render.
-
-### SetPauseTimer () {: aria-label='Functions' }
-#### void SetPauseTimer ( int Duration ) {: .copyable aria-label='Functions' }
-
-___
-### SetRail () {: aria-label='Functions' }
-#### void SetRail ( int GridIndex, [StbRailVariant](enums/StbRailVariant.md) RailVariant ) {: .copyable aria-label='Functions' }
-
-___
-### SetRainIntensity () {: aria-label='Functions' }
-#### void SetRainIntensity ( float Intensity ) {: .copyable aria-label='Functions' }
-Used by the positional rain effect spawners in Downpour. No noticable effect beyond `1.0`.
-
-### SetRoomClearDelay () {: aria-label='Functions' }
-#### void SetRoomClearDelay ( int Delay ) {: .copyable aria-label='Functions' }
-
-___
-### SetWaterAmount () {: aria-label='Functions' }
-#### void SetWaterAmount ( float Amount ) {: .copyable aria-label='Functions' }
-Sets the amount of water that should be in the current room. Vanilla typically uses `0` for no water and `1` for water. You can technically go higher than this for some interesting results.
-
-### SetWaterColor () {: aria-label='Functions' }
-#### void SetWaterColor ( [KColor](Color.md) WaterColor ) {: .copyable aria-label='Functions' }
-
-___
-### SetWaterColorMultiplier () {: aria-label='Functions' }
-#### void SetWaterColorMultiplier ( [KColor](Color.md) WaterColor ) {: .copyable aria-label='Functions' }
-
-___
-### SetWaterCurrent () {: aria-label='Functions' }
-#### void SetWaterCurrent ( [Vector](Vector.md) WaterCurrent ) {: .copyable aria-label='Functions' }
-`Vector(0, 0)` will remove the current.
 The game typically uses `1` or `-1` for its values depending on current strength and direction. You can technically go higher than this for some interesting results. Arbitrary directions are fully supported as well.
-Sets the strength of the water current in the room. Current sounds and particles are automatically handled.
 
+`Vector(0, 0)` will remove the current.
+___
+### TriggerOutput () {: aria-label='Functions' }
+#### void TriggerOutput ( [RoomEventOutput](enums/RoomEventOutput.md) GroupIdx) {: .copyable aria-label='Functions' }
+
+___
+### TriggerRestock () {: aria-label='Functions' }
+#### void TriggerRestock ( int GridIndex, int ShopItemIdx) {: .copyable aria-label='Functions' }
+Sets up the shop item to be spawned with an increased price upon the next call of ShopRestockPartial.
+
+___
 ### TryGetShopDiscount () {: aria-label='Functions' }
 #### int TryGetShopDiscount ( int ShopItemIdx, int Price ) {: .copyable aria-label='Functions' }
 

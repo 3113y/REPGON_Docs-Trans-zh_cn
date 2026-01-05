@@ -11,6 +11,7 @@
 #include "../../Patches/EntityPlus.h"
 #include "../../Patches/PlayerFeatures.h"
 #include "../../Patches/XmlData.h"
+#include "../../Patches/ItemSpoofSystem.h"
 
 #include <algorithm>
 
@@ -157,7 +158,11 @@ LUA_FUNCTION(Lua_HasCollectible) {
 	if (ignoreSpoof) {
 		PlayerItemSpoof::GlobalSpoofState = false;
 	}
+
+	ItemSpoofSystem::StartLuaRequest();
 	outbool = player->HasCollectible(itemID,ignoreModifiers);
+	ItemSpoofSystem::EndLuaRequest();
+
 	if (ignoreSpoof) {
 		PlayerItemSpoof::GlobalSpoofState = true;
 	}
@@ -175,7 +180,11 @@ LUA_FUNCTION(Lua_GetCollectibleNum) {
 	if (ignoreSpoof) {
 		PlayerItemSpoof::GlobalSpoofState=false;
 	}
+
+	ItemSpoofSystem::StartLuaRequest();
 	outnum = player->GetCollectibleNum(itemID, onlyCountTrueItems);
+	ItemSpoofSystem::EndLuaRequest();
+
 	if (ignoreSpoof) {
 		PlayerItemSpoof::GlobalSpoofState = true;
 	}
@@ -553,7 +562,14 @@ LUA_FUNCTION(Lua_PlayerGetMegaBlastDuration)
 LUA_FUNCTION(Lua_PlayerSetMegaBlastDuration)
 {
 	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
-	*player->GetMegaBlastDuration() = (int)luaL_checkinteger(L, 2);
+	const int duration = (int)luaL_checkinteger(L, 2);
+	*player->GetMegaBlastDuration() = duration;
+
+	Entity_Laser* laser = player->_megaBlastLaser;
+	if (laser) {
+		laser->_timeout = std::max(1, duration);
+	}
+
 	return 0;
 }
 
@@ -847,11 +863,23 @@ LUA_FUNCTION(Lua_PlayerGetD8DamageModifier)
 	return 1;
 }
 
+LUA_FUNCTION(Lua_PlayerSetD8DamageModifier) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	*player->GetD8DamageModifier() = (float)luaL_checknumber(L, 2);
+	return 0;
+}
+
 LUA_FUNCTION(Lua_PlayerGetD8SpeedModifier)
 {
 	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
 	lua_pushnumber(L, *player->GetD8SpeedModifier());
 	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetD8SpeedModifier) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	*player->GetD8SpeedModifier() = (float)luaL_checknumber(L, 2);
+	return 0;
 }
 
 LUA_FUNCTION(Lua_PlayerGetD8RangeModifier)
@@ -861,11 +889,23 @@ LUA_FUNCTION(Lua_PlayerGetD8RangeModifier)
 	return 1;
 }
 
+LUA_FUNCTION(Lua_PlayerSetD8RangeModifier) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	*player->GetD8RangeModifier() = (float)luaL_checknumber(L, 2);
+	return 0;
+}
+
 LUA_FUNCTION(Lua_PlayerGetD8FireDelayModifier)
 {
 	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
 	lua_pushnumber(L, *player->GetD8FireDelayModifier());
 	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetD8FireDelayModifier) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	*player->GetD8FireDelayModifier() = (float)luaL_checknumber(L, 2);
+	return 0;
 }
 
 LUA_FUNCTION(Lua_PlayerGetEpiphoraCharge)
@@ -2177,7 +2217,7 @@ int ValidatePool(lua_State* L, unsigned int pos)
 	return ret;
 }
 
-static void salvage_collectible_entity(Entity_Player& player, Entity_Pickup& pickup, int pool, RNG* rng) noexcept
+static void salvage_collectible_entity(Entity_Player& player, Entity_Pickup& pickup, int pool, RNG* rng)
 {
 	rng = rng ? rng : &pickup._dropRNG;
 	player.SalvageCollectible(pickup.GetPosition(), pickup._subtype, rng->Next(), pool);
@@ -2187,7 +2227,7 @@ static void salvage_collectible_entity(Entity_Player& player, Entity_Pickup& pic
 	pickup._timeout = 2;
 }
 
-static void salvage_collectible(Entity_Player& player, int subType, int pool, Vector* position, RNG* rng) noexcept
+static void salvage_collectible(Entity_Player& player, int subType, int pool, Vector* position, RNG* rng)
 {
 	position = position ? position : player.GetPosition();
 	rng = rng ? rng : &player._dropRNG;
@@ -2235,7 +2275,8 @@ LUA_FUNCTION(Lua_PlayerSalvageCollectible) {
 LUA_FUNCTION(Lua_PlayerSetControllerIndex) {
 	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
 	int idx = (int)luaL_checkinteger(L, 2);
-	player->SetControllerIndex(idx);
+	bool includePlayerOwned = lua::luaL_checkboolean(L, 3);
+	player->SetControllerIndex(idx, includePlayerOwned);
 
 	return 0;
 }
@@ -2522,6 +2563,29 @@ LUA_FUNCTION(Lua_PlayerHasGoldenTrinket) {
 
 	lua_pushboolean(L, player->HasGoldenTrinket(trinket));
 	
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerHasTrinket) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	unsigned int trinket = (unsigned int)luaL_checkinteger(L, 2);
+	bool ignoreModifiers = lua::luaL_optboolean(L, 3, false);
+
+	ItemSpoofSystem::StartLuaRequest();
+	lua_pushboolean(L, player->HasTrinket(trinket, ignoreModifiers));
+	ItemSpoofSystem::EndLuaRequest();
+	
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerGetTrinketMultiplier) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	unsigned int trinket = (unsigned int)luaL_checkinteger(L, 2);
+
+	ItemSpoofSystem::StartLuaRequest();
+	lua_pushinteger(L, player->GetTrinketMultiplier(trinket));
+	ItemSpoofSystem::EndLuaRequest();
+
 	return 1;
 }
 
@@ -3052,6 +3116,156 @@ LUA_FUNCTION(Lua_PlayerUseActiveItem) {
 	return 1;
 }
 
+LUA_FUNCTION(Lua_PlayerIsForceCamo) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	EntityPlayerPlus* entityPlayerPlus = GetEntityPlayerPlus(player);
+	lua_pushboolean(L, entityPlayerPlus && entityPlayerPlus->camoOverride);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetForceCamo) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	EntityPlayerPlus* entityPlayerPlus = GetEntityPlayerPlus(player);
+	if (entityPlayerPlus) {
+		entityPlayerPlus->camoOverride = lua::luaL_checkboolean(L, 2);
+	}
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerHasCamoEffect) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	EntityPlayerPlus* entityPlayerPlus = GetEntityPlayerPlus(player);
+	TemporaryEffects* effects = &player->_temporaryeffects;
+
+	lua_pushboolean(L,
+		(entityPlayerPlus && entityPlayerPlus->camoOverride)
+		|| g_Game->HasSeedEffect(SEED_CAMO_ISAAC)
+		|| g_Game->HasSeedEffect(SEED_CAMO_EVERYTHING)
+		|| effects->HasCollectibleEffect(CollectibleType::COLLECTIBLE_CAMO_UNDIES)
+		|| effects->HasTrinketEffect(TrinketType::TRINKET_FADED_POLAROID)
+	);
+		return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerGetFriendBallEnemy) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	EntityDesc* ud = (EntityDesc*)lua_newuserdata(L, sizeof(EntityDesc));
+
+	*ud = player->_friendBallEnemy;
+	luaL_setmetatable(L, lua::metatables::EntityDescMT);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetFriendBallEnemy) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	player->_friendBallEnemy = *lua::GetRawUserdata<EntityDesc*>(L, 2, lua::metatables::EntityDescMT);
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerGetPlanCKillCountdown) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	lua_pushinteger(L, player->_planCKillCountdown);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetPlanCKillCountdown) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	player->_planCKillCountdown = (int)luaL_checkinteger(L, 2);
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerGetPotatoPeelerCounter) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	lua_pushinteger(L, player->_potatoPeelerCounter);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetPotatoPeelerCounter) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	player->_potatoPeelerCounter = (int)luaL_checkinteger(L, 2);
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerGetMawOfTheVoidCharge) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	lua_pushinteger(L, player->_mawOfTheVoidChargeTimer);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetMawOfTheVoidCharge) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	player->_mawOfTheVoidChargeTimer = (int)luaL_checkinteger(L, 2);
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerGetMontezumaRevengeCharge) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	lua_pushinteger(L, player->_montezumaChargeTimer);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetMontezumaRevengeCharge) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	player->_montezumaChargeTimer = (int)luaL_checkinteger(L, 2);
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerGetBodySprite) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	lua::luabridge::UserdataPtr::push(L, &player->_bodySprite, lua::GetMetatableKey(lua::Metatables::SPRITE));
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerPlayItemNullAnimation) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	const char* animName = (const char*)luaL_checkstring(L, 2);
+
+	lua_pushboolean(L, player->PlayItemNullAnimation(animName));
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerGetBlinkLockTime) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	lua_pushinteger(L, player->_blinkTime);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetBlinkLockTime) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	player->_blinkTime = (int)luaL_checkinteger(L, 2);
+
+	return 0;
+}
+
+LUA_FUNCTION(Lua_PlayerGetItemStateCooldown) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	lua_pushinteger(L, player->_itemStateCooldown);
+
+	return 1;
+}
+
+LUA_FUNCTION(Lua_PlayerSetItemStateCooldown) {
+	Entity_Player* player = lua::GetLuabridgeUserdata<Entity_Player*>(L, 1, lua::Metatables::ENTITY_PLAYER, "EntityPlayer");
+	player->_itemStateCooldown = (int)luaL_checkinteger(L, 2);
+
+	return 0;
+}
+
 HOOK_METHOD(LuaEngine, RegisterClasses, () -> void) {
 	super();
 
@@ -3118,9 +3332,13 @@ HOOK_METHOD(LuaEngine, RegisterClasses, () -> void) {
 		{ "GetWeaponModifiers", Lua_PlayerGetWeaponModifiers },
 		{ "EnableWeaponType", Lua_PlayerEnableWeaponType },
 		{ "GetD8DamageModifier", Lua_PlayerGetD8DamageModifier },
+		{ "SetD8DamageModifier", Lua_PlayerSetD8DamageModifier },
 		{ "GetD8SpeedModifier", Lua_PlayerGetD8SpeedModifier },
+		{ "SetD8SpeedModifier", Lua_PlayerSetD8SpeedModifier },
 		{ "GetD8RangeModifier", Lua_PlayerGetD8RangeModifier },
+		{ "SetD8RangeModifier", Lua_PlayerSetD8RangeModifier },
 		{ "GetD8FireDelayModifier", Lua_PlayerGetD8FireDelayModifier },
+		{ "SetD8FireDelayModifier", Lua_PlayerSetD8FireDelayModifier },
 		{ "GetEpiphoraCharge", Lua_PlayerGetEpiphoraCharge },
 		{ "GetPeeBurstCooldown", Lua_PlayerGetPeeBurstCooldown },
 		{ "GetMaxPeeBurstCooldown", Lua_PlayerGetMaxPeeBurstCooldown },
@@ -3269,10 +3487,12 @@ HOOK_METHOD(LuaEngine, RegisterClasses, () -> void) {
 		{ "BlockCollectible", Lua_BlockCollectible },
 		{ "UnblockCollectible", Lua_UnblockCollectible },
 		{ "IsCollectibleBlocked", Lua_IsCollectibleBlocked },
-		{ "AddTrinketEffect", Lua_PlayerAddTrinketEffect }, //this one is ass, literally does nothing, leaving it out of the docs
+		{ "AddTrinketEffect", Lua_PlayerAddTrinketEffect }, //this one is ass, literally does nothing, leaving it out of the docs [NO_DOCS]
 		{ "GetPlayerIndex", Lua_PlayerGetPlayerIndex }, 
 		{ "GetSpoofedCollectiblesList", Lua_PlayerGetSpoofCollList },
 		{ "HasGoldenTrinket", Lua_PlayerHasGoldenTrinket },
+		{ "HasTrinket", Lua_PlayerHasTrinket },
+		{ "GetTrinketMultiplier", Lua_PlayerGetTrinketMultiplier },
 		{ "GetHallowedGroundCountdown", Lua_PlayerGetHallowedGroundCountdown },
 		{ "SetHallowedGroundCountdown", Lua_PlayerSetHallowedGroundCountdown },
 		{ "HasChanceRevive", Lua_PlayerHasChanceRevive },
@@ -3324,6 +3544,23 @@ HOOK_METHOD(LuaEngine, RegisterClasses, () -> void) {
 		{ "SetMaggyHealthDrainCooldown", Lua_PlayerSetMaggyHealthDrainCooldown },
 		{ "IsPostLevelInitFinished", Lua_PlayerIsPostLevelInitFinished },
 		{ "UseActiveItem", Lua_PlayerUseActiveItem },
+		{ "HasForcedCamoEffect", Lua_PlayerIsForceCamo },
+		{ "SetForceCamoEffect", Lua_PlayerSetForceCamo },
+		{ "HasCamoEffect", Lua_PlayerHasCamoEffect },
+		{ "GetPlanCKillCountdown", Lua_PlayerGetPlanCKillCountdown },
+		{ "SetPlanCKillCountdown", Lua_PlayerSetPlanCKillCountdown },
+		{ "GetPotatoPeelerUses", Lua_PlayerGetPotatoPeelerCounter },
+		{ "SetPotatoPeelerUses", Lua_PlayerSetPotatoPeelerCounter },
+		{ "GetMawOfTheVoidCharge", Lua_PlayerGetMawOfTheVoidCharge },
+		{ "SetMawOfTheVoidCharge", Lua_PlayerSetMawOfTheVoidCharge },
+		{ "GetMontezumaRevengeCharge", Lua_PlayerGetMontezumaRevengeCharge },
+		{ "SetMontezumaRevengeCharge", Lua_PlayerSetMontezumaRevengeCharge },
+		{ "GetBodySprite", Lua_PlayerGetBodySprite },
+		{ "PlayItemNullAnimation", Lua_PlayerPlayItemNullAnimation },
+		{ "GetBlinkLockTime", Lua_PlayerGetBlinkLockTime },
+		{ "SetBlinkLockTime", Lua_PlayerSetBlinkLockTime },
+		{ "GetItemStateCooldown", Lua_PlayerGetItemStateCooldown },
+		{ "SetItemStateCooldown", Lua_PlayerSetItemStateCooldown },
 
 		{ NULL, NULL }
 	};
@@ -3331,4 +3568,5 @@ HOOK_METHOD(LuaEngine, RegisterClasses, () -> void) {
 
 	// fix BabySkin Variable
 	lua::RegisterVariable(_state, lua::Metatables::ENTITY_PLAYER, "BabySkin", Lua_PlayerGetBabySkin, Lua_PlayerSetBabySkin);
+	lua::RegisterVariable(_state, lua::Metatables::ENTITY_PLAYER, "FriendBallEnemy", Lua_PlayerGetFriendBallEnemy, Lua_PlayerSetFriendBallEnemy);
 }

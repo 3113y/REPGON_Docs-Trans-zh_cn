@@ -1,7 +1,81 @@
-v1.0.x -
+v1.1.x -
+Added:
+* Added EntitySaveStateManager class to support persistent, modded save data for entities.
+* EntityLaser
+	- SetInitSound(SoundEffect sound)
+	- Get/SetNumChainedLasers
+		This is used by the Monstro's Lung + Technology synergy
+* Backported new enums for GameStateFlag
+/newline/
+Modified:
+* EntityPlayer:
+	- SetControllerIndex(integer ControllerIndex, boolean IncludePlayerOwned = false)
+		If IncludePlayerOwned set to true, then sets ControllerIndex for player's subplayer/twinplayer
+Fixes:
+* ModCallbacks:
+	- Fixed MC_GET_STATUS_EFFECT_TARGET not running for the "shrink" status effect.
+/newline/
+/versionseparator/
+v1.1.1a -
+* Fixed inconsistent syncing of game options (options.ini) between vanilla and REPENTOGON for some users.
+	- These options were intended to fully sync between vanilla and REPENTOGON. Being able to have different settings (such as the Mods Enabled setting) was a bug, but...
+	- Options Syncing can now be disabled in the Imgui Console's REPENTOGON Options menu (added toggles for "Sync Vanilla Game Options" & "Sync Mods Enabled Option")
+/newline/
+/versionseparator/
+v1.1.1 -
+Added:
+* Mods can now load assets from resources-repentogon and content-repentogon folders for compatibility. Takes priority over -dlc3 folders (e.g resources-repentogon > resources-dlc3 > resources).
+* Game:
+	- IsStartingFromState
+		Returns a boolean whether the game starts from a continued state or not. Always returns false after MC_POST_GAME_STARTED execution.
+* EntityBomb
+	- Get/SetFallSpeed
+		Formerly mislabeled as Get/SetHeight
+	- Get/SetFallAcceleration
+		Formerly mislabeled as Get/SetFallingSpeed
+* EntityTear
+	- SetInitSound(SoundEffect sound)
+* MenuSave
+	- SetSlotSpritesheet(int slot, string pngfilename)
+		Overrides the spritesheet used for a save file drawing. MC_POST_SAVESLOT_LOAD is a good place to use this.
+* ModCallbacks:
+	- Added "RemoveFromPlayerForm" and "Wisp" args to MC_POST_TRIGGER_COLLECTIBLE_REMOVED.
+* Enums:
+	- SlotState
+	- BloodClotSubtype
+	- RoomDisplayFlags
+/newline/
+Fixes:
+* Isaac:
+	- Restored deprecated Isaac.ClearBossHazards for compatibility, but Room:ClearBossHazards should be used instead.
+	- Fixed possible crashes involving ClearChallenge and MarkChallengeAsNotDone.
+* Vector:
+	- Lerp now returns a reference to the modified vector like it now does in vanilla.
+* RoomDescriptor:
+	- Fixed GetNeighboringRooms returning a number instead of a table.
+* Room:
+	- SetItemPool no longer crashes or errors on POOL_NULL
+* ScoreSheet:
+	- Fixed crash related to AddFinishedStage
+* ModCallbacks:
+	- Fixed broken color userdata in MC_POST_ENTITY_SET_COLOR
+* XMLData:
+	- Fixed GetEntryByOrder results for XMLNode.NULLCOSTUME
+	- Fixed crashes on invalid node types
+* Dear ImGui Console Menus:
+	- Game Options: Music Volume slider now immediately updates the volume of the currently-playing music.
+	- Save Management: "Import from Repentance" no longer "fails" if a file doesn't exist.
+* Fixed possible crash on the secrets menu.
+* Fixed the custom challenges menu resetting when any console command is executed.
+* Fixed the game potentially getting stuck trying to generate an ascent floor if a modded boss room has certain door layouts (again)
+/newline/
+/versionseparator/
+v1.1.0 -
 * Welcome to REPENTOGON+ !
 /newline/
 Additions:
+* GridEntityLock
+	- TryUnlock(EntityPlayer player, bool force)
 * Camera:
 	- Update(bool Interpolated = false)
 	- SetClampEnabled(bool clamped)
@@ -10,11 +84,20 @@ Additions:
 	- IsBeastPath
 * Game:
 	- ChainLightning(Vector Position, float BaseDamage = 3.5, TearFlags TearFlags = TearFlags.TEAR_NORMAL, Entity Spanwer = nil)
-* GridEntity
+* GridEntity:
 	- [Get/Set/Reset]WaterClipFlags
-* Entity
+* Entity:
 	- [Get/Set/Reset]WaterClipFlags
 	- CanDevolve
+* EntityDesc:
+	- EntityDesc(EntityType Type = 0, int Variant = 0, int Subtype = 0, ChampionColor ChampionId = -1, float Health = 0.0, float MaxHealth = 0.0, boolean PlayerControlled = false)
+	- [Get/Set]Type
+	- [Get/Set]Variant
+	- [Get/Set]Subtype
+	- [Get/Set]ChampionId
+	- [Get/Set]Health
+	- [Get/Set]MaxHealth
+	- [Is/Set]PlayerControlled
 * EntityPickup:
 	- GetMegaChest[Left/Right]Collectible
 		Returns the other EntityPickup for a Mega Chest
@@ -23,10 +106,26 @@ Additions:
 	- GetFlipCollectible
 		Returns CollectibleType if flip save state exists, nil otherwise.
 	- InitFlipState(CollectibleType = CollectibleType.COLLECTIBLE_NULL, SetupCollectibleGraphics = true)
+	- ReloadGraphics(boolean IgnoreBlind)
+	- SetupCollectibleGraphics(Sprite Sprite, integer Layer, CollectibleType Collectible, boolean Blind, integer Seed = Random(), boolean LoadGraphics)
+		Static method. Used to replace layer's spritesheet of the sprite object with collectible sprite. Seed is used for April Fools challenge to choose random collectible.
 * EntityPlayer:
 	- [Get/Set]ActionHoldDrop - how long player holds action drop button.
+	- [Get/Set]BlinkLockTime - how long player's head will play fired frame sprite
+	- GetBodySprite
+		Temporary copy of body player sprite while null animation is active.
+	- SetD8DamageModifier
+	- SetD8FireDelayModifier
+	- SetD8RangeModifier
+	- SetD8SpeedModifier
 	- [Get/Set]ForgottenSwapFormCooldown
+	- [Get/Set]ItemStateCooldown
 	- [Get/Set]MaggyHealthDrainCooldown
+	- [Get/Set]MawOfTheVoidCharge
+	- [Get/Set]MontezumaRevengeCharge
+	- [Get/Set]PlanCKillCountdown
+	- [Get/Set]PotatoPeelerUses
+		Used to increment Cube of Meat familiar form
 	- [Get/Set]RockBottomMoveSpeed
 	- [Get/Set]RockBottomMaxFireDelay
 	- [Get/Set]RockBottomDamage
@@ -47,6 +146,11 @@ Additions:
 	- GetSmeltedTrinketDesc
 	- [Get/Set]CharmOfTheVampireKills
 	- IsPostLevelInitFinished
+	- HasForcedCamoEffect
+	- SetForceCamoEffect
+	- HasCamoEffect
+	- PlayItemNullAnimation
+		Returns true if animation was set successfully, false otherwise. Useful for item state/hold items.
 * EntityFamiliar:
 	- IsLilDelirium
 	- SetLilDelirium
@@ -71,9 +175,20 @@ Additions:
 	- GetDevolvedEntity
 * Level:
 	- Added overloads for CanPlaceRoom(AtDoor) and FindValidRoomPlacementLocations that accept a RoomShape and DoorMask instead of a RoomConfigRoom.
+	- GetGenerationRNG
 * PlayerManager:
 	- GetRandomCollectibleOwner
 	- GetRandomTrinketOwner
+* Isaac:
+	- GetButtonsSprite
+	- GetAllowedDoorsMaskForRoomShape: Returns a DoorMask representing all DoorSlots that are allowed for the given RoomShape.
+	- UnClearChallenge(challenge id): sets the target challenge id as not cleared. Not recommended with vanilla ones, it should still work tho!
+	- SpawnBoss(Type,Variant,SubType,Position,Velocity,Spawner,Seed = ?) Spawns an NPC forcing it to be a Boss, giving it a boss bar and boss-lile qualities.
+	- GetNanoTime(): Returns a high-resolution timestamp in nanoseconds.
+	- RenderCollectionItem(CollectibleType Collectible, Vector Position, Vector Scale = Vector.One, Color Color = Color.Default)
+	- ReworkCollectible(Collectible): marks the collectible as reworked, making the game not execute the item's original logic.
+	- ReworkBirthright(PlayerType): marks the birthright as reworked, making the game not execute the item's original logic.
+	- ReworkTrinket(Trinket): marks the trinket as reworked, making the game not execute the trinket's original logic.
 * ItemPool:
 	- AddCollectible
 	- AddTemporaryCollectible
@@ -84,6 +199,8 @@ Additions:
 * HUD:
 	- GetStackedStreakSprite
 	- GetPlayerStreakSprite
+* Minimap:
+	- Refresh
 * PlayerHUD:
 	- GetIndex
 	- GetLayout
@@ -92,11 +209,22 @@ Additions:
 	- GetScore
 	- GetTriggerChanceScale
 * Room:
+	- ClearBossHazards(boolean IgnoreNPCs = true, EntityNPC Entity = nil)
 	- TriggerOutput(RoomEventOutput GroupIdx)
+	- GetWallColor()
 * RoomConfig:
 	- AddRooms
 * RoomConfigSet:
 	- AddRooms
+* RoomDescriptor:
+	- [Get/Set]TaintedKeeperCoinSpawns
+		Prevent coin spawn from killed enemies on room reenter when counter reaches 10.
+* ScoreSheet:
+	- GetBeastBonus
+	- GetDeliriumBonus
+	- GetMotherBonus
+* Seeds:
+	- SetStageSeed(LevelStage, Seed)
 * FXLayers:
 	- AddPoopFx(ColorMod Color)
 * Weapon:
@@ -188,6 +316,13 @@ Additions:
 		The string key (e.g. "boss_0", "treasure_0") identifies which slot the room was saved into.
 	- MC_PRE_ADD_TRINKET(player, TrinketType, firstTime)
 		Return false to cancel, or a different TrinketType to change the trinket being added.
+	- MC_TRY_ADD_TO_BAG_OF_CRAFTING(player, pickup, BagOfCraftingPickup[])
+		Optional param: PickupVariant
+		Return false to prevent, or return a table of BagOfCraftingPickups to modify what gets added.
+		Note: Prefer to use the new `bagofcrafting` attribute in entities2.xml where possible.
+	- MC_POST_ADD_TO_BAG_OF_CRAFTING(player, pickup)
+		Optional param: PickupVariant
+		Only runs when the pickup was successfully "added" to the bag.
 	- MC_POST_ITEM_OVERLAY_RENDER
 	- MC_PRE_OPEN_CHEST(EntityPickup, EntityPlayer?)
 		Optional param: PickupVariant
@@ -195,6 +330,15 @@ Additions:
 	- MC_POST_OPEN_CHEST(EntityPickup, EntityPlayer?)
 		Optional param: PickupVariant
 		Fires after a chest opened.
+	- MC_POST_DISCHARGE_ACTIVE_ITEM(CollectibleType, boolean CollectibleRemoved, EntityPlayer, ActiveSlot)
+	- MC_POST_ROOM_TRIGGER_CLEAR(boolean Silent)
+	- MC_POST_PLAYER_DROP_TRINKET(TrinketType, Vector DropPosition, EntityPlayer, boolean IsGolden, boolean ReplaceTick)
+		Optional param : TrinketType
+		Fires after player dropped trinket.
+	- MC_POST_PLAYER_ADD_EFFECT(EntityPlayer, ItemConfigItem, boolean addCostume, int count)
+		Optional param: ItemConfigItem
+	- MC_POST_ROOM_ADD_EFFECT(ItemConfigItem)
+		Optional param: ItemConfigItem
 * New Enums:
 	- DoorMask
 	- WaterClipFlag
@@ -204,12 +348,6 @@ Additions:
 	- EvaluateStatStage
 	- SplitTearType
 	- UseActiveItemResultFlag
-* Room:
-	- GetWallColor()
-* Isaac:
-	- GetAllowedDoorsMaskForRoomShape: Returns a DoorMask representing all DoorSlots that are allowed for the given RoomShape.
-	- UnClearChallenge(challenge id): sets the target challenge id as not cleared. Not recommended with vanilla ones, it should still work tho!
-	- SpawnBoss(Type,Variant,SubType,Position,Velocity,Spawner,Seed = ?) Spawns an NPC forcing it to be a Boss, giving it a boss bar and boss-lile qualities.
 * Options:
 	- AimLockEnabled
 	- AscentVoiceOver
@@ -269,6 +407,8 @@ Fixes:
 * EntityPlayer:
 	- SetBagOfCraftingSlot / SetBagOfCraftingContent now automatically recalculate the crafting output & shift bag contents if empty spaces are added in the middle.
 	- Fixed SetFootprintColor crashing
+	- Fixed an issue where SetMegaBlastDuration was not updating the laser duration if it existed
+	- Fixed FriendBallEnemy accessor/setter
 * ItemConfig_Costume:
 	- Fixed SkinColor attribute (now provides a valid int and can be modified)
 * Level:
@@ -314,6 +454,7 @@ Modified:
 	- GetSmeltedTrinkets now accepts an optional table parameter, a list of trinket IDs, to use as a filter for better performance
 	- TryAddToBagOfCrafting now returns a boolean (true if something was added to the bag)
 	- UseActiveItem now returns a bitmask (UseActiveItemResultFlag.DISCHARGE and/or UseActiveItemResultFlag.REMOVE, or 0)
+	- Player no longer leaves a pee/blood puddle when entering a new room when the health type is set to HealthType.LOST/NO_HEALTH
 * EntityNPC:
 	- boolean ReplaceSpritesheet
 * Level:
@@ -324,6 +465,9 @@ Modified:
 * ModCallbacks:
 	- MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED(EntityPlayer Player, int Count)
 		Added Count argument (how many instances of this effect were removed)
+		Can now use ItemConfigItem as an optional param.
+	- MC_POST_ROOM_TRIGGER_EFFECT_REMOVED
+		Can now use ItemConfigItem as an optional param.
 	- MC_PRE_MOD_UNLOAD(Mod, bool ShuttingDown)
 		Added boolean argument that identifies if it is running due to game shutdown
 		Now runs earlier during shutdown, so code is less likely to crash
@@ -335,8 +479,13 @@ Modified:
 		Added CropOffset field (Vector, defines rectangle area of the active item image that will rendered in active slot)
 	- MC_POST_PLAYER_NEW_LEVEL
 		Added PostLevelInitFinished argument
+	- MC_GET_PILL_EFFECT
+		Added EntityPlayer argument
+	- MC_POST_ENTITY_KILL
+		Added EntityRef argument (which entity killed this one)
 * reloadshaders command will now reload custom anm2 shaders
 * Daily goal path icon will now be displayed on Mega Satan daily runs.
+* Fixed "luareset" command executing scripts from not loaded mods
 /newline/
 /versionseparator/
 v1.0.12.e -

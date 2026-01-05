@@ -60,7 +60,7 @@ ___
 
 ___
 ### GetState () {: aria-label='Functions' }
-#### int GetState ( ) {: .copyable aria-label='Functions' }
+#### [SlotState](enums/SlotState.md) GetState ( ) {: .copyable aria-label='Functions' }
 返回可互动实体的当前状态。
 
 ???+ info "Return info"
@@ -125,7 +125,7 @@ ___
 
 ___
 ### SetState () {: aria-label='Functions' }
-#### void SetState ( int State ) {: .copyable aria-label='Functions' }
+#### void SetState ( [SlotState](enums/SlotState.md) State ) {: .copyable aria-label='Functions' }
 设置可互动实体的状态。更多信息请参阅[GetState](EntitySlot.md#getstate)。
 
 ___

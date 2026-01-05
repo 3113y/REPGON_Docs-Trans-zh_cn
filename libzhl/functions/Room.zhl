@@ -137,6 +137,9 @@ __thiscall void Room::SpawnGreedModeWave(bool unusedBool);
 "558bec83e4f851538b5d??56578bf9":
 __thiscall void Room::TriggerOutput(unsigned int outputGroupdIdx);
 
+"8b41??85c074??8b40??85c074??8b00":
+__thiscall int Room::GetRoomConfigStage();
+
 struct Room depends (EntityList, RoomDescriptor, TemporaryEffects, RailManager, FXLayers, KColor, ColorMod, Backdrop, Vector) {
 {{
 	inline Camera* GetCamera() { return this->_Camera; }
@@ -197,9 +200,9 @@ struct Room depends (EntityList, RoomDescriptor, TemporaryEffects, RailManager, 
 	float _lavaIntensity : 0x7740;
 	Entity_Effect* _redDoorOutlines[8] : 0x7744;
 
-    "558bec6aff68????????64a1????????5083ec305657a1????????33c5508d45??64a3????????8b75":
-    bool save_entity(Entity* entity, EntitySaveState* data, bool unk);
+	"558bec6aff68????????64a1????????5083ec305657a1????????33c5508d45??64a3????????8b75":
+	bool save_entity(Entity* entity, EntitySaveState* data, bool savingMinecartEntity);
 
-    "558bec83e4f883ec245356578b7d??8bd9":
-    void restore_entity(Entity* entity, EntitySaveState* data);
+	"558bec83e4f883ec245356578b7d??8bd9":
+	void restore_entity(Entity* entity, EntitySaveState* data);
 } : 0x7898;

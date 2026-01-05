@@ -9,6 +9,9 @@
 #include "HookSystem.h"
 #include "MiscFunctions.h"
 #include "CrashHandler.h"
+#include "Patches/EntityLifecycle.h"
+#include "SaveStateManagement/EntitySaveStateManagement.h"
+#include "LuaInterfaces/_Internals.h"
 #include <iostream>
 #include <random>
 #include <sstream>
@@ -171,12 +174,50 @@ void NukeConstMetatables(lua_State* L) {
 	}
 }
 
+static void bind_lua_internals(lua_State* L, int tblIdx)
+{
+	int stackTop = lua_gettop(L);
+	tblIdx = lua_absindex(L, tblIdx);
+	if (!lua_istable(L, tblIdx))
+	{
+		ZHL::Log("[ERROR] _LuaBindings is not a table.\n");
+		LuaInternals::RaiseInitError();
+		assert(false);
+
+		return;
+	}
+
+	{
+		lua::LuaStackProtector protector(L);
+		lua_getfield(L, tblIdx, "EntityLifecycle");
+		EntityLifecycle::detail::Init::BindLuaCallbacks(L, -1);
+		lua_pop(L, 1);
+	}
+
+	{
+		lua::LuaStackProtector protector(L);
+		lua_getfield(L, tblIdx, "ESSM");
+		EntitySaveStateManagement::detail::Init::BindLuaCallbacks(L, -1);
+		lua_pop(L, 1);
+	}
+}
+
 HOOK_METHOD(LuaEngine, Init, (bool Debug) -> void) {
+	const char* C_BINDINGS_NAME = "_CBindings";
+	const char* LUA_BINDINGS_NAME = "_LuaBindings";
+
 	super(Debug);
-	luaL_requiref(g_LuaEngine->_state, "debug", luaopen_debug, 1);
-	lua_pop(g_LuaEngine->_state, 1);
-	luaL_requiref(g_LuaEngine->_state, "os", luaopen_os, 1);
-	lua_pop(g_LuaEngine->_state, 1);
+
+	lua_State* L = g_LuaEngine->_state;
+	luaL_requiref(L, "debug", luaopen_debug, 1);
+	lua_pop(L, 1);
+	luaL_requiref(L, "os", luaopen_os, 1);
+	lua_pop(L, 1);
+
+	lua_newtable(L);
+	LuaInternals::RegisterInternals(L);
+	lua_setglobal(L, C_BINDINGS_NAME);
+
 	lua_State* state = g_LuaEngine->runCallbackRegistry->state;
 	this->RunBundledScript("resources/scripts/enums_ex.lua");
 	this->RunBundledScript("resources/scripts/main_ex.lua");
@@ -188,6 +229,21 @@ HOOK_METHOD(LuaEngine, Init, (bool Debug) -> void) {
 	luaL_unref(state, LUA_REGISTRYINDEX, g_LuaEngine->runCallbackRegistry->key);
 	lua_getglobal(state, "_RunCallback");
 	g_LuaEngine->runCallbackRegistry->key = luaL_ref(state, LUA_REGISTRYINDEX);
+
+	{
+		lua::LuaStackProtector protector(L);
+		lua_getglobal(L, LUA_BINDINGS_NAME);
+		bind_lua_internals(L, -1);
+		lua_pop(L, 1);
+	}
+
+	// "delete" Lua Bindings
+	lua_pushnil(L);
+	lua_setglobal(L, LUA_BINDINGS_NAME);
+
+	// "delete" C Bindings
+	lua_pushnil(L);
+	lua_setglobal(L, C_BINDINGS_NAME);
 
 	NukeConstMetatables(_state);
 	REPENTOGON::UpdateProgressDisplay("LuaEngine Initialized");

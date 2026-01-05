@@ -8,6 +8,9 @@ __thiscall void Entity_Player::AnimatePickup(ANM2 *param_1,bool param_2,char *pa
 "538bdc83ec0883e4f883c404558b6b??896c24??8bec6aff68????????64a1????????505383ec085657a1????????33c5508d45??64a3????????8bf9":
 __thiscall void Entity_Player::constructor();
 
+"558bec6aff68????????64a1????????5051535657a1????????33c5508d45??64a3????????8bf98b8f":
+__thiscall void Entity_Player::destructor();
+
 "558bec83e4f8a1????????83ec1483b8????????02":
 __thiscall void Entity_Player::update_red_hearts();
 
@@ -411,6 +414,9 @@ __thiscall Entity_Laser* Entity_Player::FireTechLaser(const Vector& pos, unsigne
 "558bec83e4f881ec88000000a1????????33c4898424????????8b45":
 __thiscall Entity_Laser* Entity_Player::FireTechXLaser(const Vector& pos, const Vector& dir, float radius, Entity * source, float damageMultiplier);
 
+"538bdc83ec0883e4f883c404558b6b??896c24??8bec6aff68????????64a1????????505383ec30a1????????33c58945??5657508d45??64a3????????8bf98b43":
+__thiscall void Entity_Player::GetLaserOffset(Vector* buffer, int laserOffsetID, Vector* direction);
+
 "558bec83e4f883ec0c568bf1f30f1086":
 __thiscall void Entity_Player::GetBodyMoveDirection(Vector * buffer);
 
@@ -431,6 +437,9 @@ __thiscall bool Entity_Player::CanCrushRocks();
 
 "558bec83e4f88b0d????????83ec14":
 __thiscall void Entity_Player::GetEnterPosition(Vector * buffer);
+
+"558bec81ec1c01000056":
+__thiscall bool Entity_Player::PlayItemNullAnimation(const char* animName);
 
 /*
 "558bec83e4f851566a006a6a":
@@ -494,7 +503,7 @@ __thiscall void Entity_Player::RevivePlayerGhost();
 __thiscall void Entity_Player::SalvageCollectible(Vector * pos, int subtype, unsigned int seed, int poolType);
 
 "558bec6aff68????????64a1????????5083ec14535657a1????????33c5508d45??64a3????????8bf9ffb7":
-__thiscall void Entity_Player::SetControllerIndex(unsigned int index);
+__thiscall void Entity_Player::SetControllerIndex(unsigned int index, bool includePlayerOwned);
 
 // Allegedly the boolean is "rightfoot" but I'm not so sure that's true based on the decomp of SetFootprintColor. Seems more like a "force"-type deal.
 "558bec566aff":
@@ -564,7 +573,19 @@ __thiscall bool Entity_Player::HasInvincibility(uint64_t damageFlags, EntityRef*
 "558bec6aff68????????64a1????????50b8dc190000":
 __thiscall void Entity_Player::UseActiveItem(short* resultFlags, CollectibleType collectible, unsigned int useFlags, int activeSlot, int varData);
 
-struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, TemporaryEffects, ConsumableData, History, BagOfCraftingOutput) : public Entity { {{
+"538bdc83ec0883e4f883c404558b6b??896c24??8bec6aff68????????64a1????????505381ec800000005657a1????????33c5508d45??64a3????????8bf9":
+__thiscall void Entity_Player::StoreGameState(GameStatePlayer* saveState, bool saveTemporaryFamiliars);
+
+"538bdc83ec0883e4f883c404558b6b??896c24??8bec6aff68????????64a1????????505383ec40a1????????33c58945??5657508d45??64a3????????8bf9897d??83bf????????00":
+__thiscall void Entity_Player::RestoreGameState(GameStatePlayer* saveState);
+
+"558bec83e4f883ec6453568b75":
+__thiscall void Entity_Player::RestoreGameState_PostLevelInit(GameStatePlayer* saveState);
+
+"558bec83e4f883ec1453568bf157897424":
+__thiscall Entity_Pickup* Entity_Player::DropTrinket(Vector* DropPos, bool ReplaceTick);
+
+struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, TemporaryEffects, ConsumableData, History, BagOfCraftingOutput, EntityDesc, GameStatePlayer) : public Entity { {{
     inline int* GetMaxHearts() {return &this->_maxHearts; }
 	inline int* GetRedHearts() {return &this->_redHearts; }
 	inline int* GetEternalHearts() {return &this->_eternalHearts; }
@@ -677,6 +698,7 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	inline Entity_Player* GetBackupPlayer() { return this->_backupPlayer; }
     }}
 
+	ANM2 _bodySprite : 0x41c;
 	ANM2 _heldSprite : 0xff8;
 	vector_CostumeSpriteDesc _costumeSpriteDescs : 0x1220;
 	PlayerCostumeMap _playerCostumeMap[15] : 0x122c;
@@ -698,6 +720,7 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	Weapon* _weapon[5] : 0x13d8;
 	Entity_Effect* _markedTarget : 0x1408;
 	Entity* _heldEntity : 0x140c;
+	Entity_Laser* _megaBlastLaser : 0x1454;
 	float _maxfiredelay : 0x145c;
 	float _shotspeed : 0x1460;
 	float _damage : 0x146c;
@@ -708,6 +731,7 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	ColorMod _laserColor : 0x14bc;
 	TemporaryEffects _temporaryeffects : 0x1500;
 	int _speedModifier : 0x1518, _fireDelayModifier : 0x151c, _damageModifier : 0x1520, _tearRangeModifier : 0x1524, _shotSpeedModifier : 0x1528, _luckModifier : 0x152c;
+	int _potatoPeelerCounter : 0x1534;
 	float _edenSpeed : 0x1540, _edenFireDelay : 0x1544, _edenDamage : 0x1548, _edenTearRange : 0x154c, _edenShotSpeed : 0x1550, _edenLuck : 0x1554;
 	float _movespeed : 0x155c;
 	float _luck : 0x1560;
@@ -716,6 +740,7 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	int8_t _tearDisplacement : 0x156c;
 	float _tearPoisonDamage : 0x1570;
 	ActiveItemDesc _activeDesc[4] : 0x1574;
+	int _itemStateCooldown : 0x15f8;
 	uint32_t _vampireCharmKills : 0x15fc;
 	int _bombPlaceDelay : 0x1604;
 	int _forgottenSwapFormCooldown : 0x1608;
@@ -734,9 +759,11 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	ColorMod _footprintColor1 : 0x1814;
 	ColorMod _footprintColor2 : 0x1840;
 	int _ponyCharge : 0x1874;
+	int _planCKillCountdown : 0x1878;
 	int _epiphoraCharge : 0x1890;
 	uint32_t _deadEyeCharges : 0x189c;
 	uint32_t _deadEyeMisses : 0x18a0;
+	uint32_t _mawOfTheVoidChargeTimer : 0x18a8;
 	int _megaBlastDuration : 0x18e0;
 	int _peeBurstCooldown : 0x18e4;
 	int _maxPeeBurstCooldown : 0x18e8;
@@ -744,6 +771,7 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	int _maxBladderCharge : 0x18f0;
 	bool _isUrethraBlocked : 0x18f4;
 	int _nextUrethraBlockFrame : 0x18f8;
+	EntityDesc _friendBallEnemy : 0x18fc;
 	int _purityState : 0x1918;
 	int _immaculateConceptionState : 0x191c;
 	int _cambionConceptionState : 0x1920;
@@ -771,7 +799,8 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	Entity_Player* _backupPlayer : 0x1e50;
 	int _redStewBonusDuration : 0x1e58;
 	float _rockBottomMoveSpeed : 0x1e94, _rockBottomMaxFireDelay : 0x1e98, _rockBottomDamage : 0x1e9c, _rockBottomTearRange : 0x1ea0, _rockBottomShotSpeed : 0x1ea4, _rockBottomLuck : 0x1ea8;
-	int _revelationChargeTimer : 0x1ec0;
+	uint32_t _revelationChargeTimer : 0x1ec0;
+	uint32_t _montezumaChargeTimer : 0x1ec4;
 	uint32_t _maggyHealthDrainCooldown: 0x1ed0;
 	int _maggySwingCooldown : 0x1ed4;
 	int _suplexState : 0x1f08;
@@ -789,6 +818,9 @@ struct Entity_Player depends (Vector, ANM2, ColorMod, KColor, PlayerCostumeMap, 
 	int _wildCardItem : 0x2068;
 	bool _isCoopGhost : 0x207d;
 	PlayerHUD* _playerHUD : 0x20a8;
+	bool _hasUnlistedRestoreState : 0x20bc; // States if the _unlistedRestoreState is usable
+	GameStatePlayer _unlistedRestoreState : 0x20c0; // This state represents the state the player was in before being replaced by a player that was not in the player list (this is used by T.Lazarus and Esau Jr.)
+	Entity_Player* _replacedPlayer : 0x267c; // The other player in the last PlayerManager::ReplacePlayer for this player
 } : 0x2ea0;
 
 "68(????????)68????????f30f59c16a00":

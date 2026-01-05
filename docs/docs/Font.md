@@ -7,8 +7,10 @@ tags:
 ## Modified Constructors
 
 ### Font () {: aria-label='Modified Constructors' }
-#### [Font](Font.md),bool Font ( string FontPath ) {: .copyable aria-label='Modified Constructors' }
+#### [Font](Font.md),boolean Font ( string FontPath ) {: .copyable aria-label='Modified Constructors' }
 新增了可选的 "FontPath" 参数，该函数现在返回两个值：[Font](Font.md) 对象和一个布尔值，用于表示字体是否成功加载。
+___
+## Modified Functions
 
 ### DrawString () {: aria-label='Modified Functions' }
 #### void DrawString ( string String, float PositionX, float PositionY, [KColor](https://wofsauge.github.io/IsaacDocs/rep/KColor.html) RenderColor, int BoxWidth = 0, boolean Center = false ) {: .copyable aria-label='Modified Functions' }

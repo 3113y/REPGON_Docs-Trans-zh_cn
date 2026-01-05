@@ -37,6 +37,15 @@ ___
 #### void AddWeakness ( [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source, int Duration ) {: .copyable aria-label='Functions' }
 
 ___
+### CanDevolve () {: aria-label='Functions' }
+#### boolean CanDevolve ( ) {: .copyable aria-label='Functions' }
+
+___
+### ClearHitList () {: aria-label='Functions' }
+#### void ClearHitList ( ) {: .copyable aria-label='Functions' }
+Clears the tear's hit list, allowing it to hit previously hit enemies again.
+
+___
 ### ComputeStatusEffectDuration () {: aria-label='Functions' }
 #### int ComputeStatusEffectDuration ( int InitialLength, [EntityRef](https://wofsauge.github.io/IsaacDocs/rep/EntityRef.html) Source ) {: .copyable aria-label='Functions' }
 
@@ -131,6 +140,7 @@ ___
 ___
 ### GetHitListIndex () {: aria-label='Functions' }
 #### int GetHitListIndex ( ) {: .copyable aria-label='Functions' }
+Returns an array of hit entities using their [Index](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#index) field.
 
 ___
 ### GetIceCountdown () {: aria-label='Functions' }
@@ -215,6 +225,11 @@ ___
 #### [EntityType](https://wofsauge.github.io/IsaacDocs/rep/enums/EntityType.html) GetType ( ) {: .copyable aria-label='Functions' }
 
 ___
+### GetWaterClipFlags () {: aria-label='Functions' }
+#### [WaterClipFlag](enums/WaterClipFlag.md) GetWaterClipFlags ( ) {: .copyable aria-label='Functions' }
+Gets a bitset that informs some of how this entity interacts with water, primarily rendering related (reflections, etc).
+
+___
 ### GetWeaknessCountdown () {: aria-label='Functions' }
 #### int GetWeaknessCountdown ( ) {: .copyable aria-label='Functions' }
 
@@ -236,6 +251,11 @@ ___
 ### MakeGroundPoof () {: aria-label='Functions' }
 #### [EntityEffect](EntityEffect.md) MakeGroundPoof ( [Vector](Vector.md) Position = self.Position, [Color](Color.md) Color = default, float Scale = 1.0 ) {: .copyable aria-label='Functions' }
 此函数会生成两个子类型为 1 和 2 的灰尘飞溅效果；返回的第二个效果将是第一个效果的子效果。
+
+___
+### ResetWaterClipFlags () {: aria-label='Functions' }
+#### void ResetWaterClipFlags ( ) {: .copyable aria-label='Functions' }
+Restores water rendering to the default vanilla state. See `SetWaterClipFlags()`.
 
 ___
 ### SetBaitedCountdown () {: aria-label='Functions' }
@@ -351,6 +371,15 @@ ___
 ???+ warning "弃用通知"
 
     此变量实际上是实体的时间缩放比例。未来版本中将添加一个命名更合适的替代函数。
+
+___
+### SetWaterClipFlags () {: aria-label='Functions' }
+#### void SetWaterClipFlags ( [WaterClipFlag](enums/WaterClipFlag.md) Flags ) {: .copyable aria-label='Functions' }
+Allows modification of how this entity interacts with water, primarily rendering related behaviour such as reflections.
+
+Note that this will also override/disable any natural vanilla changes to these flags, such as the player losing their reflection with Charm of the Vampire.
+
+Vanilla state can be restored with `ResetWaterClipFlags()`.
 
 ___
 ### SetWeaknessCountdown () {: aria-label='Functions' }

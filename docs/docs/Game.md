@@ -51,6 +51,10 @@ ___
 增加玩家在本次游戏流程中进入商店的次数。
 
 ___
+### ChainLightning () {: aria-label='Functions' }
+#### [EntityEffect](EntityEffect.md) ChainLightning ( [Vector](Vector.md) Position, float BaseDamage = 3.5, [TearFlags](https://wofsauge.github.io/IsaacDocs/rep/enums/TearFlags.html) TearFlags = TearFlags.TEAR_NORMAL, [Entity](Entity.md) Spawner = nil ) {: .copyable aria-label='Functions' }
+
+___
 ### ClearErasedEnemies () {: aria-label='Functions' }
 #### void ClearErasedEnemies ( ) {: .copyable aria-label='Functions' }
 清除所有被标记为已清除的敌人，使它们能够再次生成。
@@ -139,6 +143,11 @@ ___
 ### IsRerun () {: aria-label='Functions' }
 #### boolean IsRerun ( ) {: .copyable aria-label='Functions' }
 如果当前游戏流程是重玩，则返回 `true`。
+
+___
+### IsStartingFromState () {: aria-label='Functions' }
+#### boolean IsStartingFromState ( ) {: .copyable aria-label='Functions' }
+Returns a boolean whether the game starts from a continued state or not. Always returns false after MC_POST_GAME_STARTED execution.
 
 ___
 ### RecordPlayerCompletion () {: aria-label='Functions' }

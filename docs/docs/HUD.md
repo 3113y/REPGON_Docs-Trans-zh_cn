@@ -69,14 +69,28 @@ ___
 #### [PlayerHUD](PlayerHUD.md) GetPlayerHUD ( int Index = 0 ) {: .copyable aria-label='Functions' }
 
 ___
+### GetPlayerStreakSprite () {: aria-label='Functions' }
+#### [Sprite](Sprite.md) GetPlayerStreakSprite ( int Index = 0 ) {: .copyable aria-label='Functions' }
+A set of 4 Sprite objects used for the "mini" Repentance+ item text streaks that get displayed near the players' individual HUDs. Valid indexes are 0~3.
+
+Used in place of the sprites provided by [GetStackedStreakSprite](HUD.md#getstackedstreaksprite) during co-op.
+
+___
 ### GetPoopSpellSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetPoopSpellSprite ( ) {: .copyable aria-label='Functions' }
 堕化？？？的便便副主动的精灵对象
 
 ___
+### GetStackedStreakSprite () {: aria-label='Functions' }
+#### [Sprite](Sprite.md) GetStackedStreakSprite ( int Index = 0 ) {: .copyable aria-label='Functions' }
+Provides access to the Sprite objects used for the new "stacked" Repentance+ item text streaks. Valid indexes are 0~5.
+
+During co-op, the Sprites provided by [GetPlayerStreakSprite](HUD.md#getplayerstreaksprite) are used instead.
+
+___
 ### GetStreakSprite () {: aria-label='Functions' }
 #### [Sprite](Sprite.md) GetStreakSprite ( ) {: .copyable aria-label='Functions' }
-用于文本连击弹出窗口的精灵对象。例如：拾取物品、显示楼层名称等。
+用于文本连击弹出窗口的精灵对象。在 Repentance+ 中，此功能似乎仅用于楼层名称弹出窗口，因为物品相关的弹出窗口使用 [GetStackedStreakSprite](HUD.md#getstackedstreaksprite) 或 [GetPlayerStreakSprite](HUD.md#getplayerstreaksprite) 的精灵。
 
 ___
 ### SetBossHPBarFill () {: aria-label='Functions' }

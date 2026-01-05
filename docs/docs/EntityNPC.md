@@ -9,9 +9,23 @@ tags:
 
 ## Modified Functions
 
+### GetPathfinder () {: aria-label='Modified Functions' }
+#### [Pathfinder](Pathfinder.md) GetPathfinder ( ) {: .copyable aria-label='Modified Functions' }
+Returns a [Pathfinder](Pathfinder.md) class with fixed versions of its functions. This supersedes [EntityNPC.Pathfinder](https://wofsauge.github.io/IsaacDocs/rep/EntityNPC.html#pathfinder), which has been left as-is for compatibility with existing mods.
+
 ### PlaySound () {: aria-label='Modified Functions' }
 #### void PlaySound ( int ID, float Volume = 1.0, int FrameDelay = 2, boolean Loop = true, float Pitch = 1.0 ) {: .copyable aria-label='Modified Functions' }
 除 `ID` 之外的所有参数现在都是可选的。
+
+___
+
+## Functions
+
+### ApplyTearflagEffects () {: aria-label='Functions' }
+#### void ApplyTearflagEffects ( [Vector](Vector.md) Position, [TearFlags](https://wofsauge.github.io/IsaacDocs/rep/enums/TearFlags.html) TearFlags, [Entity](Entity.md) Source = nil, float Damage = 3.5 ) {: .copyable aria-label='Functions' }
+Attempt to the on-hit effects of the provided [TearFlags](https://wofsauge.github.io/IsaacDocs/rep/enums/TearFlags.html) to this enemy, credited to the provided source [Entity](Entity.md), if any.
+
+Will also trigger [MC_POST_APPLY_TEARFLAG_EFFECTS](enums/ModCallbacks.md#mc_post_apply_tearflag_effects) if successful.
 
 ___
 ### ClearFlyingOverride () {: aria-label='Functions' }
@@ -57,8 +71,13 @@ ___
 返回壁炉使用的唯一 [LootList](LootList.md)。
 
 ___
+### GetFlyingOverride () {: aria-label='Functions' }
+#### boolean GetFlyingOverride ( ) {: .copyable aria-label='Functions' }
+
+___
 ### GetHitList () {: aria-label='Functions' }
 #### int[] GetHitList ( ) {: .copyable aria-label='Functions' }
+Returns an array of hit entities using their [Index](https://wofsauge.github.io/IsaacDocs/rep/Entity.html#index) field.
 
 ___
 ### GetShieldStrength () {: aria-label='Functions' }
@@ -79,7 +98,7 @@ ___
 
 ___
 ### ReplaceSpritesheet () {: aria-label='Functions' }
-#### void ReplaceSpritesheet ( int LayerId, string PngFilename, bool LoadGraphics = false ) {: .copyable aria-label='Functions' }
+#### boolean ReplaceSpritesheet ( int LayerId, string PngFilename, boolean LoadGraphics = false ) {: .copyable aria-label='Functions' }
 类似于 [Sprite.ReplaceSpritesheet()](https://wofsauge.github.io/IsaacDocs/rep/Sprite.html#replacespritesheet)。如果可能的话，会在 `PngFilename` 后面追加 "_champion"/阶段后缀。
 
 ___
